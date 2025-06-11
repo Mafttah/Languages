@@ -13,4 +13,4 @@ diez = input(mesaj)
 print("")
 print("Cevapları görmek için enter' a basınız.")
 keyboard.wait("enter")
-uno = "bir"
+uno = "1"
