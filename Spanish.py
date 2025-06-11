@@ -1,7 +1,8 @@
 import keyboard
-print("uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez")
-print("")
+print = input("uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez")
+
 mesaj = "Karşılık gelen rakamları giriniz:"
+
 
 print("Devam etmek için enter' a basınız")
 keyboard.wait("enter")
