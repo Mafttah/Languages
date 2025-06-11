@@ -10,7 +10,3 @@ siete = input(mesaj)
 ocho = input(mesaj)
 nueve = input(mesaj)
 diez = input(mesaj)
-print("")
-print("Cevapları görmek için enter' a basınız.")
-keyboard.wait("enter")
-uno = "1"
