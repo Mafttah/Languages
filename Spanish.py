@@ -1,6 +1,6 @@
 import keyboard
 mesaj = "Karşılık gelen rakamları giriniz:"
-uno = input(mesaj)
+uno = input(uno = mesaj)
 dos = input(mesaj)
 tres = input(mesaj)
 cuatro = input(mesaj)
