@@ -1,4 +1,6 @@
 import keyboard
+
+print("1'den 10' a Sayılar")
 cevap = input("uno =?, dos =?, tres =?, cuatro =?, cinco =?, seis =?, siete =?, ocho =?, nueve =?, diez =?")
 print("")
 print("Devam etmek için enter'a basınız.")
@@ -25,3 +27,5 @@ keyboard.wait("space")
 print("")
 
 print = input("uno = 1, dos = 2, tres = 3, cuatro = 4, cinco = 5, seis = 6, siete = 7, ocho = 8, nueve = 9, diez = 10")
+
+print("Verbs")
