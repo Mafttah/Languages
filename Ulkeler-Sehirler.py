@@ -2,7 +2,7 @@ print("Ülke")
 
 print("İngiltere")
 
-print("Büyük-küçük şehirler, köyler ve turistik yerler")
+print("Büyük-küçük şehirler, köyler")
 
 print("Londra")
 print("NewCastle")
