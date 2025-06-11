@@ -1,5 +1,5 @@
 import keyboard
-print = input("uno = ?, dos = ?, tres = ?, cuatro = ?, cinco = ?, seis = ?, siete = ?, ocho = ?, nueve = ?, diez = ?")
+cevap = input("uno =?, dos =?, tres =?, cuatro =?, cinco =?, seis =?, siete =?, ocho =?, nueve =?, diez =?")
 print("Devam etmek için enter'a basınız.")
 keyboard.wait("enter")
 
