@@ -4,7 +4,7 @@ print = input("uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez")
 mesaj = "Karşılık gelen rakamları giriniz:"
 
 
-print("Devam etmek için enter' a basiniz")
+print("-- enter")
 keyboard.wait("enter")
 
 uno = input(mesaj)
