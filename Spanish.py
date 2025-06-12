@@ -1,35 +1,38 @@
 import keyboard
 
 import colorama
-from colorama import Fore, init
-init()
+from colorama import Fore
+
 print(Fore.RED,"1'den 10' a Sayılar")
 print(Fore.WHITE,"uno =?, dos =?, tres =?, cuatro =?, cinco =?, seis =?, siete =?, ocho =?, nueve =?, diez =?")
 print("")
-print("Devam etmek için enter'a basınız.")
-keyboard.wait("enter")
 
-mesaj = "Karşılık gelen rakamları giriniz:"
 
-print("Devam etmek için enter'a basınız.")
-keyboard.wait("enter")
-
+mesaj = "uno: "
 uno    = input(mesaj)
+mesaj = "dos: "
 dos    = input(mesaj)
+mesaj = "tres: "
 tres   = input(mesaj)
+mesaj = "cuatro: "
 cuatro = input(mesaj)
+mesaj = "cinco: "
 cinco  = input(mesaj)
+mesaj = "seis: "
 seis   = input(mesaj)
+mesaj = "siete: "
 siete  = input(mesaj)
+mesaj = "ocho: "
 ocho   = input(mesaj)
+mesaj = "nueve: "
 nueve  = input(mesaj)
+mesaj = "diez: "
 diez   = input(mesaj)
 
 print("Devam etmek için spacebar'a basınız.")
 keyboard.wait("space")
-print("")
 
-print("uno = 1, dos = 2, tres = 3, cuatro = 4, cinco = 5, seis = 6, siete = 7, ocho = 8, nueve = 9, diez = 10")
+print(f"\nGirilen Değerler: \nuno = {uno}, dos = {dos}, tres = {tres}, cuatro = {cuatro}, cinco = {cinco}, seis = {seis}, siete = {siete}, ocho = {ocho}, nueve = {nueve}, diez = {diez}")
 
 print("İşlemler")
 
