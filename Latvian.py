@@ -1,7 +1,10 @@
 import keyboard
 
-print("1'den 10' a Sayılar")
-print("viens =?, divi =?, tris =?, cetri =?, pieci =?, sesi =?, septini =?, ostoni =?, devini =?, desmit =?")
+import colorama
+from colorama import Fore, init
+init()
+print(Fore.RED,"1'den 10' a Sayılar")
+print(Fore.WHITE,"viens =?, divi =?, tris =?, cetri =?, pieci =?, sesi =?, septini =?, ostoni =?, devini =?, desmit =?")
 print("Devam etmek için spacebar'a basınız.")
 keyboard.wait("space")
 print("")

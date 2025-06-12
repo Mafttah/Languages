@@ -1,7 +1,10 @@
 import keyboard
 
-print("1'den 10' a Sayılar")
-print("jeden =?, dva =?, tri =?, styri =?, pat =?, sest =?, sedem =?, osem =?, devat =?, desat =?")
+import colorama
+from colorama import Fore, init
+init()
+print(Fore.RED,"1'den 10' a Sayılar")
+print(Fore.WHITE,"jeden =?, dva =?, tri =?, styri =?, pat =?, sest =?, sedem =?, osem =?, devat =?, desat =?")
 print("")
 print("Devam etmek için enter'a basınız.")
 keyboard.wait("enter")

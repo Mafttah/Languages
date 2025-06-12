@@ -1,9 +1,16 @@
 import keyboard
 
-print("1'den 10' a Sayılar")
+import colorama
+from colorama import Fore, init
+init()
+print(Fore.RED,"1'den 10' a Sayılar")
 print("")
 
-print("une =?, deux =?, trois =?, quatre =?, cinq =?, six =?, sept =?, huit =?, neuf =?, dix =?")
+print("Devam etmek için enter'a basınız.")
+keyboard.wait("enter")
+print("")
+
+print(Fore.WHITE,"une =?, deux =?, trois =?, quatre =?, cinq =?, six =?, sept =?, huit =?, neuf =?, dix =?")
 print("")
 
 print("Devam etmek için enter'a basınız.")
@@ -34,6 +41,10 @@ keyboard.wait("space")
 print("")
 
 print("une = 1, deux = 2, trois = 3, quatre = 4, cincq = 5, six = 6, sept = 7, huit = 8, neuf = 9, dix = 10")
+print("")
+
+print("Devam etmek için enter'a basınız.")
+keyboard.wait("enter")
 print("")
 
 print("İşlemler")

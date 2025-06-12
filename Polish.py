@@ -1,7 +1,10 @@
 import keyboard
 
-print("1'den 10' a Sayılar")
-cevap = input("jeden =?, dwa =?, trzy =?, cztery =?, piec =?, szesc =?, siedem =?, osiem =?, dziewiec =?, dziesiec =?")
+import colorama
+from colorama import Fore, init
+init()
+print(Fore.RED,"1'den 10' a Sayılar")
+print(Fore.WHITE,"jeden =?, dwa =?, trzy =?, cztery =?, piec =?, szesc =?, siedem =?, osiem =?, dziewiec =?, dziesiec =?")
 print("")
 print("Devam etmek için enter'a basınız.")
 keyboard.wait("enter")

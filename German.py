@@ -1,12 +1,23 @@
 import keyboard
 
-print("1'den 10' a Sayılar")
-print("eins = ?, zwei = ?, drei = ?, vier = ?, fünf = ?, sechs = ?, sieben = ?, acht = ?, neun = ?, zehn = ?")
+import colorama
+from colorama import Fore, init
+init()
+print(Fore.RED,"1'den 10' a Sayılar")
+print("Devam etmek için enter'a basınız.")
+keyboard.wait("enter")
+print("")
+
+print(Fore.WHITE,"eins = ?, zwei = ?, drei = ?, vier = ?, fünf = ?, sechs = ?, sieben = ?, acht = ?, neun = ?, zehn = ?")
 print("")
 
 print("Devam etmek için enter'a basınız.")
 keyboard.wait("enter")
+print("")
 
+print("Devam etmek için enter'a basınız.")
+keyboard.wait("enter")
+print("")
 mesaj = "Karşılık gelen rakamları giriniz:"
 print("")
 
@@ -32,6 +43,10 @@ keyboard.wait("space")
 print("")
 
 print("eins = 1, zwei = 2, drei  = 3, vier = 4, fünf = 5, sechs = 6, sieben = 7, acht = 8, neun = 9, zehn = 10")
+print("")
+
+print("Devam etmek için enter'a basınız.")
+keyboard.wait("enter")
 print("")
 
 print("İşlemler")

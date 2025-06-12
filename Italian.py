@@ -1,7 +1,10 @@
 import keyboard
 
-print("1'den 10' a Sayılar")
-print("uno = ?, due = ?, tre = ?, quattro = ?, cinque = ?, sei = ?, sette = ?, otto = ?, nove = ?, dieci = ?")
+import colorama
+from colorama import Fore, init
+init()
+print(Fore.RED,"1'den 10' a Sayılar")
+print(Fore.WHITE,"uno = ?, due = ?, tre = ?, quattro = ?, cinque = ?, sei = ?, sette = ?, otto = ?, nove = ?, dieci = ?")
 print("")
 
 print("Devam etmek için enter'a basınız.")
