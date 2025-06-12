@@ -27,5 +27,9 @@ keyboard.wait("space")
 print("")
 
 print = input("jeden = 1, dva = 2, tri = 3, styri = 4, pat = 5, sest = 6, sedem = 7, osem = 8, devat = 9, desat = 10")
-print("")
-sayi1 = int(input("jeden+osem"))
+
+print = "İşlemler"
+
+toplam = jeden + osem
+
+print("toplam")
