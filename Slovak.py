@@ -28,8 +28,11 @@ print("")
 
 print = input("jeden = 1, dva = 2, tri = 3, styri = 4, pat = 5, sest = 6, sedem = 7, osem = 8, devat = 9, desat = 10")
 
-print = "İşlemler"
+sayi1 = int(input("Birinci sayiyi giriniz: "))
+sayi2 = int(input("İkinci sayiyi giriniz: "))
+sayi3 = int(input("Ucuncu sayiyi giriniz: "))
+sayi4 = int(input("Dorduncu sayiyi giriniz: "))
 
-toplam = jeden + osem
+toplam = sayi1 + sayi2 + sayi3 + sayi4
 
-print("toplam")
+cevap = input(toplam)
