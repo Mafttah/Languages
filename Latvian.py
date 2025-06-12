@@ -1,7 +1,7 @@
 import keyboard
 
 print("1'den 10' a Sayılar")
-cevap = input("viens =?, divi =?, tris =?, cetri =?, pieci =?, sesi =?, septini =?, ostoni =?, devini =?, desmit =?")
+print("viens =?, divi =?, tris =?, cetri =?, pieci =?, sesi =?, septini =?, ostoni =?, devini =?, desmit =?")
 print("Devam etmek için spacebar'a basınız.")
 keyboard.wait("space")
 print("")
