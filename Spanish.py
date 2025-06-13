@@ -34,11 +34,21 @@ keyboard.wait("space")
 
 print(f"\nGirilen Değerler: \nuno = {uno}, dos = {dos}, tres = {tres}, cuatro = {cuatro}, cinco = {cinco}, seis = {seis}, siete = {siete}, ocho = {ocho}, nueve = {nueve}, diez = {diez}")
 
+print("\nCevap Anahtarı:\n")
+print("uno = 1\n, dos = 2\n, tres = 3\n, cuatro = 4\n, cinco = 5\n, seis = 6\n, siete = 7\n, ocho = 8\n, nueve = 9\n, diez = 10\n")
 print("İşlemler")
 
-sayi1 = int(input("Birinci sayiyi giriniz:"))
-sayi2 = int(input("İkinci sayiyi giriniz:"))
+sayi1 = int(input("Birinci sayiyi giriniz: "))
+sayi2 = int(input("İkinci sayiyi giriniz: "))
+sayi3 = int(input("Üçüncü Sayiyi giriniz: "))
 
-toplam = sayi1 + sayi2
-
-print(toplam)
+toplam = sayi1 + sayi2 + sayi3
+carpma = sayi1 * sayi2 * sayi3
+cikarma = sayi1 - sayi2 - sayi3
+bolme = sayi1 / sayi2
+islem = (sayi1 * sayi2 ) - sayi2 * sayi3 / sayi1
+print(toplam) 
+print(carpma) 
+print(cikarma) 
+print(bolme) 
+print(islem)
