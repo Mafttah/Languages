@@ -69,23 +69,30 @@ prestar = input(mesaj6)
 print(Fore.RED, "Lesson 2 = Greeting")
 print("")
 print(Fore.WHITE,"Hola = Hello")
-print("Como_Estas = How are you?")
-print("Mucho_gusto = Nice to meet you")
-print("Encantado_de_conocerte = Nice to meet you")
-print("Hasta_manana = See you tomorrow")
-print("Buenos_días = Good morning")
-print("Buenas_tardes = Good afternoon")
-print("Buenas_noches = Good night")
-print("Cuál_es_su_nombre ?  = What is your name ?")
-print("Me_llamo____ = My name is ___")
-print("Dónde_vives ? = Where do you live?")
-print("De_dónde_eres ? = Where are you from?")
-print("Encantado_de_verte = Nice to see you")
-print("Que_tengas_un_buen_día = Have a nice day")
-print("Hasta_luego = See you later")
+print("Como Estas = How are you?")
+print("Mucho gusto = Nice to meet you")
+print("Encantado de conocerte = Nice to meet you")
+print("Hasta manana = See you tomorrow")
+print("Buenos días = Good morning")
+print("Buenas tardes = Good afternoon")
+print("Buenas noches = Good night")
+print("Cuál es su nombre ?  = What is your name ?")
+print("Me llamo____ = My name is ___")
+print("Dónde vives ? = Where do you live?")
+print("De dónde eres ? = Where are you from?")
+print("Encantado de verte = Nice to see you")
+print("Que tengas un buen día = Have a nice day")
+print("Hasta luego = See you later")
 print("Adiós = Goodbye")
-print("Por_favor = Please")
+print("Por favor = Please")
 print("Gracias = Thank you")
+
+mesaj = "Hola: "
+Hola = input(mesaj)	
+mesaj =  "Por favor : "
+escapar = input(mesaj)
+mesaj = "Adios: "
+Adios = input(mesaj)
 
 print("Devam etmek için enter' a basınız.")
 keyboard.wait("enter")
@@ -171,14 +178,10 @@ print("prestar = to lend")
 print("pesar = to weigh, to weigh down")	
 print("viajar = to travel, journey")
 
-print("Devam etmek için enter' a basınız.")
-keyboard.wait("enter")
-
 
 print("Test")
-print("")
 print("entrar =?, escapar =?, cortar =?, hablar =?, prestar =?, contestar =?")
-print("")
+
 
 
 mesaj = "contestar: "
