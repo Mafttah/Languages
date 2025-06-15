@@ -9,7 +9,6 @@ from colorama import Fore
 #print(Fore.WHITE,"uno =?, dos =?, tres =?, cuatro =?, cinco =?, seis =?, siete =?, ocho =?, nueve =?, diez =?")
 #print("")
 
-
 #mesaj = "uno: "
 #uno    = input(mesaj)
 #mesaj = "dos: "
@@ -18,8 +17,8 @@ from colorama import Fore
 #tres   = input(mesaj)
 #mesaj = "cuatro: "
 #cuatro = input(mesaj)
+#mesaj = "cinco: "
 #cinco  = input(mesaj)
-##mesaj = "cinco: "
 #mesaj = "seis: "
 #seis   = input(mesaj)
 #mesaj = "siete: "
@@ -30,6 +29,18 @@ from colorama import Fore
 #nueve  = input(mesaj)
 #mesaj = "diez: "
 #diez   = input(mesaj)
+mesaj = "contestar: "
+contestar = input(mesaj)	
+mesaj = "escapar: "
+escapar = input(mesaj)
+mesaj = "cortar: "
+cortar = input(mesaj)
+mesaj = "entrar: "
+entrar = input(mesaj)
+mesaj5 = "hablar: "
+hablar = input(mesaj5)
+mesaj6 = "prestar: " 
+prestar = input(mesaj6)
 
 #print("Devam etmek için spacebar'a basınız.")
 #keyboard.wait("space")
@@ -55,22 +66,36 @@ from colorama import Fore
 #print(bolme) 
 #print(islem)
 
-print("Greeting")
-
-print("Hola = Hello")
+print(Fore.RED, "Lesson 2 = Greeting")
+print("")
+print(Fore.WHITE,"Hola = Hello")
 print("Como_Estas = How are you?")
 print("Mucho_gusto = Nice to meet you")
+print("Encantado_de_conocerte = Nice to meet you")
 print("Hasta_manana = See you tomorrow")
-print("La_leche = the milk")
-print("La_maleta = suitcase")
-print("El_pan = the bread")
-print("La_mujer = the woman")
-print("El_azucar = the sugar")
-print("El_dinero = the money")
+print("Buenos_días = Good morning")
+print("Buenas_tardes = Good afternoon")
+print("Buenas_noches = Good night")
+print("Cuál_es_su_nombre ?  = What is your name ?")
+print("Me_llamo____ = My name is ___")
+print("Dónde_vives ? = Where do you live?")
+print("De_dónde_eres ? = Where are you from?")
+print("Encantado_de_verte = Nice to see you")
+print("Que_tengas_un_buen_día = Have a nice day")
+print("Hasta_luego = See you later")
+print("Adiós = Goodbye")
+print("Por_favor = Please")
+print("Gracias = Thank you")
 
-print("Regular verbs are divided into 3 categories")
+print("Devam etmek için enter' a basınız.")
+keyboard.wait("enter")
 
-print(Fore.RED, "1. -Ar Verbs")
+print(Fore.RED, "Lesson_3 = Regular Verbs,")
+
+print(Fore.WHITE,"Regular verbs are divided into 3 categories")
+
+print(Fore.BLUE, "1. -Ar Verbs")
+
 print(Fore.WHITE,"pasar = to pass, to spend (time), to happen\n,quedar = to stay, remain")
 print("hablar = to speak")
 print("llevar = to carry, bring")	
@@ -146,6 +171,32 @@ print("prestar = to lend")
 print("pesar = to weigh, to weigh down")	
 print("viajar = to travel, journey")
 
+print("Devam etmek için enter' a basınız.")
+keyboard.wait("enter")
+
+
+print("Test")
+print("")
+print("entrar =?, escapar =?, cortar =?, hablar =?, prestar =?, contestar =?")
+print("")
+
+
+mesaj = "contestar: "
+contestar = input(mesaj)	
+mesaj = "escapar: "
+escapar = input(mesaj)
+mesaj = "cortar: "
+cortar = input(mesaj)
+mesaj = "entrar: "
+entrar = input(mesaj)
+mesaj5 = "hablar: "
+hablar = input(mesaj5)
+mesaj6 = "prestar: " 
+prestar = input(mesaj6)
+
+
+print("Devam etmek için enter' a basınız.")
+keyboard.wait("enter")
 print(Fore.RED, "2. -Er Verbs")
 print(Fore.WHITE,"deber = to owe, must, should, ought to")
 print("comprender = to understand, comprehend")
@@ -159,6 +210,9 @@ print("meter = to put (in), place, insert")
 print("pretender = to attempt")
 print("corresponder = to correspond with")
 print("depender = to depend")
+
+print("Devam etmek için enter' a basınız.")
+keyboard.wait("enter")
 
 print(Fore.RED, "3. -Ir Verbs")
 print(Fore.WHITE,"vivir = to live")
@@ -174,3 +228,4 @@ print("sufrir = to suffer, to undergo, experience")
 print("compartir = to share, to divide (up)")
 print("consistir = to consist")
 print("insistir = to insist")
+
