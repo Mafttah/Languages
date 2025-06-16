@@ -193,4 +193,22 @@ print("consistir = to consist")
 print("insistir = to insist")
 print("")
 
+print("Present Tense")           
+
+print("I = yo")
+print("you = tu")
+print("he/she/it = el/elle")
+print("we = nosotros")
+print("you = vosotros")
+print("they = ellas/ellos/ustedes")
+
+print("Example for hablar = to speak, comer = to eat and vivir = to live")
+
+print("yo hablo - yo como - yo vivo")
+print("tu hablas - tu comes vives")
+print("el habla - el come - el vive ")
+print("nosotros hablamos - nosotros comemos, nosotros vivimos")
+print("vosotros hablais - vosotros comeis - vosotros vivis")
+print("ellos halban - ellos comen - ellos viven")
+
 
