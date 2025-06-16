@@ -3,7 +3,7 @@ import keyboard
 import colorama
 from colorama import Fore
 
-#Lesson_1 = "Numbers"
+#Lesson_1 - "Numbers"
 
 #print(Fore.RED,"Numbers from 1 to 10")
 #print(Fore.WHITE,"uno =?, dos =?, tres =?, cuatro =?, cinco =?, seis =?, siete =?, ocho =?, nueve =?, diez =?")
@@ -54,7 +54,7 @@ from colorama import Fore
 #print(bolme) 
 #print(islem)
 
-print(Fore.RED, "Lesson 2 = Greeting")
+print(Fore.RED, "Lesson 2 - Greeting")
 print("")
 print(Fore.WHITE,"Hola = Hello")
 print("Como Estas = How are you?")
@@ -193,7 +193,7 @@ print("consistir = to consist")
 print("insistir = to insist")
 print("")
 
-print("Lesson2.1 Present Tense")           
+print("Lesson2.1 - Present Tense")           
 
 print("I = yo")
 print("you = tu")
@@ -211,4 +211,41 @@ print("nosotros hablamos - nosotros comemos, nosotros vivimos")
 print("vosotros hablais - vosotros comeis - vosotros vivis")
 print("ellos halban - ellos comen - ellos viven")
 
+print("Lesson 3 - Adjectives")
 
+print("Ruidoso = Noisy")
+print("Silencioso = Quiet")
+print("Fuerte = Strong")
+print("Débil = Weak")
+print("Duro = Hard")
+print("Blando = Soft")
+print("Más = More")
+print("Menos = Less")
+print("Limpio = Clean")
+print("Sucio = Dirty")
+print("Viejo = Old")
+print("Nuevo = New")
+print("Grande = Big")
+print("Pequeño = Small")
+print("Joven = Young")
+print("Viejo = Old")
+print("Flaco = Skinny")
+print("Gordo = Fat")
+print("Guapo = Pretty")
+print("Feo = Ugly")
+print("Grueso = Thick")
+print("Delgado = Thin")
+print("Áspero = Rough")
+print("Liso = Smooth")
+print("Feliz = Happy")
+print("Triste = Sad")
+print("Enfadado = Angry")
+print("Asustado = Afraid")
+print("Alegría = Joy")
+print("Sorprendido = Surprised")
+print("Tranquilo = Calm")
+print("Aburrido = Bored")
+print("Fácil = Easy")
+print("Difícil = Difficult")
+print("Malo = Bad")
+print("Bueno = Good")
