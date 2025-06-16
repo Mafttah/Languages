@@ -20,10 +20,6 @@ print("")
 mesaj = "Karşılık gelen rakamları giriniz:"
 print("")
 
-print("Devam etmek için enter'a basınız.")
-keyboard.wait("enter")
-print("")
-
 une    = input(mesaj)
 deux   = input(mesaj)
 trois  = input(mesaj)

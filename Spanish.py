@@ -29,18 +29,6 @@ from colorama import Fore
 #nueve  = input(mesaj)
 #mesaj = "diez: "
 #diez   = input(mesaj)
-mesaj = "contestar: "
-contestar = input(mesaj)	
-mesaj = "escapar: "
-escapar = input(mesaj)
-mesaj = "cortar: "
-cortar = input(mesaj)
-mesaj = "entrar: "
-entrar = input(mesaj)
-mesaj5 = "hablar: "
-hablar = input(mesaj5)
-mesaj6 = "prestar: " 
-prestar = input(mesaj6)
 
 #print("Devam etmek için spacebar'a basınız.")
 #keyboard.wait("space")
@@ -87,16 +75,9 @@ print("Adiós = Goodbye")
 print("Por favor = Please")
 print("Gracias = Thank you")
 
-mesaj = "Hola: "
-Hola = input(mesaj)	
-mesaj =  "Por favor : "
-escapar = input(mesaj)
-mesaj = "Adios: "
-Adios = input(mesaj)
-
 print("Devam etmek için enter' a basınız.")
 keyboard.wait("enter")
-
+  
 print(Fore.RED, "Lesson_3 = Regular Verbs,")
 
 print(Fore.WHITE,"Regular verbs are divided into 3 categories")
@@ -177,30 +158,9 @@ print("preocupar = to worry")
 print("prestar = to lend")
 print("pesar = to weigh, to weigh down")	
 print("viajar = to travel, journey")
-
-
-print("Test")
-print("entrar =?, escapar =?, cortar =?, hablar =?, prestar =?, contestar =?")
-
-
-
-mesaj = "contestar: "
-contestar = input(mesaj)	
-mesaj = "escapar: "
-escapar = input(mesaj)
-mesaj = "cortar: "
-cortar = input(mesaj)
-mesaj = "entrar: "
-entrar = input(mesaj)
-mesaj5 = "hablar: "
-hablar = input(mesaj5)
-mesaj6 = "prestar: " 
-prestar = input(mesaj6)
-
-
 print("Devam etmek için enter' a basınız.")
-keyboard.wait("enter")
 print(Fore.RED, "2. -Er Verbs")
+print("")
 print(Fore.WHITE,"deber = to owe, must, should, ought to")
 print("comprender = to understand, comprehend")
 print("correr = to run")
@@ -231,4 +191,6 @@ print("sufrir = to suffer, to undergo, experience")
 print("compartir = to share, to divide (up)")
 print("consistir = to consist")
 print("insistir = to insist")
+print("")
+
 
