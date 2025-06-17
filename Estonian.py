@@ -55,10 +55,30 @@ sayi2 = int(input("İkinci sayiyi giriniz:"))
 toplam = sayi1 + sayi2
 
 print(toplam)
-print("Lesson 2 - Greetings")
 
 
+print(Fore.RED, "Lesson 2 - Greeting")
+print("")
 
+print(Fore.WHITE,"Tere = Hello")
+print("Kuidas sul laheb = How are you?")
+print("Tore sind naha = Nice to see you")
+print("Meeldiv tutvuda = Nice to meet you")
+print("Naeme homme = See you tomorrow")
+print("Tere hommikikust  = Good morning")
+print("Tere paevast = Good afternoon")
+print("Tere ohtust = Godd evening")
+print("Head ööd = Good night")
+print("Mis si nimi on ?  = What is your name ?")
+print("Minu nimi on ____ = My name is ___")
+print("Kus sa elad ? = Where do you live?")
+print("Kuts sa parit oled ? = Where are you from?")
+print("Kena paeva = Have a nice day")
+print("Maeme hiljem = See you later")
+print("Head aega = Goodbye")
+print("Palun = Please")
+print("Aitah = Thank you")
+print("")
 
 print("Lessson 3 - Regular Verbs")
 print("")
@@ -107,3 +127,21 @@ print("hoidma = to keep / hold")
 print("tootma = to produce / manufacture")
 print("tarvitama = to use / consume")
 print("kaanetama = to bind / cover (books)")
+
+print("Lesson 3.1 - Present Tense")           
+
+print("I = ma")
+print("you = sa")
+print("he/she/it = ta")
+print("we = me")
+print("you = te")
+print("they = nad")
+
+print("Example for raakima = to speak")
+
+print("ma raagin")
+print("sa raagid")
+print("te raagib")
+print("me raagime")
+print("te raagite")
+print("nad raagivad")
