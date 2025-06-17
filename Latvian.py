@@ -111,3 +111,20 @@ print("sajust = to feel")
 print("aizvērt = to close")
 print("uzdot = to assign")
 print("pārtraukt = to interrupt")
+
+print("Lesson 3.1 - Present Tense")           
+
+print("I = Es")
+print("you = Tu/jus")
+print("he/she/it = vins/vina")
+print("we = mes")
+print("you = Jus")
+print("they = vini")
+
+print("Example for stradat = to work, lasit = to read, dzivot = to live, skatities = to look, gulet = to sleep")
+
+print("1. Example = Stradat\n,Es strādāju\n, Tu strādā\n, Vins/vina strādā\n, Mes strādājam\n, Jus strādājat\n, Vini strādā\n")
+print("2. Example = Lasit\n, Es lasu\n, Tu lasi\n, Vins/vina lasa\n, Mes lasām\n, Jus lasāt\n, Vini lasa\n")
+print("3. Example = dzivot\n, Es dzīvoju\n, Tu dzīvo\n, Vins/vina dzīvo\n, Mes dzīvojam\n, Jus dzīvojat\n Vini  dzīvo\n")
+print("4. Example = Skatites\n, Es skatos\n, Tu skaties\n, Vins/vina skatās\n, Mes skatāmies\n,	Jus skatāties\n, Vini skatās\n")
+print("5. Exapmle = Gulet\n, Es guļu\n, Tu guli\n, Vins/vina guļ\n, Mes guļam\n, Jus guļat\n, Vini guļ") 

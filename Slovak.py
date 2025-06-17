@@ -113,3 +113,12 @@ print("veriť = to believe")
 print("tvrdiť = to claim")
 print("vlastniť = to own")
 print("hodnotiť = to evaluate")
+
+print("Lesson 3.1 - Present Tense")           
+
+print("I = Ja")
+print("you = Ty")
+print("he/she = on/ona")
+print("we = my")
+print("you = vy")
+print("they = oni")

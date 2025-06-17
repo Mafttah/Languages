@@ -114,7 +114,7 @@ print("obudzić = to wake up")
 print("wpuścić = to let in")
 print("głosić = to announce")
 
-print(Fore.BLUE, "4. -OWAĆ Verbs")
+print(Fore.BLUE, "5. -OWAĆ Verbs")
 
 print(Fore.WHITE, "pracować = to work")
 print("gotować = to cook")
@@ -126,3 +126,24 @@ print("malować = to paint")
 print("kupować = to buy")
 print("planować = to plan")
 print("organizować = to organize")
+
+print("Lesson 3.1 - Present Tense")           
+
+print("I = Ja")
+print("you = Pan")
+print("he/she = on/ona")
+print("we = my")
+print("you = wy")
+print("they = oni")
+
+print("Example for czytać = to read\n, mówić = to speak\n, uczyć się = to learn\n, myśleć = to think\n, pracować = to work")
+
+print("1. Example = czytac\n, ją czytam\n, Pan czytasz\n, On/Ona czyta\n, My czytamy\n, Wy czytacie?n, Oni czyta\n")
+
+print("2. Examle = momic\n, Ja mówię\n, Pan mówisz\n, On/ona mówi\n, My mówimy\n, Wy mówicie\n, Oni mówią\n")
+
+print("3. exapmle = uczyc sie\n, Ja uczę się\n,	Pan uczysz się\n, On/ona uczy się\n, My uczymy się\n, Wy uczycie się\n, Oni uczą się\n")
+
+print("4. example = mysiec\n, ja myślę\n, Pan myślisz\n, On/oni myśli\n, My myślimy\n, Wy myślicie\n, Oni myślą\n")
+
+print("5. Example = Pracowac\n, Ja pracuję\n, Pan pracujesz\n, On/ona pracuje\n, My pracujemy\n, Wy pracujecie\n, Oni pracują\n")
