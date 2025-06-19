@@ -309,7 +309,7 @@ print("¿Qué color es? = What color is it?")
 print("El color es el ___ = The color is ___")
 print("")
 
-print(Fore.RED,"Lesson 7 - Family and Friendsa")
+print(Fore.RED,"Lesson 7 - Family and Friends")
 print("")
 
 print(Fore.BLUE,"Lesson7.1 - Family members")
@@ -371,5 +371,5 @@ print("(la) Novia = Girlfriend")
 print("(el) Caballero = Gentleman")
 print("(la) Dama = Lady")
 print("(el) Vecino = Neighbor (male)")
-print("(la) Vecina = Neighbor (female)")
+print("(la) Vecina = Neighbor (female)") 
 

@@ -172,6 +172,24 @@ print("suspendre = to suspend")
 print("tordre = to twist")
 print("vendre = to sell")
 
+print(Fore.RED,"Lesson 3.1 - Present Tense")           
+
+print(Fore.WHITE,"I = je")
+print("you = tu")
+print("he/she/it = il/elle/on")
+print("we = nouos")
+print("you = vouos")
+print("they = ils/elles")
+
+print("Example for parler = to speak, finir = to finish and vendre = to sell")
+
+print("je parle - je finis - je vends")
+print("tu parles - tu finis - tu vends")
+print("il parle - il finit - il vend")
+print("nous parlons - nous finissons, nous vendons")
+print("vous parlez - vous finissez - vous vendez")
+print("elles parlent - elles finissent - elles vendent")
+
 print(Fore.RED, "Lesson 4 - Adjectives")
 print("")
 
