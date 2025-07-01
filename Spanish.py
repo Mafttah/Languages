@@ -810,14 +810,14 @@ print("dormir = to sleep")
 
 print(Fore.RED,"Lesson 13 - Present Simple")
 
-print(Fore.BLUE, "Example for estar = to be (state), ser = to be (essential), tener = to have, ir = to go and haber = to have")
+print(Fore.BLUE, "Example for estar = to be (state), ser = to be (essential), tener = to have, ir = to go and haber = to have, comer = to eat")
 
-print(Fore.WHITE, "yo estoy - yo soy - yo tengo - yo voy - yo he")
-print("tu estas - tu eres - el tienes - tu vas - tu has")
-print("el esta - el es - el tiene - el va - el ha")
-print("nosotros estemos - nosotros somos, nosotros tenemos - nosotros vamos - nosotros hemos")
-print("vosotros estais - vosotros sois - vosotros teneis - vosotros vais - vosotros habesi")
-print("ellos estan - ellos son - ellos tienen - ellos van - ellos han")
+print(Fore.WHITE, "yo estoy - yo soy - yo tengo - yo voy - yo he, yo como")
+print("tu estas - tu eres - el tienes - tu vas - tu has, tu comes")
+print("el esta - el es - el tiene - el va - el ha, el/ella come")
+print("nosotros estemos - nosotros somos, nosotros tenemos - nosotros vamos - nosotros hemos, nosotros comemos")
+print("vosotros estais - vosotros sois - vosotros teneis - vosotros vais - vosotros habesi, vosotros comeis")
+print("ellos estan - ellos son - ellos tienen - ellos van - ellos han, ellos/ellas comen")
 
 print(Fore.RED,"Lesson 14 - Numbers from 31-50")
 
@@ -1044,13 +1044,14 @@ print(Fore.WHITE)
 print(Fore.RED,"Lesson 22 - Place in town")
 print(Fore.WHITE)
 
-print(Fore.RED,"Lesson 23 - School Supplies")
+print(Fore.BLUE,"Lesson 23 - Numbers 76 - 110")
+
 print(Fore.WHITE)
 
 print(Fore.RED,"Lesson 24 - Transportation")
 print(Fore.WHITE)
 
-print(Fore.BLUE,"Lesson 25 - Numbers 76 - 110")
+print(Fore.RED,"Lesson 25 - School Supplies")
 
 print(Fore.RED,"Lesson 26 - ")
 print(Fore.WHITE)
