@@ -1061,7 +1061,45 @@ print("zorro = fox")
 print("lobo = wolf")
 print("ciervo = deer")
 
-print(Fore.RED,"Lesson 22 - Place in town")
+print(Fore.BLUE,"Lesson 22 - Numbers 76 - 110")
+
+print(Fore.WHITE, "setenta y seis = 76")
+print("setenta y siete = 77")
+print("setenta y ocho = 78")
+print("setenta y nueve = 79")
+print("ochenta = 80")
+print("ochenta y uno = 81")
+print("ochenta y dos = 82")
+print("ochenta y tres = 83")
+print("ochenta y cuatro = 84")
+print("ochenta y cinco = 85")
+print("ochenta y seis = 86")
+print("ochenta y siete = 87")
+print("ochenta y ocho = 88")
+print("ochenta y nueve = 89")
+print("noventa = 90")
+print("noventa y uno = 91")
+print("noventa y dos = 92")
+print("noventa y tres = 93")
+print("noventa y cuatro = 94")
+print("noventa y cinco = 95")
+print("noventa y seis = 96")
+print("noventa y siete = 97")
+print("noventa y ocho = 98")
+print("noventa y nueve = 99")
+print("cien = 100")
+print("ciento uno = 101")
+print("ciento dos = 102")
+print("ciento tres = 103")
+print("ciento cuatro = 104")
+print("ciento cinco = 105")
+print("ciento seis = 106")
+print("ciento siete = 107")
+print("ciento ocho = 108")
+print("ciento nueve = 109")
+print("ciento diez = 110")
+
+print(Fore.RED,"Lesson 23 - Place in town")
 
 print(Fore.WHITE, "Escuela = school")
 print("Hospital = hospital")
@@ -1084,7 +1122,7 @@ print("Carnicería = butcher")
 print("Mercado = market")
 print("Peluquería = hairdresser")
 
-print(Fore.RED,"Lesson 25 - School Supplies")
+print(Fore.RED,"Lesson 24 - School Supplies")
 
 print(Fore.WHITE, "Libro = book")
 print("Bolígrafo = pen")
@@ -1107,7 +1145,7 @@ print("Memoria USB = USB stick")
 print("Mochila escolar = schoolbag")
 print("Sacapuntas = sharpener")
 
-print(Fore.RED,"Lesson 24 - Transportation")
+print(Fore.RED,"Lesson 25 - Transportation")
 
 print(Fore.WHITE, "coche = car")
 print("autobús = bus")
@@ -1130,9 +1168,164 @@ print("patines en línea = rollerblades")
 print("canoa = canoe")
 print("submarino = submarine")
 
-print(Fore.BLUE,"Lesson 23 - Numbers 76 - 110")
+print(Fore.RED,"Lesson 26 - Numbers 111 - 150")
+
+print(Fore.WHITE, "ciento once = 111")
+print("ciento doce = 112")
+print("ciento trece = 113")
+print("ciento catorce = 114")
+print("ciento quince = 115")
+print("ciento dieciséis = 116")
+print("ciento diecisiete = 117")
+print("ciento dieciocho = 118")
+print("ciento diecinueve = 119")
+print("ciento veinte = 120")
+print("ciento veintiuno = 121")
+print("ciento veintidós = 122")
+print("ciento veintitrés = 123")
+print("ciento veinticuatro = 124")
+print("ciento veinticinco = 125")
+print("ciento veintiséis = 126")
+print("ciento veintisiete = 127")
+print("ciento veintiocho = 128")
+print("ciento veintinueve = 129")
+print("ciento treinta = 130")
+print("ciento treinta y uno = 131")
+print("ciento treinta y dos = 132")
+print("ciento treinta y tres = 133")
+print("ciento treinta y cuatro = 134")
+print("ciento treinta y cinco = 135")
+print("ciento treinta y seis = 136")
+print("ciento treinta y siete = 137
+print("ciento treinta y ocho = 138
+print("ciento treinta y nueve = 139
+print("ciento cuarenta = 140
+print("ciento cuarenta y uno = 141
+print("ciento cuarenta y dos = 142
+print("ciento cuarenta y tres = 143
+print("ciento cuarenta y cuatro = 144
+print("ciento cuarenta y cinco = 145
+print("ciento cuarenta y seis = 146
+print("ciento cuarenta y siete = 147
+print("ciento cuarenta y ocho = 148
+print("ciento cuarenta y nueve = 149
+print("ciento cincuenta = 150")
+
+print(Fore.RED,"Lesson 27 - Past Simple")
+
+print(Fore.WHITE, "To be	
+print("fui = I was
+print("fuiste = You were
+print("fue = He/She/It was
+print("fuimos = We were
+print("fuisteis = You were
+print("fueron = They were
+	
+print("To go	
+print("fui = I went
+print("fuiste = You went
+print("fue = He/She/It went
+print("fuimos = We went
+print("fuisteis = You went
+print("fueron = They went
+	
+print("To have	
+print("tuve = I had
+print("tuviste = You had
+print("tuvo = He/She/It had
+print("tuvimos = We had
+print("tuvisteis = You had
+print("tuvieron = They had
+	
+print("To watch	
+print("miré = I watched
+print("mirasteis = You watched
+print("miró = He/She/It watched
+print("miramos = We watched
+print("mirasteis = You watched
+print("miraron = They watched
+	
+print("To work	
+print("trabajé = I worked
+print("trabajasteis = You worked
+print("trabajó = He/She/It worked
+print("trabajamos = We worked
+print("trabajasteis = You worked
+print("trabajaron = They worked
+	
+print("To finish	
+print("terminé = I finished
+print("terminasteis = You finished
+print("terminó = He/She/It finished
+print("terminamos = We finished
+print("terminasteis = You finished
+print("terminaron = They finished")
+
+print(Fore.RED,"Lesson 28 - Personality_Treats")
+
+print(Fore.WHITE, "seguro = Confident
+generoso = Generous
+impaciente = Impatient
+fiable = Reliable
+hablador = Talkative
+tranquilo = Quiet
+organizado = Organized
+creativo = Creative
+cambiante = Moody
+sensible = Sensitive
+curioso = Curious
+tranquilo = Calm
+optimista = Optimistic
+pesimista = Pessimistic
+divertido = Funny
+celoso = Jealous
+trabajador = Hard-working
+perezoso = Lazy
+honesto = Honest
+deshonesto = Dishonest
+simpático = Friendly
+tímido = Shy
+divertido = Funny
+educado = Polite
+amable = Kind
+serio = Serious
+trabajador = Hard-working
+perezoso = Lazy
+valiente = Brave
+creativo = Creative
+celoso = Jealous")
+
+print(Fore.RED,"Lesson 29 - Present perfect")
 
 print(Fore.WHITE)
 
-print(Fore.RED,"Lesson 26 - ")
+print(Fore.RED,"Lesson 30 - Numbers 151 - 190")
+
 print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 31 - Countries")
+
+print(Fore.WHITE)
+ 
+print(Fore.RED,"Lesson 32 - Ordering")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 33 - Shops in town")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 34 - Numbers 191 - 230")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 35 - Thing in the street")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 36 - Instruments")
+print(Fore.WHITE)
+
+
+
+
