@@ -1196,7 +1196,8 @@ print("ciento treinta y tres = 133")
 print("ciento treinta y cuatro = 134")
 print("ciento treinta y cinco = 135")
 print("ciento treinta y seis = 136")
-print("ciento treinta y siete = 137")
+<<<<<<< HEAD
+# print("ciento treinta y siete = 137")
 # print("ciento treinta y ocho = 138
 # print("ciento treinta y nueve = 139
 # print("ciento cuarenta = 140
@@ -1255,7 +1256,7 @@ print("ciento treinta y siete = 137")
 	
 # print("To finish	
 # print("terminé = I finished
-# print("terminasteis = You finished
+# print("terminasteis = ou finished
 # print("terminó = He/She/It finished
 # print("terminamos = We finished
 # print("terminasteis = You finished
@@ -1327,5 +1328,140 @@ print("ciento treinta y siete = 137")
 # print(Fore.WHITE)
 
 
+=======
+print("ciento treinta y siete = 137
+print("ciento treinta y ocho = 138
+print("ciento treinta y nueve = 139
+print("ciento cuarenta = 140
+print("ciento cuarenta y uno = 141
+print("ciento cuarenta y dos = 142
+print("ciento cuarenta y tres = 143
+print("ciento cuarenta y cuatro = 144
+print("ciento cuarenta y cinco = 145
+print("ciento cuarenta y seis = 146
+print("ciento cuarenta y siete = 147
+print("ciento cuarenta y ocho = 148
+print("ciento cuarenta y nueve = 149
+print("ciento cincuenta = 150")
+
+print(Fore.RED,"Lesson 27 - Past Simple")
+
+print(Fore.WHITE, "To be	
+print("fui = I was
+print("fuiste = You were
+print("fue = He/She/It was
+print("fuimos = We were
+print("fuisteis = You were
+print("fueron = They were
+	
+print("To go	
+print("fui = I went
+print("fuiste = You went
+print("fue = He/She/It went
+print("fuimos = We went
+print("fuisteis = You went
+print("fueron = They went
+	
+print("To have	
+print("tuve = I had
+print("tuviste = You had
+print("tuvo = He/She/It had
+print("tuvimos = We had
+print("tuvisteis = You had
+print("tuvieron = They had
+	
+print("To watch	
+print("miré = I watched
+print("mirasteis = You watched
+print("miró = He/She/It watched
+print("miramos = We watched
+print("mirasteis = You watched
+print("miraron = They watched
+	
+print("To work	
+print("trabajé = I worked
+print("trabajasteis = You worked
+print("trabajó = He/She/It worked
+print("trabajamos = We worked
+print("trabajasteis = You worked
+print("trabajaron = They worked
+	
+print("To finish	
+print("terminé = I finished
+print("terminasteis = You finished
+print("terminó = He/She/It finished
+print("terminamos = We finished
+print("terminasteis = You finished
+print("terminaron = They finished")
+
+print(Fore.RED,"Lesson 28 - Personality_Treats")
+
+print(Fore.WHITE, "seguro = Confident
+generoso = Generous
+impaciente = Impatient
+fiable = Reliable
+hablador = Talkative
+tranquilo = Quiet
+organizado = Organized
+creativo = Creative
+cambiante = Moody
+sensible = Sensitive
+curioso = Curious
+tranquilo = Calm
+optimista = Optimistic
+pesimista = Pessimistic
+divertido = Funny
+celoso = Jealous
+trabajador = Hard-working
+perezoso = Lazy
+honesto = Honest
+deshonesto = Dishonest
+simpático = Friendly
+tímido = Shy
+divertido = Funny
+educado = Polite
+amable = Kind
+serio = Serious
+trabajador = Hard-working
+perezoso = Lazy
+valiente = Brave
+creativo = Creative
+celoso = Jealous")
+
+print(Fore.RED,"Lesson 29 - Present perfect")
+>>>>>>> 2f24b38aadfea3a31b642b0050f8ff69646c062f
 
 
+<<<<<<< HEAD
+=======
+print(Fore.RED,"Lesson 30 - Numbers 151 - 190")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 31 - Countries")
+
+print(Fore.WHITE)
+ 
+print(Fore.RED,"Lesson 32 - Ordering")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 33 - Shops in town")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 34 - Numbers 191 - 230")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 35 - Thing in the street")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 36 - Instruments")
+print(Fore.WHITE)
+
+
+
+
+>>>>>>> 2f24b38aadfea3a31b642b0050f8ff69646c062f
