@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munich Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #1976d2;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #f57c00;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .price-badge {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Munich</h1>
+            <p class="lead">Capital of Bavaria - Beer, Culture & Alpine Beauty</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Munich</h2>
+                <p class="fs-5">Munich is the capital and most populous city of the Free State of Bavaria, with around 1.5 million inhabitants. Located on the banks of the River Isar, Munich is famous for its annual Oktoberfest celebration, world-class museums, stunning architecture, and proximity to the Bavarian Alps. The city seamlessly blends traditional Bavarian culture with modern innovation, making it one of Germany's most beloved destinations.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Marienplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Marienplatz</h4>
+                        <p class="card-text">Marienplatz has been Munich's central square since 1158 and remains the heart of the city. Dominated by the New Town Hall (Neues Rathaus) with its famous Glockenspiel that performs daily at 11am and 12pm, this bustling square is surrounded by historic buildings, shops, and cafes. The Gothic tower offers panoramic views of Munich, while the square itself serves as a popular meeting point and the starting location for most city tours.</p>
+                    </div>
+                </div>
+
+                <!-- Englisher Garten -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Englischer Garten (English Garden)</h4>
+                        <p class="card-text">One of the world's largest urban parks, the English Garden stretches over 910 acres, making it even larger than New York's Central Park. Created in 1789, this beloved green space features meandering paths, open meadows, beer gardens, and the famous Eisbach wave where surfers ride year-round. The Chinese Tower beer garden is a quintessential Munich experience, while the Monopteros temple offers stunning city views.</p>
+                    </div>
+                </div>
+
+                <!-- Olympiapark & Olympiaturm -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Olympiapark & Olympiaturm</h4>
+                        <p class="card-text">Built for the 1972 Summer Olympics, this expansive park features iconic modern architecture including the tent-like Olympic Stadium roof and the 290-meter Olympic Tower (Olympiaturm) with observation deck. Today it's used for concerts, sports events, and recreational activities. Visitors can take a roof climb tour for spectacular panoramic views of Munich and the Alps on clear days.</p>
+                    </div>
+                </div>
+
+                <!-- Viktualienmarkt -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Viktualienmarkt</h4>
+                        <p class="card-text">Munich's famous open-air food market has been operating since 1807. This vibrant market offers fresh produce, meats, cheeses, flowers, and Bavarian specialties from over 140 stalls. The market's beer garden is a popular spot where locals and tourists mingle under chestnut trees. It's the perfect place to experience authentic Munich atmosphere and sample regional delicacies.</p>
+                    </div>
+                </div>
+
+                <!-- Peterskirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Peterskirche (St. Peter's Church)</h4>
+                        <p class="card-text">Munich's oldest parish church, dating back to the 12th century, is affectionately called "Alter Peter" by locals. The church tower, accessible by climbing 299 steps, offers one of the best panoramic views of Munich's old town and, on clear days, the distant Alps. The baroque interior features beautiful frescoes and ornate decorations.</p>
+                    </div>
+                </div>
+
+                <!-- Asamkirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Asamkirche (Asam Church)</h4>
+                        <p class="card-text">This small late Baroque church is one of Munich's most ornate buildings. Built between 1733-1746 by the Asam brothers as a private church, its relatively modest exterior hides an incredibly elaborate interior covered in frescoes, gold leaf, and marble. The dramatic lighting and rich decoration create an overwhelming sensory experience in a compact space.</p>
+                    </div>
+                </div>
+
+                <!-- Odeonsplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Odeonsplatz</h4>
+                        <p class="card-text">This large square in central Munich is surrounded by monumental buildings including the Theatine Church, the Feldherrnhalle, and the Residenz. Modeled after Italian piazzas, Odeonsplatz serves as an elegant gateway to the historic city center. The square has witnessed significant historical events and remains a popular gathering place for concerts and celebrations.</p>
+                    </div>
+                </div>
+
+                <!-- Königsplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Königsplatz</h4>
+                        <p class="card-text">King's Square is a neoclassical ensemble built in the 19th century inspired by ancient Athens. Surrounded by three impressive museums (Glyptothek, Antikensammlungen, and Propyläen), this open plaza hosts cultural events and concerts. The harmonious architecture and wide-open space create a peaceful atmosphere perfect for reflection and photography.</p>
+                    </div>
+                </div>
+
+                <!-- Karlsplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Karlsplatz (Stachus)</h4>
+                        <p class="card-text">Locally known as Stachus, Karlsplatz is one of Munich's busiest squares and a major transportation hub. The historic Karlstor gate marks the western entrance to the old town. In summer, the large fountain becomes a popular gathering spot, while in winter it transforms into an ice skating rink. The square is surrounded by shopping centers and restaurants.</p>
+                    </div>
+                </div>
+
+                <!-- Maximilianstraße -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Maximilianstraße</h4>
+                        <p class="card-text">Munich's most elegant boulevard, named after King Maximilian II, is lined with luxury boutiques, high-end hotels, and fine dining establishments. The street features beautiful architecture including the Maximilianeum, seat of the Bavarian State Parliament. It's the perfect place for upscale shopping and people-watching in sophisticated surroundings.</p>
+                    </div>
+                </div>
+
+                <!-- Michaelskirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Michaelskirche (St. Michael's Church)</h4>
+                        <p class="card-text">This imposing Renaissance church, built between 1583-1597, is one of the largest Renaissance churches north of the Alps. The impressive barrel-vaulted ceiling is the second largest in the world after St. Peter's Basilica in Rome. The crypt houses the tombs of Bavarian royalty, including King Ludwig II, the "Mad King" of Bavaria.</p>
+                    </div>
+                </div>
+
+                <!-- Westpark -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Westpark</h4>
+                        <p class="card-text">Created for the International Garden Exhibition in 1983, Westpark offers a peaceful retreat with beautiful landscaped gardens, lakes, and Asian-inspired pavilions. The park features Japanese, Chinese, Thai, and Nepalese gardens, each authentically designed. It's a favorite spot for jogging, picnicking, and enjoying nature away from the city crowds.</p>
+                    </div>
+                </div>
+
+                <!-- Siegestor -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Siegestor (Victory Gate)</h4>
+                        <p class="card-text">Built in 1850 and modeled after the Arch of Constantine in Rome, the Siegestor was originally constructed to honor the Bavarian army. Damaged during World War II, it was deliberately left partially restored as a memorial for peace. The gate marks the boundary between the city center and the Schwabing district, Munich's bohemian quarter.</p>
+                    </div>
+                </div>
+
+                <!-- Bavaria Statue -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Bavaria Statue</h4>
+                        <p class="card-text">This monumental bronze statue, standing 18.52 meters tall, represents Bavaria and overlooks the Theresienwiese. Completed in 1850, it's one of the largest bronze statues in Europe. Visitors can climb inside the statue to a viewing platform in Bavaria's head for unique views of the Oktoberfest grounds and city. The Hall of Fame behind the statue honors distinguished Bavarians.</p>
+                    </div>
+                </div>
+
+                <!-- Frauenkirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Frauenkirche (Cathedral of Our Lady)</h4>
+                        <p class="card-text">Munich's most iconic landmark, this late Gothic cathedral features two distinctive onion-domed towers that dominate the city skyline. Built in the 15th century, the cathedral can hold up to 20,000 people. The towers offer magnificent views (99 meters high), and the church interior contains notable artworks and the legendary "Devil's Footprint" in the entrance.</p>
+                    </div>
+                </div>
+
+                <!-- Theresienwiese -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Theresienwiese</h4>
+                        <p class="card-text">This large open space is world-famous as the site of Oktoberfest, the world's largest beer festival held annually in late September and early October. Outside of festival time, the meadow hosts other events including the Spring Festival. The Bavaria statue and Hall of Fame overlook the grounds, and it's a pleasant area for walks when not hosting events.</p>
+                    </div>
+                </div>
+
+                <!-- Hofgarten -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Hofgarten (Court Garden)</h4>
+                        <p class="card-text">This Renaissance-style garden, created in the early 17th century, offers a tranquil escape in the city center. The formal garden features geometric flower beds, gravel paths, and fountains centered around the Temple of Diana pavilion. Surrounded by elegant arcades where musicians often perform, the Hofgarten is a favorite spot for afternoon strolls and relaxation.</p>
+                    </div>
+                </div>
+
+                <!-- Luitpoldpark -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Luitpoldpark</h4>
+                        <p class="card-text">This lovely park in Munich's Schwabing district was created in 1911 and named after Prince Regent Luitpold of Bavaria. The park features a small hill (Luitpoldhügel) that offers views of the city and is popular for sledding in winter. With its meadows, playgrounds, and peaceful atmosphere, it's a favorite recreational area for local families.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-warning mb-4">🏛️ Museums and Palaces</h2>
+
+                <div class="row">
+                    <!-- Deutsches Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Deutsches Museum</h5>
+                                <p class="small text-muted">World's largest science & technology museum</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nymphenburg Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Nymphenburg Palace</h5>
+                                <p class="small text-muted">Baroque summer palace with gardens</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BMW Welt -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">BMW Welt</h5>
+                                <p class="small text-muted">BMW exhibition and delivery center</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 Free entry</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pinakothek der Moderne -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Pinakothek der Moderne</h5>
+                                <p class="small text-muted">Modern and contemporary art</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Allianz Arena -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Allianz Arena</h5>
+                                <p class="small text-muted">FC Bayern Munich home stadium</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Tours vary</span>
+                                    <span class="info-badge price-badge">💶 €19</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Glyptothek -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Glyptothek</h5>
+                                <p class="small text-muted">Greek and Roman sculptures</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bayerisches Nationalmuseum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Bayerisches Nationalmuseum</h5>
+                                <p class="small text-muted">Bavarian cultural history</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Haus der Kunst -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Haus der Kunst</h5>
+                                <p class="small text-muted">Contemporary art exhibitions</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 8:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schleissheim Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Schleissheim Palace</h5>
+                                <p class="small text-muted">Baroque palace complex north of Munich</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blutenburg Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Blutenburg Palace</h5>
+                                <p class="small text-muted">Medieval castle with chapel</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Free (grounds)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jüdisches Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Jüdisches Museum München</h5>
+                                <p class="small text-muted">Jewish history and culture in Munich</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website2.1.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

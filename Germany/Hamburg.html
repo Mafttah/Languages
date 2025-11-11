@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburg Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #0277bd 0%, #01579b 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #0277bd;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #d32f2f;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #e1f5fe;
+            color: #01579b;
+        }
+
+        .price-badge {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Hamburg</h1>
+            <p class="lead">Germany's Gateway to the World - Maritime Heritage & Modern Culture</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Hamburg</h2>
+                <p class="fs-5">Hamburg is Germany's second-largest city and Europe's third-largest port. Located on the Elbe River, this vibrant maritime metropolis is known for its historic warehouse district, world-class museums, lively nightlife, and rich musical heritage. With its countless canals and bridges, Hamburg offers a unique blend of water, culture, and commerce that has earned it the nickname "Venice of the North."</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Rathausmarkt -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Rathausmarkt</h4>
+                        <p class="card-text">The Town Hall Square is Hamburg's central plaza, dominated by the magnificent Neo-Renaissance Hamburg City Hall (Rathaus) built between 1886-1897. This impressive building features 647 rooms and a 112-meter tower. The square serves as the heart of the city's public life, hosting markets, festivals, and events throughout the year. The elegant arcades surrounding the square house cafes and shops, making it a perfect spot for people-watching.</p>
+                    </div>
+                </div>
+
+                <!-- St. Michael's Church -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">St. Michael's Church</h4>
+                        <p class="card-text">Known affectionately as "Michel," this iconic Baroque church is Hamburg's most famous landmark. Built in the 17th century, its distinctive copper tower rises 132 meters and offers spectacular panoramic views of the city and harbor. The church features one of Germany's largest clock faces and houses a magnificent organ. Visitors can climb the tower or take the elevator to the viewing platform for unforgettable vistas.</p>
+                    </div>
+                </div>
+
+                <!-- Jungfernstieg -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Jungfernstieg</h4>
+                        <p class="card-text">This elegant boulevard along the Inner Alster Lake is one of Hamburg's most prestigious addresses. Dating back to the 17th century, Jungfernstieg is lined with luxury shops, department stores, hotels, and cafes. The promenade offers beautiful lake views and is perfect for leisurely walks. Historic Alster steamers depart from the pier here for scenic boat tours around the Alster lakes.</p>
+                    </div>
+                </div>
+
+                <!-- Mönckebergstrasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Mönckebergstrasse</h4>
+                        <p class="card-text">Hamburg's main shopping street stretches from the central station to the town hall, making it one of the busiest pedestrian zones in Germany. Created in 1909, this wide boulevard is lined with department stores, retail chains, and restaurants. The street showcases impressive early 20th-century architecture and serves as the commercial heart of the city, attracting millions of shoppers annually.</p>
+                    </div>
+                </div>
+
+                <!-- St. Nicholas Church -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">St. Nicholas Church</h4>
+                        <p class="card-text">The ruins of this neo-Gothic church stand as a powerful memorial to the victims of World War II. Once the world's tallest building from 1874-1876, the church was destroyed during Allied bombing in 1943. Today, the preserved tower and ruins serve as a memorial and museum documenting the horrors of war. An elevator takes visitors to a viewing platform at 76 meters for panoramic city views.</p>
+                    </div>
+                </div>
+
+                <!-- St. Pauli -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">St. Pauli</h4>
+                        <p class="card-text">Hamburg's most famous and colorful district is known for its vibrant nightlife, entertainment venues, and the legendary Reeperbahn. This historic harbor neighborhood combines maritime tradition with modern urban culture. Beyond its nightlife reputation, St. Pauli offers diverse restaurants, theaters, the famous fish market, and a strong community spirit. The district perfectly embodies Hamburg's tolerant and diverse character.</p>
+                    </div>
+                </div>
+
+                <!-- Beatles-Platz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Beatles-Platz</h4>
+                        <p class="card-text">This square in the St. Pauli district commemorates The Beatles' formative years in Hamburg from 1960-1962. The plaza features a circular steel sculpture with five vinyl records and silhouettes of the band members. It's located near the historic clubs where the Beatles performed hundreds of shows, establishing their sound and stage presence. The area remains a pilgrimage site for music fans from around the world.</p>
+                    </div>
+                </div>
+
+                <!-- Treppenviertel -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Treppenviertel (Stairs Quarter)</h4>
+                        <p class="card-text">This charming historic neighborhood in Blankenese features winding staircases, narrow alleys, and whitewashed houses cascading down the hillside toward the Elbe River. With over 5,000 steps connecting more than 60 streets, the quarter offers a Mediterranean atmosphere unique in Northern Germany. The elevated position provides stunning views over the Elbe and is a favorite spot for photographers and romantic walks.</p>
+                    </div>
+                </div>
+
+                <!-- Stadtpark Hamburg -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Stadtpark Hamburg</h4>
+                        <p class="card-text">Hamburg's largest and most popular urban park covers 148 hectares and offers extensive recreational facilities. Created in 1914, the park features a large lake with swimming areas, a planetarium, outdoor concert venues, sports facilities, and the historic Stadtpark open-air stage. With its wide meadows, shaded paths, and beautiful landscaping, it's a beloved retreat for locals seeking nature within the city.</p>
+                    </div>
+                </div>
+
+                <!-- Spitalerstrasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Spitalerstrasse</h4>
+                        <p class="card-text">Running parallel to Mönckebergstrasse, this bustling pedestrian shopping street connects Hamburg's main train station with the city center. The street is packed with retail stores, fashion boutiques, electronic shops, and fast-food outlets. Its high foot traffic and diverse shopping options make it one of Germany's most commercially successful streets. Modern shopping centers like the Spitalerhof add to the area's retail appeal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-danger mb-4">🏛️ Museums and Attractions</h2>
+
+                <div class="row">
+                    <!-- Miniatur Wunderland -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Miniatur Wunderland</h5>
+                                <p class="small text-muted">World's largest model railway exhibition</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:30 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Maritimes Museum Hamburg -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Maritimes Museum Hamburg</h5>
+                                <p class="small text-muted">International Maritime Museum with 3,000 years of shipping history</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €13</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hamburg Historical Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Hamburg Historical Museum</h5>
+                                <p class="small text-muted">Museum für Hamburgische Geschichte - 1,000 years of Hamburg history</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €9.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website2.1.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

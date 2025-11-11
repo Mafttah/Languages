@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDev Academy - Learning Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: #1e293b;
+            border-bottom: 1px solid #334155;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .nav a.active {
+            color: #ffffff;
+            border-bottom: 2px solid #a855f7;
+        }
+
+        .nav a:hover {
+            color: #ffffff;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .streak-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #334155;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .upgrade-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(to right, #a855f7, #3b82f6);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .upgrade-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem;
+        }
+
+        .tracks-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .track-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border: 2px solid #334155;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .track-card:hover {
+            transform: translateY(-4px);
+            border-color: #a855f7;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+        }
+
+        .track-card.selected {
+            border-color: #a855f7;
+            background: linear-gradient(135deg, #2d1b4e 0%, #1e293b 100%);
+        }
+
+        .track-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .track-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-card p {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .track-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .section-info h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-info p {
+            color: #94a3b8;
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .progress-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        .lessons-section {
+            margin-top: 2rem;
+        }
+
+        .lessons-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .lesson-card {
+            padding: 1rem;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .lesson-card:not(.locked):hover {
+            background-color: #334155;
+        }
+
+        .lesson-card.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .lesson-card.completed {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .lesson-card.expanded {
+            box-shadow: 0 0 0 2px #a855f7;
+        }
+
+        .lesson-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lesson-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .lesson-number {
+            color: #64748b;
+            font-size: 0.875rem;
+            min-width: 28px;
+        }
+
+        .lesson-title {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .lesson-card.locked .lesson-title {
+            color: #64748b;
+        }
+
+        .lesson-right {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .lesson-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-learn { color: #4ade80; }
+        .badge-practice { color: #facc15; }
+        .badge-project { color: #c084fc; }
+
+        .lesson-details {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(51, 65, 85, 0.5);
+            border: 1px solid #475569;
+            border-radius: 0.5rem;
+        }
+
+        .lesson-description {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chapter-count {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .start-btn {
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(to right, #a855f7, #3b82f6);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .completed-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: #475569;
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .career-card {
+            padding: 1rem;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-container {
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #334155;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(to right, #a855f7, #3b82f6);
+            transition: width 0.5s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .sections-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .section-item {
+            padding: 0.75rem;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .section-item:not(.locked):hover {
+            background-color: #334155;
+        }
+
+        .section-item.active {
+            border-color: #a855f7;
+            background-color: #334155;
+        }
+
+        .section-item.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .section-item-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .section-item-left {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .section-item-number {
+            color: #64748b;
+            font-size: 0.875rem;
+            min-width: 24px;
+        }
+
+        .section-item-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .section-item.locked .section-item-title {
+            color: #64748b;
+        }
+
+        .stats-card {
+            padding: 1rem;
+            background: linear-gradient(135deg, rgba(109, 40, 217, 0.3), rgba(29, 78, 216, 0.3));
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+        }
+
+        .stats-card h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        .empty-state {
+            padding: 2rem;
+            text-align: center;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            color: #94a3b8;
+        }
+
+        .back-btn {
+            padding: 0.5rem 1rem;
+            background-color: #334155;
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-btn:hover {
+            background-color: #475569;
+        }
+
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tracks-selector {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <h1 class="logo">WebDev Academy</h1>
+                <nav class="nav">
+                    <a href="#" class="active">Learn</a>
+                    <a href="#">Build</a>
+                    <a href="#">Library</a>
+                </nav>
+            </div>
+            <div class="header-actions">
+                <div class="streak-badge">
+                    <span>⚡</span>
+                    <span id="streak">0 days</span>
+                </div>
+                <button class="upgrade-btn">Upgrade</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Track Selection View -->
+        <div id="track-selection" style="display: block;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Choose Your Learning Path</h2>
+            <p style="color: #94a3b8; margin-bottom: 2rem;">Select a programming language or technology to start learning</p>
+            
+            <div class="tracks-selector" id="tracks-container">
+                <!-- Tracks will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Course Content View -->
+        <div id="course-content" style="display: none;">
+            <button class="back-btn" onclick="backToTracks()">← Back to Courses</button>
+            
+            <div class="grid">
+                <!-- Main Content Area -->
+                <div>
+                    <div class="section-header">
+                        <span class="section-label">SECTION</span>
+                        <div class="section-title-row">
+                            <div class="section-info">
+                                <h2 id="section-title">1. Intro to Web Development</h2>
+                                <p id="section-description">Create webpages using HTML and CSS</p>
+                            </div>
+                            <div class="progress-circle">
+                                <svg width="80" height="80">
+                                    <circle cx="40" cy="40" r="36" stroke="#334155" stroke-width="6" fill="none"/>
+                                    <circle id="progress-circle" cx="40" cy="40" r="36" stroke="#8b5cf6" stroke-width="6" fill="none"
+                                        stroke-dasharray="226" stroke-dashoffset="226" stroke-linecap="round"/>
+                                </svg>
+                                <span class="progress-text" id="progress-percent">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lessons -->
+                    <div class="lessons-section">
+                        <span class="section-label">LESSONS</span>
+                        <div class="lessons-list" id="lessons-list">
+                            <!-- Lessons will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="sidebar">
+                    <!-- Career Path Card -->
+                    <span class="section-label">CAREER PATH</span>
+                    <div class="career-card">
+                        <h3 id="current-track-title">Full-Stack Developer</h3>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" id="career-progress" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="progress-info">
+                            <span id="career-percent">0% Complete</span>
+                            <span id="career-count">0/30 Lessons</span>
+                        </div>
+                    </div>
+
+                    <!-- Sections List -->
+                    <span class="section-label">SECTIONS</span>
+                    <div class="sections-list" id="sections-list">
+                        <!-- Sections will be inserted here -->
+                    </div>
+
+                    <!-- Stats Card -->
+                    <div class="stats-card" style="margin-top: 1.5rem;">
+                        <h4>
+                            <span>⚡</span>
+                            <span>Your Progress</span>
+                        </h4>
+                        <div class="stat-row">
+                            <span class="stat-label">Lessons Completed</span>
+                            <span class="stat-value" style="color: #c084fc;" id="completed-count">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Current Streak</span>
+                            <span class="stat-value" style="color: #fb923c;">0 days</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Total XP</span>
+                            <span class="stat-value" style="color: #4ade80;" id="total-xp">0</span>
+                        </div>
+                        <div style="padding-top: 0.5rem; border-top: 1px solid #334155; margin-top: 0.5rem;">
+                            <p style="font-size: 0.75rem; color: #64748b; text-align: center;">
+                                Keep learning to unlock new sections!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // All Tracks Data
+        const allTracks = [
+            {
+                id: 'web',
+                name: 'Full-Stack Developer',
+                icon: '🌐',
+                description: 'Learn HTML, CSS, JavaScript, React, Node.js, and SQL',
+                totalLessons: 30,
+                sections: [
+                    {
+                        id: 0,
+                        title: "Intro to Web Development",
+                        description: "Create webpages using HTML and CSS",
+                        total: 10,
+                        lessons: [
+                            { id: 1, title: "Discovering HTML and Tags", type: "LEARN", chapters: 2, description: "Learn what HTML is and its importance in coding for the web." },
+                            { id: 2, title: "Structuring Text with Tags", type: "LEARN", chapters: 1, description: "Create stylish text for websites using tags." },
+                            { id: 3, title: "HTML Basics 1", type: "PRACTICE", chapters: 1, description: "Practice your HTML basics skills." },
+                            { id: 4, title: "Creating Links", type: "LEARN", chapters: 1, description: "Use tags and attributes to create links." },
+                            { id: 5, title: "Adding Images", type: "LEARN", chapters: 1, description: "Learn how to add images to your webpage." },
+                            { id: 6, title: "HTML Basics 2", type: "PRACTICE", chapters: 1, description: "Practice HTML links and images." },
+                            { id: 7, title: "Linktree Project", type: "PROJECT", chapters: 1, description: "Build your very own Linktree-style page." },
+                            { id: 8, title: "Boilerplate Code", type: "LEARN", chapters: 2, description: "Learn about HTML document structure." },
+                            { id: 9, title: "CSS Selectors", type: "LEARN", chapters: 4, description: "Discover how to style webpages with CSS." },
+                            { id: 10, title: "Styling Text", type: "LEARN", chapters: 1, description: "Learn how to use CSS to style text." }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        title: "Interactive Webpages",
+                        description: "Use HTML and JavaScript to create interactive webpages",
+                        total: 10,
+                        lessons: []
+                    }
+                ]
+            },
+            {
+                id: 'python',
+                name: 'Python Developer',
+                icon: '🐍',
+                description: 'Master Python programming from basics to advanced',
+                totalLessons: 25,
+                sections: [
+                    {
+                        id: 0,
+                        title: "Python Fundamentals",
+                        description: "Learn Python basics and core concepts",
+                        total: 8,
+                        lessons: [
+                            { id: 101, title: "Introduction to Python", type: "LEARN", chapters: 2, description: "Get started with Python programming." },
+                            { id: 102, title: "Variables and Data Types", type: "LEARN", chapters: 1, description: "Learn about variables, strings, numbers, and booleans." },
+                            { id: 103, title: "Python Basics", type: "PRACTICE", chapters: 1, description: "Practice your Python fundamentals." },
+                            { id: 104, title: "Conditionals", type: "LEARN", chapters: 2, description: "Learn if statements and control flow." },
+                            { id: 105, title: "Loops", type: "LEARN", chapters: 2, description: "Master for and while loops in Python." },
+                            { id: 106, title: "Functions", type: "LEARN", chapters: 2, description: "Create reusable code with functions." },
+                            { id: 107, title: "Lists and Dictionaries", type: "LEARN", chapters: 2, description: "Work with Python data structures." },
+                            { id: 108, title: "Calculator Project", type: "PROJECT", chapters: 1, description: "Build a functional calculator." }
+                        ]
+                    },
+                    {
+                        id: 1,
+                        title: "Advanced Python",
+                        description: "Object-oriented programming and advanced concepts",
+                        total: 8,
+                        lessons: []
+                    }
+                ]
+            },
+            {
+                id: 'javascript',
+                name: 'JavaScript Developer',
+                icon: '⚡',
+                description: 'Build interactive web applications with JavaScript',
+                totalLessons: 28,
+                sections: [
+                    {
+                        id: 0,
+                        title: "JavaScript Essentials",
+                        description: "Master the fundamentals of JavaScript",
+                        total: 9,
+                        lessons: [
+                            { id: 201, title: "JavaScript Basics", type: "LEARN", chapters: 2, description: "Learn variables, data types, and operators." },
+                            { id: 202, title: "Functions", type: "LEARN", chapters: 2, description: "Create and use functions in JavaScript." },
+                            { id: 203, title: "Arrays", type: "LEARN", chapters: 2, description: "Work with arrays and array methods." },
+                            { id: 204, title: "Objects", type: "LEARN", chapters: 2, description: "Understand JavaScript objects." },
+                            { id: 205, title: "DOM Manipulation", type: "LEARN", chapters: 3, description: "Learn to interact with web pages." },
+                            { id: 206, title: "Events", type: "LEARN", chapters: 2, description: "Handle user interactions." },
+                            { id: 207, title: "ES6 Features", type: "LEARN", chapters: 2, description: "Modern JavaScript syntax and features." },
+                            { id: 208, title: "Async JavaScript", type: "LEARN", chapters: 2, description: "Promises, async/await, and fetch." },
+                            { id: 209, title: "Weather App", type: "PROJECT", chapters: 1, description: "Build a weather application." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'react',
+                name: 'React Developer',
+                icon: '⚛️',
+                description: 'Build modern web apps with React',
+                totalLessons: 20,
+                sections: [
+                    {
+                        id: 0,
+                        title: "React Fundamentals",
+                        description: "Learn the basics of React",
+                        total: 7,
+                        lessons: [
+                            { id: 301, title: "Intro to React", type: "LEARN", chapters: 2, description: "Understand components and JSX." },
+                            { id: 302, title: "Props", type: "LEARN", chapters: 2, description: "Pass data between components." },
+                            { id: 303, title: "State Management", type: "LEARN", chapters: 2, description: "Learn useState and component state." },
+                            { id: 304, title: "Events in React", type: "LEARN", chapters: 1, description: "Handle events in React components." },
+                            { id: 305, title: "Conditional Rendering", type: "LEARN", chapters: 2, description: "Display content conditionally." },
+                            { id: 306, title: "Lists and Keys", type: "LEARN", chapters: 2, description: "Render dynamic lists." },
+                            { id: 307, title: "Todo App", type: "PROJECT", chapters: 1, description: "Build a complete todo application." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'sql',
+                name: 'SQL Developer',
+                icon: '🗄️',
+                description: 'Master database queries and data management',
+                totalLessons: 22,
+                sections: [
+                    {
+                        id: 0,
+                        title: "SQL Fundamentals",
+                        description: "Learn database basics and SQL queries",
+                        total: 8,
+                        lessons: [
+                            { id: 401, title: "Introduction to SQL", type: "LEARN", chapters: 1, description: "Understand databases and tables." },
+                            { id: 402, title: "SELECT Queries", type: "LEARN", chapters: 2, description: "Retrieve data from databases." },
+                            { id: 403, title: "Filtering Data", type: "LEARN", chapters: 2, description: "Use WHERE clauses and conditions." },
+                            { id: 404, title: "Sorting and Ordering", type: "LEARN", chapters: 1, description: "Order query results." },
+                            { id: 405, title: "SQL Basics", type: "PRACTICE", chapters: 1, description: "Practice basic SQL queries." },
+                            { id: 406, title: "Aggregate Functions", type: "LEARN", chapters: 2, description: "COUNT, SUM, AVG, MIN, MAX." },
+                            { id: 407, title: "JOIN Operations", type: "LEARN", chapters: 3, description: "Combine data from multiple tables." },
+                            { id: 408, title: "Database Project", type: "PROJECT", chapters: 1, description: "Build a complete database." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'backend',
+                name: 'Backend Developer',
+                icon: '⚙️',
+                description: 'Build server-side applications with Node.js and Express',
+                totalLessons: 18,
+                sections: [
+                    {
+                        id: 0,
+                        title: "Backend Basics",
+                        description: "Learn server-side development",
+                        total: 6,
+                        lessons: [
+                            { id: 501, title: "Intro to Node.js", type: "LEARN", chapters: 2, description: "Get started with Node.js." },
+                            { id: 502, title: "Express Framework", type: "LEARN", chapters: 2, description: "Build web servers with Express." },
+                            { id: 503, title: "REST APIs", type: "LEARN", chapters: 3, description: "Create RESTful APIs." },
+                            { id: 504, title: "Routing", type: "LEARN", chapters: 2, description: "Handle different routes and methods." },
+                            { id: 505, title: "Middleware", type: "LEARN", chapters: 2, description: "Use Express middleware." },
+                            { id: 506, title: "API Project", type: "PROJECT", chapters: 1, description: "Build a complete REST API." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'java',
+                name: 'Java Developer',
+                icon: '☕',
+                description: 'Build enterprise applications with Java',
+                totalLessons: 26,
+                sections: [
+                    {
+                        id: 0,
+                        title: "Java Fundamentals",
+                        description: "Master Java programming basics",
+                        total: 9,
+                        lessons: [
+                            { id: 601, title: "Introduction to Java", type: "LEARN", chapters: 2, description: "Get started with Java programming." },
+                            { id: 602, title: "Variables and Data Types", type: "LEARN", chapters: 2, description: "Learn primitive and reference types." },
+                            { id: 603, title: "Control Flow", type: "LEARN", chapters: 2, description: "Master if statements and loops." },
+                            { id: 604, title: "Java Basics", type: "PRACTICE", chapters: 1, description: "Practice Java fundamentals." },
+                            { id: 605, title: "Methods", type: "LEARN", chapters: 2, description: "Create reusable methods." },
+                            { id: 606, title: "Arrays and Collections", type: "LEARN", chapters: 2, description: "Work with arrays and ArrayLists." },
+                            { id: 607, title: "OOP Basics", type: "LEARN", chapters: 3, description: "Classes, objects, and encapsulation." },
+                            { id: 608, title: "Inheritance", type: "LEARN", chapters: 2, description: "Extend classes and polymorphism." },
+                            { id: 609, title: "Banking System", type: "PROJECT", chapters: 1, description: "Build a banking application." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'cpp',
+                name: 'C++ Developer',
+                icon: '🎮',
+                description: 'System programming and game development with C++',
+                totalLessons: 24,
+                sections: [
+                    {
+                        id: 0,
+                        title: "C++ Essentials",
+                        description: "Learn C++ programming fundamentals",
+                        total: 8,
+                        lessons: [
+                            { id: 701, title: "Getting Started with C++", type: "LEARN", chapters: 2, description: "Introduction to C++ syntax and structure." },
+                            { id: 702, title: "Variables and Types", type: "LEARN", chapters: 2, description: "Data types, variables, and constants." },
+                            { id: 703, title: "Pointers and References", type: "LEARN", chapters: 3, description: "Understanding memory management." },
+                            { id: 704, title: "Functions", type: "LEARN", chapters: 2, description: "Function declaration and overloading." },
+                            { id: 705, title: "C++ Basics", type: "PRACTICE", chapters: 1, description: "Practice C++ fundamentals." },
+                            { id: 706, title: "Classes and Objects", type: "LEARN", chapters: 3, description: "Object-oriented programming in C++." },
+                            { id: 707, title: "STL Containers", type: "LEARN", chapters: 2, description: "Vectors, maps, and sets." },
+                            { id: 708, title: "Game Engine Basics", type: "PROJECT", chapters: 1, description: "Build a simple 2D game." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'swift',
+                name: 'Swift Developer',
+                icon: '🍎',
+                description: 'Create iOS and macOS applications',
+                totalLessons: 22,
+                sections: [
+                    {
+                        id: 0,
+                        title: "Swift Fundamentals",
+                        description: "Learn Swift for iOS development",
+                        total: 8,
+                        lessons: [
+                            { id: 801, title: "Introduction to Swift", type: "LEARN", chapters: 2, description: "Start your iOS development journey." },
+                            { id: 802, title: "Variables and Constants", type: "LEARN", chapters: 1, description: "Learn var and let in Swift." },
+                            { id: 803, title: "Optionals", type: "LEARN", chapters: 2, description: "Handle nil values safely." },
+                            { id: 804, title: "Control Flow", type: "LEARN", chapters: 2, description: "If statements, guard, and switch." },
+                            { id: 805, title: "Swift Basics", type: "PRACTICE", chapters: 1, description: "Practice Swift fundamentals." },
+                            { id: 806, title: "Functions and Closures", type: "LEARN", chapters: 2, description: "Advanced function concepts." },
+                            { id: 807, title: "SwiftUI Basics", type: "LEARN", chapters: 3, description: "Build user interfaces with SwiftUI." },
+                            { id: 808, title: "Weather App", type: "PROJECT", chapters: 1, description: "Create an iOS weather app." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'go',
+                name: 'Go Developer',
+                icon: '🔷',
+                description: 'Build fast and scalable backend services',
+                totalLessons: 20,
+                sections: [
+                    {
+                        id: 0,
+                        title: "Go Fundamentals",
+                        description: "Learn Go programming language",
+                        total: 7,
+                        lessons: [
+                            { id: 901, title: "Introduction to Go", type: "LEARN", chapters: 2, description: "Get started with Go (Golang)." },
+                            { id: 902, title: "Variables and Types", type: "LEARN", chapters: 1, description: "Go's type system and variables." },
+                            { id: 903, title: "Functions and Packages", type: "LEARN", chapters: 2, description: "Organize code with functions and packages." },
+                            { id: 904, title: "Structs and Methods", type: "LEARN", chapters: 2, description: "Custom types and methods." },
+                            { id: 905, title: "Goroutines", type: "LEARN", chapters: 3, description: "Concurrent programming with goroutines." },
+                            { id: 906, title: "Go Basics", type: "PRACTICE", chapters: 1, description: "Practice Go programming." },
+                            { id: 907, title: "REST API Server", type: "PROJECT", chapters: 1, description: "Build a high-performance API." }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'csharp',
+                name: 'C# Developer',
+                icon: '🎯',
+                description: 'Build games with Unity and .NET applications',
+                totalLessons: 23,
+                sections: [
+                    {
+                        id: 0,
+                        title: "C# Essentials",
+                        description: "Learn C# programming fundamentals",
+                        total: 8,
+                        lessons: [
+                            { id: 1001, title: "Introduction to C#", type: "LEARN", chapters: 2, description: "Start with C# and .NET." },
+                            { id: 1002, title: "Variables and Data Types", type: "LEARN", chapters: 1, description: "C# type system and variables." },
+                            { id: 1003, title: "Control Structures", type: "LEARN", chapters: 2, description: "Conditionals and loops in C#." },
+                            { id: 1004, title: "Methods", type: "LEARN", chapters: 2, description: "Create and use methods." },
+                            { id: 1005, title: "C# Basics", type: "PRACTICE", chapters: 1, description: "Practice C# fundamentals." },
+                            { id: 1006, title: "OOP in C#", type: "LEARN", chapters: 3, description: "Classes, inheritance, and polymorphism." },
+                            { id: 1007, title: "Unity Basics", type: "LEARN", chapters: 2, description: "Introduction to Unity game engine." },
+                            { id: 1008, title: "2D Platformer Game", type: "PROJECT", chapters: 1, description: "Build your first Unity game." }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // State
+        let selectedTrack = null;
+        let selectedSection = 0;
+        let completedLessons = new Set();
+        let unlockedLessons = new Set();
+        let expandedLesson = null;
+
+        // Initialize
+        function init() {
+            renderTracks();
+        }
+
+        function renderTracks() {
+            const container = document.getElementById('tracks-container');
+            container.innerHTML = '';
+            
+            allTracks.forEach(track => {
+                const card = document.createElement('div');
+                card.className = 'track-card';
+                card.onclick = () => selectTrack(track.id);
+                
+                card.innerHTML = `
+                    <div class="track-icon">${track.icon}</div>
+                    <h3>${track.name}</h3>
+                    <p>${track.description}</p>
+                    <div class="track-stats">
+                        <span>${track.totalLessons} Lessons</span>
+                        <span>${track.sections.length} Sections</span>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        function selectTrack(trackId) {
+            selectedTrack = allTracks.find(t => t.id === trackId);
+            selectedSection = 0;
+            completedLessons = new Set();
+            
+            // Unlock first lesson
+            if (selectedTrack.sections[0].lessons.length > 0) {
+                unlockedLessons = new Set([selectedTrack.sections[0].lessons[0].id]);
+            }
+            
+            // Update UI
+            document.getElementById('current-track-title').textContent = selectedTrack.name;
+            document.getElementById('track-selection').style.display = 'none';
+            document.getElementById('course-content').style.display = 'block';
+            
+            updateUI();
+        }
+
+        function backToTracks() {
+            document.getElementById('track-selection').style.display = 'block';
+            document.getElementById('course-content').style.display = 'none';
+            selectedTrack = null;
+        }
+
+        function renderSections() {
+            if (!selectedTrack) return;
+            
+            const container = document.getElementById('sections-list');
+            container.innerHTML = '';
+            
+            selectedTrack.sections.forEach((section, index) => {
+                const locked = index > 0 && completedLessons.size < 5;
+                const item = document.createElement('button');
+                item.className = `section-item ${selectedSection === index ? 'active' : ''} ${locked ? 'locked' : ''}`;
+                item.onclick = () => !locked && selectSection(index);
+                
+                item.innerHTML = `
+                    <div class="section-item-content">
+                        <div class="section-item-left">
+                            <span class="section-item-number">${String(index + 1).padStart(2, '0')}.</span>
+                            <span class="section-item-title">${section.title}</span>
+                        </div>
+                        <div>
+                            ${locked ? '🔒' : `<span style="font-size: 0.75rem; color: #94a3b8;">${index === 0 ? completedLessons.size : 0}/${section.total}</span>`}
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+
+        function renderLessons() {
+            if (!selectedTrack) return;
+            
+            const container = document.getElementById('lessons-list');
+            const currentSection = selectedTrack.sections[selectedSection];
+            
+            if (!currentSection.lessons || currentSection.lessons.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+                        <p>Complete the previous section to unlock this content</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = '';
+            
+            currentSection.lessons.forEach((lesson, index) => {
+                const locked = !unlockedLessons.has(lesson.id);
+                const completed = completedLessons.has(lesson.id);
+                const expanded = expandedLesson === lesson.id;
+                
+                const card = document.createElement('div');
+                card.className = `lesson-card ${locked ? 'locked' : ''} ${completed ? 'completed' : ''} ${expanded ? 'expanded' : ''}`;
+                
+                const typeIcons = {
+                    'LEARN': '📖',
+                    'PRACTICE': '⚡',
+                    'PROJECT': '💻'
+                };
+                
+                const typeColors = {
+                    'LEARN': 'badge-learn',
+                    'PRACTICE': 'badge-practice',
+                    'PROJECT': 'badge-project'
+                };
+                
+                card.innerHTML = `
+                    <div class="lesson-header">
+                        <div class="lesson-left">
+                            <span class="lesson-number">${String(index + 1).padStart(2, '0')}</span>
+                            <span class="lesson-title">${lesson.title}</span>
+                        </div>
+                        <div class="lesson-right">
+                            ${!locked ? `
+                                <div class="lesson-badge">
+                                    <span>${typeIcons[lesson.type]}</span>
+                                    <span class="${typeColors[lesson.type]}">${lesson.type}</span>
+                                </div>
+                            ` : ''}
+                            <span>${completed ? '✅' : locked ? '🔒' : '⭕'}</span>
+                        </div>
+                    </div>
+                    ${expanded && !locked ? `
+                        <div class="lesson-details">
+                            <p class="lesson-description">${lesson.description}</p>
+                            <div class="lesson-actions">
+                                <span class="chapter-count">${lesson.chapters} ${lesson.chapters === 1 ? 'Chapter' : 'Chapters'}</span>
+                                ${completed ? `
+                                    <button class="completed-btn" onclick="toggleLesson(null)">✓ Completed</button>
+                                ` : `
+                                    <button class="start-btn" onclick="completeLesson(${lesson.id})">Start Learning →</button>
+                                `}
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
+                
+                if (!locked) {
+                    card.onclick = () => toggleLesson(lesson.id);
+                }
+                
+                container.appendChild(card);
+            });
+        }
+
+        function selectSection(index) {
+            selectedSection = index;
+            expandedLesson = null;
+            updateUI();
+        }
+
+        function toggleLesson(lessonId) {
+            expandedLesson = expandedLesson === lessonId ? null : lessonId;
+            renderLessons();
+        }
+
+        function completeLesson(lessonId) {
+            completedLessons.add(lessonId);
+            
+            // Find next lesson ID to unlock
+            const currentSection = selectedTrack.sections[selectedSection];
+            const currentIndex = currentSection.lessons.findIndex(l => l.id === lessonId);
+            if (currentIndex !== -1 && currentIndex < currentSection.lessons.length - 1) {
+                const nextLessonId = currentSection.lessons[currentIndex + 1].id;
+                unlockedLessons.add(nextLessonId);
+            }
+            
+            expandedLesson = null;
+            updateUI();
+        }
+
+        function updateUI() {
+            if (!selectedTrack) return;
+            
+            const currentSection = selectedTrack.sections[selectedSection];
+            
+            // Update section info
+            document.getElementById('section-title').textContent = `${selectedSection + 1}. ${currentSection.title}`;
+            document.getElementById('section-description').textContent = currentSection.description;
+            
+            // Update progress circle
+            const progress = completedLessons.size;
+            const percent = Math.round((progress / selectedTrack.totalLessons) * 100);
+            document.getElementById('progress-percent').textContent = `${percent}%`;
+            
+            const circle = document.getElementById('progress-circle');
+            const offset = 226 - (226 * progress / selectedTrack.totalLessons);
+            circle.setAttribute('stroke-dashoffset', offset);
+            
+            // Update career progress
+            const careerPercent = Math.round((completedLessons.size / selectedTrack.totalLessons) * 100);
+            document.getElementById('career-progress').style.width = `${careerPercent}%`;
+            document.getElementById('career-percent').textContent = `${careerPercent}% Complete`;
+            document.getElementById('career-count').textContent = `${completedLessons.size}/${selectedTrack.totalLessons} Lessons`;
+            
+            // Update stats
+            document.getElementById('completed-count').textContent = completedLessons.size;
+            document.getElementById('total-xp').textContent = completedLessons.size * 50;
+            
+            // Re-render
+            renderSections();
+            renderLessons();
+        }
+
+        // Initialize app
+        init();
+    </script>
+</body>
+</html>

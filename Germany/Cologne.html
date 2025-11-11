@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cologne Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #7b1fa2;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #00695c;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #f3e5f5;
+            color: #6a1b9a;
+        }
+
+        .price-badge {
+            background-color: #e0f2f1;
+            color: #00695c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Cologne</h1>
+            <p class="lead">Cathedral City on the Rhine - 2,000 Years of History & Culture</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Cologne</h2>
+                <p class="fs-5">Cologne (Köln) is Germany's fourth-largest city and one of the oldest, with a history spanning over 2,000 years. Located on the Rhine River, Cologne is famous for its magnificent Gothic cathedral, vibrant carnival celebrations, Roman heritage, and distinctive Kölsch beer culture. The city perfectly blends ancient Roman ruins with modern art, traditional brewhouses with contemporary museums, creating a unique atmosphere that attracts millions of visitors annually.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Cologne Cathedral -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Cologne Cathedral (Kölner Dom)</h4>
+                        <p class="card-text">This UNESCO World Heritage Site is Germany's most visited landmark and one of the world's finest examples of Gothic architecture. Construction began in 1248 and was completed in 1880, spanning 632 years. The cathedral's twin spires reach 157 meters, making it Germany's second tallest church. Inside, visitors can admire stunning stained glass windows, the Shrine of the Three Kings, and climb 533 steps to the south tower for breathtaking views over the Rhine and city.</p>
+                    </div>
+                </div>
+
+                <!-- Hohenzollern Bridge -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Hohenzollern Bridge</h4>
+                        <p class="card-text">This iconic railway bridge spans the Rhine River and offers the most photographed view of Cologne Cathedral. Built between 1907-1911, the bridge is famous for its thousands of love locks attached by couples to the railings. The pedestrian walkway provides spectacular views of the cathedral and the Rhine, especially at sunset. The bridge connects the cathedral area with the trendy Deutz district and is a symbol of Cologne's romantic spirit.</p>
+                    </div>
+                </div>
+
+                <!-- St. Gereon's Basilica -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">St. Gereon's Basilica</h4>
+                        <p class="card-text">One of twelve Romanesque churches in Cologne, St. Gereon's is architecturally unique with its decagonal dome, one of the largest of its kind. The church dates back to Roman times, originally built as an oval chapel in the 4th century. The current structure, with its distinctive cupola completed in the 13th century, showcases the transition from Roman to medieval architecture. The basilica is a masterpiece of architectural innovation and an important pilgrimage site.</p>
+                    </div>
+                </div>
+
+                <!-- Great St. Martin Church -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Great St. Martin Church (Groß St. Martin)</h4>
+                        <p class="card-text">This striking Romanesque church with its distinctive cloverleaf-shaped ground plan and prominent crossing tower is one of Cologne's most recognizable landmarks. Built between 1150-1250 on the site of a Roman warehouse, the church forms a picturesque ensemble with the colorful historic houses around the Fischmarkt. The church's location by the Rhine and its impressive architecture make it a favorite subject for photographers and a beautiful example of Cologne's Romanesque heritage.</p>
+                    </div>
+                </div>
+
+                <!-- Alter Markt -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Alter Markt (Old Market Square)</h4>
+                        <p class="card-text">This historic square in Cologne's Old Town has been a marketplace since the Middle Ages. Surrounded by colorful reconstructed facades and traditional brewhouses serving Kölsch beer, Alter Markt is the heart of Cologne's social life. The square features the Renaissance-style City Hall tower and the Jan von Werth fountain. It's especially lively during carnival season and Christmas markets, offering authentic Cologne atmosphere with outdoor cafes and restaurants year-round.</p>
+                    </div>
+                </div>
+
+                <!-- Zülpicher Platz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Zülpicher Platz</h4>
+                        <p class="card-text">Known as the party hub of Cologne's student quarter, Zülpicher Platz is surrounded by bars, pubs, clubs, and restaurants. The square comes alive at night, attracting students and young people from across the city. During the day, it's a pleasant residential area with a mix of historic and modern buildings. The square's central location makes it a popular meeting point and the gateway to the vibrant Kwartier Latäng nightlife district.</p>
+                    </div>
+                </div>
+
+                <!-- Zülpicher Strabe -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Zülpicher Straße</h4>
+                        <p class="card-text">This famous street extending from Zülpicher Platz is Cologne's most renowned nightlife strip. Lined with countless bars, clubs, restaurants, and beer gardens, Zülpicher Straße offers entertainment options for every taste. The street is particularly popular with students due to its proximity to the university. By day it's a busy shopping street, but at night it transforms into one of Germany's most vibrant party streets, especially on weekends.</p>
+                    </div>
+                </div>
+
+                <!-- Stadtgarten -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Stadtgarten</h4>
+                        <p class="card-text">This beautiful urban park and cultural venue in the Belgian Quarter combines nature with culture. The park features a romantic lake, tree-lined paths, and spacious lawns perfect for relaxation. The Stadtgarten venue hosts excellent jazz concerts, club nights, and cultural events throughout the year. During summer, the beer garden is a popular spot for locals to enjoy drinks and live music in a green oasis within the city.</p>
+                    </div>
+                </div>
+
+                <!-- Schildergasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Schildergasse</h4>
+                        <p class="card-text">Germany's busiest shopping street, Schildergasse attracts over 13,000 visitors per hour during peak times. This pedestrian zone stretches from Neumarkt to Hohe Straße and is lined with international fashion brands, department stores, and shopping centers. The street dates back to Roman times but features modern architecture including the distinctive Peek & Cloppenburg building. It's a shopping paradise and a must-visit for retail enthusiasts.</p>
+                    </div>
+                </div>
+
+                <!-- Domplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Domplatz (Cathedral Square)</h4>
+                        <p class="card-text">The expansive square surrounding Cologne Cathedral serves as the city's main gathering place for events, concerts, and celebrations. Recently redesigned, the plaza offers unobstructed views of the cathedral's magnificent facade. The square hosts major events including New Year's celebrations, carnival festivities, and the famous Christopher Street Day. The Roman-Germanic Museum and Museum Ludwig border the square, making it a cultural focal point of the city.</p>
+                    </div>
+                </div>
+
+                <!-- Eigelstein -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Eigelstein</h4>
+                        <p class="card-text">This multicultural district north of the cathedral represents Cologne's diverse character. The area around Eigelsteintor (a preserved medieval gate) is known for its international restaurants, Turkish shops, and vibrant street life. The neighborhood offers an authentic, less touristy side of Cologne with local markets, alternative bars, and a strong community atmosphere. It's an excellent area for experiencing Cologne's multicultural identity and enjoying affordable ethnic cuisine.</p>
+                    </div>
+                </div>
+
+                <!-- Freitreppe Kölner Rheinboulevard -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Freitreppe Kölner Rheinboulevard (Rhine Boulevard Steps)</h4>
+                        <p class="card-text">These wide stone steps on the right bank of the Rhine offer the best view of Cologne's historic skyline dominated by the cathedral. The modern Rheinboulevard promenade, completed in 2015, has become one of Cologne's favorite meeting spots. Locals and tourists gather on the steps to watch sunsets, enjoy picnics, and take in the stunning views across the river. The area is perfect for riverside walks and photography.</p>
+                    </div>
+                </div>
+
+                <!-- Bayenturm -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Bayenturm</h4>
+                        <p class="card-text">This medieval tower, dating from the 13th century, is one of the few remaining parts of Cologne's ancient city fortifications. Originally part of the city wall, the Bayenturm served defensive purposes and controlled access to the Rhine. Today, the tower houses a small cultural center and archive. Its riverside location offers a glimpse into Cologne's medieval past and provides a picturesque landmark along the Rhine promenade.</p>
+                    </div>
+                </div>
+
+                <!-- Kolpingplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Kolpingplatz</h4>
+                        <p class="card-text">Located in the Ehrenfeld district, Kolpingplatz is the heart of one of Cologne's trendiest neighborhoods. The square is surrounded by independent boutiques, vintage shops, cafes, and restaurants. The weekly farmers' market on Saturdays is extremely popular. The area has transformed from an industrial district into a creative hub, attracting artists, students, and young families who appreciate its alternative vibe and multicultural atmosphere.</p>
+                    </div>
+                </div>
+
+                <!-- Heumarkt -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Heumarkt (Hay Market)</h4>
+                        <p class="card-text">This large square in the Old Town has been a market place since the Middle Ages. Today, Heumarkt is known for its traditional Kölsch brewhouses, outdoor beer gardens, and as a venue for events and celebrations. The square hosts one of Cologne's Christmas markets and is a hub during carnival season. Its central location and authentic atmosphere make it a favorite spot for experiencing traditional Cologne culture and hospitality.</p>
+                    </div>
+                </div>
+
+                <!-- Ebertplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Ebertplatz</h4>
+                        <p class="card-text">This circular plaza with a distinctive fountain was designed in the 1960s as part of Cologne's modernist urban renewal. The square features a sunken fountain area and is surrounded by post-war architecture. While it has faced challenges over the years, Ebertplatz is undergoing revitalization and remains an important transport hub. The adjacent opera house and cultural institutions contribute to the area's significance in Cologne's urban landscape.</p>
+                    </div>
+                </div>
+
+                <!-- Berbuer Platz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Berbuer Platz</h4>
+                        <p class="card-text">Named after carnival legend Karl Berbuer, this square in Cologne's southern old town is a quiet residential area with local charm. The small plaza features traditional Cologne architecture and is surrounded by neighborhood pubs and shops. It represents the authentic, everyday life of Cologne away from major tourist attractions. The square serves as a community gathering point and offers insight into local residential culture.</p>
+                    </div>
+                </div>
+
+                <!-- Hohe Strasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Hohe Straße (High Street)</h4>
+                        <p class="card-text">Running from the cathedral to Schildergasse, Hohe Straße is one of Cologne's main shopping streets and follows an ancient Roman road. This pedestrian zone is lined with retail chains, restaurants, and street performers. The street connects key shopping areas and historic sites, making it one of the most walked streets in Germany. Its central location and diverse shopping options make it a vital artery of Cologne's commercial district.</p>
+                    </div>
+                </div>
+
+                <!-- Rheinpark -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Rheinpark</h4>
+                        <p class="card-text">This expansive park on the right bank of the Rhine offers 40 hectares of green space with gardens, fountains, playgrounds, and sports facilities. Created for the Federal Garden Show in 1957, the park features the Tanzbrunnen amphitheater for concerts, a miniature railway, and beautiful Rhine views. The park's highlight is the cable car (Rheinseilbahn) connecting it to the zoo, offering spectacular aerial views of Cologne and the Rhine.</p>
+                    </div>
+                </div>
+
+                <!-- Volksgarten -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Volksgarten</h4>
+                        <p class="card-text">Cologne's oldest public park, created in 1890, combines English landscape garden design with formal elements. The park features a beautiful lake (Duffesbach pond), historic pavilions, rose gardens, and tree-lined paths. Popular with locals for jogging, picnicking, and relaxing, the park also hosts a beloved beer garden in summer. The nearby Volksgarten Brunnen is a popular fountain where children play, making this a favorite family destination.</p>
+                    </div>
+                </div>
+
+                <!-- Friesenplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Friesenplatz</h4>
+                        <p class="card-text">This busy square serves as a major transportation hub and gateway to Cologne's Belgian Quarter. The plaza features the distinctive Friesentor, a remnant of the medieval city walls. Surrounded by shops, cafes, and restaurants, Friesenplatz is always bustling with activity. The square marks the beginning of Friesenstraße, a popular street for shopping and dining. Its central location makes it an important meeting point and connection to various city districts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-success mb-4">🏛️ Museums and Attractions</h2>
+
+                <div class="row">
+                    <!-- Schnütgen Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Schnütgen Museum</h5>
+                                <p class="small text-muted">Medieval Christian art and sculpture collection</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Odysseum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Odysseum</h5>
+                                <p class="small text-muted">Interactive science museum with hands-on exhibits</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €16</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Museum Ludwig -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Museum Ludwig</h5>
+                                <p class="small text-muted">Modern and contemporary art including Pop Art</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €13</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Römisch-Germanisches Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Roman-Germanic Museum</h5>
+                                <p class="small text-muted">Archaeological treasures from Roman Cologne</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rheinenergiestadion -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">RheinEnergieStadion</h5>
+                                <p class="small text-muted">1. FC Köln home stadium with tours available</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Tours vary by schedule</span>
+                                    <span class="info-badge price-badge">💶 €12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brühl Castle -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Brühl Castle (Augustusburg)</h5>
+                                <p class="small text-muted">UNESCO World Heritage Rococo palace complex</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 9:00 AM - 12:00 PM, 1:30 PM - 4:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website2.1.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

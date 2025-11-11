@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frankfurt Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #ef6c00 0%, #e65100 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #f57c00;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #1565c0;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+
+        .price-badge {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Frankfurt</h1>
+            <p class="lead">Financial Capital of Europe - Modern Skyline Meets Historic Charm</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Frankfurt</h2>
+                <p class="fs-5">Frankfurt am Main is Germany's fifth-largest city and the financial heart of Europe, home to the European Central Bank and the famous skyline nicknamed "Mainhattan." Beyond its modern skyscrapers, Frankfurt boasts a rich cultural heritage with world-class museums along Museum Embankment, a beautifully reconstructed Old Town, and connections to literary giant Johann Wolfgang von Goethe. The city perfectly balances international business with traditional German culture, making it a unique metropolitan destination.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Römerberg Square -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Römerberg Square</h4>
+                        <p class="card-text">The historic heart of Frankfurt's Old Town, Römerberg has been the city's central square for over 600 years. The square is surrounded by beautifully reconstructed half-timbered houses and dominated by the Römer, Frankfurt's medieval city hall with its iconic triple-gabled facade. This picturesque plaza has witnessed coronations, celebrations, and markets throughout history. Today, it hosts the famous Christmas market and remains the most photographed location in Frankfurt, offering a charming contrast to the modern skyline.</p>
+                    </div>
+                </div>
+
+                <!-- Cathedral of St Bartholomew -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Cathedral of St. Bartholomew (Kaiserdom)</h4>
+                        <p class="card-text">This impressive Gothic cathedral, built between the 13th and 15th centuries, served as the coronation church for Holy Roman Emperors. Its distinctive red sandstone tower rises 95 meters and offers panoramic views of Frankfurt after climbing 328 steps. The cathedral's interior features beautiful medieval altars, choir stalls, and the Electoral Chapel. Despite being called a cathedral, it was never a bishop's seat but gained its significance as the Imperial Cathedral where ten emperors were crowned.</p>
+                    </div>
+                </div>
+
+                <!-- Zeil Street -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Zeil Street</h4>
+                        <p class="card-text">Germany's most famous shopping street and one of the busiest pedestrian zones in Europe, attracting over 13,000 shoppers per hour. This 1-kilometer boulevard connects Hauptwache to Konstablerwache and features international fashion brands, department stores like Galeria Kaufhof, and the futuristic MyZeil shopping center with its distinctive glass spiral architecture. The street perfectly represents Frankfurt's modern commercial spirit and is a must-visit for shopping enthusiasts.</p>
+                    </div>
+                </div>
+
+                <!-- Eiserner Steg -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Eiserner Steg (Iron Footbridge)</h4>
+                        <p class="card-text">This iconic pedestrian bridge spans the Main River, connecting the city center with the Sachsenhausen district. Built in 1868 and reconstructed after World War II, the bridge offers spectacular views of Frankfurt's skyline and is adorned with thousands of love locks. At 170 meters long, it's one of Frankfurt's most romantic spots, especially at sunset. The bridge provides access to Museum Embankment and the apple wine taverns of Alt-Sachsenhausen.</p>
+                    </div>
+                </div>
+
+                <!-- Paulskirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Paulskirche (St. Paul's Church)</h4>
+                        <p class="card-text">This circular church holds immense political and symbolic significance as the birthplace of German democracy. Built between 1789-1833, it hosted the first freely elected German parliament in 1848. Today, the Paulskirche functions as a national monument and ceremonial hall rather than a church. The building hosts important political ceremonies, book fair events, and the prestigious Peace Prize of the German Book Trade. Its simplicity and historical importance make it an essential Frankfurt landmark.</p>
+                    </div>
+                </div>
+
+                <!-- Hauptwache -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Hauptwache</h4>
+                        <p class="card-text">This central square and major transportation hub is named after the Baroque guardhouse building that stands at its center. Built in 1730, the historic Hauptwache now houses a cafe and serves as Frankfurt's most popular meeting point. The square connects major shopping streets including Zeil and is surrounded by modern commercial buildings. Underground shopping passages and the major subway station make Hauptwache the beating heart of Frankfurt's city center.</p>
+                    </div>
+                </div>
+
+                <!-- Berger Straße -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Berger Straße</h4>
+                        <p class="card-text">This lively street running through the trendy Bornheim district is known for its authentic Frankfurt atmosphere and local charm. Stretching over 3 kilometers, Berger Straße is lined with traditional apple wine taverns, independent boutiques, cafes, restaurants, and bars. The street maintains a village-like character despite being in the city, making it popular with locals and visitors seeking genuine Frankfurt culture. The Thursday and Saturday markets add to its vibrant community feel.</p>
+                    </div>
+                </div>
+
+                <!-- Willy-Brandt-Platz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Willy-Brandt-Platz</h4>
+                        <p class="card-text">The square in front of Frankfurt's main train station is a bustling transportation hub and gateway to the city. Named after former German Chancellor Willy Brandt, the plaza connects the historic Hauptbahnhof with the banking district and city center. The square features modern sculptures and serves as a starting point for exploring Frankfurt. Its central location makes it one of the most frequented spaces in the city, surrounded by hotels, shops, and restaurants.</p>
+                    </div>
+                </div>
+
+                <!-- Goethestrasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Goethestraße</h4>
+                        <p class="card-text">Frankfurt's luxury shopping boulevard, comparable to Munich's Maximilianstraße or Paris's Champs-Élysées. This elegant street near the Opera House is home to flagship stores of international luxury brands including Prada, Gucci, Louis Vuitton, and Cartier. The street features beautiful architecture, upscale restaurants, and five-star hotels. Goethestraße represents Frankfurt's sophisticated side and is the premier destination for high-end shopping in Germany's financial capital.</p>
+                    </div>
+                </div>
+
+                <!-- Kurpark Bad Homburg -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Kurpark Bad Homburg</h4>
+                        <p class="card-text">Located just outside Frankfurt in Bad Homburg, this beautiful spa park is one of the most elegant landscape gardens in Germany. Created in the 19th century, the park features the famous Kaiser-Wilhelms-Bad spa building, Thai-Sala pavilion gifted by the King of Siam, and extensive gardens with rare trees and plants. The park offers peaceful walks, a Russian Orthodox chapel, and the Siamese Temple. It's an perfect escape from the city, easily accessible by S-Bahn, combining nature, history, and wellness culture.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-info mb-4">🏛️ Museums and Attractions</h2>
+
+                <div class="row">
+                    <!-- Museumsufer -->
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Museumsufer (Museum Embankment)</h5>
+                                <p class="small text-muted">Renowned cluster of 13 museums along the Main River including Städel Museum, German Film Museum, Museum of World Cultures, and Museum of Applied Arts</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Varies by museum</span>
+                                    <span class="info-badge price-badge">💶 €10-16 per museum</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Historisches Museum -->
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Historisches Museum Frankfurt</h5>
+                                <p class="small text-muted">Frankfurt's history museum showcasing the city's 1,200-year story from medieval times to modern metropolis</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website2.1.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

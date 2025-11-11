@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlin Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #28a745;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #dc3545;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .price-badge {
+            background-color: #fff3e0;
+            color: #e65100;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Berlin</h1>
+            <p class="lead">Capital and Largest City of Germany</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Berlin</h2>
+                <p class="fs-5">Berlin is the capital and largest city of Germany, by both area and population. With
+                    3.7 million inhabitants, it has the highest population within its city limits of any city in the 
+                    European Union, and the fifth largest in Europe after Istanbul, Moscow, London and St Petersburg.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-success mb-4">📍 Places to Visit</h2>
+
+                <!-- Brandenburg Gate -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Brandenburg Gate (Brandenburger Tor)</h4>
+                        <p class="card-text">The Brandenburg Gate, which has become the symbol of Berlin, represents
+                            Germany's unified history and Europe's hope for peace. Commissioned by Prussian King Friedrich
+                            Wilhelm II in the late 18th century, the structure stands out as a magnificent 12-column gateway
+                            inspired by ancient Greek architecture. One of the most symbolic points separating the city's
+                            west and east sides, this gate was also known as the border crossing between two worlds during
+                            the Berlin Wall era.</p>
+                    </div>
+                </div>
+
+                <!-- Berlin Wall -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Berlin Wall</h4>
+                        <p class="card-text">The Berlin Wall is a structure that has left a deep mark not only on
+                            Germany's memory but on the entire world's. Built in 1961, it not only divided West and East
+                            Germany but also became a symbol of the Cold War. When this concrete barrier, which had
+                            separated families, lives, and freedoms for decades, fell in 1989, the fate of both Germany and
+                            Europe changed.</p>
+                    </div>
+                </div>
+
+                <!-- Berlin Cathedral -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Berlin Cathedral (Berliner Dom)</h4>
+                        <p class="card-text">The Berliner Dom, with its magnificent dome standing out on the Berlin
+                            skyline, is one of the city's most striking structures, both for its architectural grandeur and
+                            its religious significance. Completed in 1905, this Protestant cathedral is one of Germany's
+                            largest churches.</p>
+                    </div>
+                </div>
+
+                <!-- Alexanderplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Alexanderplatz</h4>
+                        <p class="card-text">Alexanderplatz, one of Berlin's most central and vibrant squares, is a large
+                            public space where many of the city's transportation routes intersect, surrounded by shopping
+                            malls, hotels, and iconic landmarks. It offers an ideal starting point, especially for
+                            first-time travelers to Berlin. The famous World Clock (Weltzeituhr), located in the center of
+                            the square, is a popular tourist destination, drawing crowds to gather around it every hour.</p>
+                    </div>
+                </div>
+
+                <!-- Checkpoint Charlie -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Checkpoint Charlie</h4>
+                        <p class="card-text">Checkpoint Charlie, one of the most symbolic points of the Cold War era, was
+                            the most famous of the border crossings that separated the American and Soviet-controlled areas
+                            in the past.</p>
+                    </div>
+                </div>
+
+                <!-- Tiergarten -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Tiergarten & Victory Monument</h4>
+                        <p class="card-text">Located in the heart of Berlin, Tiergarten is one of the city's largest and
+                            most beloved parks. This vast 200-hectare green space is a natural escape for residents and
+                            tourists alike, whether for a breather, a walk, or to explore by bike. The Victory Column
+                            (Siegessäule), located near the park's center, commemorates Germany's military victories in the
+                            19th century. Topped by a golden statue of the goddess of victory (Viktoria), this column stands
+                            67 meters tall and offers visitors a sweeping view of Berlin.</p>
+                    </div>
+                </div>
+
+                <!-- Gendarmenmarkt -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Gendarmenmarkt</h4>
+                        <p class="card-text">Gendarmenmarkt is a square in Berlin containing historic buildings such as
+                            the Konzerthaus, the French Cathedral, and the German Cathedral. The square was originally
+                            created in the late 1600s as Linden-Markt. It was rebuilt in 1773 by Georg Christian Unger.</p>
+                    </div>
+                </div>
+
+                <!-- Potsdamer Platz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Potsdamer Platz</h4>
+                        <p class="card-text">After German reunification, the square quickly transformed into a completely
+                            different place. Today, it's filled with skyscrapers, shopping and entertainment centers,
+                            upscale restaurants, and businesses. Street performers and remnants of the Berlin Wall are also
+                            among the most important elements that add to the square's popularity.</p>
+                    </div>
+                </div>
+
+                <!-- Kreuzberg -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Kreuzberg</h4>
+                        <p class="card-text">Kreuzberg, one of Berlin's most vibrant, talked-about, and also
+                            controversial districts, best reflects the city's multicultural landscape. With its immigrant
+                            population, alternative lifestyles, street art, and third-wave coffee shops, it's become a
+                            popular destination for both free-spirited travelers and the city's young generation.</p>
+                    </div>
+                </div>
+
+                <!-- Unter den Linden -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Unter den Linden</h4>
+                        <p class="card-text">Unter den Linden, one of Berlin's historic boulevards, takes its name from
+                            the magnificent linden trees lining both sides. This wide avenue, stretching from the
+                            Brandenburg Gate to the Berlin Cathedral, stands out as one of the city's oldest and most
+                            prestigious pedestrian walkways. Architectural structures dating from the 18th and 19th
+                            centuries, elegant mansions, university buildings, and cultural institutions line this route.
+                            Humboldt University, the Berlin State Library, and the German Historical Museum, in particular,
+                            reflect this avenue's academic and cultural richness.</p>
+                    </div>
+                </div>
+
+                <!-- Mauerpark -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Mauerpark</h4>
+                        <p class="card-text">This expansive park, named after the Berlin Wall that once stood here, is
+                            not only a green space bearing traces of the past but also a hub of the city's cultural life.
+                            Its expansive grassy areas are filled with people picnicking, playing Frisbee, and simply
+                            sunbathing and reading. It's a wonderful spot, especially in fine weather, for those looking to
+                            observe Berlin's social fabric and experience the city's creative energy.</p>
+                    </div>
+                </div>
+
+                <!-- Kurfürstendamm -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Kurfürstendamm</h4>
+                        <p class="card-text">Kurfürstendamm, one of the city's largest shopping streets, stretches for
+                            3.5 kilometers in the center of Berlin, lined with modern buildings and historical structures.
+                            It is very lively at all hours of the day with high-quality stores where you can find products
+                            from famous brands, shopping malls, independent boutiques, roadside cafes and restaurants
+                            serving world cuisine.</p>
+                    </div>
+                </div>
+
+                <!-- Tempelhofer Feld -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Tempelhofer Feld</h4>
+                        <p class="card-text">Tempelhofer Feld, one of Berlin's most extraordinary open-air spaces, once
+                            used as an airport, has now been transformed into a massive city park. Opened in the 1920s,
+                            Tempelhof Airport served as a key strategic hub during World War II and the Cold War. It's one
+                            of the few places where you can experience nature, freedom, and social life all at once.</p>
+                    </div>
+                </div>
+
+                <!-- Oberbaum Bridge -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Oberbaum Bridge</h4>
+                        <p class="card-text">Situated over the River Spree, which flows through Berlin and offers
+                            stunning views, this historic 150-meter-long bridge is one of Berlin's most recognizable
+                            landmarks. Designed as an archway rising 28 meters above the river, the Oberbaum Bridge, which
+                            once formed the border between East and West Berlin along with the Berlin Wall, is a picturesque
+                            spot to take photos of, especially when illuminated at night. Or, you can simply take a
+                            leisurely stroll across the historic bridge and admire the breathtaking views of the River
+                            Spree.</p>
+                    </div>
+                </div>
+
+                <!-- Friedrichstraße -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Friedrichstraße</h4>
+                        <p class="card-text">One of Berlin's most popular cultural and shopping streets, Frederick Street
+                            stretches from the historic Mitte district to the Kreuzberg district. Almost completely
+                            destroyed in World War II and only partially rebuilt after Berlin was divided into two,
+                            Frederick Street is one of Berlin's liveliest districts, boasting dozens of shops and five-star
+                            hotels.</p>
+                    </div>
+                </div>
+
+                <!-- Karl Marx Allee -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Karl Marx Allee</h4>
+                        <p class="card-text">Built by East Germany between 1952 and 1960 in the historic Mitte district,
+                            Karl Marx Boulevard, lined with Socialist monuments and buildings on every corner, will give you
+                            the opportunity to see a different, almost forgotten side of Berlin.</p>
+                    </div>
+                </div>
+
+                <!-- Bebelplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-success">Bebelplatz</h4>
+                        <p class="card-text">Located in the historic Mitte district, the impressive centuries-old
+                            buildings surrounding it offer a truly spectacular sight. Located right next to the Unter den
+                            Linden Boulevard, Bebel Square boasts a centuries-long history. In addition to its monumental
+                            statues, you can also see many impressive structures up close, including the Berlin Opera House,
+                            the Humboldt University Buildings, and St. Hedwig's Cathedral, the first Catholic church built
+                            in Prussia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-danger mb-4">🏛️ Museums and Palaces</h2>
+
+                <div class="row">
+                    <!-- German Historical Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">German Historical Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pergamon Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Pergamon Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DDR Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">DDR Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jewish Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Berlin Jewish Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technology Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">German Technology Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Altes Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Altes Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bode Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Bode Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Natural History Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">German Natural History Museum</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charlottenburg Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Charlottenburg Palace</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sanssouci Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Sanssouci Palace</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bellevue Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Bellevue Palace</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Neues Palais -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Neues Palais</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spandau Citadel -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Spandau Citadel</h5>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Check website</span>
+                                    <span class="info-badge price-badge">💶 Price varies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
