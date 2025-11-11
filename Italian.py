@@ -1008,7 +1008,11 @@ print("volpe = fox")
 print("lupo = wolf")
 print("cervo = deer")
 
-print(Fore.RED,"Lesson 22 - Place in town")
+print(Fore.BLUE,"Lesson 22 - Numbers 76 - 110")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 23 - Place in town")
 
 print(Fore.WHITE, "scuola = school")
 print("ospedale = hospital")
@@ -1031,7 +1035,7 @@ print("macelleria = butcher")
 print("mercato = market")
 print("parrucchiere = airdresser")
 
-print(Fore.RED,"Lesson 23 - School Supplies")
+print(Fore.RED,"Lesson 24 - School Supplies")
 
 print(Fore.WHITE, "libro = book")
 print("penna = pen")
@@ -1054,7 +1058,7 @@ print("chiavetta USB = USB stick")
 print("cartella = schoolbag")
 print("temperino = sharpener")
 
-print(Fore.RED,"Lesson 24 - Transportation")
+print(Fore.RED,"Lesson 25 - Transportation")
 
 print(Fore.WHITE, "macchina = car")
 print("autobus = bus")
@@ -1077,7 +1081,50 @@ print("pattini in linea = rollerblades")
 print("canoa = canoe")
 print("sottomarino = submarine")
 
-print(Fore.BLUE,"Lesson 25 - Numbers 76 - 110")
 
-print(Fore.RED,"Lesson 26 - ")
+print(Fore.RED,"Lesson 26 - Numbers 111 - 150")
+
 print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 27 - Past Simple")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 28 - Personality_ Treats")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 29 - Present perfect")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 30 - Numbers 151 - 190")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 31 - Countries")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 32 - Ordering")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 33 - Shops in town")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 34 - Numbers 191 - 230")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 35 - Thing in the street")
+
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 36 - Instruments")
+print(Fore.WHITE)
+
+
+
+

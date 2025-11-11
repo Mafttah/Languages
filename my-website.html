@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel and Language Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .language-btn {
+            margin: 5px;
+            min-width: 200px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .city-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .city-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .city-list li:last-child {
+            border-bottom: none;
+        }
+
+        .country-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .country-title {
+            color: #0d6efd;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-danger mb-4">🌍 Travel Guide</h1>
+
+        <!-- Introduction Section -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary">1. Europe</h2>
+                <p>There are many countries and diverse cities to explore in Europe. For intercity travel, you can
+                    travel by train, bus, car, or, if necessary, by plane. Within the city, you can use trams, metro,
+                    and buses, or you can walk to your destination.</p>
+
+                <h3 class="mt-4 mb-3">Websites for Intercity Travel:</h3>
+                <div class="list-group mb-3">
+                    <a href="https://www.thetrainline.com/en-us" class="list-group-item list-group-item-action" target="_blank">
+                        <strong>Trainline</strong> - Train tickets across Europe
+                    </a>
+                    <a href="https://www.flixbus.co.uk/" class="list-group-item list-group-item-action" target="_blank">
+                        <strong>Flixbus</strong> - Affordable bus travel
+                    </a>
+                    <a href="https://www.skyscanner.net/" class="list-group-item list-group-item-action" target="_blank">
+                        <strong>Skyscanner</strong> - Compare flights and prices
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Country Selection -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h4>Featured European Countries</h4>
+                <p><strong>Countries:</strong> Spain, Estonia, Italy, France, Latvia, Slovakia, Poland, and Germany</p>
+
+                <div class="mb-3">
+                    <label for="chosenCountry" class="form-label">Select Your Destination:</label>
+                    <input type="text" class="form-control" id="chosenCountry" placeholder="Enter country name">
+                </div>
+                <p class="text-muted"><em>More countries will be added</em></p>
+            </div>
+        </div>
+
+        <!-- Cities to Visit Section -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="mb-4">🏙️ Cities to Visit</h2>
+
+                <div class="row">
+                    <!-- Germany -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇩🇪 Germany</h3>
+                            <ul class="city-list">
+                                <li><a href="TourGuide/Germany/Berlin2.html" class="text-decoration-none">Berlin</a></li>
+                                <li><a href="TourGuide/Germany/Munich.html" class="text-decoration-none">Munich</a></li>
+                                <li><a href="TourGuide/Germany/Hamburg.html" class="text-decoration-none">Hamburg</a></li>
+                                <li><a href="TourGuide/Germany/Cologne.html" class="text-decoration-none">Cologne</a></li>
+                                <li><a href="TourGuide/Germany/Frankfurt.html" class="text-decoration-none">Frankfurt</a></li>
+                                <li><a href="TourGuide/Germany/Stuttgart.html" class="text-decoration-none">Stuttgart</a></li>
+                                <li><a href="TourGuide/Germany/Bremen.html" class="text-decoration-none">Bremen</a></li>
+                                <li><a href="TourGuide/Germany/Ausburg.html" class="text-decoration-none">Augsburg</a></li>
+                                <li><a href="TourGuide/Germany/Dortmund.html" class="text-decoration-none">Dortmund</a></li>
+                                <li><a href="TourGuide/Germany/Leipzig.html" class="text-decoration-none">Leipzig</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Spain -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇪🇸 Spain</h3>
+                            <ul class="city-list">
+                                <li>Madrid</li>
+                                <li>Barcelona</li>
+                                <li>Sevilla</li>
+                                <li>Granada</li>
+                                <li>Valencia</li>
+                                <li>Bilbao</li>
+                                <li>Zaragoza</li>
+                                <li>Malaga</li>
+                                <li>Cartagena</li>
+                                <li>San Sebastian</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Italy -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇮🇹 Italy</h3>
+                            <ul class="city-list">
+                                <li>Rome</li>
+                                <li>Venice</li>
+                                <li>Florence</li>
+                                <li>Milan</li>
+                                <li>Naples</li>
+                                <li>Bari</li>
+                                <li>Pisa</li>
+                                <li>Bologna</li>
+                                <li>Verona</li>
+                                <li>Perugia</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- France -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇫🇷 France</h3>
+                            <ul class="city-list">
+                                <li>Paris</li>
+                                <li>Lyon</li>
+                                <li>Nice</li>
+                                <li>Strasbourg</li>
+                                <li>Marseille</li>
+                                <li>Bordeaux</li>
+                                <li>Lille</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Poland -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇵🇱 Poland</h3>
+                            <ul class="city-list">
+                                <li>Warsaw</li>
+                                <li>Krakow</li>
+                                <li>Gdansk</li>
+                                <li>Lodz</li>
+                                <li>Szczecin</li>
+                                <li>Poznan</li>
+                                <li>Wroclaw</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Latvia -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇱🇻 Latvia</h3>
+                            <ul class="city-list">
+                                <li>Riga</li>
+                                <li>Liepāja</li>
+                                <li>Kuldīga</li>
+                                <li>Sigulda</li>
+                                <li>Cēsis</li>
+                                <li>Daugavpils</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Slovakia -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇸🇰 Slovakia</h3>
+                            <ul class="city-list">
+                                <li>Bratislava</li>
+                                <li>Košice</li>
+                                <li>Žilina</li>
+                                <li>Prešov</li>
+                                <li>Trenčín</li>
+                                <li>Nitra</li>
+                                <li>Banská Štiavnica</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Estonia -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="country-section">
+                            <h3 class="country-title">🇪🇪 Estonia</h3>
+                            <ul class="city-list">
+                                <li>Tallinn</li>
+                                <li>Tartu</li>
+                                <li>Pärnu</li>
+                                <li>Haapsalu</li>
+                                <li>Narva</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Learning Resources -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h3 class="text-success mb-3">📚 Language Learning Resources</h3>
+                <p class="text-muted">Access language learning resources for your destination country below. Prepare for
+                    your trip by learning the basics of the local language!</p>
+
+                <div class="row mt-4">
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./German/German.html" class="btn btn-outline-primary language-btn w-100">
+                            🇩🇪 Learn German
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./Spanish/Spanish.html" class="btn btn-outline-primary language-btn w-100">
+                            🇪🇸 Learn Spanish
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./Estonian/Estonian.html" class="btn btn-outline-primary language-btn w-100">
+                            🇪🇪 Learn Estonian
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./French/French.html" class="btn btn-outline-primary language-btn w-100">
+                            🇫🇷 Learn French
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./Italian/Italian.html" class="btn btn-outline-primary language-btn w-100">
+                            🇮🇹 Learn Italian
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./Latvian/Latvian.html" class="btn btn-outline-primary language-btn w-100">
+                            🇱🇻 Learn Latvian
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./Slovak/Slovak.html" class="btn btn-outline-primary language-btn w-100">
+                            🇸🇰 Learn Slovak
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <a href="./Polish/Polish.html" class="btn btn-outline-primary language-btn w-100">
+                            🇵🇱 Learn Polish
+                        </a>
+                    </div>
+                </div>
+                <p class="text-muted"><em>More lessons will be added</em></p>
+            </div>
+        </div>
+
+        <!-- Additional Learning Resources -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h3 class="text-success mb-4">🎓 Additional Learning Resources</h3>
+
+                <!-- General Resources -->
+                <div class="mb-4">
+                    <h4 class="text-primary mb-3">General Language Learning Platforms</h4>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.duolingo.com" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Duolingo</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://app.memrise.com" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Memrise</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.busuu.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Busuu</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://app.mondly.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Mondly</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.50languages.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">50 Languages</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.loecsen.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Loecsen</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.lingohut.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">LingoHut</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.open.edu/openlearn/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Open Learn</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.udemy.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Udemy</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://alison.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Alison</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.mindluster.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Mindluster</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://lingua.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Lingua</a>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-2">
+                            <a href="https://www.santanderopenacademy.com/" target="_blank" class="btn btn-sm btn-outline-secondary w-100">Santander Open Academy</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specific Language Resources -->
+                <div>
+                    <h4 class="text-primary mb-4">Specific Language Resources</h4>
+
+                    <div class="row">
+                        <!-- German -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇩🇪 German Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://deutsch.lingolia.com/" target="_blank">Lingolia</a></li>
+                                <li><a href="https://german.net/" target="_blank">German.net</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Spanish -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇪🇸 Spanish Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://studyspanish.com/" target="_blank">Study Spanish</a></li>
+                                <li><a href="https://spanishboom.com/" target="_blank">Spanish Boom</a></li>
+                                <li><a href="https://www.spanishboat.com/" target="_blank">Spanish Boat</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Italian -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇮🇹 Italian Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.theitalianexperiment.com/" target="_blank">Italian Experiment</a></li>
+                                <li><a href="https://onlineitalianclub.com/" target="_blank">Italian Club</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- French -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇫🇷 French Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.elearningfrench.com/" target="_blank">Learn French</a></li>
+                                <li><a href="https://youfrench.com/" target="_blank">You French</a></li>
+                                <li><a href="https://www.thefrenchexperiment.com/" target="_blank">The French Experiment</a></li>
+                                <li><a href="https://apprendre.tv5monde.com/en/collection-all" target="_blank">TV5 Monde Edu</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Slovak -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇸🇰 Slovak Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://slovake.eu/" target="_blank">Slovake EU</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Polish -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇵🇱 Polish Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.learnpolishtoday.com/" target="_blank">Learn Polish Today</a></li>
+                                <li><a href="https://learnpolska.com/" target="_blank">Learn Polska</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Latvian -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇱🇻 Latvian Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.ilanguages.org/latvian.php" target="_blank">Ilanguages.org</a></li>
+                                <li><a href="https://mylanguages.org/learn_latvian" target="_blank">myLanguages.org</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Estonian -->
+                        <div class="col-md-6 mb-4">
+                            <h5 class="text-secondary">🇪🇪 Estonian Resources</h5>
+                            <ul class="list-unstyled">
+                                <li><a href="https://estilang.com/" target="_blank">Estilang</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Forms -->
+        <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+                <div class="card section-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">📧 Contact Form</h5>
+                        <p class="card-text">Fill out the form for your questions and inquiries</p>
+
+                        <form class="flex-grow-1">
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name:</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name:</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email1" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message1" class="form-label">Your Message:</label>
+                                <textarea class="form-control" id="message1" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card section-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">💬 Language Request</h5>
+                        <p class="card-text">Request additional language options or resources here</p>
+
+                        <form class="flex-grow-1">
+                            <div class="mb-3">
+                                <label for="email2" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email2" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message2" class="form-label">Your Message:</label>
+                                <textarea class="form-control" id="message2" rows="3" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html>

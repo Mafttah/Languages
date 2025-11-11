@@ -965,5 +965,45 @@ print("U-Boot = submarine")
 
 print(Fore.BLUE,"Lesson 25 - Numbers 76 - 110")
 
-print(Fore.RED,"Lesson 26 - ")
 print(Fore.WHITE)
+
+
+print(Fore.RED,"Lesson 26 - Numbers 111 - 150")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 27 - Past Simple")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 28 - Personality_ Treats")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 29 - Present perfect")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 30 - Numbers 151 - 190")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 31 - Countries")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 32 - Ordering")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 33 - Shops in town")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 34 - Numbers 191 - 230")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 35 - Thing in the street")
+print(Fore.WHITE)
+
+print(Fore.RED,"Lesson 36 - Instruments")
+print(Fore.WHITE)
+
+
+
+
+
+
+
