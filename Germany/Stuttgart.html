@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuttgart Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #388e3c;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #c62828;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .price-badge {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Stuttgart</h1>
+            <p class="lead">Cradle of the Automobile - Innovation Meets Swabian Tradition</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Stuttgart</h2>
+                <p class="fs-5">Stuttgart is the capital of Baden-Württemberg and Germany's sixth-largest city, nestled in a valley surrounded by vineyards and hills. Known as the birthplace of the automobile with Mercedes-Benz and Porsche headquartered here, Stuttgart combines industrial innovation with cultural sophistication. The city boasts world-class museums, beautiful Baroque palaces, extensive parks, and the famous Swabian wine culture. Its unique topography with steep hillsides creates a distinctive cityscape unlike any other German metropolis.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Wilhelmsplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Wilhelmsplatz</h4>
+                        <p class="card-text">This elegant square in Stuttgart's city center is named after King Wilhelm I of Württemberg. The plaza features beautiful landscaping with fountains and monuments, surrounded by important administrative buildings including the Stuttgart City Library with its distinctive modern architecture. Wilhelmsplatz serves as a peaceful urban oasis and connects various cultural institutions. The square's design reflects Stuttgart's blend of historic tradition and contemporary urban planning.</p>
+                    </div>
+                </div>
+
+                <!-- Schloßplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Schloßplatz (Palace Square)</h4>
+                        <p class="card-text">Stuttgart's largest and most beautiful square is the heart of the city, dominated by the impressive Neues Schloss (New Palace). This expansive plaza features manicured lawns, fountains, and the Jubilee Column commemorating King Wilhelm I. The square hosts major events, festivals, and markets throughout the year. Surrounded by the Old Palace, Königsbau arcade, and Konigstrasse shopping street, Schloßplatz perfectly embodies Stuttgart's elegant atmosphere and serves as the city's living room.</p>
+                    </div>
+                </div>
+
+                <!-- Eugensplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Eugensplatz</h4>
+                        <p class="card-text">Perched on the Karlshöhe hill, Eugensplatz offers one of the best panoramic views over Stuttgart's valley basin and surrounding vineyards. This elevated square features the Galatea Fountain and is surrounded by elegant villas from Stuttgart's golden age. The plaza is a popular spot for photographers and sunset watchers. The nearby Eugenstaffel, a monumental staircase with over 500 steps, connects the square to the city below and has become an iconic Stuttgart landmark.</p>
+                    </div>
+                </div>
+
+                <!-- The Grabkapelle -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">The Grabkapelle (Württemberg Mausoleum)</h4>
+                        <p class="card-text">This romantic chapel atop Württemberg hill was built by King Wilhelm I as a tomb for his beloved wife Queen Katharina. Completed in 1824, the Russian Orthodox-style church with its distinctive onion dome is one of Stuttgart's most photographed monuments. The chapel offers breathtaking views over the Neckar Valley and Stuttgart. Surrounded by vineyards, the Grabkapelle represents a touching monument to royal love and is a popular destination for walks through the wine-growing region.</p>
+                    </div>
+                </div>
+
+                <!-- Collegiate Church -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Stiftskirche (Collegiate Church)</h4>
+                        <p class="card-text">Stuttgart's most important Protestant church, dating back to the 12th century, features two distinctive mismatched towers that have become symbols of the city. The church combines Romanesque and Gothic architectural elements and houses tombs of Württemberg rulers. The interior contains beautiful late Gothic features including carved choir stalls and a baptismal font from 1472. Located on Schillerplatz adjacent to the Old Palace, the church stands at the historic heart of Stuttgart.</p>
+                    </div>
+                </div>
+
+                <!-- Killesberg Park -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Killesberg Park (Höhenpark Killesberg)</h4>
+                        <p class="card-text">This expansive hillside park covering 123 acres offers beautifully landscaped gardens, walking paths, playgrounds, and stunning city views. Created for the 1939 Reichsgartenschau, the park features themed gardens, a miniature railway popular with children, an animal enclosure, and the distinctive 42-meter Killesberg Tower with its spiral staircase offering panoramic vistas. The park hosts summer concerts and events, making it one of Stuttgart's favorite recreational destinations for families and nature lovers.</p>
+                    </div>
+                </div>
+
+                <!-- Birkenkopf -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Birkenkopf (Monte Scherbelino)</h4>
+                        <p class="card-text">This 511-meter hill, Stuttgart's highest point, holds deep historical significance. After World War II, rubble from the destroyed city was piled onto the natural hill, creating a 40-meter high memorial mound. Known as "Monte Scherbelino" (Mount Rubble), the Birkenkopf stands as a powerful monument to the destruction of war and the city's reconstruction. The summit, marked by a cross, offers spectacular 360-degree views over Stuttgart and the Swabian Alps, making it a popular hiking destination.</p>
+                    </div>
+                </div>
+
+                <!-- Koenigstrasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Königstraße (King Street)</h4>
+                        <p class="card-text">Germany's longest shopping street stretches 1.2 kilometers through Stuttgart's city center, connecting the main train station to Schlossplatz. This pedestrian boulevard is lined with department stores, international fashion brands, cafes, and the historic Königsbau arcade. Königstraße forms the commercial heart of Stuttgart and is one of Germany's busiest shopping destinations. The street's mix of modern retail architecture and historic buildings reflects the city's reconstruction after World War II and its economic vitality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-danger mb-4">🏛️ Museums and Palaces</h2>
+
+                <div class="row">
+                    <!-- Ludwigsburg Palace -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Ludwigsburg Palace</h5>
+                                <p class="small text-muted">One of Germany's largest Baroque palaces with magnificent gardens</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €9.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schloss Solitude -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Schloss Solitude</h5>
+                                <p class="small text-muted">Rococo palace with spectacular views over Stuttgart valley</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 12:00 PM, 1:30 PM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hohenzollern Castle -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Hohenzollern Castle</h5>
+                                <p class="small text-muted">Ancestral seat of Prussian Kings and German Emperors, near Stuttgart</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:30 PM</span>
+                                    <span class="info-badge price-badge">💶 €12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Altes Schloss -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Altes Schloss (Old Palace)</h5>
+                                <p class="small text-muted">Renaissance palace housing Württemberg State Museum</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mercedes Benz Arena -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Mercedes-Benz Arena</h5>
+                                <p class="small text-muted">VfB Stuttgart home stadium with tours available</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Tours vary by schedule</span>
+                                    <span class="info-badge price-badge">💶 €12</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
