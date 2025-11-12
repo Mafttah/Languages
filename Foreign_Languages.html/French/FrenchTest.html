@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Test System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4a5568;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #eef2ff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .info-box h3 {
+            color: #4c51bf;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            color: #2d3748;
+        }
+
+        .info-box li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .info-box li::before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+
+        .btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        .question-box {
+            background: #eef2ff;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question-text {
+            color: #2d3748;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #cbd5e0;
+            border-radius: 12px;
+            font-size: 1.1em;
+            margin: 15px 0;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .feedback {
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-correct {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .feedback-wrong {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .feedback-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .feedback-text {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .score-big {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #fbd38d 0%, #ed8936 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+        }
+
+        .overall-stats {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Screen -->
+    <div id="homeScreen" class="container">
+        <h1>🇫🇷 French Test System</h1>
+        <p class="subtitle">Comprehensive Learning + Various Question Types + General Review</p>
+        
+        <div class="info-box">
+            <h3>How it works:</h3>
+            <ul>
+                <li>Complete all lessons in order</li>
+                <li>Each lesson has multiple question types</li>
+                <li>General review after each lesson</li>
+                <li>Track your progress across all lessons</li>
+            </ul>
+        </div>
+
+        <button class="btn btn-primary" onclick="startFirstLesson()">
+            Start Test - Begin with Lesson 1
+        </button>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="testScreen" class="container hidden">
+        <div class="progress-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h2 id="lessonTitle"></h2>
+                <span id="lessonProgress" style="color: #718096;"></span>
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div class="progress-info">
+                <span id="questionNumber"></span>
+                <span id="currentScore"></span>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="question-text" id="questionText"></div>
+        </div>
+
+        <div id="answerSection">
+            <input type="text" id="answerInput" placeholder="Type your answer..." onkeypress="handleEnter(event)">
+            <button class="btn btn-primary" id="submitBtn" onclick="checkAnswer()">
+                Submit Answer
+            </button>
+        </div>
+
+        <div id="feedbackSection" class="hidden">
+            <div id="feedbackBox" class="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div>
+                    <div class="feedback-text" id="feedbackText"></div>
+                    <div id="correctAnswer" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+            <button class="btn btn-success" onclick="nextQuestion()">
+                Next Question →
+            </button>
+        </div>
+
+        <div class="overall-stats">
+            <span id="overallProgress"></span>
+        </div>
+    </div>
+
+    <!-- Lesson Complete Screen -->
+    <div id="lessonCompleteScreen" class="container hidden">
+        <div class="icon">🏆</div>
+        <h1>Main Questions Complete!</h1>
+        
+        <div class="result-card">
+            <div class="stat-label">Score</div>
+            <div class="score-big" id="mainScore"></div>
+            <div id="mainPercentage" style="font-size: 2em; font-weight: bold; margin-top: 10px;"></div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.2em; color: #4a5568; margin: 25px 0;">
+            Now it's time for the General Review!
+        </p>
+
+        <button class="btn btn-primary" onclick="startReview()">
+            Start General Review
+        </button>
+    </div>
+
+    <!-- Review Complete Screen -->
+    <div id="reviewCompleteScreen" class="container hidden">
+        <div class="icon">🎉</div>
+        <h1>Lesson Complete!</h1>
+        <h2 id="completedLessonName" style="text-align: center; color: #718096;"></h2>
+
+        <div class="result-card">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Main Questions</div>
+                    <div class="stat-value" id="mainQScore" style="color: #667eea;"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">General Review</div>
+                    <div class="stat-value" id="reviewScore" style="color: #764ba2;"></div>
+                </div>
+            </div>
+            <div class="stat-card" style="margin-top: 20px;">
+                <div class="stat-label">Total Score</div>
+                <div class="stat-value" id="totalScore"></div>
+                <div id="totalPercentage" style="font-size: 2em; font-weight: bold; margin-top: 10px;"></div>
+                <div id="performanceMessage" style="font-size: 1.2em; font-weight: 600; margin-top: 10px;"></div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="continueToNext()">
+            <span id="continueButtonText"></span> →
+        </button>
+
+        <div style="text-align: center; color: #718096; margin-top: 15px;">
+            <span id="lessonsCompleted"></span>
+        </div>
+    </div>
+
+    <!-- Final Results Screen -->
+    <div id="finalScreen" class="container hidden">
+        <div class="emoji">🎊</div>
+        <h1>ALL LESSONS COMPLETED!</h1>
+        <h2 style="text-align: center; color: #764ba2;">FINAL RESULTS</h2>
+
+        <div class="result-card">
+            <div style="margin-bottom: 30px;">
+                <div class="stat-label">Total Lessons</div>
+                <div style="font-size: 3em; font-weight: bold;" id="totalLessons"></div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <div class="stat-label">Total Score</div>
+                <div style="font-size: 4em; font-weight: bold; color: #667eea;" id="finalScore"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Success Rate</div>
+                <div class="score-big" id="finalPercentage"></div>
+                <div id="finalMessage" style="font-size: 1.5em; font-weight: bold; margin-top: 15px;"></div>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.3em; color: #48bb78; font-weight: 600; margin: 25px 0;">
+            Congratulations! You completed the entire test!
+        </p>
+
+        <button class="btn btn-primary" onclick="goHome()">
+            🏠 Back to Home
+        </button>
+    </div>
+
+    <script>
+        // Normalize text function
+        function normalizeText(text) {
+            return text.toLowerCase().trim()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        // French lessons data
+        const lessonsData = {
+            "Lesson 1 - Numbers 1-10": {
+                count: 10,
+                words: [
+                    ["1", "une"], ["2", "deux"], ["3", "trois"], ["4", "quatre"], ["5", "cinq"],
+                    ["6", "six"], ["7", "sept"], ["8", "huit"], ["9", "neuf"], ["10", "dix"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 2 - Greetings": {
+                count: 18,
+                words: [
+                    ["Hello", "salut"], ["How are you?", "comment allez-vous"], ["Nice to see you", "content de vous voir"],
+                    ["Nice to meet you", "enchante"], ["See you tomorrow", "a demain"], ["Good morning", "bonjour"],
+                    ["Good afternoon", "bonne apres-midi"], ["Good evening", "bonsoir"], ["Good night", "bonne nuit"],
+                    ["What is your name?", "quel est ton nom"], ["My name is", "mon nom est"], ["Where do you live?", "ou habites-tu"],
+                    ["Where are you from?", "d'ou venez-vous"], ["Have a nice day", "bonne journee"],
+                    ["See you later", "a la prochaine"], ["Goodbye", "au revoir"], ["Please", "s'il vous plait"], ["Thank you", "merci"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.1 - Regular -ER Verbs": {
+                count: 38,
+                words: [
+                    ["to lower", "abaisser"], ["to ruin", "abimer"], ["to like/love", "aimer"],
+                    ["to arrive", "arriver"], ["to move", "bouger"], ["to brush", "brosser"],
+                    ["to change", "changer"], ["to sing", "chanter"], ["to look for", "chercher"],
+                    ["to begin", "commencer"], ["to correct", "corriger"], ["to dance", "danser"],
+                    ["to ask for", "demander"], ["to hate", "detester"], ["to give", "donner"],
+                    ["to listen to", "ecouter"], ["to erase", "effacer"], ["to study", "etudier"],
+                    ["to congratulate", "feliciter"], ["to celebrate", "feter"], ["to win/earn", "gagner"],
+                    ["to slide", "glisser"], ["to live", "habiter"], ["to play", "jouer"],
+                    ["to eat", "manger"], ["to miss", "manquer"], ["to walk", "marcher"],
+                    ["to climb", "monter"], ["to swim", "nager"], ["to speak", "parler"],
+                    ["to share", "partager"], ["to think", "penser"], ["to watch", "regarder"],
+                    ["to ski", "skier"], ["to work", "travailler"], ["to find", "trouver"],
+                    ["to visit", "visiter"], ["to travel", "voyager"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.2 - Regular -IR Verbs": {
+                count: 28,
+                words: [
+                    ["to abolish", "abolir"], ["to accomplish", "accomplir"], ["to act", "agir"],
+                    ["to enlarge", "agrandir"], ["to warn", "avertir"], ["to build", "batir"],
+                    ["to bless", "benir"], ["to whiten", "blanchir"], ["to choose", "choisir"],
+                    ["to convert", "convertir"], ["to define", "definir"], ["to establish", "etablir"],
+                    ["to stun", "etourdir"], ["to finish", "finir"], ["to clear", "franchir"],
+                    ["to gain weight", "grossir"], ["to cure", "guerir"], ["to invest", "investir"],
+                    ["to lose weight", "maigrir"], ["to feed", "nourrir"], ["to obey", "obeir"],
+                    ["to punish", "punir"], ["to reflect", "reflechir"], ["to fill", "remplir"],
+                    ["to succeed", "reussir"], ["to blush", "rougir"], ["to seize", "saisir"],
+                    ["to age", "vieillir"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.3 - Regular -RE Verbs": {
+                count: 19,
+                words: [
+                    ["to wait for", "attendre"], ["to confuse", "confondre"], ["to correspond", "correspondre"],
+                    ["to defend", "defendre"], ["to depend", "dependre"], ["to descend", "descendre"],
+                    ["to hear", "entendre"], ["to stretch", "etendre"], ["to melt", "fondre"],
+                    ["to bite", "mordre"], ["to hang", "pendre"], ["to lose", "perdre"],
+                    ["to claim", "pretendre"], ["to give back", "rendre"], ["to spread", "repandre"],
+                    ["to answer", "repondre"], ["to suspend", "suspendre"], ["to twist", "tordre"],
+                    ["to sell", "vendre"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 4 - Adjectives": {
+                count: 35,
+                words: [
+                    ["Happy", "heureux"], ["Sad", "triste"], ["Angry", "enerve"],
+                    ["Afraid", "peur"], ["Joy", "joie"], ["Surprised", "surpris"],
+                    ["Calm", "calme"], ["Bored", "ennuye"], ["Easy", "facile"],
+                    ["Difficult", "difficile"], ["Bad", "mauvais"], ["Good", "bon"],
+                    ["Noisy", "bruyant"], ["Quiet", "silencieux"], ["Strong", "fort"],
+                    ["Weak", "faible"], ["Hard", "dur"], ["Soft", "mou"],
+                    ["More", "plus"], ["Less", "moins"], ["Clean", "propre"],
+                    ["Dirty", "sale"], ["Old", "vieux"], ["New", "nouveau"],
+                    ["Big", "grand"], ["Small", "petit"], ["Young", "jeune"],
+                    ["Skinny", "maigre"], ["Fat", "gros"], ["Pretty", "joli"],
+                    ["Ugly", "laid"], ["Thick", "epais"], ["Thin", "mince"],
+                    ["Rough", "reche"], ["Smooth", "lisse"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 5.1 - Days": {
+                count: 11,
+                words: [
+                    ["The days of the week", "les jours de la semaine"], ["Day", "jour"], ["Week", "semaine"],
+                    ["Monday", "lundi"], ["Tuesday", "mardi"], ["Wednesday", "mercredi"],
+                    ["Thursday", "jeudi"], ["Friday", "vendredi"], ["Saturday", "samedi"],
+                    ["Sunday", "dimanche"], ["Weekend", "fin de semaine"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 5.2 - Months": {
+                count: 15,
+                words: [
+                    ["The months of the year", "les mois de l'annee"], ["Month", "mois"], ["Year", "annee"],
+                    ["January", "janvier"], ["February", "fevrier"], ["March", "mars"],
+                    ["April", "avril"], ["May", "mai"], ["June", "juin"],
+                    ["July", "juillet"], ["August", "aout"], ["September", "septembre"],
+                    ["October", "octobre"], ["November", "novembre"], ["December", "decembre"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 6 - Seasons & Weather": {
+                count: 23,
+                words: [
+                    ["Seasons", "les saisons"], ["Winter", "hiver"], ["Summer", "ete"],
+                    ["Spring", "printemps"], ["Autumn", "automne"], ["Sky", "ciel"],
+                    ["Cloud", "nuage"], ["Rainbow", "arc-en-ciel"], ["Cold", "froid"],
+                    ["Hot", "chaud"], ["It is hot", "il fait chaud"], ["It is cold", "il fait froid"],
+                    ["It is sunny", "il y a du soleil"], ["It is cloudy", "il fait nuageux"], ["It is humid", "il fait humide"],
+                    ["It is raining", "il pleut"], ["It is snowing", "il neige"], ["It is windy", "il y a du vent"],
+                    ["How is the weather?", "quel temps fait-il"], ["Good weather", "beau temps"], ["Bad weather", "mauvais temps"],
+                    ["What is the temperature?", "quelle temperature fait-il"], ["It is 24 degrees", "il fait 24 degres"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 7 - Colors": {
+                count: 14,
+                words: [
+                    ["Black", "noir"], ["Blue", "bleu"], ["Brown", "marron"],
+                    ["Green", "vert"], ["Orange", "orange"], ["Purple", "violet"],
+                    ["Red", "rouge"], ["White", "blanc"], ["Yellow", "jaune"],
+                    ["Gray", "gris"], ["Gold", "dore"], ["Silver", "argente"],
+                    ["What color is it?", "quelle couleur est-ce"], ["The color is", "c'est"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 8.1 - Family": {
+                count: 35,
+                words: [
+                    ["Mother", "mere"], ["Father", "pere"], ["Brother", "frere"],
+                    ["Sister", "soeur"], ["Son", "fils"], ["Daughter", "fille"],
+                    ["Parents", "parents"], ["Children", "enfants"], ["Child", "enfant"],
+                    ["Stepmother", "belle-mere"], ["Stepfather", "beau-pere"], ["Stepsister", "demi-soeur"],
+                    ["Stepbrother", "demi-frere"], ["Son-in-law", "gendre"], ["Daughter-in-law", "belle-fille"],
+                    ["Wife", "epouse"], ["Husband", "mari"], ["Grandparents", "grands-parents"],
+                    ["Grandfather", "grand-pere"], ["Grandmother", "grand-mere"], ["Grandson", "petit-fils"],
+                    ["Granddaughter", "petite-fille"], ["Grandchildren", "petits-enfants"], ["Grandchild", "petit enfant"],
+                    ["Aunt", "tante"], ["Uncle", "oncle"], ["Cousin (female)", "cousine"],
+                    ["Cousin (male)", "cousin"], ["Nephew", "neveu"], ["Niece", "niece"],
+                    ["Father-in-law", "beau-pere"], ["Mother-in-law", "belle-mere"], ["Brother-in-law", "beau-frere"],
+                    ["Sister-in-law", "belle-soeur"], ["Relative", "proche"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 8.2 - Friends": {
+                count: 14,
+                words: [
+                    ["Miss", "mademoiselle"], ["Boy", "garcon"], ["Girl", "fille"],
+                    ["Baby", "bebe"], ["Woman", "femme"], ["Man", "homme"],
+                    ["Friend (male)", "ami"], ["Friend (female)", "amie"], ["Boyfriend", "petit ami"],
+                    ["Girlfriend", "petite amie"], ["Gentleman", "monsieur"], ["Lady", "dame"],
+                    ["Neighbor (male)", "voisin"], ["Neighbor (female)", "voisine"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 9 - Numbers 11-30": {
+                count: 20,
+                words: [
+                    ["11", "onze"], ["12", "douze"], ["13", "treize"],
+                    ["14", "quatorze"], ["15", "quinze"], ["16", "seize"],
+                    ["17", "dix-sept"], ["18", "dix-huit"], ["19", "dix-neuf"],
+                    ["20", "vingt"], ["21", "vingt et un"], ["22", "vingt-deux"],
+                    ["23", "vingt-trois"], ["24", "vingt-quatre"], ["25", "vingt-cinq"],
+                    ["26", "vingt-six"], ["27", "vingt-sept"], ["28", "vingt-huit"],
+                    ["29", "vingt-neuf"], ["30", "trente"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 10.1 - Prepositions": {
+                count: 36,
+                words: [
+                    ["For", "pour"], ["From", "depuis"], ["In", "dans"],
+                    ["Inside", "a l'interieur"], ["Into", "dans"], ["Near", "pres"],
+                    ["Of", "de"], ["Out", "hors"], ["Outside", "a l'exterieur"],
+                    ["To", "a"], ["Under", "sous"], ["With", "avec"],
+                    ["Without", "sans"], ["Above", "au-dessus"], ["Across", "de l'autre cote"],
+                    ["After", "apres"], ["Against", "contre"], ["Along", "le long"],
+                    ["Around", "autour"], ["At", "a"], ["Behind", "derriere"],
+                    ["Below", "en-dessous"], ["Beside", "a cote de"], ["Between", "entre"],
+                    ["By", "pres"], ["During", "pendant"], ["Except", "sauf"],
+                    ["And", "et"], ["Because", "parce que"], ["But", "mais"],
+                    ["Or", "ou"], ["Everywhere", "partout"], ["Everyone", "tout le monde"],
+                    ["Everything", "tout"], ["Few", "peu"], ["Some", "certains"],
+                    ["Many", "beaucoup"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 10.2 - Useful Words": {
+                count: 29,
+                words: [
+                    ["Question", "question"], ["Answer", "reponse"], ["Truth", "verite"],
+                    ["Lie", "mensonge"], ["Nothing", "rien"], ["Something", "quelque chose"],
+                    ["Same", "le meme"], ["Different", "different"], ["Pull", "tirer"],
+                    ["Push", "pousser"], ["Long", "long"], ["Short", "court"],
+                    ["Cold", "froid"], ["Hot", "chaud"], ["Light", "clair"],
+                    ["Dark", "fonce"], ["Wet", "mouille"], ["Dry", "sec"],
+                    ["Empty", "vide"], ["Full", "plein"], ["How?", "comment"],
+                    ["What?", "quoi"], ["When?", "quand"], ["Where?", "ou"],
+                    ["Which?", "lequel"], ["Who?", "qui"], ["Why?", "pourquoi"],
+                    ["How long?", "combien de temps"], ["How much?", "combien"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.1 - Drinks": {
+                count: 9,
+                words: [
+                    ["Coffee", "cafe"], ["Tea", "the"], ["Soft drink", "boisson gazeuse"],
+                    ["Water", "eau"], ["Lemonade", "limonade"], ["Juice", "jus"],
+                    ["Orange juice", "jus d'orange"], ["I would like a glass of water please", "je voudrais un verre d'eau s'il vous plait"],
+                    ["With ice", "avec glacons"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.2 - Dairy Products": {
+                count: 19,
+                words: [
+                    ["Milk", "lait"], ["Ice cream", "glace"], ["Butter", "beurre"],
+                    ["Cheese", "fromage"], ["Cottage cheese", "fromage cottage"], ["Cream", "creme"],
+                    ["Sour cream", "creme fraiche"], ["Yogurt", "yaourt"], ["Eggs", "oeufs"],
+                    ["Whipping cream", "creme chantilly"], ["Bakery", "boulangerie-patisserie"], ["Baguette", "baguette"],
+                    ["Doughnut", "beignet"], ["Cookie", "petit gateau"], ["Roll", "petit pain"],
+                    ["Dessert", "dessert"], ["Cake", "gateau"], ["Bread", "pain"],
+                    ["Pie", "tarte"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.3 - Meats": {
+                count: 13,
+                words: [
+                    ["Beef", "boeuf"], ["Veal", "veau"], ["Ham", "jambon"],
+                    ["Chicken", "poulet"], ["Turkey", "dinde"], ["Duck", "canard"],
+                    ["Bacon", "lard"], ["Pork", "porc"], ["Filet mignon", "filet mignon"],
+                    ["Sausage", "saucisse"], ["Lamb chop", "cotelette d'agneau"], ["Pork chop", "cotelette de porc"],
+                    ["Meat", "viande"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.4 - Seafoods": {
+                count: 20,
+                words: [
+                    ["Fish", "poisson"], ["Shellfish", "fruits de mer"], ["Bass", "perche"],
+                    ["Salmon", "saumon"], ["Lobster", "homard"], ["Crab", "crabe"],
+                    ["Mussel", "moule"], ["Oyster", "huitre"], ["Cod", "cabillaud"],
+                    ["Clam", "palourde"], ["Shrimp", "crevette"], ["Tuna", "thon"],
+                    ["Trout", "truite"], ["Sole", "sole"], ["Shark", "requin"],
+                    ["Carp", "carpe"], ["Tilapia", "tilapia"], ["Eel", "anguille"],
+                    ["Catfish", "poisson-chat"], ["Swordfish", "espadon"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.5 - Herbs & Spices": {
+                count: 17,
+                words: [
+                    ["Salt", "sel"], ["Pepper", "poivre"], ["Caraway", "carvi"],
+                    ["Garlic", "ail"], ["Basil", "basilic"], ["Coriander", "coriandre"],
+                    ["Fennel", "fenouil"], ["Marjoram", "marjolaine"], ["Oregano", "origan"],
+                    ["Parsley", "persil"], ["Rosemary", "romarin"], ["Sage", "sauge"],
+                    ["Thyme", "thym"], ["Nutmeg", "muscade"], ["Paprika", "paprika"],
+                    ["Cayenne", "cayenne"], ["Ginger", "gingembre"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.6 - Vegetables": {
+                count: 28,
+                words: [
+                    ["Celery", "celeri"], ["Eggplant", "aubergine"], ["Zucchini", "courgette"],
+                    ["Onion", "oignon"], ["Spinach", "epinards"], ["Salad", "salade"],
+                    ["Green beans", "haricots verts"], ["Cucumber", "concombre"], ["Radish", "radis"],
+                    ["Cabbage", "chou"], ["Mushrooms", "champignons"], ["Lettuce", "laitue"],
+                    ["Corn", "mais"], ["Potatoes", "pommes de terre"], ["Tomato", "tomate"],
+                    ["Carrot", "carotte"], ["Plantain", "banane plantain"], ["Beans", "haricots"],
+                    ["Leek", "poireau"], ["Lotus root", "racine de lotus"], ["Bamboo shoot", "pousse de bambou"],
+                    ["Artichoke", "artichaut"], ["Asparagus", "asperge"], ["Brussels sprouts", "choux de bruxelles"],
+                    ["Broccoli", "brocoli"], ["Peas", "pois"], ["Cauliflower", "chou-fleur"],
+                    ["Chili pepper", "piment"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.7 - Fruits": {
+                count: 27,
+                words: [
+                    ["Cherries", "cerises"], ["Raspberries", "framboises"], ["Blueberries", "myrtilles"],
+                    ["Strawberries", "fraises"], ["Lemon", "citron"], ["Lime", "citron vert"],
+                    ["Apple", "pomme"], ["Orange", "orange"], ["Pear", "poire"],
+                    ["Banana", "banane"], ["Grapes", "raisins"], ["Grapefruit", "pamplemousse"],
+                    ["Watermelon", "pasteque"], ["Pineapple", "ananas"], ["Plum", "prune"],
+                    ["Peach", "peche"], ["Mango", "mangue"], ["Apricot", "abricot"],
+                    ["Pomegranate", "grenade"], ["Persimmon", "kaki"], ["Kiwi", "kiwi"],
+                    ["Litchi", "litchi"], ["Longan", "longane"], ["Balsam pear", "melon amer"],
+                    ["Passion fruit", "fruit de la passion"], ["Avocado", "avocat"], ["Coconut", "noix de coco"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 12 - Irregular Verbs": {
+                count: 46,
+                words: [
+                    ["to be", "etre"], ["to lie down", "etre couche"], ["to say", "dire"],
+                    ["to understand", "comprendre"], ["to take", "prendre"], ["to write", "ecrire"],
+                    ["to hear", "entendre"], ["to begin", "commencer"], ["to break", "casser"],
+                    ["to build", "construire"], ["to choose", "choisir"], ["to do/make", "faire"],
+                    ["to drive", "conduire"], ["to forget", "oublier"], ["to get", "obtenir"],
+                    ["to hold", "tenir"], ["to leave", "partir"], ["to meet", "rencontrer"],
+                    ["to pay", "payer"], ["to put", "mettre"], ["to read", "lire"],
+                    ["to run", "courir"], ["to see", "voir"], ["to send", "envoyer"],
+                    ["to sleep", "dormir"], ["to speak", "parler"], ["to spend (time)", "passer"],
+                    ["to swim", "nager"], ["to teach", "enseigner"], ["to tell", "raconter"],
+                    ["to think", "penser"], ["to throw", "jeter"], ["to win", "gagner"],
+                    ["to drink", "boire"], ["to go", "aller"], ["to give", "donner"],
+                    ["to eat", "manger"], ["to find", "trouver"], ["to fall", "tomber"],
+                    ["to bring", "apporter"], ["to have", "avoir"], ["to come", "venir"],
+                    ["to know (fact)", "savoir"], ["to want", "vouloir"], ["to sit", "s'asseoir"],
+                    ["to stand", "se tenir debout"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 14 - Numbers 31-50": {
+                count: 20,
+                words: [
+                    ["31", "trente et un"], ["32", "trente-deux"], ["33", "trente-trois"],
+                    ["34", "trente-quatre"], ["35", "trente-cinq"], ["36", "trente-six"],
+                    ["37", "trente-sept"], ["38", "trente-huit"], ["39", "trente-neuf"],
+                    ["40", "quarante"], ["41", "quarante et un"], ["42", "quarante-deux"],
+                    ["43", "quarante-trois"], ["44", "quarante-quatre"], ["45", "quarante-cinq"],
+                    ["46", "quarante-six"], ["47", "quarante-sept"], ["48", "quarante-huit"],
+                    ["49", "quarante-neuf"], ["50", "cinquante"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 15 - Physical Appearance": {
+                count: 38,
+                words: [
+                    ["Tall", "grand"], ["Short (height)", "petit"], ["Slim", "mince"],
+                    ["Fat", "gros"], ["Muscular", "muscle"], ["Blonde", "blond"],
+                    ["Brown-haired", "brun"], ["Black-haired", "noir"], ["Curly hair", "cheveux boucles"],
+                    ["Straight hair", "cheveux lisses"], ["Blue eyes", "yeux bleus"], ["Brown eyes", "yeux marron"],
+                    ["Green eyes", "yeux verts"], ["Beautiful", "beau/belle"], ["Handsome", "beau"],
+                    ["Ugly", "laid"], ["Young", "jeune"], ["Old", "vieux/vieille"],
+                    ["Beard", "barbe"], ["Light-skinned", "peau claire"], ["Dark-skinned", "peau foncee"],
+                    ["Freckles", "taches de rousseur"], ["Wrinkles", "rides"], ["Bald", "chauve"],
+                    ["Hairy (body)", "poilu"], ["Straight nose", "nez droit"], ["Big nose", "gros nez"],
+                    ["Small nose", "petit nez"], ["Thin lips", "levres fines"], ["Full lips", "levres pulpeuses"],
+                    ["Broad shoulders", "larges epaules"], ["Narrow shoulders", "epaules etroites"], ["Tanned skin", "peau bronzee"],
+                    ["Pale skin", "peau pale"], ["Wavy hair", "cheveux ondules"], ["Ponytail", "queue de cheval"],
+                    ["Braids", "tresses"], ["Beard and mustache", "barbe et moustache"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 16 - Occupations": {
+                count: 25,
+                words: [
+                    ["Doctor", "medecin"], ["Teacher", "enseignant"], ["Engineer", "ingenieur"],
+                    ["Lawyer", "avocat"], ["Salesperson", "vendeur/vendeuse"], ["Police officer", "policier/policiere"],
+                    ["Firefighter", "pompier/pompiere"], ["Programmer", "programmeur/programmeuse"], ["Cook/Chef", "cuisinier/cuisiniere"],
+                    ["Journalist", "journaliste"], ["Nurse", "infirmier/infirmiere"], ["Architect", "architecte"],
+                    ["Accountant", "comptable"], ["Pharmacist", "pharmacien/pharmacienne"], ["Driver", "chauffeur"],
+                    ["Mechanic", "mecanicien/mecanicienne"], ["Scientist", "scientifique"], ["Dentist", "dentiste"],
+                    ["Musician", "musicien/musicienne"], ["Actor", "acteur/actrice"], ["Artist", "artiste"],
+                    ["Pilot", "pilote"], ["Farmer", "agriculteur/agricultrice"], ["Photographer", "photographe"],
+                    ["Waiter/Waitress", "serveur/serveuse"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 17 - Sports": {
+                count: 30,
+                words: [
+                    ["Football/Soccer", "football"], ["Basketball", "basket"], ["Volleyball", "volley-ball"],
+                    ["Tennis", "tennis"], ["Swimming", "natation"], ["Running/Athletics", "course/athletisme"],
+                    ["Ice hockey", "hockey sur glace"], ["Skiing", "ski"], ["Cycling", "cyclisme"],
+                    ["Boxing", "boxe"], ["Martial arts", "arts martiaux"], ["Golf", "golf"],
+                    ["Table tennis", "tennis de table"], ["Wrestling", "lutte"], ["Handball", "handball"],
+                    ["Baseball", "base-ball"], ["Surfing", "surf"], ["Skating", "patinage"],
+                    ["Horse riding", "equitation"], ["Diving", "plongee"], ["Cricket", "cricket"],
+                    ["Rugby", "rugby"], ["Ballet", "ballet"], ["Bowling", "bowling"],
+                    ["Weightlifting", "halterophilie"], ["Windsurfing", "planche a voile"], ["Ice skating", "patinage sur glace"],
+                    ["Rowing", "aviron"], ["Archery", "tir a l'arc"], ["Climbing", "escalade"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 18 - Numbers 51-75": {
+                count: 25,
+                words: [
+                    ["51", "cinquante et un"], ["52", "cinquante-deux"], ["53", "cinquante-trois"],
+                    ["54", "cinquante-quatre"], ["55", "cinquante-cinq"], ["56", "cinquante-six"],
+                    ["57", "cinquante-sept"], ["58", "cinquante-huit"], ["59", "cinquante-neuf"],
+                    ["60", "soixante"], ["61", "soixante et un"], ["62", "soixante-deux"],
+                    ["63", "soixante-trois"], ["64", "soixante-quatre"], ["65", "soixante-cinq"],
+                    ["66", "soixante-six"], ["67", "soixante-sept"], ["68", "soixante-huit"],
+                    ["69", "soixante-neuf"], ["70", "soixante-dix"], ["71", "soixante et onze"],
+                    ["72", "soixante-douze"], ["73", "soixante-treize"], ["74", "soixante-quatorze"],
+                    ["75", "soixante-quinze"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 19 - Clothing": {
+                count: 41,
+                words: [
+                    ["Shirt", "chemise"], ["T-shirt", "t-shirt"], ["Blouse", "blouse"],
+                    ["Sweater", "pull/chandail"], ["Jacket", "veste"], ["Coat", "manteau"],
+                    ["Dress", "robe"], ["Skirt", "jupe"], ["Pants", "pantalon"],
+                    ["Shorts", "short"], ["Shoes", "chaussures"], ["Boots", "bottes"],
+                    ["Sneakers", "baskets"], ["Sandals", "sandales"], ["Hat/Cap", "chapeau/casquette"],
+                    ["Scarf", "echarpe"], ["Gloves", "gants"], ["Belt", "ceinture"],
+                    ["Socks", "chaussettes"], ["Winter coat", "manteau d'hiver"], ["Wool hat", "bonnet en laine"],
+                    ["Snow boots", "bottes de neige"], ["Swimsuit", "maillot de bain"], ["Sunglasses", "lunettes de soleil"],
+                    ["Flip-flops", "tongs"], ["Tank top", "debardeur"], ["Suit", "costume"],
+                    ["Tie", "cravate"], ["Blazer", "blazer"], ["High heels", "talons hauts"],
+                    ["Evening dress", "robe de soiree"], ["Black", "noir"], ["White", "blanc"],
+                    ["Red", "rouge"], ["Blue", "bleu"], ["Green", "vert"],
+                    ["Cotton", "coton"], ["Wool", "laine"], ["Leather", "cuir"],
+                    ["Silk", "soie"], ["Linen", "lin"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 20 - Adverbs": {
+                count: 20,
+                words: [
+                    ["Quickly", "vite"], ["Slowly", "lentement"], ["Always", "toujours"],
+                    ["Never", "jamais"], ["Often", "souvent"], ["Sometimes", "parfois"],
+                    ["Rarely", "rarement"], ["Already", "deja"], ["Still", "encore"],
+                    ["Yet", "encore"], ["Soon", "bientot"], ["Now", "maintenant"],
+                    ["Later", "plus tard"], ["Today", "aujourd'hui"], ["Tomorrow", "demain"],
+                    ["Yesterday", "hier"], ["Clearly", "clairement"], ["Together", "ensemble"],
+                    ["Apart", "separement"], ["Forever", "pour toujours"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 21 - Animals": {
+                count: 20,
+                words: [
+                    ["Dog", "chien"], ["Cat", "chat"], ["Horse", "cheval"],
+                    ["Cow", "vache"], ["Sheep", "mouton"], ["Pig", "cochon"],
+                    ["Goat", "chevre"], ["Chicken", "poulet"], ["Duck", "canard"],
+                    ["Bird", "oiseau"], ["Rabbit", "lapin"], ["Mouse", "souris"],
+                    ["Lion", "lion"], ["Tiger", "tigre"], ["Bear", "ours"],
+                    ["Elephant", "elephant"], ["Monkey", "singe"], ["Fox", "renard"],
+                    ["Wolf", "loup"], ["Deer", "cerf"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 23 - Places in Town": {
+                count: 20,
+                words: [
+                    ["School", "ecole"], ["Hospital", "hopital"], ["Bank", "banque"],
+                    ["Restaurant", "restaurant"], ["Library", "bibliotheque"], ["Supermarket", "supermarche"],
+                    ["Cinema", "cinema"], ["Post office", "poste"], ["Police station", "commissariat"],
+                    ["Park", "parc"], ["Museum", "musee"], ["Theatre", "theatre"],
+                    ["Hotel", "hotel"], ["Stadium", "stade"], ["Church", "eglise"],
+                    ["Pharmacy", "pharmacie"], ["Bakery", "boulangerie"], ["Butcher", "boucherie"],
+                    ["Market", "marche"], ["Hairdresser", "coiffeur"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 24 - School Supplies": {
+                count: 20,
+                words: [
+                    ["Book", "livre"], ["Pen", "stylo"], ["Pencil", "crayon"],
+                    ["Eraser", "gomme"], ["Notebook", "cahier"], ["Ruler", "regle"],
+                    ["Scissors", "ciseaux"], ["Backpack", "sac a dos"], ["Folder", "dossier"],
+                    ["Calculator", "calculatrice"], ["Marker", "feutre"], ["Chalk", "craie"],
+                    ["Map", "carte"], ["Highlighter", "surligneur"], ["Projector", "projecteur"],
+                    ["Laptop", "ordinateur portable"], ["Printer", "imprimante"], ["USB stick", "cle usb"],
+                    ["Schoolbag", "cartable"], ["Sharpener", "taille-crayon"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 25 - Transportation": {
+                count: 20,
+                words: [
+                    ["Car", "voiture"], ["Bus", "bus"], ["Train", "train"],
+                    ["Bicycle", "velo"], ["Motorcycle", "moto"], ["Airplane", "avion"],
+                    ["Boat", "bateau"], ["Tram", "tramway"], ["Taxi", "taxi"],
+                    ["Subway", "metro"], ["Ferry", "ferry"], ["Yacht", "yacht"],
+                    ["Hot air balloon", "montgolfiere"], ["Spaceship", "vaisseau spatial"], ["Rickshaw", "pousse-pousse"],
+                    ["Gondola", "gondole"], ["Zeppelin", "dirigeable"], ["Rollerblades", "rollers"],
+                    ["Canoe", "canoe"], ["Submarine", "sous-marin"]
+                ],
+                isNumbers: false
+            }
+        };
+
+        // State
+        let state = {
+            lessonNames: Object.keys(lessonsData),
+            currentLessonIndex: 0,
+            currentLesson: null,
+            questions: [],
+            currentQ: 0,
+            score: { correct: 0, total: 0 },
+            mainQuestionsCorrect: 0,
+            isReview: false,
+            allLessonsScore: { correct: 0, total: 0 },
+            completedLessons: 0
+        };
+
+        // Generate questions
+        function generateQuestions(words, count, isNumbers) {
+            const questions = [];
+            
+            if (isNumbers) {
+                words.forEach(([eng, fr]) => {
+                    questions.push({
+                        question: `What is '${eng}' in French? (Answer with the WORD)`,
+                        answer: fr,
+                        displayAnswer: fr
+                    });
+                });
+                words.forEach(([eng, fr]) => {
+                    questions.push({
+                        question: `What number is '${fr}'? (Answer with the NUMBER)`,
+                        answer: eng,
+                        displayAnswer: eng
+                    });
+                });
+            } else if (count <= 20) {
+                words.forEach(([eng, fr]) => {
+                    questions.push({ question: `Translate to French: '${eng}'`, answer: fr, displayAnswer: fr });
+                });
+                words.forEach(([eng, fr]) => {
+                    questions.push({ question: `Translate to English: '${fr}'`, answer: eng, displayAnswer: eng });
+                });
+                words.forEach(([eng, fr]) => {
+                    const firstLetter = fr[0] || "";
+                    const blanks = "_".repeat(fr.length - 1);
+                    questions.push({ question: `'${eng}' = '${firstLetter}${blanks}' - Complete the French word`, answer: fr, displayAnswer: fr });
+                });
+            } else {
+                const third = Math.floor(words.length / 3);
+                words.slice(0, third).forEach(([eng, fr]) => {
+                    questions.push({ question: `Translate to French: '${eng}'`, answer: fr, displayAnswer: fr });
+                });
+                words.slice(third, third * 2).forEach(([eng, fr]) => {
+                    questions.push({ question: `Translate to English: '${fr}'`, answer: eng, displayAnswer: eng });
+                });
+                words.slice(third * 2).forEach(([eng, fr]) => {
+                    const firstLetter = fr[0] || "";
+                    const blanks = "_".repeat(fr.length - 1);
+                    questions.push({ question: `'${eng}' = '${firstLetter}${blanks}'`, answer: fr, displayAnswer: fr });
+                });
+            }
+            
+            return questions.sort(() => Math.random() - 0.5);
+        }
+
+        function generateReview(words, isNumbers) {
+            const sampleSize = Math.min(20, words.length);
+            const sampled = [...words].sort(() => Math.random() - 0.5).slice(0, sampleSize);
+            
+            return sampled.map(([eng, fr]) => {
+                if (isNumbers) {
+                    return Math.random() > 0.5
+                        ? { question: `[GENERAL REVIEW] '${eng}' in French?`, answer: fr, displayAnswer: fr }
+                        : { question: `[GENERAL REVIEW] What number is '${fr}'?`, answer: eng, displayAnswer: eng };
+                } else {
+                    return Math.random() > 0.5
+                        ? { question: `[GENERAL REVIEW] Translate: '${eng}'`, answer: fr, displayAnswer: fr }
+                        : { question: `[GENERAL REVIEW] Translate: '${fr}'`, answer: eng, displayAnswer: eng };
+                }
+            });
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function startFirstLesson() {
+            state.currentLessonIndex = 0;
+            startLesson(state.lessonNames[0]);
+        }
+
+        function startLesson(lessonName) {
+            const lesson = lessonsData[lessonName];
+            state.currentLesson = lessonName;
+            state.questions = generateQuestions(lesson.words, lesson.count, lesson.isNumbers);
+            state.currentQ = 0;
+            state.score = { correct: 0, total: 0 };
+            state.mainQuestionsCorrect = 0;
+            state.isReview = false;
+            
+            updateTestScreen();
+            showScreen('testScreen');
+        }
+
+        function updateTestScreen() {
+            const q = state.questions[state.currentQ];
+            const progress = ((state.currentQ + 1) / state.questions.length) * 100;
+            
+            document.getElementById('lessonTitle').textContent = state.isReview ? '🔄 GENERAL REVIEW' : state.currentLesson;
+            document.getElementById('lessonProgress').textContent = `Lesson ${state.completedLessons + 1}/${state.lessonNames.length}`;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('questionNumber').textContent = `Question ${state.currentQ + 1}/${state.questions.length}`;
+            document.getElementById('currentScore').textContent = `Score: ${state.score.correct}/${state.score.total}`;
+            document.getElementById('questionText').textContent = q.question;
+            document.getElementById('overallProgress').textContent = `Overall Progress: ${state.allLessonsScore.correct}/${state.allLessonsScore.total} (${state.allLessonsScore.total > 0 ? Math.round((state.allLessonsScore.correct / state.allLessonsScore.total) * 100) : 0}%)`;
+            
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('answerSection').classList.remove('hidden');
+            document.getElementById('feedbackSection').classList.add('hidden');
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter' && document.getElementById('answerInput').value) {
+                checkAnswer();
+            }
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value;
+            if (!userAnswer) return;
+            
+            const q = state.questions[state.currentQ];
+            const isCorrect = normalizeText(userAnswer) === normalizeText(q.answer);
+            
+            state.score.correct += isCorrect ? 1 : 0;
+            state.score.total += 1;
+            state.allLessonsScore.correct += isCorrect ? 1 : 0;
+            state.allLessonsScore.total += 1;
+            
+            if (!state.isReview && state.currentQ < state.questions.length) {
+                if (isCorrect) state.mainQuestionsCorrect++;
+            }
+            
+            document.getElementById('feedbackBox').className = isCorrect ? 'feedback feedback-correct' : 'feedback feedback-wrong';
+            document.getElementById('feedbackIcon').textContent = isCorrect ? '✓' : '✗';
+            document.getElementById('feedbackText').textContent = isCorrect ? 'Correct!' : 'Wrong!';
+            document.getElementById('correctAnswer').innerHTML = isCorrect ? '' : `Correct answer: <strong>${q.displayAnswer}</strong>`;
+            
+            document.getElementById('answerSection').classList.add('hidden');
+            document.getElementById('feedbackSection').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (state.currentQ < state.questions.length - 1) {
+                state.currentQ++;
+                updateTestScreen();
+            } else {
+                if (!state.isReview) {
+                    showLessonComplete();
+                } else {
+                    state.completedLessons++;
+                    showReviewComplete();
+                }
+            }
+        }
+
+        function showLessonComplete() {
+            const percentage = (state.mainQuestionsCorrect / state.questions.length) * 100;
+            document.getElementById('mainScore').textContent = `${state.mainQuestionsCorrect}/${state.questions.length}`;
+            document.getElementById('mainPercentage').textContent = percentage.toFixed(1) + '%';
+            showScreen('lessonCompleteScreen');
+        }
+
+        function startReview() {
+            const lesson = lessonsData[state.currentLesson];
+            state.questions = generateReview(lesson.words, lesson.isNumbers);
+            state.currentQ = 0;
+            state.isReview = true;
+            
+            updateTestScreen();
+            showScreen('testScreen');
+        }
+
+        function showReviewComplete() {
+            const reviewCorrect = state.score.correct - state.mainQuestionsCorrect;
+            const reviewTotal = state.questions.length;
+            const totalCorrect = state.score.correct;
+            const totalQuestions = state.score.total;
+            const percentage = (totalCorrect / totalQuestions) * 100;
+            
+            document.getElementById('completedLessonName').textContent = state.currentLesson;
+            document.getElementById('mainQScore').textContent = state.mainQuestionsCorrect;
+            document.getElementById('reviewScore').textContent = reviewCorrect;
+            document.getElementById('totalScore').textContent = `${totalCorrect}/${totalQuestions}`;
+            document.getElementById('totalPercentage').textContent = percentage.toFixed(1) + '%';
+            document.getElementById('totalPercentage').style.color = 
+                percentage >= 90 ? '#10b981' : percentage >= 70 ? '#3b82f6' : percentage >= 50 ? '#eab308' : '#ef4444';
+            
+            const message = percentage >= 90 ? '🎉 Excellent!' : percentage >= 70 ? '👏 Very Good!' : percentage >= 50 ? '👍 Good!' : '📚 Keep studying!';
+            document.getElementById('performanceMessage').textContent = message;
+            
+            const isLastLesson = state.currentLessonIndex === state.lessonNames.length - 1;
+            document.getElementById('continueButtonText').textContent = isLastLesson ? 'View Final Results' : `Continue to ${state.lessonNames[state.currentLessonIndex + 1]}`;
+            document.getElementById('lessonsCompleted').textContent = `Completed: ${state.completedLessons}/${state.lessonNames.length} lessons`;
+            
+            showScreen('reviewCompleteScreen');
+        }
+
+        function continueToNext() {
+            state.currentLessonIndex++;
+            
+            if (state.currentLessonIndex < state.lessonNames.length) {
+                startLesson(state.lessonNames[state.currentLessonIndex]);
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            const finalPercentage = (state.allLessonsScore.correct / state.allLessonsScore.total) * 100;
+            
+            document.getElementById('totalLessons').textContent = state.lessonNames.length;
+            document.getElementById('finalScore').textContent = `${state.allLessonsScore.correct}/${state.allLessonsScore.total}`;
+            document.getElementById('finalPercentage').textContent = finalPercentage.toFixed(1) + '%';
+            document.getElementById('finalPercentage').style.color = 
+                finalPercentage >= 90 ? '#10b981' : finalPercentage >= 70 ? '#3b82f6' : finalPercentage >= 50 ? '#eab308' : '#ef4444';
+            
+            const message = finalPercentage >= 90 ? '🎉🎉🎉 EXCELLENT! You\'re amazing at French! 🎉🎉🎉' :
+                           finalPercentage >= 70 ? '👏👏👏 VERY GOOD! Great performance! 👏👏👏' :
+                           finalPercentage >= 50 ? '👍👍 GOOD! Keep going and you\'ll be excellent! 👍👍' :
+                           '📚📚 Keep studying! You can do it! 📚📚';
+            document.getElementById('finalMessage').textContent = message;
+            
+            showScreen('finalScreen');
+        }
+
+        function goHome() {
+            state = {
+                lessonNames: Object.keys(lessonsData),
+                currentLessonIndex: 0,
+                currentLesson: null,
+                questions: [],
+                currentQ: 0,
+                score: { correct: 0, total: 0 },
+                mainQuestionsCorrect: 0,
+                isReview: false,
+                allLessonsScore: { correct: 0, total: 0 },
+                completedLessons: 0
+            };
+            showScreen('homeScreen');
+        }
+    </script>
+</body>
+</html>

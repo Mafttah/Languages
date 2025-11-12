@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polish Test System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4a5568;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #fee2e2;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .info-box h3 {
+            color: #991b1b;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            color: #2d3748;
+        }
+
+        .info-box li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .info-box li::before {
+            content: "•";
+            color: #dc2626;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+
+        .btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #dc2626 0%, #991b1b 100%);
+            transition: width 0.3s;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        .question-box {
+            background: #fee2e2;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question-text {
+            color: #2d3748;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #cbd5e0;
+            border-radius: 12px;
+            font-size: 1.1em;
+            margin: 15px 0;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #dc2626;
+        }
+
+        .feedback {
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-correct {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .feedback-wrong {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .feedback-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .feedback-text {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .score-big {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #fbd38d 0%, #ed8936 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+        }
+
+        .overall-stats {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Screen -->
+    <div id="homeScreen" class="container">
+        <h1>🇵🇱 Polish Test System</h1>
+        <p class="subtitle">Comprehensive Learning + Various Question Types + General Review</p>
+        
+        <div class="info-box">
+            <h3>How it works:</h3>
+            <ul>
+                <li>Complete all lessons in order</li>
+                <li>Each lesson has multiple question types</li>
+                <li>General review after each lesson</li>
+                <li>Track your progress across all lessons</li>
+            </ul>
+        </div>
+
+        <button class="btn btn-primary" onclick="startFirstLesson()">
+            Start Test - Begin with Lesson 1
+        </button>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="testScreen" class="container hidden">
+        <div class="progress-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h2 id="lessonTitle"></h2>
+                <span id="lessonProgress" style="color: #718096;"></span>
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div class="progress-info">
+                <span id="questionNumber"></span>
+                <span id="currentScore"></span>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="question-text" id="questionText"></div>
+        </div>
+
+        <div id="answerSection">
+            <input type="text" id="answerInput" placeholder="Type your answer..." onkeypress="handleEnter(event)">
+            <button class="btn btn-primary" id="submitBtn" onclick="checkAnswer()">
+                Submit Answer
+            </button>
+        </div>
+
+        <div id="feedbackSection" class="hidden">
+            <div id="feedbackBox" class="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div>
+                    <div class="feedback-text" id="feedbackText"></div>
+                    <div id="correctAnswer" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+            <button class="btn btn-success" onclick="nextQuestion()">
+                Next Question →
+            </button>
+        </div>
+
+        <div class="overall-stats">
+            <span id="overallProgress"></span>
+        </div>
+    </div>
+
+    <!-- Lesson Complete Screen -->
+    <div id="lessonCompleteScreen" class="container hidden">
+        <div class="icon">🏆</div>
+        <h1>Main Questions Complete!</h1>
+        
+        <div class="result-card">
+            <div class="stat-label">Score</div>
+            <div class="score-big" id="mainScore"></div>
+            <div id="mainPercentage" style="font-size: 2em; font-weight: bold; margin-top: 10px;"></div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.2em; color: #4a5568; margin: 25px 0;">
+            Now it's time for the General Review!
+        </p>
+
+        <button class="btn btn-primary" onclick="startReview()">
+            Start General Review
+        </button>
+    </div>
+
+    <!-- Review Complete Screen -->
+    <div id="reviewCompleteScreen" class="container hidden">
+        <div class="icon">🎉</div>
+        <h1>Lesson Complete!</h1>
+        <h2 id="completedLessonName" style="text-align: center; color: #718096;"></h2>
+
+        <div class="result-card">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Main Questions</div>
+                    <div class="stat-value" id="mainQScore" style="color: #dc2626;"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">General Review</div>
+                    <div class="stat-value" id="reviewScore" style="color: #991b1b;"></div>
+                </div>
+            </div>
+            <div class="stat-card" style="margin-top: 20px;">
+                <div class="stat-label">Total Score</div>
+                <div class="stat-value" id="totalScore"></div>
+                <div id="totalPercentage" style="font-size: 2em; font-weight: bold; margin-top: 10px;"></div>
+                <div id="performanceMessage" style="font-size: 1.2em; font-weight: 600; margin-top: 10px;"></div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="continueToNext()">
+            <span id="continueButtonText"></span> →
+        </button>
+
+        <div style="text-align: center; color: #718096; margin-top: 15px;">
+            <span id="lessonsCompleted"></span>
+        </div>
+    </div>
+
+    <!-- Final Results Screen -->
+    <div id="finalScreen" class="container hidden">
+        <div class="emoji">🎊</div>
+        <h1>ALL LESSONS COMPLETED!</h1>
+        <h2 style="text-align: center; color: #991b1b;">FINAL RESULTS</h2>
+
+        <div class="result-card">
+            <div style="margin-bottom: 30px;">
+                <div class="stat-label">Total Lessons</div>
+                <div style="font-size: 3em; font-weight: bold;" id="totalLessons"></div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <div class="stat-label">Total Score</div>
+                <div style="font-size: 4em; font-weight: bold; color: #dc2626;" id="finalScore"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Success Rate</div>
+                <div class="score-big" id="finalPercentage"></div>
+                <div id="finalMessage" style="font-size: 1.5em; font-weight: bold; margin-top: 15px;"></div>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.3em; color: #48bb78; font-weight: 600; margin: 25px 0;">
+            Congratulations! You completed the entire test!
+        </p>
+
+        <button class="btn btn-primary" onclick="goHome()">
+            🏠 Back to Home
+        </button>
+    </div>
+
+    <script>
+        function normalizeText(text) {
+            return text.toLowerCase().trim()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        const lessonsData = {
+            "Lesson 1 - Numbers 1-10": {
+                count: 10,
+                words: [
+                    ["1", "jeden"], ["2", "dwa"], ["3", "trzy"], ["4", "cztery"], ["5", "piec"],
+                    ["6", "szesc"], ["7", "siedem"], ["8", "osiem"], ["9", "dziewiec"], ["10", "dziesiec"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 2 - Greetings": {
+                count: 18,
+                words: [
+                    ["Hello", "czesc"], ["How are you?", "jak sie masz"], ["Nice to meet you", "milo cie poznac"],
+                    ["See you tomorrow", "do zobaczenia jutro"], ["Good morning", "dzien dobry"], ["Good afternoon", "dzien dobry"],
+                    ["Good evening", "dobry wieczor"], ["Good night", "dobranoc"], ["What is your name?", "kaj masz na imic"],
+                    ["My name is", "nazywam sie"], ["Where do you live?", "gdzie mieszkasz"], ["Where are you from?", "skad pochodzisz"],
+                    ["Nice to see you", "milo cie widziec"], ["Have a nice day", "milego dnia"], ["See you later", "do zobaczenia"],
+                    ["Goodbye", "do widzenia"], ["Please", "prosze"], ["Thank you", "dziekuje"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.1 - Regular -AĆ Verbs": {
+                count: 15,
+                words: [
+                    ["to read", "czytac"], ["to love", "kochac"], ["to watch", "ogladac"],
+                    ["to play", "grac"], ["to dance", "tanczyc"], ["to live", "mieszkac"],
+                    ["to listen", "sluchac"], ["to cry", "plakac"], ["to wait", "czekac"],
+                    ["to ask", "pytac"], ["to go/ride", "jechac"], ["to push", "pchac"],
+                    ["to drag", "ciagac"], ["to catch", "lapac"], ["to blow", "dmuchac"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.2 - Regular -YĆ SIĘ Verbs": {
+                count: 10,
+                words: [
+                    ["to learn", "uczyc sie"], ["to be happy", "cieszyc sie"], ["to worry", "martwic sie"],
+                    ["to laugh", "smiac sie"], ["to be bored", "nudzic sie"], ["to shave", "golic sie"],
+                    ["to bathe", "kapac sie"], ["to comb", "czesac sie"], ["to dress", "ubierac sie"],
+                    ["to hurry", "spieszyc sie"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.3 - Regular -EĆ Verbs": {
+                count: 10,
+                words: [
+                    ["to think", "myslec"], ["to count", "liczyc"], ["to sit", "siedziec"],
+                    ["to see", "widziec"], ["to judge", "sadzic"], ["to hurt", "bolec"],
+                    ["to fail", "zawodzic"], ["to shout", "krzyczec"], ["to fade", "plowiec"],
+                    ["to tremble", "drzec"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.4 - Regular -IĆ Verbs": {
+                count: 10,
+                words: [
+                    ["to speak", "mowic"], ["to do", "robic"], ["to walk", "chodzic"],
+                    ["to wear", "nosic"], ["to finish", "konczyc"], ["to request", "prosic"],
+                    ["to feed", "karmic"], ["to wake up", "obudzic"], ["to let in", "wpuscic"],
+                    ["to announce", "glosic"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3.5 - Regular -OWAĆ Verbs": {
+                count: 10,
+                words: [
+                    ["to work", "pracowac"], ["to cook", "gotowac"], ["to phone", "telefonowac"],
+                    ["to thank", "dziekowac"], ["to study", "studiowac"], ["to rescue", "ratowac"],
+                    ["to paint", "malowac"], ["to buy", "kupowac"], ["to plan", "planowac"],
+                    ["to organize", "organizowac"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 4 - Adjectives": {
+                count: 35,
+                words: [
+                    ["Happy", "szczesliwy"], ["Sad", "smutny"], ["Angry", "zly"],
+                    ["Afraid", "przestraszony"], ["Joy", "radosc"], ["Surprised", "zaskoczony"],
+                    ["Calm", "spokojny"], ["Bored", "znudzony"], ["Easy", "latwy"],
+                    ["Difficult", "trudny"], ["Bad", "zly"], ["Good", "dobry"],
+                    ["Noisy", "halasliwy"], ["Quiet", "cichy"], ["Strong", "silny"],
+                    ["Weak", "slaby"], ["Hard", "twardy"], ["Soft", "miekki"],
+                    ["More", "wiecej"], ["Less", "mniej"], ["Clean", "czysty"],
+                    ["Dirty", "brudny"], ["Old", "stary"], ["New", "nowy"],
+                    ["Big", "duzy"], ["Small", "maly"], ["Young", "mlody"],
+                    ["Skinny", "chudy"], ["Fat", "gruby"], ["Pretty", "ladny"],
+                    ["Ugly", "brzydki"], ["Thick", "gruby"], ["Thin", "cienki"],
+                    ["Rough", "szorstki"], ["Smooth", "gladki"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 5.1 - Days": {
+                count: 11,
+                words: [
+                    ["The days of the week", "dni tygodnia"], ["Day", "dzien"], ["Week", "tydzien"],
+                    ["Monday", "poniedzialek"], ["Tuesday", "wtorek"], ["Wednesday", "sroda"],
+                    ["Thursday", "czwartek"], ["Friday", "piatek"], ["Saturday", "sobota"],
+                    ["Sunday", "niedziela"], ["Weekend", "weekend"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 5.2 - Months": {
+                count: 15,
+                words: [
+                    ["The months of the year", "miesiace w roku"], ["Month", "miesiac"], ["Year", "rok"],
+                    ["January", "styczen"], ["February", "luty"], ["March", "marzec"],
+                    ["April", "kwiecien"], ["May", "maj"], ["June", "czerwiec"],
+                    ["July", "lipiec"], ["August", "sierpien"], ["September", "wrzesien"],
+                    ["October", "pazdziernik"], ["November", "listopad"], ["December", "grudzien"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 6 - Seasons & Weather": {
+                count: 23,
+                words: [
+                    ["Seasons", "pory roku"], ["Winter", "zima"], ["Summer", "lato"],
+                    ["Spring", "wiosna"], ["Autumn", "jesien"], ["Sky", "niebo"],
+                    ["Cloud", "chmura"], ["Rainbow", "tecza"], ["Cold", "zimno"],
+                    ["Hot", "goraco"], ["It is hot", "jest goraco"], ["It is cold", "jest zimno"],
+                    ["It is sunny", "jest slonecznie"], ["It is cloudy", "jest pochmurnie"], ["It is humid", "jest wilgotnie"],
+                    ["It is raining", "pada deszcz"], ["It is snowing", "pada snieg"], ["It is windy", "jest wietrznie"],
+                    ["How is the weather?", "jaka jest pogoda"], ["Good weather", "dobra pogoda"], ["Bad weather", "zla pogoda"],
+                    ["What is the temperature?", "jaka jest temperatura"], ["It is 24 degrees", "mamy 24 stopnie"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 7 - Colors": {
+                count: 14,
+                words: [
+                    ["Black", "czarny"], ["Blue", "niebieski"], ["Brown", "brazowy"],
+                    ["Green", "zielony"], ["Orange", "pomaranczowy"], ["Purple", "fioletowy"],
+                    ["Red", "czerwony"], ["White", "bialy"], ["Yellow", "zolty"],
+                    ["Gray", "szary"], ["Gold", "zloty"], ["Silver", "srebrny"],
+                    ["What color is it?", "jaki to kolor"], ["The color is", "ten kolor to"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 8.1 - Family": {
+                count: 35,
+                words: [
+                    ["Mother", "matka"], ["Father", "ojciec"], ["Brother", "brat"],
+                    ["Sister", "siostra"], ["Son", "syn"], ["Daughter", "corka"],
+                    ["Parents", "rodzice"], ["Children", "dzieci"], ["Child", "dziecko"],
+                    ["Stepmother", "macocha"], ["Stepfather", "ojczym"], ["Stepsister", "siostra przyrodnia"],
+                    ["Stepbrother", "brat przyrodni"], ["Son-in-law", "ziec"], ["Daughter-in-law", "synowa"],
+                    ["Wife", "zona"], ["Husband", "maz"], ["Grandparents", "dziadkowie"],
+                    ["Grandfather", "dziadek"], ["Grandmother", "babcia"], ["Grandson", "wnuczek"],
+                    ["Granddaughter", "wnuczka"], ["Grandchildren", "wnuki"], ["Grandchild", "wnuk"],
+                    ["Aunt", "ciotka"], ["Uncle", "wujek"], ["Cousin (female)", "kuzynka"],
+                    ["Cousin (male)", "kuzyn"], ["Nephew", "siostrzeniec"], ["Niece", "siostrzenica"],
+                    ["Father-in-law", "tesc"], ["Mother-in-law", "tesciowa"], ["Brother-in-law", "szwagier"],
+                    ["Sister-in-law", "szwagierka"], ["Relative", "krewny"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 8.2 - Friends": {
+                count: 16,
+                words: [
+                    ["Mr", "pan"], ["Mrs", "pani"], ["Miss", "panna"],
+                    ["Boy", "chlopak"], ["Girl", "dziewczyna"], ["Baby", "niemowle"],
+                    ["Woman", "kobieta"], ["Man", "mezczyzna"], ["Friend (male)", "przyjaciel"],
+                    ["Friend (female)", "przyjaciolka"], ["Boyfriend", "chlopak"], ["Girlfriend", "dziewczyna"],
+                    ["Gentleman", "dzentelmen"], ["Lady", "dama"], ["Neighbor (male)", "sasiad"],
+                    ["Neighbor (female)", "sasiadka"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 9 - Numbers 11-30": {
+                count: 20,
+                words: [
+                    ["11", "jedenascie"], ["12", "dwanascie"], ["13", "trzynascie"],
+                    ["14", "czternascie"], ["15", "pietnascie"], ["16", "szesnascie"],
+                    ["17", "siedemnascie"], ["18", "osiemnascie"], ["19", "dziewietnascie"],
+                    ["20", "dwadziescia"], ["21", "dwadziescia jeden"], ["22", "dwadziescia dwa"],
+                    ["23", "dwadziescia trzy"], ["24", "dwadziescia cztery"], ["25", "dwadziescia piec"],
+                    ["26", "dwadziescia szesc"], ["27", "dwadziescia siedem"], ["28", "dwadziescia osiem"],
+                    ["29", "dwadziescia dziewiec"], ["30", "trzydziesci"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 10.1 - Prepositions": {
+                count: 36,
+                words: [
+                    ["For", "dla"], ["From", "od"], ["In", "w"],
+                    ["Inside", "wewnatrz"], ["Into", "w"], ["Near", "blisko"],
+                    ["Of", "z"], ["Out", "z"], ["Outside", "na zewnatrz"],
+                    ["To", "do"], ["Under", "pod"], ["With", "z"],
+                    ["Without", "bez"], ["Above", "nad"], ["Across", "po drugiej stronie"],
+                    ["After", "po"], ["Against", "pod"], ["Along", "wzdluz"],
+                    ["Around", "wokol"], ["At", "w"], ["Behind", "za"],
+                    ["Below", "pod"], ["Beside", "obok"], ["Between", "miedzy"],
+                    ["By", "przy"], ["During", "podczas"], ["Except", "oprocz"],
+                    ["And", "i"], ["Because", "poniewaz"], ["But", "ale"],
+                    ["Or", "lub"], ["Everywhere", "wszedzie"], ["Everyone", "wszyscy"],
+                    ["Everything", "wszystko"], ["Few", "malo"], ["Some", "niektore"],
+                    ["Many", "wiele"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 10.2 - Useful Words": {
+                count: 29,
+                words: [
+                    ["Question", "pytanie"], ["Answer", "odpowiedz"], ["Truth", "prawda"],
+                    ["Lie", "klamstwo"], ["Nothing", "nic"], ["Something", "cos"],
+                    ["Same", "tak samo"], ["Different", "inny"], ["Pull", "ciagnac"],
+                    ["Push", "pchac"], ["Long", "dlugi"], ["Short", "krotki"],
+                    ["Cold", "zimno"], ["Hot", "goraco"], ["Light", "jasny"],
+                    ["Dark", "ciemny"], ["Wet", "mokro"], ["Dry", "sucho"],
+                    ["Empty", "pusty"], ["Full", "pelny"], ["How?", "jak"],
+                    ["What?", "co"], ["When?", "kiedy"], ["Where?", "gdzie"],
+                    ["Which?", "ktora"], ["Who?", "kto"], ["Why?", "dlaczego"],
+                    ["How long?", "jak dlugo"], ["How much?", "ile"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.1 - Drinks": {
+                count: 9,
+                words: [
+                    ["Coffee", "kawa"], ["Tea", "herbata"], ["Soft drink", "napoj gazowany"],
+                    ["Water", "woda"], ["Lemonade", "lemoniada"], ["Juice", "sok"],
+                    ["Orange juice", "sok pomaranczowy"], ["I would like a glass of water please", "poprosze o szklank e wody"],
+                    ["With ice", "z lodem"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.2 - Dairy Products": {
+                count: 19,
+                words: [
+                    ["Milk", "mleko"], ["Ice cream", "lody"], ["Butter", "maslo"],
+                    ["Cheese", "ser"], ["Cottage cheese", "twarozek"], ["Cream", "smietana"],
+                    ["Sour cream", "kwasna smietana"], ["Yogurt", "jogurt"], ["Eggs", "jajka"],
+                    ["Whipping cream", "bita smietana"], ["Bakery", "piekarnia"], ["Baguette", "bagietka"],
+                    ["Doughnut", "paczek"], ["Cookie", "ciastko"], ["Roll", "bulka"],
+                    ["Dessert", "deser"], ["Cake", "ciasto"], ["Bread", "chleb"],
+                    ["Pie", "placek"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.3 - Meats": {
+                count: 13,
+                words: [
+                    ["Beef", "wolowina"], ["Veal", "cielecina"], ["Ham", "szynka"],
+                    ["Chicken", "kurczak"], ["Turkey", "indyk"], ["Duck", "kaczka"],
+                    ["Bacon", "boczek"], ["Pork", "wieprzowina"], ["Filet mignon", "filet z poledwicy"],
+                    ["Sausage", "kielbasa"], ["Lamb chop", "kotlet z jagnieciny"], ["Pork chop", "kotlet schabowy"],
+                    ["Meat", "mieso"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.4 - Seafoods": {
+                count: 20,
+                words: [
+                    ["Fish", "ryba"], ["Shellfish", "skorupiak"], ["Bass", "okon"],
+                    ["Salmon", "losos"], ["Lobster", "homar"], ["Crab", "krab"],
+                    ["Mussel", "malze"], ["Oyster", "ostryga"], ["Cod", "dorsz"],
+                    ["Clam", "malz"], ["Shrimp", "krewetka"], ["Tuna", "tunczyk"],
+                    ["Trout", "pstrag"], ["Sole", "sola"], ["Shark", "rekin"],
+                    ["Carp", "karp"], ["Tilapia", "tilapia"], ["Eel", "wegorz"],
+                    ["Catfish", "sum"], ["Swordfish", "miecznik"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.5 - Herbs & Spices": {
+                count: 17,
+                words: [
+                    ["Salt", "sol"], ["Pepper", "pieprz"], ["Caraway", "kminek"],
+                    ["Garlic", "czosnek"], ["Basil", "bazylia"], ["Coriander", "kolendra"],
+                    ["Fennel", "fenkul"], ["Marjoram", "majeranek"], ["Oregano", "oregano"],
+                    ["Parsley", "pietruszka"], ["Rosemary", "rozmaryn"], ["Sage", "szalwia"],
+                    ["Thyme", "tymianek"], ["Nutmeg", "galka muszkatolowa"], ["Paprika", "papryka"],
+                    ["Cayenne", "pieprz cayenne"], ["Ginger", "imbir"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.6 - Vegetables": {
+                count: 28,
+                words: [
+                    ["Celery", "seler"], ["Eggplant", "baklazan"], ["Zucchini", "cukinia"],
+                    ["Onion", "cebula"], ["Spinach", "szpinak"], ["Salad", "salatka"],
+                    ["Green beans", "zielona fasola"], ["Cucumber", "ogorek"], ["Radish", "rzodkiewka"],
+                    ["Cabbage", "kapusta"], ["Mushrooms", "grzyby"], ["Lettuce", "salata"],
+                    ["Corn", "kukurydza"], ["Potatoes", "ziemniaki"], ["Tomato", "pomidor"],
+                    ["Carrot", "marchew"], ["Plantain", "banan"], ["Beans", "fasola"],
+                    ["Leek", "por"], ["Lotus root", "korzen lotosu"], ["Bamboo shoot", "pedy bambusa"],
+                    ["Artichoke", "karczoch"], ["Asparagus", "szparag"], ["Brussels sprouts", "brukselka"],
+                    ["Broccoli", "brokuly"], ["Peas", "groszek"], ["Cauliflower", "kalafior"],
+                    ["Chili pepper", "papryka chili"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.7 - Fruits": {
+                count: 27,
+                words: [
+                    ["Cherries", "wisnie"], ["Raspberries", "maliny"], ["Blueberries", "jagody"],
+                    ["Strawberries", "truskawki"], ["Lemon", "cytryna"], ["Lime", "limonka"],
+                    ["Apple", "jablko"], ["Orange", "pomarancza"], ["Pear", "gruszka"],
+                    ["Banana", "banan"], ["Grapes", "winogrona"], ["Grapefruit", "grejpfrut"],
+                    ["Watermelon", "arbuz"], ["Pineapple", "ananas"], ["Plum", "sliwka"],
+                    ["Peach", "brzoskwinia"], ["Mango", "mango"], ["Apricot", "morela"],
+                    ["Pomegranate", "granat"], ["Persimmon", "persymona"], ["Kiwi", "kiwi"],
+                    ["Litchi", "liczi"], ["Longan", "longan"], ["Balsam pear", "przepekla ogurkowata"],
+                    ["Passion fruit", "marakuja"], ["Avocado", "awokado"], ["Coconut", "orzech kokosowy"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 12 - Irregular Verbs": {
+                count: 46,
+                words: [
+                    ["to be", "byc"], ["to have", "miec"], ["to go", "isc"],
+                    ["to come", "przyjsc"], ["to see", "widziec"], ["to give", "dac"],
+                    ["to eat", "jesc"], ["to drink", "pic"], ["to know (fact)", "wiedziec"],
+                    ["to want", "chciec"], ["to find", "znalezc"], ["to run", "biec"],
+                    ["to sit", "siedziec"], ["to lie down", "lezec"], ["to stand", "stac"],
+                    ["to understand", "rozumiec"], ["to say", "powiedziec"], ["to take", "wziac"],
+                    ["to write", "pisac"], ["to fall", "upasc"], ["to begin", "zaczac"],
+                    ["to break", "zlamac"], ["to build", "zbudowac"], ["to choose", "wybrac"],
+                    ["to do/make", "robic"], ["to drive", "prowadzic"], ["to forget", "zapomniec"],
+                    ["to get", "dostac"], ["to hear", "slyszec"], ["to hold", "trzymac"],
+                    ["to leave", "opuscic"], ["to meet", "spotkac"], ["to pay", "placic"],
+                    ["to put", "polozyc"], ["to read", "czytac"], ["to send", "wyslac"],
+                    ["to sleep", "spac"], ["to speak", "mowic"], ["to spend (time)", "spedzac"],
+                    ["to swim", "plywac"], ["to teach", "uczyc"], ["to tell", "opowiedziec"],
+                    ["to think", "myslec"], ["to throw", "rzucic"], ["to win", "wygrac"],
+                    ["to bring", "przyniesc"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 14 - Numbers 31-50": {
+                count: 20,
+                words: [
+                    ["31", "trzydziesci jeden"], ["32", "trzydziesci dwa"], ["33", "trzydziesci trzy"],
+                    ["34", "trzydziesci cztery"], ["35", "trzydziesci piec"], ["36", "trzydziesci szesc"],
+                    ["37", "trzydziesci siedem"], ["38", "trzydziesci osiem"], ["39", "trzydziesci dziewiec"],
+                    ["40", "czterdziesci"], ["41", "czterdziesci jeden"], ["42", "czterdziesci dwa"],
+                    ["43", "czterdziesci trzy"], ["44", "czterdziesci cztery"], ["45", "czterdziesci piec"],
+                    ["46", "czterdziesci szesc"], ["47", "czterdziesci siedem"], ["48", "czterdziesci osiem"],
+                    ["49", "czterdziesci dziewiec"], ["50", "piecdziesiat"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 15 - Physical Appearance": {
+                count: 38,
+                words: [
+                    ["Tall", "wysoki"], ["Short (height)", "niski"], ["Slim", "szczuply"],
+                    ["Fat", "gruby"], ["Muscular", "umiesniony"], ["Blonde", "blond"],
+                    ["Brown-haired", "brazowe wlosy"], ["Black-haired", "czarne wlosy"], ["Curly hair", "krecone wlosy"],
+                    ["Straight hair", "proste wlosy"], ["Blue eyes", "niebieskie oczy"], ["Brown eyes", "brazowe oczy"],
+                    ["Green eyes", "zielone oczy"], ["Beautiful", "piekny"], ["Handsome", "przystojny"],
+                    ["Ugly", "brzydki"], ["Young", "mlody"], ["Old", "stary"],
+                    ["Beard", "broda"], ["Light-skinned", "jasna skora"], ["Dark-skinned", "ciemna skora"],
+                    ["Freckles", "piegi"], ["Wrinkles", "zmarszczki"], ["Bald", "lysy"],
+                    ["Hairy (body)", "owlosiony"], ["Straight nose", "prosty nos"], ["Big nose", "duzy nos"],
+                    ["Small nose", "maly nos"], ["Thin lips", "cienkie usta"], ["Full lips", "pelne usta"],
+                    ["Broad shoulders", "szerokie ramiona"], ["Narrow shoulders", "waskie ramiona"], ["Tanned skin", "opalona skora"],
+                    ["Pale skin", "blada skora"], ["Wavy hair", "falowane wlosy"], ["Ponytail", "konski ogon"],
+                    ["Braids", "warkocze"], ["Beard and mustache", "broda i wasy"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 16 - Occupations": {
+                count: 25,
+                words: [
+                    ["Doctor", "lekarz"], ["Teacher", "nauczyciel"], ["Engineer", "inzynier"],
+                    ["Lawyer", "prawnik"], ["Salesperson", "sprzedawca"], ["Police officer", "policjant"],
+                    ["Firefighter", "strazak"], ["Programmer", "programista"], ["Cook/Chef", "kucharz"],
+                    ["Journalist", "dziennikarz"], ["Nurse", "pielgniarka"], ["Architect", "architekt"],
+                    ["Accountant", "ksigowy"], ["Pharmacist", "farmaceuta"], ["Driver", "kierowca"],
+                    ["Mechanic", "mechanik"], ["Scientist", "naukowiec"], ["Dentist", "dentysta"],
+                    ["Musician", "muzyk"], ["Actor", "aktor"], ["Artist", "artysta"],
+                    ["Pilot", "pilot"], ["Farmer", "rolnik"], ["Photographer", "fotograf"],
+                    ["Waiter/Waitress", "kelner/kelnerka"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 17 - Sports": {
+                count: 30,
+                words: [
+                    ["Football/Soccer", "pilka nozna"], ["Basketball", "koszykowka"], ["Volleyball", "siatkowka"],
+                    ["Tennis", "tenis"], ["Swimming", "plywanie"], ["Running/Athletics", "bieganie/lekkoatletyka"],
+                    ["Ice hockey", "hokej"], ["Skiing", "narciarstwo"], ["Cycling", "kolarstwo"],
+                    ["Boxing", "boks"], ["Martial arts", "sztuki walki"], ["Golf", "golf"],
+                    ["Table tennis", "tenis stolowy"], ["Wrestling", "zapasy"], ["Handball", "pilka reczna"],
+                    ["Baseball", "baseball"], ["Surfing", "surfowanie"], ["Skating", "jazda na lyzwach"],
+                    ["Horse riding", "jazda konna"], ["Diving", "nurkowanie"], ["Cricket", "krykiet"],
+                    ["Rugby", "rugby"], ["Ballet", "balet"], ["Bowling", "kregle"],
+                    ["Weightlifting", "podnoszenie ciezarow"], ["Windsurfing", "windsurfing"], ["Ice skating", "jazda na lyzwach"],
+                    ["Rowing", "wioslarstwo"], ["Archery", "lucznictwo"], ["Climbing", "wspinaczka"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 18 - Numbers 51-75": {
+                count: 25,
+                words: [
+                    ["51", "piecdziesiat jeden"], ["52", "piecdziesiat dwa"], ["53", "piecdziesiat trzy"],
+                    ["54", "piecdziesiat cztery"], ["55", "piecdziesiat piec"], ["56", "piecdziesiat szesc"],
+                    ["57", "piecdziesiat siedem"], ["58", "piecdziesiat osiem"], ["59", "piecdziesiat dziewiec"],
+                    ["60", "szescdziesiat"], ["61", "szescdziesiat jeden"], ["62", "szescdziesiat dwa"],
+                    ["63", "szescdziesiat trzy"], ["64", "szescdziesiat cztery"], ["65", "szescdziesiat piec"],
+                    ["66", "szescdziesiat szesc"], ["67", "szescdziesiat siedem"], ["68", "szescdziesiat osiem"],
+                    ["69", "szescdziesiat dziewiec"], ["70", "siedemdziesiat"], ["71", "siedemdziesiat jeden"],
+                    ["72", "siedemdziesiat dwa"], ["73", "siedemdziesiat trzy"], ["74", "siedemdziesiat cztery"],
+                    ["75", "siedemdziesiat piec"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 19 - Clothing": {
+                count: 42,
+                words: [
+                    ["Shirt", "koszula"], ["T-shirt", "koszulka"], ["Blouse", "bluzka"],
+                    ["Sweater", "sweter"], ["Jacket", "kurtka"], ["Coat", "plaszcz"],
+                    ["Dress", "sukienka"], ["Skirt", "spodnica"], ["Pants", "spodnie"],
+                    ["Shorts", "krotkie spodenki"], ["Shoes", "buty"], ["Boots", "kozaki"],
+                    ["Sneakers", "trampki"], ["Sandals", "sandaly"], ["Hat/Cap", "czapka"],
+                    ["Scarf", "szalik"], ["Gloves", "rekawiczki"], ["Belt", "pasek"],
+                    ["Socks", "skarpetki"], ["Winter coat", "zimowy plaszcz"], ["Wool hat", "welniana czapka"],
+                    ["Snow boots", "buty sniegowe"], ["Swimsuit", "kostium kapielowy"], ["Sunglasses", "okulary przeciwsloneczne"],
+                    ["Flip-flops", "klapki"], ["Tank top", "top"], ["Suit", "garnitur"],
+                    ["Tie", "krawat"], ["Blazer", "marynarka"], ["High heels", "buty na obcasie"],
+                    ["Evening dress", "suknia wieczorowa"], ["Black", "czarny"], ["White", "bialy"],
+                    ["Red", "czerwony"], ["Blue", "niebieski"], ["Green", "zielony"],
+                    ["Cotton", "bawelna"], ["Wool", "welna"], ["Leather", "skora"],
+                    ["Silk", "jedwab"], ["Linen", "len"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 20 - Adverbs": {
+                count: 20,
+                words: [
+                    ["Quickly", "szybko"], ["Slowly", "powoli"], ["Always", "zawsze"],
+                    ["Never", "nigdy"], ["Often", "czesto"], ["Sometimes", "czasami"],
+                    ["Rarely", "rzadko"], ["Already", "juz"], ["Still", "nadal"],
+                    ["Yet", "jeszcze"], ["Soon", "wkrotce"], ["Now", "teraz"],
+                    ["Later", "pozniej"], ["Today", "dzisiaj"], ["Tomorrow", "jutro"],
+                    ["Yesterday", "wczoraj"], ["Clearly", "wyraznie"], ["Together", "razem"],
+                    ["Apart", "osobno"], ["Forever", "na zawsze"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 21 - Animals": {
+                count: 20,
+                words: [
+                    ["Dog", "pies"], ["Cat", "kot"], ["Horse", "kon"],
+                    ["Cow", "krowa"], ["Sheep", "owca"], ["Pig", "swinia"],
+                    ["Goat", "koza"], ["Chicken", "kurczak"], ["Duck", "kaczka"],
+                    ["Bird", "ptak"], ["Rabbit", "krolik"], ["Mouse", "mysz"],
+                    ["Lion", "lew"], ["Tiger", "tygrys"], ["Bear", "niedzwiedz"],
+                    ["Elephant", "slon"], ["Monkey", "malpa"], ["Fox", "lis"],
+                    ["Wolf", "wilk"], ["Deer", "jelen"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 23 - Places in Town": {
+                count: 20,
+                words: [
+                    ["School", "szkola"], ["Hospital", "szpital"], ["Bank", "bank"],
+                    ["Restaurant", "restauracja"], ["Library", "biblioteka"], ["Supermarket", "supermarket"],
+                    ["Cinema", "kino"], ["Post office", "poczta"], ["Police station", "posterunek policji"],
+                    ["Park", "park"], ["Museum", "muzeum"], ["Theatre", "teatr"],
+                    ["Hotel", "hotel"], ["Stadium", "stadion"], ["Church", "kosciol"],
+                    ["Pharmacy", "apteka"], ["Bakery", "piekarnia"], ["Butcher", "rzeznik"],
+                    ["Market", "targ"], ["Hairdresser", "fryzjer"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 24 - School Supplies": {
+                count: 15,
+                words: [
+                    ["Whiteboard", "tablica"], ["Compass", "cyrkiel"], ["Protractor", "katomierz"],
+                    ["Binder", "segregator"], ["Pen holder", "przybornik"], ["Sticky notes", "karteczki samoprzylepne"],
+                    ["Projector", "rzutnik"], ["Chalkboard", "tablica kredowa"], ["Schoolbag", "torba szkolna"],
+                    ["Clipboard", "podkladka"], ["Hole punch", "dziurkacz"], ["Tape", "tasma"],
+                    ["Stapler", "zszywacz"], ["Laptop", "laptop"], ["Printer", "drukarka"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 25 - Transportation": {
+                count: 20,
+                words: [
+                    ["Car", "samochod"], ["Bus", "autobus"], ["Train", "pociag"],
+                    ["Bicycle", "rower"], ["Motorcycle", "motocykl"], ["Airplane", "samolot"],
+                    ["Boat", "lodz"], ["Tram", "tramwaj"], ["Taxi", "taksowka"],
+                    ["Subway", "metro"], ["Ferry", "prom"], ["Yacht", "jacht"],
+                    ["Hot air balloon", "balon"], ["Spaceship", "statek kosmiczny"], ["Rickshaw", "riksza"],
+                    ["Gondola", "gondola"], ["Zeppelin", "sterowiec"], ["Rollerblades", "rolki"],
+                    ["Canoe", "kajak"], ["Submarine", "lodz podwodna"]
+                ],
+                isNumbers: false
+            }
+        };
+
+        let state = {
+            lessonNames: Object.keys(lessonsData),
+            currentLessonIndex: 0,
+            currentLesson: null,
+            questions: [],
+            currentQ: 0,
+            score: { correct: 0, total: 0 },
+            mainQuestionsCorrect: 0,
+            isReview: false,
+            allLessonsScore: { correct: 0, total: 0 },
+            completedLessons: 0
+        };
+
+        function generateQuestions(words, count, isNumbers) {
+            const questions = [];
+            
+            if (isNumbers) {
+                words.forEach(([eng, pol]) => {
+                    questions.push({
+                        question: `What is '${eng}' in Polish? (Answer with the WORD)`,
+                        answer: pol,
+                        displayAnswer: pol
+                    });
+                });
+                words.forEach(([eng, pol]) => {
+                    questions.push({
+                        question: `What number is '${pol}'? (Answer with the NUMBER)`,
+                        answer: eng,
+                        displayAnswer: eng
+                    });
+                });
+            } else if (count <= 20) {
+                words.forEach(([eng, pol]) => {
+                    questions.push({ question: `Translate to Polish: '${eng}'`, answer: pol, displayAnswer: pol });
+                });
+                words.forEach(([eng, pol]) => {
+                    questions.push({ question: `Translate to English: '${pol}'`, answer: eng, displayAnswer: eng });
+                });
+                words.forEach(([eng, pol]) => {
+                    const firstLetter = pol[0] || "";
+                    const blanks = "_".repeat(pol.length - 1);
+                    questions.push({ question: `'${eng}' = '${firstLetter}${blanks}' - Complete the Polish word`, answer: pol, displayAnswer: pol });
+                });
+            } else {
+                const third = Math.floor(words.length / 3);
+                words.slice(0, third).forEach(([eng, pol]) => {
+                    questions.push({ question: `Translate to Polish: '${eng}'`, answer: pol, displayAnswer: pol });
+                });
+                words.slice(third, third * 2).forEach(([eng, pol]) => {
+                    questions.push({ question: `Translate to English: '${pol}'`, answer: eng, displayAnswer: eng });
+                });
+                words.slice(third * 2).forEach(([eng, pol]) => {
+                    const firstLetter = pol[0] || "";
+                    const blanks = "_".repeat(pol.length - 1);
+                    questions.push({ question: `'${eng}' = '${firstLetter}${blanks}'`, answer: pol, displayAnswer: pol });
+                });
+            }
+            
+            return questions.sort(() => Math.random() - 0.5);
+        }
+
+        function generateReview(words, isNumbers) {
+            const sampleSize = Math.min(20, words.length);
+            const sampled = [...words].sort(() => Math.random() - 0.5).slice(0, sampleSize);
+            
+            return sampled.map(([eng, pol]) => {
+                if (isNumbers) {
+                    return Math.random() > 0.5
+                        ? { question: `[GENERAL REVIEW] '${eng}' in Polish?`, answer: pol, displayAnswer: pol }
+                        : { question: `[GENERAL REVIEW] What number is '${pol}'?`, answer: eng, displayAnswer: eng };
+                } else {
+                    return Math.random() > 0.5
+                        ? { question: `[GENERAL REVIEW] Translate: '${eng}'`, answer: pol, displayAnswer: pol }
+                        : { question: `[GENERAL REVIEW] Translate: '${pol}'`, answer: eng, displayAnswer: eng };
+                }
+            });
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function startFirstLesson() {
+            state.currentLessonIndex = 0;
+            startLesson(state.lessonNames[0]);
+        }
+
+        function startLesson(lessonName) {
+            const lesson = lessonsData[lessonName];
+            state.currentLesson = lessonName;
+            state.questions = generateQuestions(lesson.words, lesson.count, lesson.isNumbers);
+            state.currentQ = 0;
+            state.score = { correct: 0, total: 0 };
+            state.mainQuestionsCorrect = 0;
+            state.isReview = false;
+            
+            updateTestScreen();
+            showScreen('testScreen');
+        }
+
+        function updateTestScreen() {
+            const q = state.questions[state.currentQ];
+            const progress = ((state.currentQ + 1) / state.questions.length) * 100;
+            
+            document.getElementById('lessonTitle').textContent = state.isReview ? '🔄 GENERAL REVIEW' : state.currentLesson;
+            document.getElementById('lessonProgress').textContent = `Lesson ${state.completedLessons + 1}/${state.lessonNames.length}`;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('questionNumber').textContent = `Question ${state.currentQ + 1}/${state.questions.length}`;
+            document.getElementById('currentScore').textContent = `Score: ${state.score.correct}/${state.score.total}`;
+            document.getElementById('questionText').textContent = q.question;
+            document.getElementById('overallProgress').textContent = `Overall Progress: ${state.allLessonsScore.correct}/${state.allLessonsScore.total} (${state.allLessonsScore.total > 0 ? Math.round((state.allLessonsScore.correct / state.allLessonsScore.total) * 100) : 0}%)`;
+            
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('answerSection').classList.remove('hidden');
+            document.getElementById('feedbackSection').classList.add('hidden');
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter' && document.getElementById('answerInput').value) {
+                checkAnswer();
+            }
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value;
+            if (!userAnswer) return;
+            
+            const q = state.questions[state.currentQ];
+            const isCorrect = normalizeText(userAnswer) === normalizeText(q.answer);
+            
+            state.score.correct += isCorrect ? 1 : 0;
+            state.score.total += 1;
+            state.allLessonsScore.correct += isCorrect ? 1 : 0;
+            state.allLessonsScore.total += 1;
+            
+            if (!state.isReview && state.currentQ < state.questions.length) {
+                if (isCorrect) state.mainQuestionsCorrect++;
+            }
+            
+            document.getElementById('feedbackBox').className = isCorrect ? 'feedback feedback-correct' : 'feedback feedback-wrong';
+            document.getElementById('feedbackIcon').textContent = isCorrect ? '✓' : '✗';
+            document.getElementById('feedbackText').textContent = isCorrect ? 'Correct!' : 'Wrong!';
+            document.getElementById('correctAnswer').innerHTML = isCorrect ? '' : `Correct answer: <strong>${q.displayAnswer}</strong>`;
+            
+            document.getElementById('answerSection').classList.add('hidden');
+            document.getElementById('feedbackSection').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (state.currentQ < state.questions.length - 1) {
+                state.currentQ++;
+                updateTestScreen();
+            } else {
+                if (!state.isReview) {
+                    showLessonComplete();
+                } else {
+                    state.completedLessons++;
+                    showReviewComplete();
+                }
+            }
+        }
+
+        function showLessonComplete() {
+            const percentage = (state.mainQuestionsCorrect / state.questions.length) * 100;
+            document.getElementById('mainScore').textContent = `${state.mainQuestionsCorrect}/${state.questions.length}`;
+            document.getElementById('mainPercentage').textContent = percentage.toFixed(1) + '%';
+            showScreen('lessonCompleteScreen');
+        }
+
+        function startReview() {
+            const lesson = lessonsData[state.currentLesson];
+            state.questions = generateReview(lesson.words, lesson.isNumbers);
+            state.currentQ = 0;
+            state.isReview = true;
+            
+            updateTestScreen();
+            showScreen('testScreen');
+        }
+
+        function showReviewComplete() {
+            const reviewCorrect = state.score.correct - state.mainQuestionsCorrect;
+            const reviewTotal = state.questions.length;
+            const totalCorrect = state.score.correct;
+            const totalQuestions = state.score.total;
+            const percentage = (totalCorrect / totalQuestions) * 100;
+            
+            document.getElementById('completedLessonName').textContent = state.currentLesson;
+            document.getElementById('mainQScore').textContent = state.mainQuestionsCorrect;
+            document.getElementById('reviewScore').textContent = reviewCorrect;
+            document.getElementById('totalScore').textContent = `${totalCorrect}/${totalQuestions}`;
+            document.getElementById('totalPercentage').textContent = percentage.toFixed(1) + '%';
+            document.getElementById('totalPercentage').style.color = 
+                percentage >= 90 ? '#10b981' : percentage >= 70 ? '#3b82f6' : percentage >= 50 ? '#eab308' : '#ef4444';
+            
+            const message = percentage >= 90 ? '🎉 Excellent!' : percentage >= 70 ? '👏 Very Good!' : percentage >= 50 ? '👍 Good!' : '📚 Keep studying!';
+            document.getElementById('performanceMessage').textContent = message;
+            
+            const isLastLesson = state.currentLessonIndex === state.lessonNames.length - 1;
+            document.getElementById('continueButtonText').textContent = isLastLesson ? 'View Final Results' : `Continue to ${state.lessonNames[state.currentLessonIndex + 1]}`;
+            document.getElementById('lessonsCompleted').textContent = `Completed: ${state.completedLessons}/${state.lessonNames.length} lessons`;
+            
+            showScreen('reviewCompleteScreen');
+        }
+
+        function continueToNext() {
+            state.currentLessonIndex++;
+            
+            if (state.currentLessonIndex < state.lessonNames.length) {
+                startLesson(state.lessonNames[state.currentLessonIndex]);
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            const finalPercentage = (state.allLessonsScore.correct / state.allLessonsScore.total) * 100;
+            
+            document.getElementById('totalLessons').textContent = state.lessonNames.length;
+            document.getElementById('finalScore').textContent = `${state.allLessonsScore.correct}/${state.allLessonsScore.total}`;
+            document.getElementById('finalPercentage').textContent = finalPercentage.toFixed(1) + '%';
+            document.getElementById('finalPercentage').style.color = 
+                finalPercentage >= 90 ? '#10b981' : finalPercentage >= 70 ? '#3b82f6' : finalPercentage >= 50 ? '#eab308' : '#ef4444';
+            
+            const message = finalPercentage >= 90 ? '🎉🎉🎉 EXCELLENT! You\'re amazing at Polish! 🎉🎉🎉' :
+                           finalPercentage >= 70 ? '👏👏👏 VERY GOOD! Great performance! 👏👏👏' :
+                           finalPercentage >= 50 ? '👍👍 GOOD! Keep going and you\'ll be excellent! 👍👍' :
+                           '📚📚 Keep studying! You can do it! 📚📚';
+            document.getElementById('finalMessage').textContent = message;
+            
+            showScreen('finalScreen');
+        }
+
+        function goHome() {
+            state = {
+                lessonNames: Object.keys(lessonsData),
+                currentLessonIndex: 0,
+                currentLesson: null,
+                questions: [],
+                currentQ: 0,
+                score: { correct: 0, total: 0 },
+                mainQuestionsCorrect: 0,
+                isReview: false,
+                allLessonsScore: { correct: 0, total: 0 },
+                completedLessons: 0
+            };
+            showScreen('homeScreen');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dortmund Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #f9a825 0%, #f57f17 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #fbc02d;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #212121;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #fff9c4;
+            color: #f57f17;
+        }
+
+        .price-badge {
+            background-color: #eeeeee;
+            color: #424242;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Dortmund</h1>
+            <p class="lead">Industrial Heritage Meets Football Passion - The Heart of the Ruhr</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Dortmund</h2>
+                <p class="fs-5">Dortmund is Germany's eighth-largest city and the economic heart of the Ruhr region, with a fascinating transformation from industrial powerhouse to modern cultural center. Once famous for coal, steel, and brewing, Dortmund has reinvented itself while preserving its working-class heritage. The city is home to Borussia Dortmund, one of Europe's most passionate football clubs, and boasts extensive green spaces, medieval churches, and innovative museums. With its blend of industrial history, sporting culture, and urban renewal, Dortmund represents the dynamic spirit of modern Germany.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Westfalenpark -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Westfalenpark</h4>
+                        <p class="card-text">One of Germany's most beautiful urban parks, covering 70 hectares of landscaped gardens, lakes, and recreational facilities. Created for the Federal Garden Show in 1959 and expanded in 1969, the park features the iconic Florianturm tower, rose gardens with over 3,000 varieties, and the German Rosarium. The park offers playgrounds, a miniature railway, and hosts the Festival of Lights with spectacular illuminations. During summer, the open-air theater presents concerts and performances. Westfalenpark is a green oasis perfect for families, joggers, and anyone seeking nature within the city.</p>
+                    </div>
+                </div>
+
+                <!-- Florianturm -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Florianturm (Florian Tower)</h4>
+                        <p class="card-text">This distinctive 220-meter telecommunications tower is Dortmund's most recognizable landmark and Germany's seventh-tallest structure. Built in 1959, the tower features an observation deck at 138 meters offering breathtaking 360-degree views over Dortmund, the Ruhr region, and on clear days, the distant hills of Sauerland. The rotating restaurant completes a full revolution every hour, allowing diners to enjoy panoramic vistas while eating. At night, the tower is beautifully illuminated. The Florianturm symbolizes Dortmund's post-war renewal and remains an essential viewing point for understanding the city's geography.</p>
+                    </div>
+                </div>
+
+                <!-- Reinoldikirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Reinoldikirche (St. Reinold's Church)</h4>
+                        <p class="card-text">Dortmund's oldest church and the city's symbol, dedicated to the city's patron saint Reinold. This Lutheran church dates back to the 13th century and features a distinctive 112-meter tower that dominates the city skyline. The church combines Romanesque and Gothic architectural elements, with its tower rebuilt after World War II. Inside, visitors find medieval sculptures, a magnificent altar, and the relics of St. Reinold. The tower can be climbed for excellent views over the historic city center. Reinoldikirche represents Dortmund's medieval heritage and remains the spiritual heart of the city.</p>
+                    </div>
+                </div>
+
+                <!-- Marienkirche -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Marienkirche (St. Mary's Church)</h4>
+                        <p class="card-text">This Gothic hall church, built in the 14th century, is considered one of the masterpieces of Westphalian Gothic architecture. The church is famous for its Antwerp Altar, a magnificent carved altarpiece from 1420 featuring 633 gilded figures depicting biblical scenes. The interior showcases beautiful stained glass windows and medieval artwork. Despite severe damage in World War II, the church was carefully restored, preserving its artistic treasures. Located in the city center near the marketplace, Marienkirche stands as a testament to Dortmund's medieval prosperity and artistic heritage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-dark mb-4">🏛️ Museums and Attractions</h2>
+
+                <div class="row">
+                    <!-- German Football Museum -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">German Football Museum</h5>
+                                <p class="small text-muted">Interactive museum celebrating German football history with World Cup trophies and memorabilia</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €17</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signal Iduna Park -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Signal Iduna Park</h5>
+                                <p class="small text-muted">Borussia Dortmund home stadium with the famous Yellow Wall - Europe's largest terrace</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Tours vary by schedule</span>
+                                    <span class="info-badge price-badge">💶 €15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hohensyburg Castle -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Hohensyburg Castle</h5>
+                                <p class="small text-muted">Medieval castle ruins with panoramic views over Ruhr Valley and lakes</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ Always accessible</span>
+                                    <span class="info-badge price-badge">💶 Free entry</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

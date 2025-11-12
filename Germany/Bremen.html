@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bremen Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #ad1457 0%, #880e4f 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .place-card {
+            border-left: 4px solid #c2185b;
+            margin-bottom: 20px;
+        }
+
+        .museum-card {
+            border-left: 4px solid #00838f;
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 5px 5px 5px 0;
+        }
+
+        .time-badge {
+            background-color: #fce4ec;
+            color: #ad1457;
+        }
+
+        .price-badge {
+            background-color: #e0f7fa;
+            color: #00838f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-3">🇩🇪 Bremen</h1>
+            <p class="lead">Hanseatic Trading City - Fairy Tales & Maritime Heritage</p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-3">About Bremen</h2>
+                <p class="fs-5">Bremen is Germany's smallest state and one of its oldest cities, with over 1,200 years of history as a major trading center. This Hanseatic League city on the Weser River is famous for the Brothers Grimm fairy tale "Town Musicians of Bremen," its UNESCO World Heritage Market Square, and rich maritime tradition. Bremen perfectly preserves its medieval architecture while embracing modern culture, offering charming narrow streets, historic merchants' houses, and a vibrant arts scene.</p>
+            </div>
+        </div>
+
+        <!-- Places to Visit -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-primary mb-4">📍 Places to Visit</h2>
+
+                <!-- Schnoor -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Schnoor</h4>
+                        <p class="card-text">Bremen's most picturesque and oldest quarter features narrow cobblestone lanes lined with beautifully preserved houses from the 15th to 18th centuries. The name "Schnoor" comes from the old word for string, referring to the area's rope-making tradition. Today, this charming district is filled with artisan shops, cozy cafes, galleries, and small museums. The tiny alleyways and colorful half-timbered houses create a fairy-tale atmosphere, making Schnoor Bremen's most photographed neighborhood and a must-visit destination.</p>
+                    </div>
+                </div>
+
+                <!-- Boettcherstrasse -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Böttcherstraße</h4>
+                        <p class="card-text">This remarkable 100-meter street is a masterpiece of expressionist brick architecture from the 1920s. Commissioned by coffee merchant Ludwig Roselius, the street features unique buildings including the Paula Modersohn-Becker Museum, Roselius House, and the famous Glockenspiel House with its musical carillon of Meissen porcelain bells that chime three times daily. The golden entrance relief depicts the Archangel Michael fighting a dragon. This architectural gem combines art, commerce, and culture in an extraordinary ensemble.</p>
+                    </div>
+                </div>
+
+                <!-- Burgerpark and City Forest -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Bürgerpark and City Forest</h4>
+                        <p class="card-text">This expansive green oasis covers 202 hectares and is one of Germany's most beautiful urban parks. Created by citizens in 1866, the park features English landscape design with winding paths, romantic bridges, lakes, and the Marcusbrunnen fountain. The adjacent City Forest extends the green space even further. The park offers a miniature railway, rowing boat rentals, beer gardens, and peaceful meadows. It's a favorite recreational spot for Bremen residents and provides a perfect escape from city life.</p>
+                    </div>
+                </div>
+
+                <!-- Historische Altstadt -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Historische Altstadt (Historic Old Town)</h4>
+                        <p class="card-text">Bremen's historic center showcases over 1,000 years of architectural heritage, remarkably preserved despite World War II. The Old Town features magnificent guild houses, the Roland statue, medieval churches, and winding streets that reveal the city's Hanseatic prosperity. Walking through the Altstadt offers glimpses of Bremen's trading past with beautifully restored merchants' houses, historic cellars now housing restaurants, and hidden courtyards. The area between Market Square and the Weser River represents one of Germany's finest medieval city centers.</p>
+                    </div>
+                </div>
+
+                <!-- Bremen Marktplatz -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Bremen Marktplatz (Market Square)</h4>
+                        <p class="card-text">This UNESCO World Heritage Site is one of Europe's most beautiful market squares, surrounded by architectural masterpieces spanning 600 years. The Gothic Town Hall with its magnificent Renaissance facade, the 10-meter Roland statue symbolizing freedom and trade rights, St. Peter's Cathedral, and the Schütting guild house create an impressive ensemble. The famous Bremen Town Musicians statue stands beside the Town Hall. The square remains the heart of Bremen's civic life and hosts Christmas markets and festivals throughout the year.</p>
+                    </div>
+                </div>
+
+                <!-- Ostertorsteinweg -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Ostertorsteinweg</h4>
+                        <p class="card-text">This vibrant street in the trendy Viertel (Quarter) district is Bremen's alternative and multicultural heart. Known simply as "Ostertor," this area is filled with independent boutiques, vintage shops, international restaurants, bars, and street art. The neighborhood attracts students, artists, and young professionals, creating a bohemian atmosphere. Weekend flea markets, street festivals, and a diverse nightlife scene make Ostertorsteinweg the perfect place to experience Bremen's contemporary culture and creative spirit.</p>
+                    </div>
+                </div>
+
+                <!-- Bremer Dom -->
+                <div class="card place-card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary">Bremer Dom (St. Peter's Cathedral)</h4>
+                        <p class="card-text">This impressive twin-towered cathedral dominates Bremen's Market Square and represents over 1,200 years of history. Originally founded in 789, the current Romanesque and Gothic structure dates primarily from the 11th to 13th centuries. The cathedral's 99-meter towers can be climbed for spectacular city views. Inside, visitors find beautiful medieval sculptures, the historic organ, and the lead cellar with its naturally mummified bodies. The Dom Museum displays religious art and archaeological finds, revealing Bremen's ecclesiastical heritage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Museums and Palaces -->
+        <div class="card section-card">
+            <div class="card-body">
+                <h2 class="text-info mb-4">🏛️ Museums and Attractions</h2>
+
+                <div class="row">
+                    <!-- German Maritime Museum -->
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">German Maritime Museum (Bremerhaven)</h5>
+                                <p class="small text-muted">Germany's national maritime museum showcasing 3,000 years of seafaring history, located in nearby Bremerhaven</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 6:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €9.50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Focke Museum -->
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card museum-card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Focke Museum</h5>
+                                <p class="small text-muted">Bremen State Museum for Art and Cultural History with 1,200 years of regional heritage</p>
+                                <div class="mt-3">
+                                    <span class="info-badge time-badge">⏰ 10:00 AM - 5:00 PM</span>
+                                    <span class="info-badge price-badge">💶 €7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Main Guide -->
+        <div class="text-center mt-4 mb-4">
+            <a href="../../my-website.html" class="btn btn-primary btn-lg">
+                ← Back to Travel Guide
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Test System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #4a5568;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #718096;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .info-box {
+            background: #fff5f5;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .info-box h3 {
+            color: #c53030;
+            margin-bottom: 15px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            color: #2d3748;
+        }
+
+        .info-box li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .info-box li::before {
+            content: "•";
+            color: #f5576c;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+        }
+
+        .btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-container {
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            transition: width 0.3s;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        .question-box {
+            background: #fff5f5;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .question-text {
+            color: #2d3748;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #cbd5e0;
+            border-radius: 12px;
+            font-size: 1.1em;
+            margin: 15px 0;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #f5576c;
+        }
+
+        .feedback {
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-correct {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .feedback-wrong {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        .feedback-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .feedback-text {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7e2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .emoji {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .score-big {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #fbd38d 0%, #ed8936 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+        }
+
+        .overall-stats {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Screen -->
+    <div id="homeScreen" class="container">
+        <h1>🇪🇸 Spanish Test System</h1>
+        <p class="subtitle">Comprehensive Learning + Various Question Types + General Review</p>
+        
+        <div class="info-box">
+            <h3>How it works:</h3>
+            <ul>
+                <li>Complete all lessons in order</li>
+                <li>Each lesson has multiple question types</li>
+                <li>General review after each lesson</li>
+                <li>Track your progress across all lessons</li>
+            </ul>
+        </div>
+
+        <button class="btn btn-primary" onclick="startFirstLesson()">
+            Start Test - Begin with Lesson 1
+        </button>
+    </div>
+
+    <!-- Test Screen -->
+    <div id="testScreen" class="container hidden">
+        <div class="progress-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h2 id="lessonTitle"></h2>
+                <span id="lessonProgress" style="color: #718096;"></span>
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div class="progress-info">
+                <span id="questionNumber"></span>
+                <span id="currentScore"></span>
+            </div>
+        </div>
+
+        <div class="question-box">
+            <div class="question-text" id="questionText"></div>
+        </div>
+
+        <div id="answerSection">
+            <input type="text" id="answerInput" placeholder="Type your answer..." onkeypress="handleEnter(event)">
+            <button class="btn btn-primary" id="submitBtn" onclick="checkAnswer()">
+                Submit Answer
+            </button>
+        </div>
+
+        <div id="feedbackSection" class="hidden">
+            <div id="feedbackBox" class="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div>
+                    <div class="feedback-text" id="feedbackText"></div>
+                    <div id="correctAnswer" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+            <button class="btn btn-success" onclick="nextQuestion()">
+                Next Question →
+            </button>
+        </div>
+
+        <div class="overall-stats">
+            <span id="overallProgress"></span>
+        </div>
+    </div>
+
+    <!-- Lesson Complete Screen -->
+    <div id="lessonCompleteScreen" class="container hidden">
+        <div class="icon">🏆</div>
+        <h1>Main Questions Complete!</h1>
+        
+        <div class="result-card">
+            <div class="stat-label">Score</div>
+            <div class="score-big" id="mainScore"></div>
+            <div id="mainPercentage" style="font-size: 2em; font-weight: bold; margin-top: 10px;"></div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.2em; color: #4a5568; margin: 25px 0;">
+            Now it's time for the General Review!
+        </p>
+
+        <button class="btn btn-primary" onclick="startReview()">
+            Start General Review
+        </button>
+    </div>
+
+    <!-- Review Complete Screen -->
+    <div id="reviewCompleteScreen" class="container hidden">
+        <div class="icon">🎉</div>
+        <h1>Lesson Complete!</h1>
+        <h2 id="completedLessonName" style="text-align: center; color: #718096;"></h2>
+
+        <div class="result-card">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Main Questions</div>
+                    <div class="stat-value" id="mainQScore" style="color: #f093fb;"></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">General Review</div>
+                    <div class="stat-value" id="reviewScore" style="color: #f5576c;"></div>
+                </div>
+            </div>
+            <div class="stat-card" style="margin-top: 20px;">
+                <div class="stat-label">Total Score</div>
+                <div class="stat-value" id="totalScore"></div>
+                <div id="totalPercentage" style="font-size: 2em; font-weight: bold; margin-top: 10px;"></div>
+                <div id="performanceMessage" style="font-size: 1.2em; font-weight: 600; margin-top: 10px;"></div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="continueToNext()">
+            <span id="continueButtonText"></span> →
+        </button>
+
+        <div style="text-align: center; color: #718096; margin-top: 15px;">
+            <span id="lessonsCompleted"></span>
+        </div>
+    </div>
+
+    <!-- Final Results Screen -->
+    <div id="finalScreen" class="container hidden">
+        <div class="emoji">🎊</div>
+        <h1>ALL LESSONS COMPLETED!</h1>
+        <h2 style="text-align: center; color: #f5576c;">FINAL RESULTS</h2>
+
+        <div class="result-card">
+            <div style="margin-bottom: 30px;">
+                <div class="stat-label">Total Lessons</div>
+                <div style="font-size: 3em; font-weight: bold;" id="totalLessons"></div>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <div class="stat-label">Total Score</div>
+                <div style="font-size: 4em; font-weight: bold; color: #f093fb;" id="finalScore"></div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Success Rate</div>
+                <div class="score-big" id="finalPercentage"></div>
+                <div id="finalMessage" style="font-size: 1.5em; font-weight: bold; margin-top: 15px;"></div>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.3em; color: #48bb78; font-weight: 600; margin: 25px 0;">
+            Congratulations! You completed the entire test!
+        </p>
+
+        <button class="btn btn-primary" onclick="goHome()">
+            🏠 Back to Home
+        </button>
+    </div>
+
+    <script>
+        function normalizeText(text) {
+            return text.toLowerCase().trim()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        const lessonsData = {
+            "Lesson 1 - Numbers 1-10": {
+                count: 10,
+                words: [
+                    ["1", "uno"], ["2", "dos"], ["3", "tres"], ["4", "cuatro"], ["5", "cinco"],
+                    ["6", "seis"], ["7", "siete"], ["8", "ocho"], ["9", "nueve"], ["10", "diez"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 2 - Greetings": {
+                count: 18,
+                words: [
+                    ["Hello", "hola"], ["How are you?", "como estas"], ["Nice to meet you", "mucho gusto"],
+                    ["Nice to meet you (alt)", "encantado de conocerte"], ["See you tomorrow", "hasta manana"],
+                    ["Good morning", "buenos dias"], ["Good afternoon", "buenas tardes"], ["Good night", "buenas noches"],
+                    ["What is your name?", "cual es su nombre"], ["My name is", "me llamo"], ["Where do you live?", "donde vives"],
+                    ["Where are you from?", "de donde eres"], ["Nice to see you", "encantado de verte"],
+                    ["Have a nice day", "que tengas un buen dia"], ["See you later", "hasta luego"],
+                    ["Goodbye", "adios"], ["Please", "por favor"], ["Thank you", "gracias"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3 - Regular -AR Verbs": {
+                count: 75,
+                words: [
+                    ["to pass", "pasar"], ["to stay", "quedar"], ["to speak", "hablar"],
+                    ["to carry", "llevar"], ["to leave", "dejar"], ["to call", "llamar"],
+                    ["to take", "tomar"], ["to treat", "tratar"], ["to watch", "mirar"],
+                    ["to wait", "esperar"], ["to enter", "entrar"], ["to work", "trabajar"],
+                    ["to finish", "terminar"], ["to need", "necesitar"], ["to turn out", "resultar"],
+                    ["to change", "cambiar"], ["to introduce", "presentar"], ["to create", "crear"],
+                    ["to consider", "considerar"], ["to end", "acabar"], ["to win", "ganar"],
+                    ["to form", "formar"], ["to accept", "aceptar"], ["to achieve", "lograr"],
+                    ["to ask", "preguntar"], ["to study", "estudiar"], ["to help", "ayudar"],
+                    ["to please", "gustar"], ["to listen", "escuchar"], ["to raise", "levantar"],
+                    ["to try", "intentar"], ["to use", "usar"], ["to forget", "olvidar"],
+                    ["to occupy", "ocupar"], ["to fix", "fijar"], ["to buy", "comprar"],
+                    ["to avoid", "evitar"], ["to interest", "interesar"], ["to throw", "echar"],
+                    ["to import", "importar"], ["to observe", "observar"], ["to imagine", "imaginar"],
+                    ["to develop", "desarrollar"], ["to point out", "señalar"], ["to prepare", "preparar"],
+                    ["to lack", "faltar"], ["to accompany", "acompañar"], ["to desire", "desear"],
+                    ["to teach", "enseñar"], ["to represent", "representar"], ["to order", "mandar"],
+                    ["to assure", "asegurar"], ["to kill", "matar"], ["to guard", "guardar"],
+                    ["to initiate", "iniciar"], ["to lower", "bajar"], ["to note", "notar"],
+                    ["to cut", "cortar"], ["to take advantage", "aprovechar"], ["to support", "apoyar"],
+                    ["to increase", "aumentar"], ["to abandon", "abandonar"], ["to remove", "quitar"],
+                    ["to preserve", "conservar"], ["to function", "funcionar"], ["to announce", "anunciar"],
+                    ["to comment", "comentar"], ["to participate", "participar"], ["to escape", "escapar"],
+                    ["to pull", "tirar"], ["to answer", "contestar"], ["to worry", "preocupar"],
+                    ["to lend", "prestar"], ["to weigh", "pesar"], ["to travel", "viajar"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3 - Regular -ER Verbs": {
+                count: 12,
+                words: [
+                    ["to owe", "deber"], ["to understand", "comprender"], ["to run", "correr"],
+                    ["to eat", "comer"], ["to happen", "suceder"], ["to learn", "aprender"],
+                    ["to respond", "responder"], ["to sell", "vender"], ["to put in", "meter"],
+                    ["to attempt", "pretender"], ["to correspond", "corresponder"], ["to depend", "depender"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 3 - Regular -IR Verbs": {
+                count: 13,
+                words: [
+                    ["to live", "vivir"], ["to exist", "existir"], ["to occur", "ocurrir"],
+                    ["to receive", "recibir"], ["to permit", "permitir"], ["to divide", "partir"],
+                    ["to fulfill", "cumplir"], ["to decide", "decidir"], ["to go up", "subir"],
+                    ["to suffer", "sufrir"], ["to share", "compartir"], ["to consist", "consistir"],
+                    ["to insist", "insistir"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 4 - Adjectives": {
+                count: 35,
+                words: [
+                    ["Noisy", "ruidoso"], ["Quiet", "silencioso"], ["Strong", "fuerte"],
+                    ["Weak", "debil"], ["Hard", "duro"], ["Soft", "blando"],
+                    ["More", "mas"], ["Less", "menos"], ["Clean", "limpio"],
+                    ["Dirty", "sucio"], ["Old", "viejo"], ["New", "nuevo"],
+                    ["Big", "grande"], ["Small", "pequeño"], ["Young", "joven"],
+                    ["Skinny", "flaco"], ["Fat", "gordo"], ["Pretty", "guapo"],
+                    ["Ugly", "feo"], ["Thick", "grueso"], ["Thin", "delgado"],
+                    ["Rough", "aspero"], ["Smooth", "liso"], ["Happy", "feliz"],
+                    ["Sad", "triste"], ["Angry", "enfadado"], ["Afraid", "asustado"],
+                    ["Joy", "alegria"], ["Surprised", "sorprendido"], ["Calm", "tranquilo"],
+                    ["Bored", "aburrido"], ["Easy", "facil"], ["Difficult", "dificil"],
+                    ["Bad", "malo"], ["Good", "bueno"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 5.1 - Days": {
+                count: 11,
+                words: [
+                    ["Day", "dia"], ["Week", "semana"], ["Monday", "lunes"],
+                    ["Tuesday", "martes"], ["Wednesday", "miercoles"], ["Thursday", "jueves"],
+                    ["Friday", "viernes"], ["Saturday", "sabado"], ["Sunday", "domingo"],
+                    ["Weekend", "fin de semana"], ["The days of the week", "los dias de la semana"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 5.2 - Months": {
+                count: 15,
+                words: [
+                    ["Month", "mes"], ["Year", "ano"], ["January", "enero"],
+                    ["February", "febrero"], ["March", "marzo"], ["April", "abril"],
+                    ["May", "mayo"], ["June", "junio"], ["July", "julio"],
+                    ["August", "agosto"], ["September", "septiembre"], ["October", "octubre"],
+                    ["November", "noviembre"], ["December", "diciembre"], ["The months", "los meses del ano"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 6 - Seasons & Weather": {
+                count: 23,
+                words: [
+                    ["Seasons", "las estaciones"], ["Winter", "invierno"], ["Summer", "verano"],
+                    ["Spring", "primavera"], ["Autumn", "otoño"], ["Sky", "cielo"],
+                    ["Cloud", "nube"], ["Rainbow", "arco iris"], ["Cold", "frio"],
+                    ["Hot", "calido"], ["It is hot", "hace calor"], ["It is cold", "hace frio"],
+                    ["It is sunny", "hace sol"], ["It is cloudy", "esta nublado"], ["It is humid", "hay humedad"],
+                    ["It is raining", "esta lloviendo"], ["It is snowing", "esta nevando"], ["It is windy", "hace viento"],
+                    ["How is the weather?", "que tiempo hace"], ["Good weather", "buen tiempo"], ["Bad weather", "mal tiempo"],
+                    ["What is the temperature?", "a que temperatura estamos"], ["It is 24 degrees", "estamos a 24 grados"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 7 - Colors": {
+                count: 14,
+                words: [
+                    ["Black", "negro"], ["Blue", "azul"], ["Brown", "marron"],
+                    ["Green", "verde"], ["Orange", "naranja"], ["Purple", "morado"],
+                    ["Red", "rojo"], ["White", "blanco"], ["Yellow", "amarillo"],
+                    ["Gray", "gris"], ["Gold", "oro"], ["Silver", "plata"],
+                    ["What color is it?", "que color es"], ["The color is", "el color es"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 8.1 - Family": {
+                count: 37,
+                words: [
+                    ["the (masculine)", "el"], ["the (feminine)", "la"], ["Mother", "madre"],
+                    ["Father", "padre"], ["Brother", "hermano"], ["Sister", "hermana"],
+                    ["Son", "hijo"], ["Daughter", "hija"], ["Parents", "padres"],
+                    ["Children", "niños"], ["Child", "niño"], ["Stepmother", "madrastra"],
+                    ["Stepfather", "padrastro"], ["Stepsister", "hermanastra"], ["Stepbrother", "hermanastro"],
+                    ["Son-in-law", "yerno"], ["Daughter-in-law", "nuera"], ["Wife", "esposa"],
+                    ["Husband", "marido"], ["Grandparents", "abuelos"], ["Grandfather", "abuelo"],
+                    ["Grandmother", "abuela"], ["Grandson", "nieto"], ["Granddaughter", "nieta"],
+                    ["Grandchildren", "nietos"], ["Aunt", "tia"], ["Uncle", "tio"],
+                    ["Cousin (female)", "prima"], ["Cousin (male)", "primo"], ["Nephew", "sobrino"],
+                    ["Niece", "sobrina"], ["Father-in-law", "suegro"], ["Mother-in-law", "suegra"],
+                    ["Brother-in-law", "cuñado"], ["Sister-in-law", "cuñada"], ["Relative", "pariente"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 8.2 - Friends": {
+                count: 14,
+                words: [
+                    ["Miss", "señorita"], ["Boy", "chico"], ["Girl", "chica"],
+                    ["Baby", "bebe"], ["Woman", "mujer"], ["Man", "hombre"],
+                    ["Friend (male)", "amigo"], ["Friend (female)", "amiga"], ["Boyfriend", "novio"],
+                    ["Girlfriend", "novia"], ["Gentleman", "caballero"], ["Lady", "dama"],
+                    ["Neighbor (male)", "vecino"], ["Neighbor (female)", "vecina"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 9 - Numbers 11-30": {
+                count: 20,
+                words: [
+                    ["11", "once"], ["12", "doce"], ["13", "trece"],
+                    ["14", "catorce"], ["15", "quince"], ["16", "dieciseis"],
+                    ["17", "diecisiete"], ["18", "dieciocho"], ["19", "diecinueve"],
+                    ["20", "veinte"], ["21", "veintiuno"], ["22", "veintidos"],
+                    ["23", "veintitres"], ["24", "veinticuatro"], ["25", "veinticinco"],
+                    ["26", "veintiseis"], ["27", "veintisiete"], ["28", "veintiocho"],
+                    ["29", "veintinueve"], ["30", "treinta"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 10.1 - Prepositions": {
+                count: 37,
+                words: [
+                    ["For", "para"], ["From", "de"], ["In", "en"],
+                    ["Inside", "dentro"], ["Near", "cerca"], ["Out", "fuera de"],
+                    ["To", "a"], ["Under", "debajo de"], ["With", "con"],
+                    ["Without", "sin"], ["Above", "encima de"], ["Across", "a traves de"],
+                    ["After", "despues"], ["Against", "contra"], ["Along", "a lo largo de"],
+                    ["Around", "alrededor de"], ["At", "en"], ["Behind", "detras"],
+                    ["Below", "debajo"], ["Beside", "al lado de"], ["Between", "entre"],
+                    ["By", "junto a"], ["During", "durante"], ["Except", "excepto"],
+                    ["And", "y"], ["Because", "porque"], ["But", "pero"],
+                    ["Or", "o"], ["Everywhere", "en todas partes"], ["Everyone", "todos"],
+                    ["Everything", "todo"], ["Here", "aqui"], ["Few", "pocos"],
+                    ["Some", "algunos"], ["Many", "muchos"], ["Into", "en"],
+                    ["Outside", "fuera de"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 10.2 - Useful Words": {
+                count: 29,
+                words: [
+                    ["Question", "pregunta"], ["Answer", "respuesta"], ["Truth", "verdad"],
+                    ["Lie", "mentira"], ["Nothing", "nada"], ["Something", "algo"],
+                    ["Same", "igual"], ["Different", "diferente"], ["Pull", "tirar"],
+                    ["Push", "empujar"], ["Long", "largo"], ["Short", "corto"],
+                    ["Cold", "frio"], ["Hot", "caliente"], ["Light", "luz"],
+                    ["Dark", "oscuridad"], ["Wet", "mojado"], ["Dry", "seco"],
+                    ["Empty", "vacio"], ["Full", "lleno"], ["How?", "como"],
+                    ["What?", "que"], ["When?", "cuando"], ["Where?", "donde"],
+                    ["Which?", "cual"], ["Who?", "quien"], ["Why?", "por que"],
+                    ["How long?", "cuanto tiempo"], ["How much?", "cuanto"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.1 - Drinks": {
+                count: 9,
+                words: [
+                    ["Coffee", "cafe"], ["Tea", "te"], ["Soft drink", "gaseosa"],
+                    ["Water", "agua"], ["Lemonade", "limonada"], ["Juice", "zumo"],
+                    ["Orange juice", "zumo de naranja"], ["With ice", "con hielo"],
+                    ["I would like a glass of water please", "quiero un vaso de agua por favor"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.2 - Dairy Products": {
+                count: 18,
+                words: [
+                    ["Milk", "leche"], ["Ice cream", "helado"], ["Butter", "mantequilla"],
+                    ["Cheese", "queso"], ["Cottage cheese", "requeson"], ["Cream", "crema"],
+                    ["Sour cream", "crema agria"], ["Yogurt", "yogur"], ["Eggs", "huevos"],
+                    ["Whipping cream", "crema batida"], ["Baguette", "baguette"], ["Doughnut", "donut"],
+                    ["Cookie", "galleta"], ["Roll", "panecillo"], ["Dessert", "postre"],
+                    ["Cake", "pastel"], ["Bread", "pan"], ["Pie", "tarta"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.3 - Meats": {
+                count: 14,
+                words: [
+                    ["Beef", "carne de vacuno"], ["Veal", "ternera"], ["Ham", "jamon"],
+                    ["Chicken", "pollo"], ["Turkey", "pavo"], ["Duck", "pato"],
+                    ["Bacon", "beicon"], ["Pork", "cerdo"], ["Filet mignon", "filete miñon"],
+                    ["Sausage", "salchicha"], ["Lamb chop", "chuleta de cordero"],
+                    ["Pork chop", "chuleta de cerdo"], ["Meat", "carne"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.4 - Seafoods": {
+                count: 20,
+                words: [
+                    ["Fish", "pescado"], ["Shellfish", "marisco"], ["Bass", "perca"],
+                    ["Salmon", "salmon"], ["Lobster", "langosta"], ["Crab", "cangrejo"],
+                    ["Mussel", "mejillon"], ["Oyster", "ostra"], ["Cod", "bacalao"],
+                    ["Clam", "almeja"], ["Shrimp", "gamba"], ["Tuna", "atun"],
+                    ["Trout", "trucha"], ["Sole", "lenguado"], ["Shark", "tiburon"],
+                    ["Carp", "carpa"], ["Tilapia", "tilapia"], ["Eel", "anguila"],
+                    ["Catfish", "siluro"], ["Swordfish", "pez espada"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.5 - Herbs & Spices": {
+                count: 17,
+                words: [
+                    ["Salt", "sal"], ["Pepper", "pimienta"], ["Caraway", "alcaravea"],
+                    ["Garlic", "ajo"], ["Basil", "albahaca"], ["Coriander", "cilantro"],
+                    ["Fennel", "hinojo"], ["Marjoram", "mejorana"], ["Oregano", "oregano"],
+                    ["Parsley", "perejil"], ["Rosemary", "romero"], ["Sage", "salvia"],
+                    ["Thyme", "tomillo"], ["Nutmeg", "nuez moscada"], ["Paprika", "pimenton"],
+                    ["Cayenne", "cayena"], ["Ginger", "jengibre"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.6 - Vegetables": {
+                count: 28,
+                words: [
+                    ["Celery", "apio"], ["Eggplant", "berenjena"], ["Zucchini", "calabacin"],
+                    ["Onion", "cebolla"], ["Spinach", "espinaca"], ["Salad", "ensalada"],
+                    ["Green beans", "judias verdes"], ["Cucumber", "pepino"], ["Radish", "rabano"],
+                    ["Cabbage", "repollo"], ["Mushrooms", "setas"], ["Lettuce", "lechuga"],
+                    ["Corn", "maiz"], ["Potatoes", "patatas"], ["Tomato", "tomate"],
+                    ["Carrot", "zanahoria"], ["Plantain", "platano macho"], ["Beans", "alubias"],
+                    ["Leek", "puerro"], ["Lotus root", "raiz de loto"], ["Bamboo shoot", "brotes de bambu"],
+                    ["Artichoke", "alcachofa"], ["Asparagus", "esparragos"], ["Brussels sprouts", "coles de bruselas"],
+                    ["Broccoli", "brocoli"], ["Peas", "guisantes"], ["Cauliflower", "coliflor"],
+                    ["Chili pepper", "chile"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 11.7 - Fruits": {
+                count: 27,
+                words: [
+                    ["Cherries", "cerezas"], ["Raspberries", "frambuesas"], ["Blueberries", "arandanos"],
+                    ["Strawberries", "fresas"], ["Lemon", "limon"], ["Lime", "lima"],
+                    ["Apple", "manzana"], ["Orange", "naranja"], ["Pear", "pera"],
+                    ["Banana", "platano"], ["Grapes", "uvas"], ["Grapefruit", "pomelo"],
+                    ["Watermelon", "sandia"], ["Pineapple", "piña"], ["Plum", "ciruela"],
+                    ["Peach", "melocoton"], ["Mango", "mango"], ["Apricot", "albaricoque"],
+                    ["Pomegranate", "granada"], ["Persimmon", "caqui"], ["Kiwi", "kiwi"],
+                    ["Litchi", "litchi"], ["Longan", "longan"], ["Balsam pear", "melon amargo"],
+                    ["Passion fruit", "maracuya"], ["Avocado", "aguacate"], ["Coconut", "coco"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 12.1 - Irregular Verbs -AR": {
+                count: 31,
+                words: [
+                    ["to have lunch", "almorzar"], ["to pass (test)", "aprobar"], ["to hang", "colgar"],
+                    ["to count", "contar"], ["to demonstrate", "demostrar"], ["to find", "encontrar"],
+                    ["to show", "mostrar"], ["to try/taste", "probar"], ["to remember", "recordar"],
+                    ["to dream", "soñar"], ["to close", "cerrar"], ["to begin", "comenzar"],
+                    ["to wake up", "despertar"], ["to start", "empezar"], ["to deny", "negar"],
+                    ["to think", "pensar"], ["to break", "quebrar"], ["to tremble", "temblar"],
+                    ["to cross", "atravesar"], ["to sit", "sentar"], ["to recommend", "recomendar"],
+                    ["to govern", "gobernar"], ["to express", "manifestar"], ["to snack", "merendar"],
+                    ["to cry", "llorar"], ["to warm", "calentar"], ["to look", "regar"],
+                    ["to fly", "volar"], ["to beg", "rogar"], ["to bury", "enterrar"],
+                    ["to scrub", "fregar"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 12.2 - Irregular Verbs -ER": {
+                count: 36,
+                words: [
+                    ["to understand", "entender"], ["to rain", "llover"], ["to bite", "morder"],
+                    ["to move", "mover"], ["to lose", "perder"], ["to can/be able", "poder"],
+                    ["to return", "volver"], ["to solve", "resolver"], ["to satisfy", "satisfacer"],
+                    ["to know (person)", "conocer"], ["to be born", "nacer"], ["to seem", "parecer"],
+                    ["to bring", "traer"], ["to fall", "caer"], ["to be worth", "valer"],
+                    ["to fit", "caber"], ["to recognize", "reconocer"], ["to disappear", "desaparecer"],
+                    ["to obey", "obedecer"], ["to be", "ser"], ["to have", "tener"],
+                    ["to see", "ver"], ["to do/make", "hacer"], ["to put", "poner"],
+                    ["to undo", "deshacer"], ["to thank", "agradecer"], ["to establish", "establecer"],
+                    ["to drink", "beber"], ["to read", "leer"], ["to break", "romper"],
+                    ["to promise", "prometer"], ["to possess", "poseer"], ["to surprise", "sorprender"],
+                    ["to fear", "temer"], ["to believe", "creer"], ["to have (aux)", "haber"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 12.3 - Irregular Verbs -IR": {
+                count: 35,
+                words: [
+                    ["to warn", "advertir"], ["to confer", "conferir"], ["to allow", "consentir"],
+                    ["to convert", "convertir"], ["to digest", "digerir"], ["to have fun", "divertirse"],
+                    ["to lie", "mentir"], ["to prefer", "preferir"], ["to feel", "sentir"],
+                    ["to suggest", "sugerir"], ["to drive", "conducir"], ["to translate", "traducir"],
+                    ["to introduce", "introducir"], ["to produce", "producir"], ["to reduce", "reducir"],
+                    ["to follow", "seguir"], ["to get/obtain", "conseguir"], ["to repeat", "repetir"],
+                    ["to dress", "vestir"], ["to serve", "servir"], ["to boil", "hervir"],
+                    ["to prevent", "impedir"], ["to die", "morir"], ["to go out", "salir"],
+                    ["to hear", "oir"], ["to come", "venir"], ["to ask for", "pedir"],
+                    ["to go", "ir"], ["to say/tell", "decir"], ["to write", "escribir"],
+                    ["to attend", "asistir"], ["to discuss", "discutir"], ["to join", "unir"],
+                    ["to admit", "admitir"], ["to sleep", "dormir"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 14 - Numbers 31-50": {
+                count: 20,
+                words: [
+                    ["31", "treinta y uno"], ["32", "treinta y dos"], ["33", "treinta y tres"],
+                    ["34", "treinta y cuatro"], ["35", "treinta y cinco"], ["36", "treinta y seis"],
+                    ["37", "treinta y siete"], ["38", "treinta y ocho"], ["39", "treinta y nueve"],
+                    ["40", "cuarenta"], ["41", "cuarenta y uno"], ["42", "cuarenta y dos"],
+                    ["43", "cuarenta y tres"], ["44", "cuarenta y cuatro"], ["45", "cuarenta y cinco"],
+                    ["46", "cuarenta y seis"], ["47", "cuarenta y siete"], ["48", "cuarenta y ocho"],
+                    ["49", "cuarenta y nueve"], ["50", "cincuenta"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 15 - Physical Appearance": {
+                count: 37,
+                words: [
+                    ["Tall", "alto"], ["Short (height)", "bajo"], ["Slim", "delgado"],
+                    ["Fat", "gordo"], ["Muscular", "musculoso"], ["Blonde", "rubio"],
+                    ["Brown-haired", "castaño"], ["Black-haired", "negro"], ["Curly hair", "rizado"],
+                    ["Straight hair", "liso"], ["Blue eyes", "ojos azules"], ["Brown eyes", "ojos marrones"],
+                    ["Green eyes", "ojos verdes"], ["Beautiful", "guapo"], ["Ugly", "feo"],
+                    ["Young", "joven"], ["Old", "viejo"], ["Beard", "barba"],
+                    ["Light-skinned", "piel clara"], ["Dark-skinned", "piel oscura"], ["Freckles", "pecas"],
+                    ["Wrinkles", "arrugas"], ["Bald", "calvo"], ["Hairy (body)", "peludo"],
+                    ["Straight nose", "nariz recta"], ["Big nose", "nariz grande"], ["Small nose", "nariz pequeña"],
+                    ["Thin lips", "labios finos"], ["Full lips", "labios carnosos"], ["Broad shoulders", "hombros anchos"],
+                    ["Narrow shoulders", "hombros estrechos"], ["Tanned skin", "piel bronceada"], ["Pale skin", "piel palida"],
+                    ["Wavy hair", "cabello ondulado"], ["Ponytail", "cola de caballo"], ["Braids", "trenzas"],
+                    ["Beard and mustache", "barba y bigote"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 16 - Occupations": {
+                count: 30,
+                words: [
+                    ["Teacher", "profesor"], ["Doctor", "medico"], ["Engineer", "ingeniero"],
+                    ["Nurse", "enfermero"], ["Police officer", "policia"], ["Firefighter", "bombero"],
+                    ["Chef", "cocinero"], ["Waiter", "camarero"], ["Mechanic", "mecanico"],
+                    ["Electrician", "electricista"], ["Plumber", "fontanero"], ["Carpenter", "carpintero"],
+                    ["Farmer", "granjero"], ["Dentist", "dentista"], ["Pharmacist", "farmaceutico"],
+                    ["Lawyer", "abogado"], ["Judge", "juez"], ["Journalist", "periodista"],
+                    ["Actor", "actor"], ["Musician", "musico"], ["Driver", "conductor"],
+                    ["Pilot", "piloto"], ["Scientist", "cientifico"], ["Architect", "arquitecto"],
+                    ["Cashier", "cajero"], ["Cleaner", "limpiador"], ["Salesperson", "vendedor"],
+                    ["Programmer", "programador"], ["Designer", "diseñador"], ["Translator", "traductor"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 17 - Sports": {
+                count: 30,
+                words: [
+                    ["Football/Soccer", "futbol"], ["Basketball", "baloncesto"], ["Volleyball", "voleibol"],
+                    ["Tennis", "tenis"], ["Swimming", "natacion"], ["Running", "carreras"],
+                    ["Ice hockey", "hockey sobre hielo"], ["Skiing", "esqui"], ["Cycling", "ciclismo"],
+                    ["Boxing", "boxeo"], ["Martial arts", "artes marciales"], ["Golf", "golf"],
+                    ["Table tennis", "tenis de mesa"], ["Wrestling", "lucha libre"], ["Handball", "balonmano"],
+                    ["Baseball", "beisbol"], ["Surfing", "surf"], ["Skating", "patinaje"],
+                    ["Horse riding", "equitacion"], ["Diving", "buceo"], ["Cricket", "cricket"],
+                    ["Rugby", "rugby"], ["Ballet", "ballet"], ["Bowling", "bolos"],
+                    ["Weightlifting", "levantamiento de pesas"], ["Windsurfing", "windsurf"], ["Ice skating", "patinaje sobre hielo"],
+                    ["Rowing", "remo"], ["Archery", "tiro con arco"], ["Climbing", "escalada"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 18 - Numbers 51-75": {
+                count: 25,
+                words: [
+                    ["51", "cincuenta y uno"], ["52", "cincuenta y dos"], ["53", "cincuenta y tres"],
+                    ["54", "cincuenta y cuatro"], ["55", "cincuenta y cinco"], ["56", "cincuenta y seis"],
+                    ["57", "cincuenta y siete"], ["58", "cincuenta y ocho"], ["59", "cincuenta y nueve"],
+                    ["60", "sesenta"], ["61", "sesenta y uno"], ["62", "sesenta y dos"],
+                    ["63", "sesenta y tres"], ["64", "sesenta y cuatro"], ["65", "sesenta y cinco"],
+                    ["66", "sesenta y seis"], ["67", "sesenta y siete"], ["68", "sesenta y ocho"],
+                    ["69", "sesenta y nueve"], ["70", "setenta"], ["71", "setenta y uno"],
+                    ["72", "setenta y dos"], ["73", "setenta y tres"], ["74", "setenta y cuatro"],
+                    ["75", "setenta y cinco"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 19 - Clothing": {
+                count: 36,
+                words: [
+                    ["Shirt", "camisa"], ["T-shirt", "camiseta"], ["Blouse", "blusa"],
+                    ["Sweater", "jersey"], ["Jacket", "chaqueta"], ["Coat", "abrigo"],
+                    ["Dress", "vestido"], ["Skirt", "falda"], ["Pants", "pantalones"],
+                    ["Shorts", "pantalones cortos"], ["Shoes", "zapatos"], ["Boots", "botas"],
+                    ["Sneakers", "zapatillas"], ["Sandals", "sandalias"], ["Hat", "gorra"],
+                    ["Scarf", "bufanda"], ["Gloves", "guantes"], ["Belt", "cinturon"],
+                    ["Socks", "calcetines"], ["Winter coat", "abrigo de invierno"], ["Wool hat", "gorro de lana"],
+                    ["Snow boots", "botas de nieve"], ["Swimsuit", "traje de baño"], ["Sunglasses", "gafas de sol"],
+                    ["Flip-flops", "chanclas"], ["Tank top", "camiseta sin mangas"], ["Suit", "traje"],
+                    ["Tie", "corbata"], ["Blazer", "americana"], ["High heels", "tacones altos"],
+                    ["Evening dress", "vestido de noche"], ["Cotton", "algodon"], ["Wool", "lana"],
+                    ["Leather", "cuero"], ["Silk", "seda"], ["Linen", "lino"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 20 - Adverbs": {
+                count: 20,
+                words: [
+                    ["Quickly", "rapidamente"], ["Slowly", "lentamente"], ["Always", "siempre"],
+                    ["Never", "nunca"], ["Often", "a menudo"], ["Sometimes", "a veces"],
+                    ["Rarely", "raramente"], ["Already", "ya"], ["Still", "todavia"],
+                    ["Yet", "aun"], ["Soon", "pronto"], ["Now", "ahora"],
+                    ["Later", "mas tarde"], ["Today", "hoy"], ["Tomorrow", "mañana"],
+                    ["Yesterday", "ayer"], ["Clearly", "claramente"], ["Together", "juntos"],
+                    ["Apart", "separados"], ["Forever", "para siempre"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 21 - Animals": {
+                count: 20,
+                words: [
+                    ["Dog", "perro"], ["Cat", "gato"], ["Horse", "caballo"],
+                    ["Cow", "vaca"], ["Sheep", "oveja"], ["Pig", "cerdo"],
+                    ["Goat", "cabra"], ["Chicken", "pollo"], ["Duck", "pato"],
+                    ["Bird", "pajaro"], ["Rabbit", "conejo"], ["Mouse", "raton"],
+                    ["Lion", "leon"], ["Tiger", "tigre"], ["Bear", "oso"],
+                    ["Elephant", "elefante"], ["Monkey", "mono"], ["Fox", "zorro"],
+                    ["Wolf", "lobo"], ["Deer", "ciervo"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 22 - Numbers 76-110": {
+                count: 35,
+                words: [
+                    ["76", "setenta y seis"], ["77", "setenta y siete"], ["78", "setenta y ocho"],
+                    ["79", "setenta y nueve"], ["80", "ochenta"], ["81", "ochenta y uno"],
+                    ["82", "ochenta y dos"], ["83", "ochenta y tres"], ["84", "ochenta y cuatro"],
+                    ["85", "ochenta y cinco"], ["86", "ochenta y seis"], ["87", "ochenta y siete"],
+                    ["88", "ochenta y ocho"], ["89", "ochenta y nueve"], ["90", "noventa"],
+                    ["91", "noventa y uno"], ["92", "noventa y dos"], ["93", "noventa y tres"],
+                    ["94", "noventa y cuatro"], ["95", "noventa y cinco"], ["96", "noventa y seis"],
+                    ["97", "noventa y siete"], ["98", "noventa y ocho"], ["99", "noventa y nueve"],
+                    ["100", "cien"], ["101", "ciento uno"], ["102", "ciento dos"],
+                    ["103", "ciento tres"], ["104", "ciento cuatro"], ["105", "ciento cinco"],
+                    ["106", "ciento seis"], ["107", "ciento siete"], ["108", "ciento ocho"],
+                    ["109", "ciento nueve"], ["110", "ciento diez"]
+                ],
+                isNumbers: true
+            },
+            "Lesson 23 - Places in Town": {
+                count: 20,
+                words: [
+                    ["School", "escuela"], ["Hospital", "hospital"], ["Bank", "banco"],
+                    ["Restaurant", "restaurante"], ["Library", "biblioteca"], ["Supermarket", "supermercado"],
+                    ["Cinema", "cine"], ["Post office", "correos"], ["Police station", "comisaria"],
+                    ["Park", "parque"], ["Museum", "museo"], ["Theatre", "teatro"],
+                    ["Hotel", "hotel"], ["Stadium", "estadio"], ["Church", "iglesia"],
+                    ["Pharmacy", "farmacia"], ["Bakery", "panaderia"], ["Butcher", "carniceria"],
+                    ["Market", "mercado"], ["Hairdresser", "peluqueria"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 24 - School Supplies": {
+                count: 20,
+                words: [
+                    ["Book", "libro"], ["Pen", "boligrafo"], ["Pencil", "lapiz"],
+                    ["Eraser", "borrador"], ["Notebook", "cuaderno"], ["Ruler", "regla"],
+                    ["Scissors", "tijeras"], ["Backpack", "mochila"], ["Folder", "carpeta"],
+                    ["Calculator", "calculadora"], ["Marker", "marcador"], ["Chalk", "tiza"],
+                    ["Map", "mapa"], ["Highlighter", "resaltador"], ["Projector", "proyector"],
+                    ["Laptop", "portatil"], ["Printer", "impresora"], ["USB stick", "memoria usb"],
+                    ["Schoolbag", "mochila escolar"], ["Sharpener", "sacapuntas"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 25 - Transportation": {
+                count: 20,
+                words: [
+                    ["Car", "coche"], ["Bus", "autobus"], ["Train", "tren"],
+                    ["Bicycle", "bicicleta"], ["Motorcycle", "motocicleta"], ["Airplane", "avion"],
+                    ["Boat", "barco"], ["Tram", "tranvia"], ["Taxi", "taxi"],
+                    ["Subway", "metro"], ["Ferry", "ferry"], ["Yacht", "yate"],
+                    ["Hot air balloon", "globo aerostatico"], ["Spaceship", "nave espacial"], ["Rickshaw", "rickshaw"],
+                    ["Gondola", "gondola"], ["Zeppelin", "zepelin"], ["Rollerblades", "patines en linea"],
+                    ["Canoe", "canoa"], ["Submarine", "submarino"]
+                ],
+                isNumbers: false
+            },
+            "Lesson 26 - Numbers 111-150": {
+                count: 31,
+                words: [
+                    ["111", "ciento once"], ["112", "ciento doce"], ["113", "ciento trece"],
+                    ["114", "ciento catorce"], ["115", "ciento quince"], ["116", "ciento dieciseis"],
+                    ["117", "ciento diecisiete"], ["118", "ciento dieciocho"], ["119", "ciento diecinueve"],
+                    ["120", "ciento veinte"], ["121", "ciento veintiuno"], ["122", "ciento veintidos"],
+                    ["123", "ciento veintitres"], ["124", "ciento veinticuatro"], ["125", "ciento veinticinco"],
+                    ["126", "ciento veintiseis"], ["127", "ciento veintisiete"], ["128", "ciento veintiocho"],
+                    ["129", "ciento veintinueve"], ["130", "ciento treinta"], ["131", "ciento treinta y uno"],
+                    ["132", "ciento treinta y dos"], ["133", "ciento treinta y tres"], ["134", "ciento treinta y cuatro"],
+                    ["135", "ciento treinta y cinco"], ["136", "ciento treinta y seis"], ["137", "ciento treinta y siete"],
+                    ["140", "ciento cuarenta"], ["145", "ciento cuarenta y cinco"], ["149", "ciento cuarenta y nueve"],
+                    ["150", "ciento cincuenta"]
+                ],
+                isNumbers: true
+            }
+        };
+
+        let state = {
+            lessonNames: Object.keys(lessonsData),
+            currentLessonIndex: 0,
+            currentLesson: null,
+            questions: [],
+            currentQ: 0,
+            score: { correct: 0, total: 0 },
+            mainQuestionsCorrect: 0,
+            isReview: false,
+            allLessonsScore: { correct: 0, total: 0 },
+            completedLessons: 0
+        };
+
+        function generateQuestions(words, count, isNumbers) {
+            const questions = [];
+            
+            if (isNumbers) {
+                words.forEach(([eng, spa]) => {
+                    questions.push({
+                        question: `What is '${eng}' in Spanish? (Answer with the WORD)`,
+                        answer: spa,
+                        displayAnswer: spa
+                    });
+                });
+                words.forEach(([eng, spa]) => {
+                    questions.push({
+                        question: `What number is '${spa}'? (Answer with the NUMBER)`,
+                        answer: eng,
+                        displayAnswer: eng
+                    });
+                });
+            } else if (count <= 20) {
+                words.forEach(([eng, spa]) => {
+                    questions.push({ question: `Translate to Spanish: '${eng}'`, answer: spa, displayAnswer: spa });
+                });
+                words.forEach(([eng, spa]) => {
+                    questions.push({ question: `Translate to English: '${spa}'`, answer: eng, displayAnswer: eng });
+                });
+                words.forEach(([eng, spa]) => {
+                    const firstLetter = spa[0] || "";
+                    const blanks = "_".repeat(spa.length - 1);
+                    questions.push({ question: `'${eng}' = '${firstLetter}${blanks}' - Complete the Spanish word`, answer: spa, displayAnswer: spa });
+                });
+            } else {
+                const third = Math.floor(words.length / 3);
+                words.slice(0, third).forEach(([eng, spa]) => {
+                    questions.push({ question: `Translate to Spanish: '${eng}'`, answer: spa, displayAnswer: spa });
+                });
+                words.slice(third, third * 2).forEach(([eng, spa]) => {
+                    questions.push({ question: `Translate to English: '${spa}'`, answer: eng, displayAnswer: eng });
+                });
+                words.slice(third * 2).forEach(([eng, spa]) => {
+                    const firstLetter = spa[0] || "";
+                    const blanks = "_".repeat(spa.length - 1);
+                    questions.push({ question: `'${eng}' = '${firstLetter}${blanks}'`, answer: spa, displayAnswer: spa });
+                });
+            }
+            
+            return questions.sort(() => Math.random() - 0.5);
+        }
+
+        function generateReview(words, isNumbers) {
+            const sampleSize = Math.min(20, words.length);
+            const sampled = [...words].sort(() => Math.random() - 0.5).slice(0, sampleSize);
+            
+            return sampled.map(([eng, spa]) => {
+                if (isNumbers) {
+                    return Math.random() > 0.5
+                        ? { question: `[GENERAL REVIEW] '${eng}' in Spanish?`, answer: spa, displayAnswer: spa }
+                        : { question: `[GENERAL REVIEW] What number is '${spa}'?`, answer: eng, displayAnswer: eng };
+                } else {
+                    return Math.random() > 0.5
+                        ? { question: `[GENERAL REVIEW] Translate: '${eng}'`, answer: spa, displayAnswer: spa }
+                        : { question: `[GENERAL REVIEW] Translate: '${spa}'`, answer: eng, displayAnswer: eng };
+                }
+            });
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(screenId).classList.remove('hidden');
+        }
+
+        function startFirstLesson() {
+            state.currentLessonIndex = 0;
+            startLesson(state.lessonNames[0]);
+        }
+
+        function startLesson(lessonName) {
+            const lesson = lessonsData[lessonName];
+            state.currentLesson = lessonName;
+            state.questions = generateQuestions(lesson.words, lesson.count, lesson.isNumbers);
+            state.currentQ = 0;
+            state.score = { correct: 0, total: 0 };
+            state.mainQuestionsCorrect = 0;
+            state.isReview = false;
+            
+            updateTestScreen();
+            showScreen('testScreen');
+        }
+
+        function updateTestScreen() {
+            const q = state.questions[state.currentQ];
+            const progress = ((state.currentQ + 1) / state.questions.length) * 100;
+            
+            document.getElementById('lessonTitle').textContent = state.isReview ? '🔄 GENERAL REVIEW' : state.currentLesson;
+            document.getElementById('lessonProgress').textContent = `Lesson ${state.completedLessons + 1}/${state.lessonNames.length}`;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('questionNumber').textContent = `Question ${state.currentQ + 1}/${state.questions.length}`;
+            document.getElementById('currentScore').textContent = `Score: ${state.score.correct}/${state.score.total}`;
+            document.getElementById('questionText').textContent = q.question;
+            document.getElementById('overallProgress').textContent = `Overall Progress: ${state.allLessonsScore.correct}/${state.allLessonsScore.total} (${state.allLessonsScore.total > 0 ? Math.round((state.allLessonsScore.correct / state.allLessonsScore.total) * 100) : 0}%)`;
+            
+            document.getElementById('answerInput').value = '';
+            document.getElementById('answerInput').focus();
+            document.getElementById('answerSection').classList.remove('hidden');
+            document.getElementById('feedbackSection').classList.add('hidden');
+        }
+
+        function handleEnter(event) {
+            if (event.key === 'Enter' && document.getElementById('answerInput').value) {
+                checkAnswer();
+            }
+        }
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answerInput').value;
+            if (!userAnswer) return;
+            
+            const q = state.questions[state.currentQ];
+            const isCorrect = normalizeText(userAnswer) === normalizeText(q.answer);
+            
+            state.score.correct += isCorrect ? 1 : 0;
+            state.score.total += 1;
+            state.allLessonsScore.correct += isCorrect ? 1 : 0;
+            state.allLessonsScore.total += 1;
+            
+            if (!state.isReview && state.currentQ < state.questions.length) {
+                if (isCorrect) state.mainQuestionsCorrect++;
+            }
+            
+            document.getElementById('feedbackBox').className = isCorrect ? 'feedback feedback-correct' : 'feedback feedback-wrong';
+            document.getElementById('feedbackIcon').textContent = isCorrect ? '✓' : '✗';
+            document.getElementById('feedbackText').textContent = isCorrect ? 'Correct!' : 'Wrong!';
+            document.getElementById('correctAnswer').innerHTML = isCorrect ? '' : `Correct answer: <strong>${q.displayAnswer}</strong>`;
+            
+            document.getElementById('answerSection').classList.add('hidden');
+            document.getElementById('feedbackSection').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            if (state.currentQ < state.questions.length - 1) {
+                state.currentQ++;
+                updateTestScreen();
+            } else {
+                if (!state.isReview) {
+                    showLessonComplete();
+                } else {
+                    state.completedLessons++;
+                    showReviewComplete();
+                }
+            }
+        }
+
+        function showLessonComplete() {
+            const percentage = (state.mainQuestionsCorrect / state.questions.length) * 100;
+            document.getElementById('mainScore').textContent = `${state.mainQuestionsCorrect}/${state.questions.length}`;
+            document.getElementById('mainPercentage').textContent = percentage.toFixed(1) + '%';
+            showScreen('lessonCompleteScreen');
+        }
+
+        function startReview() {
+            const lesson = lessonsData[state.currentLesson];
+            state.questions = generateReview(lesson.words, lesson.isNumbers);
+            state.currentQ = 0;
+            state.isReview = true;
+            
+            updateTestScreen();
+            showScreen('testScreen');
+        }
+
+        function showReviewComplete() {
+            const reviewCorrect = state.score.correct - state.mainQuestionsCorrect;
+            const reviewTotal = state.questions.length;
+            const totalCorrect = state.score.correct;
+            const totalQuestions = state.score.total;
+            const percentage = (totalCorrect / totalQuestions) * 100;
+            
+            document.getElementById('completedLessonName').textContent = state.currentLesson;
+            document.getElementById('mainQScore').textContent = state.mainQuestionsCorrect;
+            document.getElementById('reviewScore').textContent = reviewCorrect;
+            document.getElementById('totalScore').textContent = `${totalCorrect}/${totalQuestions}`;
+            document.getElementById('totalPercentage').textContent = percentage.toFixed(1) + '%';
+            document.getElementById('totalPercentage').style.color = 
+                percentage >= 90 ? '#10b981' : percentage >= 70 ? '#3b82f6' : percentage >= 50 ? '#eab308' : '#ef4444';
+            
+            const message = percentage >= 90 ? '🎉 Excellent!' : percentage >= 70 ? '👏 Very Good!' : percentage >= 50 ? '👍 Good!' : '📚 Keep studying!';
+            document.getElementById('performanceMessage').textContent = message;
+            
+            const isLastLesson = state.currentLessonIndex === state.lessonNames.length - 1;
+            document.getElementById('continueButtonText').textContent = isLastLesson ? 'View Final Results' : `Continue to ${state.lessonNames[state.currentLessonIndex + 1]}`;
+            document.getElementById('lessonsCompleted').textContent = `Completed: ${state.completedLessons}/${state.lessonNames.length} lessons`;
+            
+            showScreen('reviewCompleteScreen');
+        }
+
+        function continueToNext() {
+            state.currentLessonIndex++;
+            
+            if (state.currentLessonIndex < state.lessonNames.length) {
+                startLesson(state.lessonNames[state.currentLessonIndex]);
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            const finalPercentage = (state.allLessonsScore.correct / state.allLessonsScore.total) * 100;
+            
+            document.getElementById('totalLessons').textContent = state.lessonNames.length;
+            document.getElementById('finalScore').textContent = `${state.allLessonsScore.correct}/${state.allLessonsScore.total}`;
+            document.getElementById('finalPercentage').textContent = finalPercentage.toFixed(1) + '%';
+            document.getElementById('finalPercentage').style.color = 
+                finalPercentage >= 90 ? '#10b981' : finalPercentage >= 70 ? '#3b82f6' : finalPercentage >= 50 ? '#eab308' : '#ef4444';
+            
+            const message = finalPercentage >= 90 ? '🎉🎉🎉 EXCELLENT! You\'re amazing at Spanish! 🎉🎉🎉' :
+                           finalPercentage >= 70 ? '👏👏👏 VERY GOOD! Great performance! 👏👏👏' :
+                           finalPercentage >= 50 ? '👍👍 GOOD! Keep going and you\'ll be excellent! 👍👍' :
+                           '📚📚 Keep studying! You can do it! 📚📚';
+            document.getElementById('finalMessage').textContent = message;
+            
+            showScreen('finalScreen');
+        }
+
+        function goHome() {
+            state = {
+                lessonNames: Object.keys(lessonsData),
+                currentLessonIndex: 0,
+                currentLesson: null,
+                questions: [],
+                currentQ: 0,
+                score: { correct: 0, total: 0 },
+                mainQuestionsCorrect: 0,
+                isReview: false,
+                allLessonsScore: { correct: 0, total: 0 },
+                completedLessons: 0
+            };
+            showScreen('homeScreen');
+        }
+    </script>
+</body>
+</html>
