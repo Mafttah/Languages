@@ -1,0 +1,1417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>French Lessons — HTML Version</title>
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111218;
+      --muted: #b8c1ec;
+      --text: #e6e6e6;
+      --accent: #8aa9ff;
+      --accent-2:#ffc857;
+      --accent-3:#ff6b6b;
+      --ok:#2ec4b6;
+      --warn:#ff9f1c;
+      --red:#ff4d4d;
+      --chip:#1b1d29;
+      --border:#232535;
+      --code:#0f1115;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#fbfbfe;
+        --panel:#ffffff;
+        --muted:#3a3b59;
+        --text:#0f172a;
+        --accent:#365cf5;
+        --accent-2:#b45309;
+        --accent-3:#b91c1c;
+        --ok:#059669;
+        --warn:#b45309;
+        --red:#dc2626;
+        --chip:#f3f4f6;
+        --border:#e5e7eb;
+        --code:#0f172a0a;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg), #0b0c1000 60%), radial-gradient(1200px 600px at 100% -10%, #365cf511, transparent 60%) , var(--bg);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background:color-mix(in srgb, var(--panel) 86%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:14px 18px;}
+    h1{
+      margin:.2rem 0 .8rem;
+      letter-spacing:.2px;
+      font-size: clamp(1.3rem, 2.2vw + 1rem, 2rem);
+    }
+    .sub{
+      color:var(--muted);
+      margin-top:-.4rem;
+      font-size:.95rem;
+    }
+    .controls{
+      display:grid; gap:10px; grid-template-columns: 1fr auto auto;
+      padding:.6rem 0 .2rem;
+      align-items:center;
+    }
+    input[type="search"]{
+      width:100%; padding:.7rem .9rem; border-radius:12px; border:1px solid var(--border);
+      background:var(--panel); color:var(--text); outline:none;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:var(--chip); color:var(--text);
+      padding:.6rem .9rem; border-radius:12px; cursor:pointer;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .grid{
+      max-width:1100px; margin:16px auto; padding: 0 18px; display:grid; gap:16px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 768px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    details.card{
+      background:linear-gradient(180deg, color-mix(in srgb, var(--panel) 92%, transparent), var(--panel));
+      border: 1px solid var(--border);
+      border-radius:16px; padding: 0 0 8px;
+      box-shadow: 0 10px 30px #00000020;
+    }
+    details.card > summary{
+      list-style:none; cursor:pointer; padding:16px 16px;
+      display:flex; gap:10px; align-items:center; font-weight:600;
+      border-bottom:1px solid transparent;
+    }
+    details.card[open] > summary{ border-bottom-color:var(--border) }
+    summary .tag{ font-size:.75rem; color:var(--muted); background:var(--chip); padding:.2rem .55rem; border-radius:999px; border:1px solid var(--border)}
+    .pill{ color:#111; background:var(--accent-2); padding:.15rem .5rem; border-radius:999px; font-weight:700; }
+    .tag.red{ background: color-mix(in srgb, var(--red) 14%, var(--chip)); color: var(--text); border-color: color-mix(in srgb, var(--red) 40%, var(--border));}
+    .tag.blue{ background: color-mix(in srgb, var(--accent) 14%, var(--chip)); border-color: color-mix(in srgb, var(--accent) 40%, var(--border));}
+    .tag.green{ background: color-mix(in srgb, var(--ok) 14%, var(--chip)); border-color: color-mix(in srgb, var(--ok) 40%, var(--border));}
+    .content{ padding:12px 16px 6px; }
+    .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 720px){ .two-col{ grid-template-columns: 1fr; } }
+    table{ width:100%; border-collapse: collapse; margin:6px 0 10px; }
+    th, td{ border-bottom:1px dashed var(--border); padding:6px 8px; vertical-align:top; }
+    th{ text-align:left; color:var(--muted); font-weight:600; }
+    .list{ columns: 2; gap: 18px; }
+    @media (max-width: 820px){ .list{ columns:1 } }
+    li{ break-inside: avoid; margin-bottom:.25rem }
+    .muted{ color:var(--muted) }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:var(--code); padding:.12rem .35rem; border-radius:6px; border:1px solid var(--border) }
+    .hide{ display:none !important }
+    .nav{ display:flex; gap:8px; overflow:auto; padding:6px 0 }
+    .nav a{ white-space:nowrap; text-decoration:none; border:1px solid var(--border); background:var(--chip); color:var(--text); padding:.4rem .6rem; border-radius:10px }
+    .nav a:hover{ filter:brightness(1.05) }
+    mark{ background: color-mix(in srgb, var(--accent) 20%, transparent); padding:0 .2rem; border-radius:4px }
+
+    /* Modern Footer Styles */
+    .main-footer{
+      background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--panel) 60%, transparent)), var(--panel);
+      border-top:1px solid var(--border);
+      margin-top:60px;
+      padding:40px 20px;
+    }
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:30px;
+      align-items:center;
+    }
+    @media (max-width: 768px){
+      .footer-content{ grid-template-columns: 1fr; text-align:center; }
+    }
+    .footer-info h3{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:1.2rem;
+    }
+    .footer-info p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .practice-btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#fff;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:600;
+      font-size:1rem;
+      box-shadow: 0 4px 15px rgba(138, 169, 255, 0.3);
+      transition: all 0.3s ease;
+      border:none;
+      cursor:pointer;
+    }
+    .practice-btn:hover{
+      transform:translateY(-2px);
+      box-shadow: 0 6px 20px rgba(138, 169, 255, 0.4);
+    }
+    .footer-meta{
+      text-align:center;
+      color:var(--muted);
+      padding:20px 0 10px;
+      font-size:.85rem;
+      border-top:1px solid var(--border);
+      max-width:1100px;
+      margin:20px auto 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>French Lessons — HTML Version</h1>
+      <div class="sub">Compiled vocabulary lists, tables and exercises for Bora. Complete web-based interactive learning.</div>
+      <div class="controls">
+        <input id="q" type="search" placeholder="Search: word, translation or lesson title (e.g. &quot;merci&quot; or &quot;Lesson 11&quot;)">
+        <button class="btn" id="expand">Expand All</button>
+        <button class="btn" id="collapse">Collapse All</button>
+      </div>
+      <nav class="nav" id="nav"></nav>
+    </div>
+  </header>
+
+  <main class="grid" id="cards">
+    
+    <!-- Lesson 1 - Numbers 1-10 -->
+    <details class="card" open id="lesson-1">
+      <summary><span class="pill">1</span> Lesson 1 — Numbers 1–10 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <thead><tr><th>French</th><th>English</th><th>Number</th></tr></thead>
+          <tbody>
+            <tr><td>une</td><td>one</td><td>1</td></tr>
+            <tr><td>deux</td><td>two</td><td>2</td></tr>
+            <tr><td>trois</td><td>three</td><td>3</td></tr>
+            <tr><td>quatre</td><td>four</td><td>4</td></tr>
+            <tr><td>cinq</td><td>five</td><td>5</td></tr>
+            <tr><td>six</td><td>six</td><td>6</td></tr>
+            <tr><td>sept</td><td>seven</td><td>7</td></tr>
+            <tr><td>huit</td><td>eight</td><td>8</td></tr>
+            <tr><td>neuf</td><td>nine</td><td>9</td></tr>
+            <tr><td>dix</td><td>ten</td><td>10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 2 - Greetings -->
+    <details class="card" id="lesson-2">
+      <summary><span class="pill">2</span> Lesson 2 — Greetings <span class="tag red">Phrases</span></summary>
+      <div class="content">
+        <ul class="list">
+          <li><b>Salut</b> = Hello</li>
+          <li>Comment allez-vous = How are you?</li>
+          <li>Content de vous voir = Nice to see you</li>
+          <li>Enchanté = Nice to meet you</li>
+          <li>À demain = See you tomorrow</li>
+          <li>Bonjour = Good morning</li>
+          <li>Bonne après-midi = Good afternoon</li>
+          <li>Bonsoir = Good evening</li>
+          <li>Bonne nuit = Good night</li>
+          <li>Quel est ton nom = What is your name?</li>
+          <li>Mon nom est ____ = My name is ___</li>
+          <li>Où habites-tu? = Where do you live?</li>
+          <li>D'où venez-vous? = Where are you from?</li>
+          <li>Bonne journée = Have a nice day</li>
+          <li>À la prochaine = See you later</li>
+          <li>Au revoir = Goodbye</li>
+          <li>S'il vous plaît = Please</li>
+          <li>Merci = Thank you</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Lesson 3 - Regular Verbs -->
+    <details class="card" id="lesson-3">
+      <summary><span class="pill">3</span> Lesson 3 — Regular Verbs <span class="tag green">Verbs</span></summary>
+      <div class="content">
+        <p class="muted">Regular verbs are divided into 3 categories</p>
+        
+        <h4>1. -ER Verbs</h4>
+        <div class="list">
+          <li>abaisser = to lower, to push/pull down</li>
+          <li>abîmer = to ruin</li>
+          <li>aimer = to like, to love</li>
+          <li>arriver = to arrive, to happen</li>
+          <li>bouger = to move</li>
+          <li>brosser = to brush</li>
+          <li>changer = to change</li>
+          <li>chanter = to sing</li>
+          <li>chercher = to look for</li>
+          <li>commencer = to begin, start</li>
+          <li>corriger = to correct</li>
+          <li>danser = to dance</li>
+          <li>demander = to ask for</li>
+          <li>détester = to hate</li>
+          <li>donner = to give</li>
+          <li>écouter = to listen to</li>
+          <li>effacer = to erase</li>
+          <li>étudier = to study</li>
+          <li>féliciter = to congratulate</li>
+          <li>fêter = to celebrate</li>
+          <li>gagner = to win, to earn</li>
+          <li>glisser = to slide</li>
+          <li>habiter = to live</li>
+          <li>jouer = to play</li>
+          <li>manger = to eat</li>
+          <li>manquer = to miss</li>
+          <li>marcher = to walk, to function</li>
+          <li>monter = to climb</li>
+          <li>nager = to swim</li>
+          <li>parler = to talk, to speak</li>
+          <li>partager = to share</li>
+          <li>penser = to think</li>
+          <li>regarder = to watch, to look at</li>
+          <li>skier = to ski</li>
+          <li>travailler = to work</li>
+          <li>trouver = to find</li>
+          <li>visiter = to visit (a place)</li>
+          <li>voyager = to travel</li>
+        </div>
+
+        <h4>2. -IR Verbs</h4>
+        <div class="list">
+          <li>abolir = to abolish</li>
+          <li>accomplir = to accomplish</li>
+          <li>agir = to act</li>
+          <li>agrandir = to enlarge, to increase</li>
+          <li>avertir = to warn</li>
+          <li>bâtir = to build</li>
+          <li>bénir = to bless</li>
+          <li>blanchir = to whiten, to lighten</li>
+          <li>choisir = to choose</li>
+          <li>convertir = to convert</li>
+          <li>définir = to define</li>
+          <li>établir = to establish</li>
+          <li>étourdir = to stun, to deafen, to make dizzy</li>
+          <li>finir = to finish</li>
+          <li>franchir = to clear (an obstacle)</li>
+          <li>grossir = to gain weight, to get fat</li>
+          <li>guérir = to cure, to heal, to recover</li>
+          <li>investir = to invest</li>
+          <li>maigrir = to lose weight, to get thin</li>
+          <li>nourrir = to feed, to nourish</li>
+          <li>obéir = to obey</li>
+          <li>punir = to punish</li>
+          <li>réfléchir = to reflect, to think</li>
+          <li>remplir = to fill</li>
+          <li>réussir = to succeed</li>
+          <li>rougir = to blush, to turn red</li>
+          <li>saisir = to seize</li>
+          <li>vieillir = to age, grow old</li>
+        </div>
+
+        <h4>3. -RE Verbs</h4>
+        <div class="list">
+          <li>attendre = to wait for</li>
+          <li>confondre = to confuse</li>
+          <li>correspondre = to correspond</li>
+          <li>défendre = to defend</li>
+          <li>dépendre = to depend</li>
+          <li>descendre = to descend</li>
+          <li>entendre = to hear, to understand</li>
+          <li>étendre = to stretch</li>
+          <li>fondre = to melt</li>
+          <li>mordre = to bite</li>
+          <li>pendre = to hang, suspend</li>
+          <li>perdre = to lose</li>
+          <li>prétendre = to claim</li>
+          <li>rendre = to give back, to return</li>
+          <li>répandre = to spread, to scatter</li>
+          <li>répondre = to answer</li>
+          <li>suspendre = to suspend</li>
+          <li>tordre = to twist</li>
+          <li>vendre = to sell</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 3.1 - Present Tense -->
+    <details class="card" id="lesson-3-1">
+      <summary><span class="pill">3.1</span> Lesson 3.1 — Present Tense <span class="tag blue">Grammar</span></summary>
+      <div class="content">
+        <h4>Personal Pronouns</h4>
+        <table>
+          <tr><th>English</th><th>French</th></tr>
+          <tr><td>I</td><td>je</td></tr>
+          <tr><td>you</td><td>tu</td></tr>
+          <tr><td>he/she/it</td><td>il/elle/on</td></tr>
+          <tr><td>we</td><td>nous</td></tr>
+          <tr><td>you (pl)</td><td>vous</td></tr>
+          <tr><td>they</td><td>ils/elles</td></tr>
+        </table>
+
+        <h4>Examples</h4>
+        <p><b>parler (to speak), finir (to finish), vendre (to sell)</b></p>
+        <div class="list">
+          <li>je parle — je finis — je vends</li>
+          <li>tu parles — tu finis — tu vends</li>
+          <li>il parle — il finit — il vend</li>
+          <li>nous parlons — nous finissons — nous vendons</li>
+          <li>vous parlez — vous finissez — vous vendez</li>
+          <li>elles parlent — elles finissent — elles vendent</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 4 - Adjectives -->
+    <details class="card" id="lesson-4">
+      <summary><span class="pill">4</span> Lesson 4 — Adjectives <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Heureux = Happy</li>
+          <li>Triste = Sad</li>
+          <li>Énervé = Angry</li>
+          <li>Peur = Afraid</li>
+          <li>Joie = Joy</li>
+          <li>Surpris = Surprised</li>
+          <li>Calme = Calm</li>
+          <li>Ennuyé = Bored</li>
+          <li>Facile = Easy</li>
+          <li>Difficile = Difficult</li>
+          <li>Mauvais = Bad</li>
+          <li>Bon = Good</li>
+          <li>Bruyant = Noisy</li>
+          <li>Silencieux = Quiet</li>
+          <li>Fort = Strong</li>
+          <li>Faible = Weak</li>
+          <li>Dur = Hard</li>
+          <li>Mou = Soft</li>
+          <li>Plus = More</li>
+          <li>Moins = Less</li>
+          <li>Propre = Clean</li>
+          <li>Sale = Dirty</li>
+          <li>Vieux = Old</li>
+          <li>Nouveau = New</li>
+          <li>Grand = Big</li>
+          <li>Petit = Small</li>
+          <li>Jeune = Young</li>
+          <li>Maigre = Skinny</li>
+          <li>Gros = Fat</li>
+          <li>Joli = Pretty</li>
+          <li>Laid = Ugly</li>
+          <li>Épais = Thick</li>
+          <li>Mince = Thin</li>
+          <li>Rêche = Rough</li>
+          <li>Lisse = Smooth</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 5 - Days & Months -->
+    <details class="card" id="lesson-5">
+      <summary><span class="pill">5</span> Lesson 5 — Days &amp; Months <span class="tag green">Calendar</span></summary>
+      <div class="content">
+        <h4>5.1 — Days of the week</h4>
+        <div class="list">
+          <li>Les jours de la semaine = The days of the week</li>
+          <li>Jour = Day</li>
+          <li>Semaine = Week</li>
+          <li>Lundi = Monday</li>
+          <li>Mardi = Tuesday</li>
+          <li>Mercredi = Wednesday</li>
+          <li>Jeudi = Thursday</li>
+          <li>Vendredi = Friday</li>
+          <li>Samedi = Saturday</li>
+          <li>Dimanche = Sunday</li>
+          <li>Fin de semaine = Weekend</li>
+        </div>
+        
+        <h4>5.2 — Months of the year</h4>
+        <div class="list">
+          <li>Les mois de l'année = The months of the year</li>
+          <li>Mois = Month</li>
+          <li>Année = Year</li>
+          <li>Janvier = January</li>
+          <li>Février = February</li>
+          <li>Mars = March</li>
+          <li>Avril = April</li>
+          <li>Mai = May</li>
+          <li>Juin = June</li>
+          <li>Juillet = July</li>
+          <li>Août = August</li>
+          <li>Septembre = September</li>
+          <li>Octobre = October</li>
+          <li>Novembre = November</li>
+          <li>Décembre = December</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 6 - Seasons & Weather -->
+    <details class="card" id="lesson-6">
+      <summary><span class="pill">6</span> Lesson 6 — Seasons &amp; Weather <span class="tag blue">Nature</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Les saisons = Seasons</li>
+          <li>Hiver = Winter</li>
+          <li>Été = Summer</li>
+          <li>Printemps = Spring</li>
+          <li>Automne = Autumn</li>
+          <li>Ciel = Sky</li>
+          <li>Nuage = Cloud</li>
+          <li>Arc-en-ciel = Rainbow</li>
+          <li>Froid = Cold (weather)</li>
+          <li>Chaud = Hot (weather)</li>
+          <li>Il fait chaud = It is hot</li>
+          <li>Il fait froid = It is cold</li>
+          <li>Il y a du soleil = It is sunny</li>
+          <li>Il fait nuageux = It is cloudy</li>
+          <li>Il fait humide = It is humid</li>
+          <li>Il pleut = It is raining</li>
+          <li>Il neige = It is snowing</li>
+          <li>Il y a du vent = It is windy</li>
+          <li>Quel temps fait-il? = How is the weather?</li>
+          <li>Beau temps = Good weather</li>
+          <li>Mauvais temps = Bad weather</li>
+          <li>Quelle température fait-il? = What is the temperature?</li>
+          <li>Il fait 24 degrés = It is 24 degrees</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 7 - Colors -->
+    <details class="card" id="lesson-7">
+      <summary><span class="pill">7</span> Lesson 7 — Colors <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Noir = Black</li>
+          <li>Bleu = Blue</li>
+          <li>Marron = Brown</li>
+          <li>Vert = Green</li>
+          <li>Orange = Orange</li>
+          <li>Violet = Purple</li>
+          <li>Rouge = Red</li>
+          <li>Blanc = White</li>
+          <li>Jaune = Yellow</li>
+          <li>Gris = Gray</li>
+          <li>Doré = Gold</li>
+          <li>Argenté = Silver</li>
+          <li>Quelle couleur est-ce? = What color is it?</li>
+          <li>C'est ___ = The color is ___</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 8 - Family & Friends -->
+    <details class="card" id="lesson-8">
+      <summary><span class="pill">8</span> Lesson 8 — Family &amp; Friends <span class="tag green">People</span></summary>
+      <div class="content">
+        <h4>8.1 — Family members</h4>
+        <div class="list">
+          <li>Mère = Mother</li>
+          <li>Père = Father</li>
+          <li>Frère = Brother</li>
+          <li>Sœur = Sister</li>
+          <li>Fils = Son</li>
+          <li>Fille = Daughter</li>
+          <li>Parents = Parents</li>
+          <li>Enfants = Children</li>
+          <li>Enfant = Child</li>
+          <li>Belle-mère = Stepmother</li>
+          <li>Beau-père = Stepfather</li>
+          <li>Demi-sœur = Stepsister</li>
+          <li>Demi-frère = Stepbrother</li>
+          <li>Gendre = Son-in-law</li>
+          <li>Belle-fille = Daughter-in-law</li>
+          <li>Épouse = Wife</li>
+          <li>Mari = Husband</li>
+          <li>Grands-parents = Grandparents</li>
+          <li>Grand-père = Grandfather</li>
+          <li>Grand-mère = Grandmother</li>
+          <li>Petit-fils = Grandson</li>
+          <li>Petite-fille = Granddaughter</li>
+          <li>Petits-enfants = Grandchildren</li>
+          <li>Petit enfant = Grandchild</li>
+          <li>Tante = Aunt</li>
+          <li>Oncle = Uncle</li>
+          <li>Cousine = Cousin (female)</li>
+          <li>Cousin = Cousin (male)</li>
+          <li>Neveu = Nephew</li>
+          <li>Nièce = Niece</li>
+          <li>Beau-père = Father-in-law</li>
+          <li>Belle-mère = Mother-in-law</li>
+          <li>Beau-frère = Brother-in-law</li>
+          <li>Belle-sœur = Sister-in-law</li>
+          <li>Proche = Relative</li>
+        </div>
+
+        <h4>8.2 — Friends</h4>
+        <div class="list">
+          <li>Mademoiselle = Miss</li>
+          <li>Garçon = Boy</li>
+          <li>Fille = Girl</li>
+          <li>Bébé = Baby</li>
+          <li>Femme = Woman</li>
+          <li>Homme = Man</li>
+          <li>Ami = Friend (male)</li>
+          <li>Amie = Friend (female)</li>
+          <li>Petit ami = Boyfriend</li>
+          <li>Petite amie = Girlfriend</li>
+          <li>Monsieur = Gentleman</li>
+          <li>Dame = Lady</li>
+          <li>Voisin = Neighbor (male)</li>
+          <li>Voisine = Neighbor (female)</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 9 - Numbers 11-30 -->
+    <details class="card" id="lesson-9">
+      <summary><span class="pill">9</span> Lesson 9 — Numbers 11–30 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>Onze</td><td>11</td></tr>
+            <tr><td>Douze</td><td>12</td></tr>
+            <tr><td>Treize</td><td>13</td></tr>
+            <tr><td>Quatorze</td><td>14</td></tr>
+            <tr><td>Quinze</td><td>15</td></tr>
+            <tr><td>Seize</td><td>16</td></tr>
+            <tr><td>Dix-sept</td><td>17</td></tr>
+            <tr><td>Dix-huit</td><td>18</td></tr>
+            <tr><td>Dix-neuf</td><td>19</td></tr>
+            <tr><td>Vingt</td><td>20</td></tr>
+            <tr><td>Vingt et un</td><td>21</td></tr>
+            <tr><td>Vingt-deux</td><td>22</td></tr>
+            <tr><td>Vingt-trois</td><td>23</td></tr>
+            <tr><td>Vingt-quatre</td><td>24</td></tr>
+            <tr><td>Vingt-cinq</td><td>25</td></tr>
+            <tr><td>Vingt-six</td><td>26</td></tr>
+            <tr><td>Vingt-sept</td><td>27</td></tr>
+            <tr><td>Vingt-huit</td><td>28</td></tr>
+            <tr><td>Vingt-neuf</td><td>29</td></tr>
+            <tr><td>Trente</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 10 - Prepositions & Useful Words -->
+    <details class="card" id="lesson-10">
+      <summary><span class="pill">10</span> Lesson 10 — Prepositions &amp; Useful Words <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <h4>10.1 — Prepositions</h4>
+        <div class="list">
+          <li>Pour = For</li>
+          <li>Depuis = From</li>
+          <li>Dans = In</li>
+          <li>À l'intérieur = Inside</li>
+          <li>Dans = Into</li>
+          <li>Près = Near</li>
+          <li>De = Of</li>
+          <li>Hors = Out</li>
+          <li>À l'extérieur = Outside</li>
+          <li>À = To</li>
+          <li>Sous = Under</li>
+          <li>Avec = With</li>
+          <li>Sans = Without</li>
+          <li>Au-dessus = Above</li>
+          <li>De l'autre côté = Across</li>
+          <li>Après = After</li>
+          <li>Contre = Against</li>
+          <li>Le long = Along</li>
+          <li>Autour = Around</li>
+          <li>À = At</li>
+          <li>Derrière = Behind</li>
+          <li>En-dessous = Below</li>
+          <li>À côté de = Beside</li>
+          <li>Entre = Between</li>
+          <li>Près = By</li>
+          <li>Pendant = During</li>
+          <li>Sauf = Except</li>
+          <li>Et = And</li>
+          <li>Parce que = Because</li>
+          <li>Mais = But</li>
+          <li>Ou = Or</li>
+          <li>Partout = Everywhere</li>
+          <li>Tout le monde = Everyone</li>
+          <li>Tout = Everything</li>
+          <li>Peu = Few</li>
+          <li>Certains = Some</li>
+          <li>Beaucoup = Many</li>
+        </div>
+
+        <h4>10.2 — Useful Words</h4>
+        <div class="list">
+          <li>Question = Question</li>
+          <li>Réponse = Answer</li>
+          <li>Vérité = Truth</li>
+          <li>Mensonge = Lie</li>
+          <li>Rien = Nothing</li>
+          <li>Quelque chose = Something</li>
+          <li>Le même = Same</li>
+          <li>Différent = Different</li>
+          <li>Tirer = Pull</li>
+          <li>Pousser = Push</li>
+          <li>Long = Long</li>
+          <li>Court = Short</li>
+          <li>Froid = Cold</li>
+          <li>Chaud = Hot</li>
+          <li>Clair = Light</li>
+          <li>Foncé = Dark</li>
+          <li>Mouillé = Wet</li>
+          <li>Sec = Dry</li>
+          <li>Vide = Empty</li>
+          <li>Plein = Full</li>
+          <li>Comment? = How?</li>
+          <li>Quoi? = What?</li>
+          <li>Quand? = When?</li>
+          <li>Où? = Where?</li>
+          <li>Lequel? = Which?</li>
+          <li>Qui? = Who?</li>
+          <li>Pourquoi? = Why?</li>
+          <li>Combien de temps? = How long?</li>
+          <li>Combien? = How much?</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 11 - Drinks & Meals -->
+    <details class="card" id="lesson-11">
+      <summary><span class="pill">11</span> Lesson 11 — Drinks &amp; Meals <span class="tag green">Food</span></summary>
+      <div class="content">
+        <h4>11.1 — Drinks</h4>
+        <div class="list">
+          <li>Café = Coffee</li>
+          <li>Thé = Tea</li>
+          <li>Boisson gazeuse = Soft drink</li>
+          <li>Eau = Water</li>
+          <li>Limonade = Lemonade</li>
+          <li>Jus = Juice</li>
+          <li>Jus d'orange = Orange juice</li>
+          <li>Je voudrais un verre d'eau, s'il vous plaît = I would like a glass of water please</li>
+          <li>Avec glaçons = With ice</li>
+        </div>
+
+        <h4>11.2 — Dairy Products &amp; Bakery</h4>
+        <div class="list">
+          <li>Lait = Milk</li>
+          <li>Glace = Ice cream</li>
+          <li>Beurre = Butter</li>
+          <li>Fromage = Cheese</li>
+          <li>Fromage cottage = Cottage cheese</li>
+          <li>Crème = Cream</li>
+          <li>Crème fraîche = Sour cream</li>
+          <li>Yaourt = Yogurt</li>
+          <li>Oeufs = Eggs</li>
+          <li>Crème chantilly = Whipping cream</li>
+          <li>Boulangerie-pâtisserie = Bakery</li>
+          <li>Baguette = Baguette</li>
+          <li>Beignet = Doughnut</li>
+          <li>Petit gâteau = Cookie</li>
+          <li>Petit pain = Roll</li>
+          <li>Dessert = Dessert</li>
+          <li>Gâteau = Cake</li>
+          <li>Pain = Bread</li>
+          <li>Tarte = Pie</li>
+        </div>
+
+        <h4>11.3 — Meats</h4>
+        <div class="list">
+          <li>Bœuf = Beef</li>
+          <li>Veau = Veal</li>
+          <li>Jambon = Ham</li>
+          <li>Poulet = Chicken</li>
+          <li>Dinde = Turkey</li>
+          <li>Canard = Duck</li>
+          <li>Lard = Bacon</li>
+          <li>Porc = Pork</li>
+          <li>Filet mignon = Filet mignon</li>
+          <li>Saucisse = Sausage</li>
+          <li>Côtelette d'agneau = Lamb chop</li>
+          <li>Côtelette de porc = Pork chop</li>
+          <li>Viande = Meat</li>
+        </div>
+
+        <h4>11.4 — Seafoods</h4>
+        <div class="list">
+          <li>Poisson = Fish</li>
+          <li>Fruits de mer = Shellfish</li>
+          <li>Perche = Bass</li>
+          <li>Saumon = Salmon</li>
+          <li>Homard = Lobster</li>
+          <li>Crabe = Crab</li>
+          <li>Moule = Mussel</li>
+          <li>Huître = Oyster</li>
+          <li>Cabillaud = Cod</li>
+          <li>Palourde = Clam</li>
+          <li>Crevette = Shrimp</li>
+          <li>Thon = Tuna</li>
+          <li>Truite = Trout</li>
+          <li>Sole = Sole</li>
+          <li>Requin = Shark</li>
+          <li>Carpe = Carp</li>
+          <li>Tilapia = Tilapia</li>
+          <li>Anguille = Eel</li>
+          <li>Poisson-chat = Catfish</li>
+          <li>Espadon = Swordfish</li>
+        </div>
+
+        <h4>11.5 — Herbs &amp; Spices</h4>
+        <div class="list">
+          <li>Sel = Salt</li>
+          <li>Poivre = Pepper</li>
+          <li>Carvi = Caraway</li>
+          <li>Ail = Garlic</li>
+          <li>Basilic = Basil</li>
+          <li>Coriandre = Coriander</li>
+          <li>Fenouil = Fennel</li>
+          <li>Marjolaine = Marjoram</li>
+          <li>Origan = Oregano</li>
+          <li>Persil = Parsley</li>
+          <li>Romarin = Rosemary</li>
+          <li>Sauge = Sage</li>
+          <li>Thym = Thyme</li>
+          <li>Muscade = Nutmeg</li>
+          <li>Paprika = Paprika</li>
+          <li>Cayenne = Cayenne</li>
+          <li>Gingembre = Ginger</li>
+        </div>
+
+        <h4>11.6 — Vegetables</h4>
+        <div class="list">
+          <li>Céleri = Celery</li>
+          <li>Aubergine = Eggplant</li>
+          <li>Courgette = Zucchini</li>
+          <li>Oignon = Onion</li>
+          <li>Épinards = Spinach</li>
+          <li>Salade = Salad</li>
+          <li>Haricots verts = Green beans</li>
+          <li>Concombre = Cucumber</li>
+          <li>Radis = Radish</li>
+          <li>Chou = Cabbage</li>
+          <li>Champignons = Mushrooms</li>
+          <li>Laitue = Lettuce</li>
+          <li>Maïs = Corn</li>
+          <li>Pommes de terre = Potatoes</li>
+          <li>Tomate = Tomato</li>
+          <li>Carotte = Carrot</li>
+          <li>Banane plantain = Plantain</li>
+          <li>Haricots = Beans</li>
+          <li>Poireau = Leek</li>
+          <li>Racine de lotus = Lotus root</li>
+          <li>Pousse de bambou = Bamboo shoot</li>
+          <li>Artichaut = Artichoke</li>
+          <li>Asperge = Asparagus</li>
+          <li>Choux de bruxelles = Brussels sprouts</li>
+          <li>Brocoli = Broccoli</li>
+          <li>Pois = Peas</li>
+          <li>Chou-fleur = Cauliflower</li>
+          <li>Piment = Chili pepper</li>
+        </div>
+
+        <h4>11.7 — Fruits</h4>
+        <div class="list">
+          <li>Cerises = Cherries</li>
+          <li>Framboises = Raspberries</li>
+          <li>Myrtilles = Blueberries</li>
+          <li>Fraises = Strawberries</li>
+          <li>Citron = Lemon</li>
+          <li>Citron vert = Lime</li>
+          <li>Pomme = Apple</li>
+          <li>Orange = Orange</li>
+          <li>Poire = Pear</li>
+          <li>Banane = Banana</li>
+          <li>Raisins = Grapes</li>
+          <li>Pamplemousse = Grapefruit</li>
+          <li>Pastèque = Watermelon</li>
+          <li>Ananas = Pineapple</li>
+          <li>Prune = Plum</li>
+          <li>Pêche = Peach</li>
+          <li>Mangue = Mango</li>
+          <li>Abricot = Apricot</li>
+          <li>Grenade = Pomegranate</li>
+          <li>Kaki = Persimmon</li>
+          <li>Kiwi = Kiwi</li>
+          <li>Litchi = Litchi</li>
+          <li>Longane = Longan</li>
+          <li>Melon amer = Balsam pear</li>
+          <li>Fruit de la passion = Passion fruit</li>
+          <li>Avocat = Avocado</li>
+          <li>Noix de coco = Coconut</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 12 - Irregular Verbs -->
+    <details class="card" id="lesson-12">
+      <summary><span class="pill">12</span> Lesson 12 — Irregular Verbs <span class="tag blue">Verbs</span></summary>
+      <div class="content">
+        <h4>12.1 — -RE Verbs</h4>
+        <div class="list">
+          <li>être = to be</li>
+          <li>être couché = to lie down</li>
+          <li>dire = to say</li>
+          <li>comprendre = to understand</li>
+          <li>prendre = to take</li>
+          <li>écrire = to write</li>
+          <li>entendre = to hear</li>
+          <li>commencer = to begin</li>
+          <li>casser = to break</li>
+          <li>construire = to build</li>
+          <li>choisir = to choose</li>
+          <li>faire = to do/make</li>
+          <li>conduire = to drive</li>
+          <li>oublier = to forget</li>
+          <li>obtenir = to get</li>
+          <li>tenir = to hold</li>
+          <li>partir = to leave</li>
+          <li>rencontrer = to meet</li>
+          <li>payer = to pay</li>
+          <li>mettre = to put</li>
+          <li>lire = to read</li>
+          <li>courir = to run</li>
+          <li>voir = to see</li>
+          <li>envoyer = to send</li>
+          <li>dormir = to sleep</li>
+          <li>parler = to speak</li>
+          <li>passer = to spend (time)</li>
+          <li>nager = to swim</li>
+          <li>enseigner = to teach</li>
+          <li>raconter = to tell</li>
+          <li>penser = to think</li>
+          <li>jeter = to throw</li>
+          <li>gagner = to win</li>
+        </div>
+
+        <h4>12.2 — -ER Verbs</h4>
+        <div class="list">
+          <li>boire = to drink</li>
+          <li>aller = to go</li>
+          <li>donner = to give</li>
+          <li>manger = to eat</li>
+          <li>trouver = to find</li>
+          <li>tomber = to fall</li>
+          <li>apporter = to bring</li>
+        </div>
+
+        <h4>12.3 — -IR Verbs</h4>
+        <div class="list">
+          <li>avoir = to have</li>
+          <li>venir = to come</li>
+          <li>voir = to see</li>
+          <li>savoir = to know (fact)</li>
+          <li>vouloir = to want</li>
+          <li>s'asseoir = to sit</li>
+          <li>se tenir debout = to stand</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 13 - Present Simple -->
+    <details class="card" id="lesson-13">
+      <summary><span class="pill">13</span> Lesson 13 — Present Simple <span class="tag red">Grammar</span></summary>
+      <div class="content">
+        <p class="muted">Content to be added.</p>
+      </div>
+    </details>
+
+    <!-- Lesson 14 - Numbers 31-50 -->
+    <details class="card" id="lesson-14">
+      <summary><span class="pill">14</span> Lesson 14 — Numbers 31–50 <span class="tag green">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>trente et un</td><td>31</td></tr>
+            <tr><td>trente-deux</td><td>32</td></tr>
+            <tr><td>trente-trois</td><td>33</td></tr>
+            <tr><td>trente-quatre</td><td>34</td></tr>
+            <tr><td>trente-cinq</td><td>35</td></tr>
+            <tr><td>trente-six</td><td>36</td></tr>
+            <tr><td>trente-sept</td><td>37</td></tr>
+            <tr><td>trente-huit</td><td>38</td></tr>
+            <tr><td>trente-neuf</td><td>39</td></tr>
+            <tr><td>quarante</td><td>40</td></tr>
+            <tr><td>quarante et un</td><td>41</td></tr>
+            <tr><td>quarante-deux</td><td>42</td></tr>
+            <tr><td>quarante-trois</td><td>43</td></tr>
+            <tr><td>quarante-quatre</td><td>44</td></tr>
+            <tr><td>quarante-cinq</td><td>45</td></tr>
+            <tr><td>quarante-six</td><td>46</td></tr>
+            <tr><td>quarante-sept</td><td>47</td></tr>
+            <tr><td>quarante-huit</td><td>48</td></tr>
+            <tr><td>quarante-neuf</td><td>49</td></tr>
+            <tr><td>cinquante</td><td>50</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 15 - Physical Appearance -->
+    <details class="card" id="lesson-15">
+      <summary><span class="pill">15</span> Lesson 15 — Physical Appearance <span class="tag blue">People</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>grand = Tall</li>
+          <li>petit(e) = Short (height)</li>
+          <li>mince = Slim</li>
+          <li>gros(se) = Fat</li>
+          <li>musclé(e) = Muscular</li>
+          <li>blond(e) = Blonde (hair)</li>
+          <li>brun(e) = Brown-haired</li>
+          <li>noir(e) = Black-haired</li>
+          <li>cheveux bouclés = Curly Hair</li>
+          <li>cheveux lisses = Straight Hair</li>
+          <li>yeux bleus = Blue Eyes</li>
+          <li>yeux marron = Brown Eyes</li>
+          <li>yeux verts = Green Eyes</li>
+          <li>beau / belle = Beautiful</li>
+          <li>beau = Handsome</li>
+          <li>laid(e) = Ugly</li>
+          <li>jeune = Young</li>
+          <li>vieux/vieille = Old</li>
+          <li>barbe = Beard</li>
+          <li>peau claire = Light-skinned</li>
+          <li>peau foncée = Dark-skinned</li>
+          <li>taches de rousseur = Freckles</li>
+          <li>rides = Wrinkles</li>
+          <li>chauve = Bald</li>
+          <li>poilu = Hairy (body)</li>
+          <li>nez droit = Straight Nose</li>
+          <li>gros nez = Big Nose</li>
+          <li>petit nez = Small Nose</li>
+          <li>lèvres fines = Thin Lips</li>
+          <li>lèvres pulpeuses = Full Lips</li>
+          <li>larges épaules = Broad Shoulders</li>
+          <li>épaules étroites = Narrow Shoulders</li>
+          <li>peau bronzée = Tanned Skin</li>
+          <li>peau pâle = Pale Skin</li>
+          <li>cheveux ondulés = Wavy Hair</li>
+          <li>queue de cheval = Ponytail</li>
+          <li>tresses = Braids</li>
+          <li>barbe et moustache = Beard and Mustache</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 16 - Occupations -->
+    <details class="card" id="lesson-16">
+      <summary><span class="pill">16</span> Lesson 16 — Occupations <span class="tag red">People</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>médecin = Doctor</li>
+          <li>enseignant(e) = Teacher</li>
+          <li>ingénieur(e) = Engineer</li>
+          <li>avocat(e) = Lawyer</li>
+          <li>vendeur / vendeuse = Salesperson</li>
+          <li>policier / policière = Police Officer</li>
+          <li>pompier / pompière = Firefighter</li>
+          <li>programmeur / programmeuse = Programmer</li>
+          <li>cuisinier / cuisinière = Cook/Chef</li>
+          <li>journaliste = Journalist</li>
+          <li>infirmier/infirmière = Nurse</li>
+          <li>architecte = Architect</li>
+          <li>comptable = Accountant</li>
+          <li>pharmacien/pharmacienne = Pharmacist</li>
+          <li>chauffeur = Driver</li>
+          <li>mécanicien/mécanicienne = Mechanic</li>
+          <li>scientifique = Scientist</li>
+          <li>dentiste = Dentist</li>
+          <li>musicien/musicienne = Musician</li>
+          <li>acteur/actrice = Actor</li>
+          <li>artiste = Artist</li>
+          <li>pilote = Pilot</li>
+          <li>agriculteur/agricultrice = Farmer</li>
+          <li>photographe = Photographer</li>
+          <li>serveur/serveuse = Waiter/Waitress</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 17 - Sports -->
+    <details class="card" id="lesson-17">
+      <summary><span class="pill">17</span> Lesson 17 — Sports <span class="tag green">Hobbies</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>football = Football / Soccer</li>
+          <li>basket = Basketball</li>
+          <li>volley-ball = Volleyball</li>
+          <li>tennis = Tennis</li>
+          <li>natation = Swimming</li>
+          <li>course / athlétisme = Running / Athletics</li>
+          <li>hockey sur glace = Ice Hockey</li>
+          <li>ski = Skiing</li>
+          <li>cyclisme = Cycling</li>
+          <li>boxe = Boxing</li>
+          <li>arts martiaux = Martial Arts</li>
+          <li>golf = Golf</li>
+          <li>tennis de table = Table Tennis</li>
+          <li>lutte = Wrestling</li>
+          <li>handball = Handball</li>
+          <li>base-ball = Baseball</li>
+          <li>surf = Surfing</li>
+          <li>patinage = Skating</li>
+          <li>équitation = Horse Riding</li>
+          <li>plongée = Diving</li>
+          <li>cricket = Cricket</li>
+          <li>rugby = Rugby</li>
+          <li>ballet = Ballet</li>
+          <li>bowling = Bowling</li>
+          <li>haltérophilie = Weightlifting</li>
+          <li>planche à voile = Windsurfing</li>
+          <li>patinage sur glace = Ice Skating</li>
+          <li>aviron = Rowing</li>
+          <li>tir à l'arc = Archery</li>
+          <li>escalade = Climbing</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 18 - Numbers 51-75 -->
+    <details class="card" id="lesson-18">
+      <summary><span class="pill">18</span> Lesson 18 — Numbers 51–75 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>cinquante et un</td><td>51</td></tr>
+            <tr><td>cinquante-deux</td><td>52</td></tr>
+            <tr><td>cinquante-trois</td><td>53</td></tr>
+            <tr><td>cinquante-quatre</td><td>54</td></tr>
+            <tr><td>cinquante-cinq</td><td>55</td></tr>
+            <tr><td>cinquante-six</td><td>56</td></tr>
+            <tr><td>cinquante-sept</td><td>57</td></tr>
+            <tr><td>cinquante-huit</td><td>58</td></tr>
+            <tr><td>cinquante-neuf</td><td>59</td></tr>
+            <tr><td>soixante</td><td>60</td></tr>
+            <tr><td>soixante et un</td><td>61</td></tr>
+            <tr><td>soixante-deux</td><td>62</td></tr>
+            <tr><td>soixante-trois</td><td>63</td></tr>
+            <tr><td>soixante-quatre</td><td>64</td></tr>
+            <tr><td>soixante-cinq</td><td>65</td></tr>
+            <tr><td>soixante-six</td><td>66</td></tr>
+            <tr><td>soixante-sept</td><td>67</td></tr>
+            <tr><td>soixante-huit</td><td>68</td></tr>
+            <tr><td>soixante-neuf</td><td>69</td></tr>
+            <tr><td>soixante-dix</td><td>70</td></tr>
+            <tr><td>soixante et onze</td><td>71</td></tr>
+            <tr><td>soixante-douze</td><td>72</td></tr>
+            <tr><td>soixante-treize</td><td>73</td></tr>
+            <tr><td>soixante-quatorze</td><td>74</td></tr>
+            <tr><td>soixante-quinze</td><td>75</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 19 - Clothing -->
+    <details class="card" id="lesson-19">
+      <summary><span class="pill">19</span> Lesson 19 — Clothing <span class="tag red">Fashion</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>la chemise = Shirt</li>
+          <li>le t-shirt = T-shirt</li>
+          <li>la blouse = Blouse</li>
+          <li>le pull / le chandail = Sweater / Jumper</li>
+          <li>la veste = Jacket</li>
+          <li>le manteau = Coat</li>
+          <li>la robe = Dress</li>
+          <li>la jupe = Skirt</li>
+          <li>le pantalon = Pants / Trousers</li>
+          <li>le short = Shorts</li>
+          <li>les chaussures = Shoes</li>
+          <li>les bottes = Boots</li>
+          <li>les baskets = Sneakers</li>
+          <li>les sandales = Sandals</li>
+          <li>le chapeau / la casquette = Hat / Cap</li>
+          <li>l'écharpe = Scarf</li>
+          <li>les gants = Gloves</li>
+          <li>la ceinture = Belt</li>
+          <li>les chaussettes = Socks</li>
+          <li>manteau d'hiver = Winter Coat</li>
+          <li>bonnet en laine = Wool Hat</li>
+          <li>bottes de neige = Snow Boots</li>
+          <li>maillot de bain = Swimsuit</li>
+          <li>lunettes de soleil = Sunglasses</li>
+          <li>tongs = Flip-flops</li>
+          <li>débardeur = Tank Top</li>
+          <li>costume = Suit</li>
+          <li>cravate = Tie</li>
+          <li>blazer = Blazer</li>
+          <li>talons hauts = High Heels</li>
+          <li>robe de soirée = Evening Dress</li>
+          <li>noir = Black</li>
+          <li>blanc = White</li>
+          <li>rouge = Red</li>
+          <li>bleu = Blue</li>
+          <li>vert = Green</li>
+          <li>coton = Cotton</li>
+          <li>laine = Wool</li>
+          <li>cuir = Leather</li>
+          <li>soie = Silk</li>
+          <li>lin = Linen</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 20 - Adverbs -->
+    <details class="card" id="lesson-20">
+      <summary><span class="pill">20</span> Lesson 20 — Adverbs <span class="tag green">Grammar</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>vite = quickly</li>
+          <li>lentement = slowly</li>
+          <li>toujours = always</li>
+          <li>jamais = never</li>
+          <li>souvent = often</li>
+          <li>parfois = sometimes</li>
+          <li>rarement = rarely</li>
+          <li>déjà = already</li>
+          <li>encore = still</li>
+          <li>encore = yet</li>
+          <li>bientôt = soon</li>
+          <li>maintenant = now</li>
+          <li>plus tard = later</li>
+          <li>aujourd'hui = today</li>
+          <li>demain = tomorrow</li>
+          <li>hier = yesterday</li>
+          <li>clairement = clearly</li>
+          <li>ensemble = together</li>
+          <li>séparément = apart</li>
+          <li>pour toujours = forever</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 21 - Animals -->
+    <details class="card" id="lesson-21">
+      <summary><span class="pill">21</span> Lesson 21 — Animals <span class="tag blue">Nature</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>chien = dog</li>
+          <li>chat = cat</li>
+          <li>cheval = horse</li>
+          <li>vache = cow</li>
+          <li>mouton = sheep</li>
+          <li>cochon = pig</li>
+          <li>chèvre = goat</li>
+          <li>poulet = chicken</li>
+          <li>canard = duck</li>
+          <li>oiseau = bird</li>
+          <li>lapin = rabbit</li>
+          <li>souris = mouse</li>
+          <li>lion = lion</li>
+          <li>tigre = tiger</li>
+          <li>ours = bear</li>
+          <li>éléphant = elephant</li>
+          <li>singe = monkey</li>
+          <li>renard = fox</li>
+          <li>loup = wolf</li>
+          <li>cerf = deer</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 22 - Numbers 76-110 -->
+    <details class="card" id="lesson-22">
+      <summary><span class="pill">22</span> Lesson 22 — Numbers 76–110 <span class="tag red">Numbers</span></summary>
+      <div class="content">
+        <p class="muted">Content for this section has not been added yet.</p>
+      </div>
+    </details>
+
+    <!-- Lesson 23 - Places in Town -->
+    <details class="card" id="lesson-23">
+      <summary><span class="pill">23</span> Lesson 23 — Places in Town <span class="tag green">City</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>école = school</li>
+          <li>hôpital = hospital</li>
+          <li>banque = bank</li>
+          <li>restaurant = restaurant</li>
+          <li>bibliothèque = library</li>
+          <li>supermarché = supermarket</li>
+          <li>cinéma = cinema</li>
+          <li>poste = post office</li>
+          <li>commissariat = police station</li>
+          <li>parc = park</li>
+          <li>musée = museum</li>
+          <li>théâtre = theatre</li>
+          <li>hôtel = hotel</li>
+          <li>stade = stadium</li>
+          <li>église = church</li>
+          <li>pharmacie = pharmacy</li>
+          <li>boulangerie = bakery</li>
+          <li>boucherie = butcher</li>
+          <li>marché = market</li>
+          <li>coiffeur = hairdresser</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 24 - School Supplies -->
+    <details class="card" id="lesson-24">
+      <summary><span class="pill">24</span> Lesson 24 — School Supplies <span class="tag blue">School</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>livre = book</li>
+          <li>stylo = pen</li>
+          <li>crayon = pencil</li>
+          <li>gomme = eraser</li>
+          <li>cahier = notebook</li>
+          <li>règle = ruler</li>
+          <li>ciseaux = scissors</li>
+          <li>sac à dos = backpack</li>
+          <li>dossier = folder</li>
+          <li>calculatrice = calculator</li>
+          <li>feutre = marker</li>
+          <li>craie = chalk</li>
+          <li>carte = map</li>
+          <li>surligneur = highlighter</li>
+          <li>projecteur = projector</li>
+          <li>ordinateur portable = laptop</li>
+          <li>imprimante = printer</li>
+          <li>clé USB = USB stick</li>
+          <li>cartable = schoolbag</li>
+          <li>taille-crayon = sharpener</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 25 - Transportation -->
+    <details class="card" id="lesson-25">
+      <summary><span class="pill">25</span> Lesson 25 — Transportation <span class="tag red">Travel</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>voiture = car</li>
+          <li>bus = bus</li>
+          <li>train = train</li>
+          <li>vélo = bicycle</li>
+          <li>moto = motorcycle</li>
+          <li>avion = airplane</li>
+          <li>bateau = boat</li>
+          <li>tramway = tram</li>
+          <li>taxi = taxi</li>
+          <li>métro = subway</li>
+          <li>ferry = ferry</li>
+          <li>yacht = yacht</li>
+          <li>montgolfière = hot air balloon</li>
+          <li>vaisseau spatial = spaceship</li>
+          <li>pousse-pousse = rickshaw</li>
+          <li>gondole = gondola</li>
+          <li>dirigeable = zeppelin</li>
+          <li>rollers = rollerblades</li>
+          <li>canoë = canoe</li>
+          <li>sous-marin = submarine</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lessons 26-36 (Placeholder) -->
+    <details class="card" id="lesson-26">
+      <summary><span class="pill">26</span> Lesson 26 — Numbers 111–150 <span class="tag green">Numbers</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-27">
+      <summary><span class="pill">27</span> Lesson 27 — Past Simple <span class="tag blue">Grammar</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-28">
+      <summary><span class="pill">28</span> Lesson 28 — Personality Traits <span class="tag red">People</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-29">
+      <summary><span class="pill">29</span> Lesson 29 — Present Perfect <span class="tag green">Grammar</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-30">
+      <summary><span class="pill">30</span> Lesson 30 — Numbers 151–190 <span class="tag blue">Numbers</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-31">
+      <summary><span class="pill">31</span> Lesson 31 — Countries <span class="tag red">Geography</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-32">
+      <summary><span class="pill">32</span> Lesson 32 — Ordering <span class="tag green">Dialogue</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-33">
+      <summary><span class="pill">33</span> Lesson 33 — Shops in Town <span class="tag blue">City</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-34">
+      <summary><span class="pill">34</span> Lesson 34 — Numbers 191–230 <span class="tag red">Numbers</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-35">
+      <summary><span class="pill">35</span> Lesson 35 — Things in the Street <span class="tag green">City</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-36">
+      <summary><span class="pill">36</span> Lesson 36 — Instruments <span class="tag blue">Music</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>🇫🇷 Ready to Learn French?</h3>
+        <p>Start your French journey with 36 lessons, 1000+ words and interactive exercises!</p>
+      </div>
+      <a href="FrenchTest.html" class="practice-btn">
+        🎯 Start Practice Test
+      </a>
+    </div>
+    <div class="footer-meta">
+      Prepared with <span class="mono">UTF-8</span> encoding • French special characters (à, â, é, è, ê, ë, ï, î, ô, ù, û, ü, ÿ, ç, œ) are supported
+    </div>
+  </footer>
+
+  <script>
+    // Quick nav builder
+    const nav = document.getElementById('nav');
+    const cards = [...document.querySelectorAll('details.card')];
+    nav.innerHTML = cards.map(c => {
+      const id = c.id; const title = c.querySelector('summary').textContent.trim();
+      return `<a href="#${id}">${title}</a>`;
+    }).join('');
+
+    // Search/filter
+    const q = document.getElementById('q');
+    q.addEventListener('input', () => {
+      const term = q.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.classList.toggle('hide', term && !text.includes(term));
+        if(term && text.includes(term)) card.setAttribute('open','');
+      });
+    });
+
+    // Expand/collapse
+    document.getElementById('expand').onclick = () => cards.forEach(c => c.setAttribute('open',''));
+    document.getElementById('collapse').onclick = () => cards.forEach(c => c.removeAttribute('open'));
+  </script>
+</body>
+</html>
