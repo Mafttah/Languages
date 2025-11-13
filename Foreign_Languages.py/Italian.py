@@ -4,36 +4,6 @@ import colorama
 from colorama import Fore, init
 init()
 print(Fore.RED,"1'den 10' a Sayılar")
-print(Fore.WHITE,"uno = ?, due = ?, tre = ?, quattro = ?, cinque = ?, sei = ?, sette = ?, otto = ?, nove = ?, dieci = ?")
-print("")
-
-mesaj = "uno: "
-uno     = input(mesaj)
-mesaj = "dos: "
-due     = input(mesaj)
-mesaj = "tre: "
-tre     = input(mesaj)
-mesaj = "quattro:"
-quattro = input(mesaj)
-mesaj = "cinque:"
-cinque  = input(mesaj)
-mesaj = "sei: "
-sei     = input(mesaj)
-mesaj = "sette: "
-sette   = input(mesaj)
-mesaj = "otto: "
-otto    = input(mesaj)
-mesaj = "nove: "
-nove    = input(mesaj)
-mesaj = "dieci: "
-dieci   = input(mesaj)
-print("")
-
-print("Devam etmek için spacebar'a basınız.")
-keyboard.wait("space")
-
-print("")
-
 print("uno = 1, dos = 2, tres = 3, cuatro = 4, cinco = 5, seis = 6, siete = 7, ocho = 8, nueve = 9, diez = 10")
 print("")
 

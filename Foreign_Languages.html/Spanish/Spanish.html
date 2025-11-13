@@ -1,1 +1,1408 @@
-  
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spanish Lessons (HTML Version)</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #121933;
+            --text: #f0f3ff;
+            --muted: #aab3d6;
+            --accent: #7aa2f7;
+            --section: #99f6e4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, #0b1020, #0e1530 50%, #0b1020 100%);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 16, 32, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(122, 162, 247, 0.2);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            margin: .3rem 0;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: .95rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 64px;
+            align-self: start;
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: .75rem;
+            max-height: calc(100vh - 96px);
+            overflow: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        nav h3 {
+            margin: .3rem 0 .6rem;
+            color: var(--section);
+            font-size: 1rem;
+        }
+
+        nav a {
+            display: block;
+            padding: .35rem .5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: .95rem;
+        }
+
+        nav a:hover {
+            background: rgba(122, 162, 247, .15);
+        }
+
+        main {
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        section {
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px dashed rgba(122, 162, 247, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--section);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-bottom: .2rem;
+        }
+
+        .pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .5rem;
+        }
+
+        ul {
+            margin: .2rem 0 .6rem 1.1rem;
+        }
+
+        li {
+            margin: .15rem 0;
+        }
+
+        .mono {
+            white-space: pre-wrap;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+            line-height: 1.4;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: .7rem;
+            padding: .15rem .45rem;
+            border: 1px solid rgba(153, 246, 228, .35);
+            color: #99f6e4;
+            border-radius: 999px;
+            background: rgba(153, 246, 228, .08);
+        }
+
+        footer {
+            color: var(--muted);
+            font-size: .85rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Spanish Lessons</h1>>
+        </div>
+    </header>
+
+    <div class="container grid">
+        <nav>
+            <h3>İçindekiler</h3>
+            <a href="#l1">Lesson 1 — Numbers (1–10)</a>
+            <a href="#l2">Lesson 2 — Greeting</a>
+            <a href="#l3">Lesson 3 — Regular Verbs</a>
+            <a href="#l31">Lesson 3.1 — Present Tense (Pronouns)</a>
+            <a href="#l4">Lesson 4 — Adjectives</a>
+            <a href="#l5">Lesson 5 — Days & Months</a>
+            <a href="#l6">Lesson 6 — Seasons & Weather</a>
+            <a href="#l7">Lesson 7 — Colors</a>
+            <a href="#l8">Lesson 8 — Family & Friends</a>
+            <a href="#l9">Lesson 9 — Numbers (11–30)</a>
+            <a href="#l10">Lesson 10 — Prepositions & Useful Words</a>
+            <a href="#l11">Lesson 11 — Drinks & Meals</a>
+            <a href="#l12">Lesson 12 — Irregular Verbs</a>
+            <a href="#l13">Lesson 13 — Present Simple (Examples)</a>
+            <a href="#l14">Lesson 14 — Numbers (31–50)</a>
+            <a href="#l15">Lesson 15 — Physical Appearance</a>
+            <a href="#l16">Lesson 16 — Occupations</a>
+            <a href="#l17">Lesson 17 — Sports</a>
+            <a href="#l18">Lesson 18 — Numbers (51–75)</a>
+            <a href="#l19">Lesson 19 — Clothing</a>
+            <a href="#l20">Lesson 20 — Adverbs</a>
+            <a href="#l21">Lesson 21 — Animals</a>
+            <a href="#l22">Lesson 22 — Numbers (76–110)</a>
+            <a href="#l23">Lesson 23 — Places in Town</a>
+            <a href="#l24">Lesson 24 — School Supplies</a>
+            <a href="#l25">Lesson 25 — Transportation</a>
+        </nav>
+
+        <main>
+            <section id="l1">
+                <h2>Lesson 1 — Numbers (1–10)</h2>
+                <div class="mono">
+Numbers from 1 to 10
+uno = 1, dos = 2, tres = 3, cuatro = 4, cinco = 5, seis = 6, siete = 7, ocho = 8, nueve = 9, diez = 10
+                </div>
+            </section>
+
+            <section id="l2">
+                <h2>Lesson 2 — Greeting</h2>
+                <ul>
+                    <li><b>Hola</b> = Hello</li>
+                    <li>Como Estas = How are you?</li>
+                    <li>Mucho gusto = Nice to meet you</li>
+                    <li>Encantado de conocerte = Nice to meet you</li>
+                    <li>Hasta mañana = See you tomorrow</li>
+                    <li>Buenos días = Good morning</li>
+                    <li>Buenas tardes = Good afternoon</li>
+                    <li>Buenas noches = Good night</li>
+                    <li>Cuál es su nombre ? = What is your name ?</li>
+                    <li>Me llamo ____ = My name is ___</li>
+                    <li>Dónde vives ? = Where do you live?</li>
+                    <li>De dónde eres ? = Where are you from?</li>
+                    <li>Encantado de verte = Nice to see you</li>
+                    <li>Que tengas un buen día = Have a nice day</li>
+                    <li>Hasta luego = See you later</li>
+                    <li>Adiós = Goodbye</li>
+                    <li>Por favor = Please</li>
+                    <li>Gracias = Thank you</li>
+                </ul>
+            </section>
+
+            <section id="l3">
+                <h2>Lesson 3 — Regular Verbs</h2>
+                <h3>1. -AR Verbs</h3>
+                <div class="mono">
+                    pasar = to pass, to spend (time), to happen
+                    quedar = to stay, remain
+                    hablar = to speak
+                    llevar = to carry, bring
+                    dejar = to leave, abandon, to let, allow
+                    llamar = to call, to name
+                    tomar = to take, drink
+                    tratar = to treat, handle
+                    mirar = to watch, look at
+                    esperar = to wait for, to hope
+                    entrar = to enter, go in, come in
+                    trabajar = to work
+                    terminar = to finish, end
+                    necesitar = to need, require
+                    resultar = to turn out (to be)
+                    cambiar = to change
+                    presentar = to introduce
+                    crear = to create, to make
+                    considerar = to consider
+                    acabar = to finish, end
+                    ganar = to win, gain, earn, get, acquire
+                    formar = to form, shape, fashion, make
+                    aceptar = to accept, approve, to agree to
+                    lograr = to get, obtain, to achieve, attain
+                    preguntar = to ask, inquire
+                    estudiar = to study
+                    ayudar = to help
+                    gustar = to please, be pleasing
+                    escuchar = to listen, hear
+                    levantar = to raise, to lift
+                    intentar = to try, attempt
+                    usar = to use
+                    olvidar = to forget
+                    ocuoar = to occupy
+                    fijar = to fix, fasten, secure
+                    comprar = to buy, purchase
+                    evitar = to avoid, to prevent
+                    interesar = to interest, be of interest (to)
+                    echar = to throw, cast, fling
+                    importar = to import, to be important
+                    observar = to observe
+                    imaginar = to imagine
+                    desarrollar = to develop, expand, to unroll, unwind, to unfold
+                    señalar = to point out, indicate, to signal
+                    preparar = to prepare, get (something) ready
+                    faltar = to lack, be lacking, be missing
+                    acompañar = to accompany
+                    desear = to desire, want, wish
+                    enseñar = to teach, instruct, train, educate
+                    representar = to represent
+                    mandar = to order (give an order), to send
+                    asegurar = to assure, secure, insure
+                    matar = to kill, slaughter
+                    guardar = to guard, protect, to keep
+                    iniciar = to initiate, begin, start
+                    bajar = to lower, go down, descend, download
+                    notar = to note, notice, observe
+                    cortar = to cut
+                    aprovechar = to take advantage of
+                    apoyar = to support, hold up, to back
+                    aumentar = to increase, add to, rise
+                    abandonar = to abandon, leave behind, desert, to quit, give up
+                    quitar = to remove, take away
+                    conservar = to preserve, conserve, to keep, retain
+                    funcionar = to function, to run
+                    anunciar = to announce
+                    comentar = to comment on
+                    participar = to participate, to share in, to inform
+                    escapar = to escape
+                    tirar = to throw, to shoot, to throw away, to pull
+                    contestar = to answer
+                    preocupar = to worry
+                    prestar = to lend
+                    pesar = to weigh, to weigh down
+                    viajar = to travel, journey
+                </div>
+                <h3>2. -ER Verbs</h3>
+                <div class="mono">
+                    deber = to owe, must, should, ought to
+                    comprender = to understand, comprehend
+                    correr = to run
+                    comer = to eat
+                    suceder = to happen, to succeed, follow
+                    aprender = to learn
+                    responder = to respond, answer, reply to
+                    vender = to sell
+                    meter = to put (in), place, insert
+                    pretender = to attempt
+                    corresponder = to correspond with
+                    depender = to depend
+                </div>
+                <h3>3. -IR Verbs</h3>
+                <div class="mono">
+                    vivir = to live
+                    existir = to exist
+                    ocurrir = to occur, happen
+                    recibir = to receive, to welcome, greet
+                    permitir = to permit, allow
+                    partir = to divide, to leave
+                    cumplir = to fulfil, carry out
+                    decidir = to decide, settle, resolve
+                    subir = to go up, rise, move up, climb, raise up
+                    sufrir = to suffer, to undergo, experience
+                    compartir = to share, to divide (up)
+                    consistir = to consist
+                    insistir = to insist
+                </div>
+            </section>
+
+            <section id="l31">
+                <h2>Lesson 3.1 — Present Tense (Pronouns)</h2>
+                <div class="mono">
+                    I = yo
+                    you = tu
+                    he/she/it = el/elle
+                    we = nosotros
+                    you = vosotros
+                    they = ellas/ellos/ustedes
+
+                    Example for hablar = to speak, comer = to eat and vivir = to live
+
+                    yo hablo - yo como - yo vivo
+                    tu hablas - tu comes vives
+                    el habla - el come - el vive
+                    nosotros hablamos - nosotros comemos, nosotros vivimos
+                    vosotros hablais - vosotros comeis - vosotros vivis
+                    ellos halban - ellos comen - ellos viven
+                </div>
+            </section>
+
+            <section id="l4">
+                <h2>Lesson 4 — Adjectives</h2>
+                <div class="mono">
+                    Ruidoso = Noisy
+                    Silencioso = Quiet
+                    Fuerte = Strong
+                    Débil = Weak
+                    Duro = Hard
+                    Blando = Soft
+                    Más = More
+                    Menos = Less
+                    Limpio = Clean
+                    Sucio = Dirty
+                    Viejo = Old
+                    Nuevo = New
+                    Grande = Big
+                    Pequeño = Small
+                    Joven = Young
+                    Viejo = Old
+                    Flaco = Skinny
+                    Gordo = Fat
+                    Guapo = Pretty
+                    Feo = Ugly
+                    Grueso = Thick
+                    Delgado = Thin
+                    Áspero = Rough
+                    Liso = Smooth
+                    Feliz = Happy
+                    Triste = Sad
+                    Enfadado = Angry
+                    Asustado = Afraid
+                    Alegría = Joy
+                    Sorprendido = Surprised
+                    Tranquilo = Calm
+                    Aburrido = Bored
+                    Fácil = Easy
+                    Difícil = Difficult
+                    Malo = Bad
+                    Bueno = Good
+                </div>
+            </section>
+
+            <section id="l5">
+                <h2>Lesson 5 — Days and Months</h2>
+                <h3>5.1 — Days of the week</h3>
+                <div class="mono">
+                    Los dias de la semana = The days of the week
+                    Dia = day
+                    (la) semana = week
+                    Lunes = Monday
+                    Martes = Tuesday
+                    Miercoles = Wednesday
+                    Jueves = Thursday
+                    Viernes = Friday
+                    Sabada = Saturday
+                    Domingo = Sunday
+                    (el) Fin de semana = Weekend
+                </div>
+                <h3>5.2 — Months of the year</h3>
+                <div class="mono">
+                    Los mese del ano = The months of the year
+                    (el) Mes = Months
+                    (el) Ano = Year
+                    Enero = January
+                    Febrero = February
+                    Marzo = March
+                    Abril = April
+                    Mayo = May
+                    Junio = June
+                    Julio = July
+                    Agosto = August
+                    Septiembre = September
+                    Octubre = October
+                    Noviembre = November
+                    Deciembre = December
+                </div>
+            </section>
+
+            <section id="l6">
+                <h2>Lesson 6 — Seasons and Weathers</h2>
+                <div class="mono">
+                    Las estaciones = Seasons
+                    (el) Invierno = Winter
+                    (el) Verano = Summer
+                    (la) Primavera = Spring
+                    (el) Otoño = Autumn
+                    (el) Cielo = Sky
+                    (la) Nube = Cloud
+                    (el) Arco iris = Rainbow
+                    Frío = Cold (weather)
+                    Cálido = Hot (weather)
+                    Hace calor = It is hot
+                    Hace frío = It is cold
+                    Hace sol = It is sunny
+                    Está nublado = It is cloudy
+                    Hay humedad = It is humid
+                    Está lloviendo = It is raining
+                    Está nevando = It is snowing
+                    Hace viento = It is windy
+                    ¿Qué tiempo hace? = How is the weather?
+                    Buen tiempo = Good weather
+                    Mal tiempo = Bad weather
+                    ¿A qué temperatura estamos? = What is the temperature?
+                    Estamos a 24 grados = It is 24 degrees
+                </div>
+            </section>
+
+            <section id="l7">
+                <h2>Lesson 7 — Colors</h2>
+                <div class="mono">
+                    Negro = Black
+                    Azul =Blue
+                    Marrón = Brown
+                    Verde = Green
+                    Naranja = Orange
+                    Morado = Purple
+                    Rojo = Red
+                    Blanco = White
+                    Amarillo = Yellow
+                    Gris = Gray
+                    Oro = Gold
+                    Plata = Silver
+                    ¿Qué color es? = What color is it?
+                    El color es el ___ = The color is ___
+                </div>
+            </section>
+
+            <section id="l8">
+                <h2>Lesson 8 — Family and Friends</h2>
+                <h3>8.1 — Family members</h3>
+                <div class="mono">
+                    el/la = the
+                    el = masculine
+                    la = feminine
+                    (la) Madre = Mother
+                    (el) Padre = Father
+                    (el) Hermano = Brother
+                    (la) Hermana = Sister
+                    (el) Hijo = Son
+                    (la) Hija = Daughter
+                    (los) Padres = Parents
+                    (los) Niños = Children
+                    (el) Niño = Child
+                    (la) Madrastra = Stepmother
+                    (el) Padrastro = Stepfather
+                    (la) Hermanastra = Stepsister
+                    (el) Hermanastro = Stepbrother
+                    (el) Yerno = Son-in-law
+                    (la) Nuera = Daughter-in-law
+                    (la) Esposa = Wife
+                    (el) Marido = Husband
+                    (los) Abuelos = Grandparents
+                    (el) Abuelo = Grandfather
+                    (la) Abuela = Grandmother
+                    (el) Nieto = Grandson
+                    (la) Nieta = Granddaughter
+                    (los) Nietos = Grandchildren
+                    (el) Nieto = Grandchild
+                    (la) Tía = Aunt
+                    (el) Tío = Uncle
+                    (la) Prima = Cousin (female)
+                    (el) Primo= Cousin (male)
+                    (el) Sobrino = Nephew
+                    (la) Sobrina = Niece
+                    (el) Suegro = Father-in-law
+                    (la) Suegra = Mother-in-law
+                    (el) Cuñado = Brother-in-law
+                    (la) Cuñada = Sister-in-law
+                    (los) Pariente = Relative
+                </div>
+                <h3>8.2 — Friends</h3>
+                <div class="mono">
+                    Señorita = Miss
+                    (el) Chico = Boy
+                    (la) Chica = Girl
+                    (el) Bebé = Baby
+                    (la) Mujer = Woman
+                    (el) Hombre = Man
+                    (el) Amigo = Friend (male)
+                    (la) Amiga = Friend (female)
+                    (el) Novio = Boyfriend
+                    (la) Novia = Girlfriend
+                    (el) Caballero = Gentleman
+                    (la) Dama = Lady
+                    (el) Vecino = Neighbor (male)
+                    (la) Vecina = Neighbor (female)
+                </div>
+            </section>
+
+            <section id="l9">
+                <h2>Lesson 9 — Numbers (11–30)</h2>
+                <div class="mono">
+                    Once = 11
+                    Doce = 12
+                    Trece = 13
+                    Catorce = 14
+                    Quince = 15
+                    Dieciséis = 16
+                    Diecisiete = 17
+                    Dieciocho = 18
+                    Diecinueve = 19
+                    Veinte = 20
+                    Veintiuno = 21
+                    Veintidós = 22
+                    Veintitrés = 23
+                    Veinticuatro = 24
+                    Veinticinco = 25
+                    Veintiséis = 26
+                    Veintisiete = 27
+                    Veintiocho = 28
+                    Veintinueve = 29
+                    Treinta = 30
+                </div>
+            </section>
+
+            <section id="l10">
+                <h2>Lesson 10 — Prepositions and Useful words</h2>
+                <h3>10.1 — Prepositions</h3>
+                <div class="mono">
+                    Para = For
+                    De = From
+                    En = In
+                    Dentro = Inside
+                    En = Into
+                    Cerca = Near
+                    De = Of
+                    Fuera de = Out
+                    Fuera de = Outside
+                    A = To
+                    Debajo de = Under
+                    Con = With
+                    Sin = Without
+                    Encima de = Above
+                    A través de = Across
+                    Después = After
+                    Contra = Against
+                    A lo largo de = Along
+                    Alrededor de = Around
+                    En = At
+                    Detrás = Behind
+                    Debajo = Below
+                    Al lado de = Beside
+                    Entre = Between
+                    Junto a = By
+                    Durante = During
+                    Excepto = Except
+                    Y = And
+                    Porque = Because
+                    Pero = But
+                    O = Or
+                    En todas partes = Everywhere
+                    Todos = Everyone
+                    Todo = Everything
+                    Aquí = here
+                    Pocos = Few
+                    Algunos = Some
+                    Muchos = Many
+                </div>
+                <h3>10.2 — Useful Words</h3>
+                <div class="mono">
+                    (la) Pregunta = Question
+                    (la) Respuesta = Answer
+                    (la) Verdad = Truth
+                    (la) Mentira = Lie
+                    Nada = Nothing
+                    Algo = Something
+                    Igual = Same
+                    Diferente = Different
+                    Tirar = Pull
+                    Empujar = Push
+                    Largo = Long
+                    Corto = Short
+                    Frío = Cold
+                    Caliente = Hot
+                    Luz = Light
+                    Oscuridad = Dark
+                    Mojado = Wet
+                    Seco = Dry
+                    Vacío = Empty
+                    Lleno = Full
+                    ¿Cómo? = How?
+                    ¿Qué? = What?
+                    ¿Cuándo? = When?
+                    ¿Dónde? = Where?
+                    ¿Cuál? = Which?
+                    ¿Quién? = Who?
+                    ¿Por qué? = Why?
+                    ¿Cuánto tiempo? = How long?
+                    ¿Cuánto? = How much?
+                </div>
+            </section>
+
+            <section id="l11">
+                <h2>Lesson 11 — Drinks and Meals</h2>
+                <h3>11.1 — Drinks</h3>
+                <div class="mono">
+                    (el) Café = Coffee
+                    (el) Té = Tea
+                    (la) Gaseosa = Soft drink
+                    (el) Agua = Water
+                    (la) Limonada = Lemonade
+                    (el) Zumo = Juice
+                    (el) Zumo de naranja = Orange juice
+                    Quiero un vaso de agua, por favor = I would like a glass of water please
+                    Con hielo = With ice
+                </div>
+                <h3>11.2 — Dairy Products</h3>
+                <div class="mono">
+                    (la) Leche = Milk
+                    (el) Helado = Ice cream
+                    (la) Mantequilla = Butter
+                    (el) Queso = Cheese
+                    (el) Requesón = Cottage cheese
+                    (la) Crema = Cream
+                    (la) Crema agria = Sour cream
+                    (el) Yogur = Yogurt
+                    (los) Huevos = Eggs
+                    (la) Crema batida = Whipping cream
+                    (el) Baguette = Baguette
+                    (el) Donut = Doughnut
+                    (la) Galleta = Cookie
+                    (el) Panecillo = Roll
+                    (el) Postre = Dessert
+                    (el) Pastel = Cake
+                    (el) Pan = Bread
+                    (el) Pastel = Pie
+                </div>
+                <h3>11.3 — Meats</h3>
+                <div class="mono">
+                    (la) Carne de vacuno = Beef
+                    (la) Ternera = Veal
+                    (el) Jamón = Ham
+                    (el) Pollo = Chicken
+                    (el) Pavo = Turkey
+                    (el) Pato = Duck
+                    (el) Beicon = Bacon
+                    (el) Cerdo = Pork
+                    (el) Filete miñón = Filet mignon
+                    (la) Salchicha = Sausage
+                    (la) Chuleta de cordero = Lamb chop
+                    (la) Chuleta de cerdo = Pork chop
+                    (la) Carne = Meat
+                </div>
+                <h3>11.4 — Seafoods</h3>
+                <div class="mono">
+                    (el) Pescado = Fish
+                    (el) Marisco = Shellfish
+                    (la) Perca = Bass
+                    (el) Salmón = Salmon
+                    (la) Langosta = Lobster
+                    (el) Cangrejo = Crab
+                    (el) Mejillón = Mussel
+                    (la) Ostra = Oyster
+                    (el) Bacalao = Cod
+                    (la) Almeja = Clam
+                    (la) Gamba = Shrimp
+                    (el) Atún = Tuna
+                    (la) Trucha = Trout
+                    (el) Lenguado = Sole
+                    (el) Tiburón = Shark
+                    (la) Carpa = Carp
+                    (la) Tilapia = Tilapia
+                    (la) Anguila = Eel
+                    (el) Siluro = Catfish
+                    (el) Pez espada = Swordfish
+                </div>
+                <h3>11.5 — Herbs and Spices</h3>
+                <div class="mono">
+                    (la) Sal = Salt
+                    (la) Pimienta = Pepper
+                    (la) Alcaravea = Caraway
+                    (el) Ajo = Garlic
+                    (la) Albahaca = Basil
+                    (el) Cilantro = Coriander
+                    (el) Hinojo = Fennel
+                    (la) Mejorana = Marjoram
+                    (el) Orégano = Oregano
+                    (el) Perejil = Parsley
+                    (el) Romero = Rosemary
+                    (la) Salvia = Sage
+                    (el) Tomillo = Thyme
+                    (la) Nuez moscada = Nutmeg
+                    (el) Pimentón = Paprika
+                    (la) Cayena = Cayenne
+                    (la) Jengibre = Ginger
+                </div>
+                <h3>11.6 — Vegetables</h3>
+                <div class="mono">
+                    (el) Apio = Celery
+                    (la) Berenjena = Eggplant
+                    (el) Calabacín = Zucchini
+                    (la) Cebolla = Onion
+                    (la) Espinaca = Spinach
+                    (la) Ensalada = Salad
+                    (las) Judías verdes = Green beans
+                    (el) Pepino = Cucumber
+                    (el) Rábano = Radish
+                    (el) Repollo = Cabbage
+                    (las) Setas = Mushrooms
+                    (la) Lechuga = Lettuce
+                    (el) Maíz = Corn
+                    (las) Patatas = Potatoes
+                    (el) Tomate = Tomato
+                    (la) Zanahoria = Carrot
+                    (el) Plátano macho = Plantain
+                    (las) Alubias = Beans
+                    (el) Puerro = Leek
+                    (la) Raíz de loto = Lotus root
+                    (los) Brotes de bambú = Bamboo shoot
+                    (la) Alcachofa = Artichoke
+                    (los) Espárragos = Asparagus
+                    (los) Coles de Bruselas = Brussels sprouts
+                    (el) Brócoli = Broccoli
+                    (los) Guisantes = Peas
+                    (el) Coliflor = Cauliflower
+                    (el) Chile = Chili pepper
+                </div>
+                <h3>11.7 — Fruits</h3>
+                <div class="mono">
+                    (las) Cerezas = Cherries
+                    (las) Frambuesas = Raspberries
+                    (los) Arándanos = Blueberries
+                    (las) Fresas = Strawberries
+                    (el) Limón = Lemon
+                    (la) Lima = Lime
+                    (la) Manzana = Apple
+                    (la) Naranja = Orange
+                    (la) Pera = Pear
+                    (el) Plátano = Banana
+                    (las) Uvas = Grapes
+                    (el) Pomelo = Grapefruit
+                    (la) Sandía = Watermelon
+                    (la) Piña = Pineapple
+                    (la) Ciruela = Plum
+                    (el) Melocotón = Peach
+                    (el) Mango = Mango
+                    (el) Albaricoque = Apricot
+                    (la) Granada = Pomegranate
+                    (el) Caqui = Persimmon
+                    (el) Kiwi = Kiwi
+                    (el) Litchi = Litchi
+                    (el) Longan = Longan
+                    (el) Melón amargo = Balsam pear
+                    (la) Maracuyá = Passion fruit
+                    (el) Aguacate = Avocado
+                    (el) Coco = Coconut
+                </div>
+            </section>
+
+            <section id="l12">
+                <h2>Lesson 12 — Irregular Verbs</h2>
+                <h3>12.1 — -AR Verbs</h3>
+                <div class="mono">
+                    almorzar = to have lunch
+                    aprobar = to pass (a test), approve
+                    colgar = to hang (up)
+                    contar = to count, to tell (a story)
+                    demostrar = to demonstrate, to show
+                    encontrar = to find, to meet
+                    mostrar = to show, to display
+                    probar = to try, to test, to taste
+                    recordar = to remember
+                    soñar = to dream
+                    cerrar = to close
+                    comenzar = to begin, to start
+                    despertar = to wake up
+                    empezar = to begin, to start
+                    negar = to deny
+                    pensar = to think
+                    quebrar = to break
+                    temblar = to tremble
+                    atravesar = to cross
+                    sentar = to sit
+                    recomendar = to recommend
+                    gobernar = to govern
+                    manifestar = to express, to demonstrate
+                    merendar = to have a snack
+                    soñar = to dream
+                    llorar = to cry
+                    pensar = to think
+                    calentar = to warm
+                    regar = to look
+                    volar = to fly
+                    rogar = to beg
+                    enterrar = to bury
+                    merendar = to snack
+                    fregar = toscrub
+                    nevar = to snow
+                </div>
+                <h3>12.2 — -ER Verbs</h3>
+                <div class="mono">
+                    entender = to understand
+                    llover = to rain
+                    morder = to bite
+                    mover = to move (something)
+                    perder = to lose
+                    poder = can, to be able to
+                    volver = to_return, to come back
+                    resolver = to solve, to resolve
+                    satisfacer = to satisfy
+                    conocer = to know (a person), to be familiar with
+                    nacer = to be born
+                    parecer = to seem
+                    traer = to bring
+                    caer = to fall
+                    deber = to owe, should, must
+                    perder = to lose
+                    mover = to move (something)
+                    entender = to understand
+                    valer = to be worth
+                    caber = to fit
+                    reconocer = to recognize
+                    desaparecer = to disappear
+                    obedecer = to obey
+                    ser = to be
+                    tener = to have
+                    ver = to see
+                    hacer = to do
+                    poner = to put
+                    nacer = to be born
+                    deshacer = to undo
+                    agradecer = to thank
+                    establecer = to establish
+                    comer = to eat
+                    beber = to drink
+                    leer = to read
+                    vender = to sell
+                    romper = to break
+                    aprender = to learn
+                    prometer = to promise
+                    correr = to run
+                    poseer = to possess
+                    responder = to respond
+                    sorprender = to surprise
+                    temer = to fear
+                    creer = to believe
+                    haber To have)
+                </div>
+                <h3>12.3 — -IR Verbs</h3>
+                <div class="mono">
+                    advertir = to warn, to advise
+                    conferir = to confer, to bestow
+                    consentir = to allow, to permit
+                    convertir = to convert, to change
+                    digerir = to digest
+                    divertirse = to have fun
+                    mentir = to lie (not tell the truth)
+                    preferir = to prefer
+                    sentir = to feel, to regret
+                    sugerir = to suggest
+                    conducir = to drive
+                    traducir = to translate
+                    introducir = to insert, to introduce
+                    producir = to produce
+                    reducir = to reduce
+                    seguir = to follow
+                    conseguir = to get, to obtain
+                    repetir = to repeat
+                    vestir = to dressprint
+                    servir = to serve
+                    hervir = to boil
+                    impedir = to prevent
+                    convertir = to convert, to change
+                    divertirse = to have fun
+                    morir = to die
+                    salir = to go out, to leave
+                    oír = to hear
+                    venir = to come
+                    pedir = to ask
+                    ir = to go
+                    decir = to tell
+                    vivir = to live
+                    escribir = to write
+                    asistir = to attend
+                    partir = to leave
+                    subir = to upload
+                    discutir = to discuss
+                    permitir = to allow
+                    unir = to join
+                    admitir = to admit
+                    decidir = to decide
+                    dormir = to sleep
+                </div>
+            </section>
+
+            <section id="l13">
+                <h2>Lesson 13 — Present Simple (Examples)</h2>
+                <div class="mono">
+                    Example for estar = to be (state), ser = to be (essential), tener = to have, ir = to go and haber =
+                    to have, comer = to eat
+
+                    yo estoy - yo soy - yo tengo - yo voy - yo he, yo como
+                    tu estas - tu eres - el tienes - tu vas - tu has, tu comes
+                    el esta - el es - el tiene - el va - el ha, el/ella come
+                    nosotros estemos - nosotros somos, nosotros tenemos - nosotros vamos - nosotros hemos, nosotros
+                    comemos
+                    vosotros estais - vosotros sois - vosotros teneis - vosotros vais - vosotros habesi, vosotros comeis
+                    ellos estan - ellos son - ellos tienen - ellos van - ellos han, ellos/ellas comen
+                </div>
+            </section>
+
+            <section id="l14">
+                <h2>Lesson 14 — Numbers (31–50)</h2>
+                <div class="mono">
+                    treinta y uno = 31
+                    treinta y dos = 32
+                    treinta y tres = 33
+                    treinta y cuatro = 34
+                    treinta y cinco = 35
+                    treinta y seis = 36
+                    treinta y siete = 37
+                    treinta y ocho = 38
+                    treinta y nueve = 39
+                    cuarenta = 40
+                    cuarenta y uno = 41
+                    cuarenta y dos = 42
+                    cuarenta y tres = 43
+                    cuarenta y cuatro = 44
+                    cuarenta y cinco = 45
+                    cuarenta y seis = 46
+                    cuarenta y siete = 47
+                    cuarenta y ocho = 48
+                    cuarenta y nueve = 49
+                    cincuenta = 50
+                </div>
+            </section>
+
+            <section id="l15">
+                <h2>Lesson 15 — Physical Appearance</h2>
+                <div class="mono">
+                    Alto = Tall
+                    Bajo (altura) = Short (height)
+                    Delgado = Slim
+                    Gordo = Fat
+                    Musculoso = Muscular
+                    Rubio (cabello) = Blonde (hair)
+                    Castaño = Brown-haired
+                    Negro = Black-haired
+                    Rizado = Curly Hair
+                    Liso = Straight Hair
+                    Ojos azules = Blue Eyes
+                    Ojos marrones = Brown Eyes
+                    Ojos verdes = Green Eyes
+                    Guapo = Beautiful
+                    Guapo = Handsome
+                    Feo = Ugly
+                    Joven = Young
+                    Viejo = Old
+                    Barba = Beard
+                    Piel clara = Light-skinned
+                    Piel oscura = Dark-skinned
+                    Pecas = Freckles
+                    Arrugas = Wrinkles
+                    Calvo = Bald
+                    Peludo (cuerpo) = Hairy (body)
+                    Nariz recta = Straight Nose
+                    Nariz grande = Big Nose
+                    Nariz pequeña = Small Nose
+                    Labios finos = Thin Lips
+                    Labios carnosos = Full Lips
+                    Hombros anchos = Broad Shoulders
+                    Hombros estrechos = Narrow Shoulders
+                    Piel bronceada = Tanned Skin
+                    Piel pálida = Pale Skin
+                    Cabello ondulado = Wavy Hair
+                    Cola de caballo = Ponytail
+                    Trenzas = Braids
+                    Barba y bigote = Beard and Mustache
+                </div>
+            </section>
+
+            <section id="l16">
+                <h2>Lesson 16 — Occupations</h2>
+                <div class="mono">
+                    profesor = teacher
+                    médico = doctor
+                    ingenier = engineer
+                    enfermero = nurse
+                    policía = police officer
+                    bombero = firefighter
+                    cocinero = chef
+                    camarero = waiter
+                    mecánico = mechanic
+                    electricista = electrician
+                    fontanero = plumber
+                    carpintero = carpenter
+                    granjero = farmer
+                    dentista = dentist
+                    farmacéutico = pharmacist
+                    abogado = lawyer
+                    juez = judge
+                    periodista = journalist
+                    actor = Actor
+                    músico = musician
+                    conductor = driver
+                    piloto = pilot
+                    científico = scientist
+                    arquitecto = architect
+                    cajero = cashier
+                    limpiador = cleaner
+                    vendedor = salesperson
+                    programador = programmer
+                    diseñador = designer
+                    traductor = translator
+                </div>
+            </section>
+
+            <section id="l17">
+                <h2>Lesson 17 — Sports</h2>
+                <div class="mono">
+                    Fútbol / Fútbol americano = Football / Soccer
+                    Baloncesto = Basketball
+                    Voleibol = Volleyball
+                    Tenis = Tennis
+                    Natación = Swimming
+                    Carreras / Atletismo = Running / Athletics
+                    Hockey sobre hielo = Ice Hockey
+                    Esquí = Skiing
+                    Ciclismo = Cycling
+                    Boxeo = Boxing
+                    Artes marciales = Martial Arts
+                    Golf = Golf
+                    Tenis de mesa = Table Tennis
+                    Lucha libre = Wrestling
+                    Balonmano = Handball
+                    Béisbol = Baseball
+                    Surf = Surfing
+                    Patinaje = Skating
+                    Equitación = Horse Riding
+                    Buceo = Diving
+                    Cricket = Cricket
+                    Rugby = Rugby
+                    Ballet = Ballet
+                    Bolos = Bowling
+                    Levantamiento de pesas = Weightlifting
+                    Windsurf = Windsurfing
+                    Patinaje sobre hielo = Ice Skating
+                    Remo = Rowing
+                    Tiro con arco = Archery
+                    Escalada = Climbing
+                </div>
+            </section>
+
+            <section id="l18">
+                <h2>Lesson 18 — Numbers (51–75)</h2>
+                <div class="mono">
+                    cincuenta y uno = 51
+                    cincuenta y dos = 52
+                    cincuenta y tres = 53
+                    cincuenta y cuatro = 54
+                    cincuenta y cinco = 55
+                    cincuenta y seis = 56
+                    cincuenta y siete = 57
+                    cincuenta y ocho = 58
+                    cincuenta y nueve = 59
+                    sesenta = 60
+                    sesenta y uno = 61
+                    sesenta y dos = 62
+                    sesenta y tres = 63
+                    sesenta y cuatro = 64
+                    sesenta y cinco = 65
+                    sesenta y seis = 66
+                    sesenta y siete = 67
+                    sesenta y ocho = 68
+                    sesenta y nueve = 69
+                    setenta = 70
+                    setenta y uno = 71
+                    setenta y dos = 72
+                    setenta y tres = 73
+                    setenta y cuatro = 74
+                    setenta y cinco = 75
+                </div>
+            </section>
+
+            <section id="l19">
+                <h2>Lesson 19 — Clothing</h2>
+                <div class="mono">
+                    la camisa = Shirt
+                    la camiseta = T-shirt
+                    la blusa = Blouse
+                    el jersey / el suéter = Sweater / Jumper
+                    la chaqueta = Jacket
+                    el abrigo = Coat
+                    el vestido = Dress
+                    la falda = Skirt
+                    los pantalones = Pants / Trousers
+                    los pantalones cortos = Shorts
+                    los zapatos = Shoes
+                    las botas = Boots
+                    las zapatillas = Sneakers
+                    las sandalias = Sandals
+                    la gorra / el sombrero = Hat / Cap
+                    la bufanda = Scarf
+                    los guantes = Gloves
+                    el cinturón = Belt
+                    los calcetines = Socks
+                    abrigo de invierno = Winter Coat
+                    gorro de lana = Wool Hat
+                    botas de nieve = Snow Boots
+                    traje de baño = Swimsuit
+                    gafas de sol = Sunglasses
+                    chanclas = Flip-flops
+                    camiseta sin mangas Tank = Top
+                    traje = Suit
+                    corbata = Tie
+                    americana = Blazer
+                    tacones altos = High Heels
+                    vestido de noche = Evening Dress
+                    algodón = Cotton
+                    lana = Wool
+                    cuero = Leather
+                    seda = Silk
+                    lino = Linen
+                </div>
+            </section>
+
+            <section id="l20">
+                <h2>Lesson 20 — Adverbs</h2>
+                <div class="mono">
+                    rápidamente = quickly
+                    lentamente = slowly
+                    siempre = always
+                    nunca = never
+                    a menudo = often
+                    a veces = sometimes
+                    raramente = rarely
+                    ya = already
+                    todavía = still
+                    aún = yet
+                    pronto = soon
+                    ahora = now
+                    más tarde = later
+                    hoy = today
+                    mañana = tomorrow
+                    ayer = yesterday
+                    claramente = clearly
+                    juntos = together
+                    separados = apart
+                    para siempre = forever
+                </div>
+            </section>
+
+            <section id="l21">
+                <h2>Lesson 21 — Animals</h2>
+                <div class="mono">
+                    perro = dog
+                    gato = cat
+                    caballo = horse
+                    vaca = cow
+                    oveja = sheep
+                    cerdo = pig
+                    cabra = goat
+                    pollo = chicken
+                    pato = duck
+                    pájaro = bird
+                    conejo = rabbit
+                    ratón = mouse
+                    león = lion
+                    tigre = tiger
+                    oso = bear
+                    elefante = elephant
+                    mono = monkey
+                    zorro = fox
+                    lobo = wolf
+                    ciervo = deer
+                </div>
+            </section>
+
+            <section id="l22">
+                <h2>Lesson 22 — Numbers (76–110)</h2>
+                <div class="mono">
+                    setenta y seis = 76
+                    setenta y siete = 77
+                    setenta y ocho = 78
+                    setenta y nueve = 79
+                    ochenta = 80
+                    ochenta y uno = 81
+                    ochenta y dos = 82
+                    ochenta y tres = 83
+                    ochenta y cuatro = 84
+                    ochenta y cinco = 85
+                    ochenta y seis = 86
+                    ochenta y siete = 87
+                    ochenta y ocho = 88
+                    ochenta y nueve = 89
+                    noventa = 90
+                    noventa y uno = 91
+                    noventa y dos = 92
+                    noventa y tres = 93
+                    noventa y cuatro = 94
+                    noventa y cinco = 95
+                    noventa y seis = 96
+                    noventa y siete = 97
+                    noventa y ocho = 98
+                    noventa y nueve = 99
+                    cien = 100
+                    ciento uno = 101
+                    ciento dos = 102
+                    ciento tres = 103
+                    ciento cuatro = 104
+                    ciento cinco = 105
+                    ciento seis = 106
+                    ciento siete = 107
+                    ciento ocho = 108
+                    ciento nueve = 109
+                    ciento diez = 110
+                </div>
+            </section>
+
+            <section id="l23">
+                <h2>Lesson 23 — Place in town</h2>
+                <div class="mono">
+                    Escuela = school
+                    Hospital = hospital
+                    Banco = bank
+                    Restaurante = restaurant
+                    Biblioteca = library
+                    Supermercado = supermarket
+                    Cine = cinema
+                    Correos = post office
+                    Comisaría = police station
+                    Parque = park
+                    Museo = museum
+                    Teatro = theatre
+                    Hotel = hotel
+                    Estadio = stadium
+                    Iglesia = church
+                    Farmacia = pharmacy
+                    Panadería = bakery
+                    Carnicería = butcher
+                    Mercado = market
+                    Peluquería = hairdresser
+                </div>
+            </section>
+
+            <section id="l24">
+                <h2>Lesson 24 — School Supplies</h2>
+                <div class="mono">
+                    Libro = book
+                    Bolígrafo = pen
+                    Lápiz = pencil
+                    Borrador = eraser
+                    Cuaderno = notebook
+                    Regla = ruler
+                    Tijeras = scissors
+                    Mochila = backpack
+                    Carpeta = folder
+                    Calculadora = calculator
+                    Marcador = marker
+                    Tiza = chalk
+                    Mapa = map
+                    Resaltador = highlighter
+                    Proyector = projector
+                    Portátil = laptop
+                    Impresora = printer
+                    Memoria USB = USB stick
+                    Mochila escolar = schoolbag
+                    Sacapuntas = sharpener
+                </div>
+            </section>
+
+            <section id="l25">
+                <h2>Lesson 25 — Transportation</h2>
+                <div class="mono">
+                    coche = car
+                    autobús = bus
+                    tren = train
+                    bicicleta = bicycle
+                    motocicleta = motorcycle
+                    avión = airplane
+                    barco = boat
+                    tranvía = tram
+                    taxi = taxi
+                    metro = subway
+                    ferry = ferry
+                    yate = yacht
+                    globo aerostático = hot air balloon
+                    nave espacial = spaceship
+                    rickshaw = rickshaw
+                    góndola = gondola
+                    zepelín = zeppelin
+                    patines en línea = rollerblades
+                    canoa = canoe
+                    submarino = submarine
+                </div>
+            </section>
+
+            <section id="l26">
+                <h2>Lesson 26 — Numbers (111–150)</h2>
+                <div class="mono">
+                    ciento once = 111
+                    ciento doce = 112
+                    ciento trece = 113
+                    ciento catorce = 114
+                    ciento quince = 115
+                    ciento dieciséis = 116
+                    ciento diecisiete = 117
+                    ciento dieciocho = 118
+                    ciento diecinueve = 119
+                    ciento veinte = 120
+                    ciento veintiuno = 121
+                    ciento veintidós = 122
+                    ciento veintitrés = 123
+                    ciento veinticuatro = 124
+                    ciento veinticinco = 125
+                    ciento veintiséis = 126
+                    ciento veintisiete = 127
+                    ciento veintiocho = 128
+                    ciento veintinueve = 129
+                    ciento treinta = 130
+                    ciento treinta y uno = 131
+                    ciento treinta y dos = 132
+                    ciento treinta y tres = 133
+                    ciento treinta y cuatro = 134
+                    ciento treinta y cinco = 135
+                    ciento treinta y seis = 136
+                    ciento treinta y siete = 137
+                    <!-- Orijinal metindeki 138–150 kısımları Python yorum satırıydı, burada da boş bırakıldı. -->
+                </div>
+            </section>
+            <a href="SpanishTest.html">
+                <button>To practice Spanish click the button</button>
+            </a>
+        </main>
+    </div>
+</body>
+
+</html>

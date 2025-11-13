@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slovak Lessons</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #121933;
+            --text: #f0f3ff;
+            --muted: #aab3d6;
+            --accent: #7aa2f7;
+            --section: #99f6e4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, #0b1020, #0e1530 50%, #0b1020 100%);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 16, 32, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(122, 162, 247, 0.2);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            margin: .3rem 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 64px;
+            align-self: start;
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: .75rem;
+            max-height: calc(100vh - 96px);
+            overflow: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        nav h3 {
+            margin: .3rem 0 .6rem;
+            color: var(--section);
+            font-size: 1rem;
+        }
+
+        nav a {
+            display: block;
+            padding: .35rem .5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: .95rem;
+        }
+
+        nav a:hover {
+            background: rgba(122, 162, 247, .15);
+        }
+
+        main {
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        section {
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px dashed rgba(122, 162, 247, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--section);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-bottom: .2rem;
+        }
+
+        ul {
+            margin: .2rem 0 .6rem 1.1rem;
+        }
+
+        li {
+            margin: .15rem 0;
+        }
+
+        .mono {
+            white-space: pre-wrap;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+            line-height: 1.4;
+        }
+
+        footer {
+            color: var(--muted);
+            font-size: .85rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .practice-note {
+            background: rgba(122, 162, 247, 0.1);
+            border: 1px solid rgba(122, 162, 247, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Slovak Lessons</h1>
+        </div>
+    </header>
+
+    <div class="container grid">
+        <nav>
+            <h3>Table of Contents</h3>
+            <a href="#l1">Lesson 1 — Numbers (1–10)</a>
+            <a href="#l2">Lesson 2 — Greeting</a>
+            <a href="#l3">Lesson 3 — Regular Verbs</a>
+            <a href="#l31">Lesson 3.1 — Present Tense</a>
+            <a href="#l4">Lesson 4 — Adjectives</a>
+            <a href="#l5">Lesson 5 — Days & Months</a>
+            <a href="#l6">Lesson 6 — Seasons & Weather</a>
+            <a href="#l7">Lesson 7 — Colors</a>
+            <a href="#l8">Lesson 8 — Family & Friends</a>
+            <a href="#l9">Lesson 9 — Numbers (11–30)</a>
+            <a href="#l10">Lesson 10 — Prepositions & Useful Words</a>
+            <a href="#l11">Lesson 11 — Drinks & Meals</a>
+            <a href="#l12">Lesson 12 — Irregular Verbs</a>
+            <a href="#l13">Lesson 13 — Present Simple</a>
+            <a href="#l14">Lesson 14 — Numbers (31–50)</a>
+            <a href="#l15">Lesson 15 — Physical Appearance</a>
+            <a href="#l16">Lesson 16 — Occupations</a>
+            <a href="#l17">Lesson 17 — Sports</a>
+            <a href="#l18">Lesson 18 — Numbers (51–75)</a>
+            <a href="#l19">Lesson 19 — Clothing</a>
+            <a href="#l20">Lesson 20 — Adverbs</a>
+            <a href="#l21">Lesson 21 — Animals</a>
+            <a href="#l22">Lesson 22 — Numbers (76–110)</a>
+            <a href="#l23">Lesson 23 — Places in Town</a>
+            <a href="#l24">Lesson 24 — School Supplies</a>
+            <a href="#l25">Lesson 25 — Transportation</a>
+            <a href="#l26">Lesson 26 — Numbers (111–150)</a>
+        </nav>
+
+        <main>
+            <section id="l1">
+                <h2>Lesson 1 — Numbers (1–10)</h2>
+                <div class="mono">
+jeden = 1, dva = 2, tri = 3, štyri = 4, päť = 5, šesť = 6, sedem = 7, osem = 8, deväť = 9, desať = 10
+                </div>
+            </section>
+
+            <section id="l2">
+                <h2>Lesson 2 — Greeting</h2>
+                <ul>
+                    <li><b>Ahoj</b> = Hello</li>
+                    <li>Ako sa máte = How are you?</li>
+                    <li>Rád vás spoznávam = Nice to meet you</li>
+                    <li>Uvidíme sa zajtra = See you tomorrow</li>
+                    <li>Dobré ráno = Good morning</li>
+                    <li>Dobrý deň = Good afternoon</li>
+                    <li>Dobrý večer = Good evening</li>
+                    <li>Dobrú noc = Good night</li>
+                    <li>Ako sa voláte? = What is your name?</li>
+                    <li>Moje meno je ____ = My name is ___</li>
+                    <li>Kde bývate? = Where do you live?</li>
+                    <li>Odkiaľ ste? = Where are you from?</li>
+                    <li>Rád vás opäť vidím = Nice to see you</li>
+                    <li>Pekný deň = Have a nice day</li>
+                    <li>Uvidíme sa neskôr = See you later</li>
+                    <li>Dovidenia = Goodbye</li>
+                    <li>Prosím = Please</li>
+                    <li>Ďakujem = Thank you</li>
+                </ul>
+            </section>
+
+            <section id="l3">
+                <h2>Lesson 3 — Regular Verbs</h2>
+                <p class="note">Regular verbs are divided into 3 categories</p>
+                
+                <h3>1. -AŤ/AŤ sa Verbs</h3>
+                <div class="mono">
+pýtať = to ask
+hrať = to play
+čítať = to read
+počúvať = to listen
+ležať = to lie down
+vstávať = to get up
+otvárať = to open
+zatvárať = to close
+zavolať = to call
+hrať sa = to play (reflexive)
+napísať = to write
+smiať sa = to laugh
+plakať = to cry
+kráčať = to walk
+počítavať = to calculate
+skúšať = to try
+napomínať = to admonish
+nosievať = to wear
+prechádzať = to walk
+používať = to use
+predpokladať = to assume
+vysnívať = to dream
+                </div>
+
+                <h3>2. -OVAŤ Verbs</h3>
+                <div class="mono">
+pracovať = to work
+študovať = to study
+milovať = to love
+tancovať = to dance
+maľovať = to paint
+zapisovať = to note down
+budovať = to build
+                </div>
+
+                <h3>3. -IŤ Verbs</h3>
+                <div class="mono">
+variť = to cook
+učiť = to teach
+kresliť = to draw
+pocítiť = to feel
+čistiť = to clean
+riešiť = to solve
+žiť = to live
+veriť = to believe
+tvrdiť = to claim
+vlastniť = to own
+hodnotiť = to evaluate
+                </div>
+            </section>
+
+            <section id="l31">
+                <h2>Lesson 3.1 — Present Tense</h2>
+                <div class="mono">
+I = ja
+you = ty
+he/she = on/ona
+we = my
+you = vy
+they = oni
+
+Example for robiť = to do, milovať = to love, and čítať = to read
+
+1. robiť (to do):
+ja robím
+ty robíš
+on/ona robí
+my robíme
+vy robíte
+oni robia
+
+2. milovať (to love):
+ja milujem
+ty miluješ
+on/ona miluje
+my milujeme
+vy milujete
+oni milujú
+
+3. čítať (to read):
+ja počúvam
+ty počúvaš
+on/ona počúva
+my počúvame
+vy počúvate
+oni počúvajú
+                </div>
+            </section>
+
+            <section id="l4">
+                <h2>Lesson 4 — Adjectives</h2>
+                <div class="mono">
+Šťastný = Happy
+Smutný = Sad
+Nahnevaný = Angry
+Vystrašený = Afraid
+Radosť = Joy
+Prekvapený = Surprised
+Pokojný = Calm
+Znudený = Bored
+Ľahký = Easy
+Ťažký = Difficult
+Zlý = Bad
+Dobrý = Good
+Hlučný = Noisy
+Tichý = Quiet
+Silný = Strong
+Slabý = Weak
+Tvrdý = Hard
+Mäkký = Soft
+Viac = More
+Menej = Less
+Čistý = Clean
+Špinavý = Dirty
+Starý = Old
+Nový = New
+Veľký = Big
+Malý = Small
+Mladý = Young
+Vychudnutý = Skinny
+Tučný = Fat
+Pekný = Pretty
+Škaredý = Ugly
+Hrubý = Thick
+Tenký = Thin
+Drsný = Rough
+Hladký = Smooth
+                </div>
+            </section>
+
+            <section id="l5">
+                <h2>Lesson 5 — Days and Months</h2>
+                <h3>5.1 — Days of the week</h3>
+                <div class="mono">
+Dni v týždni = The days of the week
+Deň = Day
+Týždeň = Week
+Pondelok = Monday
+Utorok = Tuesday
+Streda = Wednesday
+Štvrtok = Thursday
+Piatok = Friday
+Sobota = Saturday
+Nedeľa = Sunday
+Víkend = Weekend
+                </div>
+
+                <h3>5.2 — Months of the year</h3>
+                <div class="mono">
+Mesiace roka = The months of the year
+Mesiac = Month
+Rok = Year
+Január = January
+Február = February
+Marec = March
+Apríl = April
+Máj = May
+Jún = June
+Júl = July
+August = August
+September = September
+Október = October
+November = November
+December = December
+                </div>
+            </section>
+
+            <section id="l6">
+                <h2>Lesson 6 — Seasons and Weather</h2>
+                <div class="mono">
+Ročné obdobia = Seasons
+Zima = Winter
+Leto = Summer
+Jar = Spring
+Jeseň = Autumn
+Obloha = Sky
+Mrak = Cloud
+Dúha = Rainbow
+Studený = Cold (weather)
+Horúci = Hot (weather)
+Je horúco = It is hot
+Je zima = It is cold
+Je slnečno = It is sunny
+Je oblačno = It is cloudy
+Je vlhko = It is humid
+Prší = It is raining
+Sneží = It is snowing
+Fúka = It is windy
+Aké je počasie? = How is the weather?
+Dobré počasie = Good weather
+Zlé počasie = Bad weather
+Aká je teplota? = What is the temperature?
+Je 24 stupňov = It is 24 degrees
+                </div>
+            </section>
+
+            <section id="l7">
+                <h2>Lesson 7 — Colors</h2>
+                <div class="mono">
+Čierny = Black
+Modrý = Blue
+Hnedý = Brown
+Zelený = Green
+Oranžový = Orange
+Purpurový = Purple
+Červený = Red
+Biely = White
+Žltý = Yellow
+Šedý = Gray
+Zlatý = Gold
+Strieborný = Silver
+Akú to má farbu? = What color is it?
+Farba je ___ = The color is ___
+                </div>
+            </section>
+
+            <section id="l8">
+                <h2>Lesson 8 — Family and Friends</h2>
+                <h3>8.1 — Family members</h3>
+                <div class="mono">
+Matka = Mother
+Otec = Father
+Brat = Brother
+Sestra = Sister
+Syn = Son
+Dcéra = Daughter
+Rodičia = Parents
+Deti = Children
+Dieťa = Child
+Nevlastná matka = Stepmother
+Nevlastný otec = Stepfather
+Nevlastná sestra = Stepsister
+Nevlastný brat = Stepbrother
+Zať = Son-in-law
+Nevesta = Daughter-in-law
+Manželka = Wife
+Manžel = Husband
+Starí rodičia = Grandparents
+Starý otec = Grandfather
+Stará mama = Grandmother
+Vnuk = Grandson
+Vnučka = Granddaughter
+Vnúčatá = Grandchildren
+Vnúča = Grandchild
+Teta = Aunt
+Strýko = Uncle
+Sesternica = Cousin (female)
+Bratranec = Cousin (male)
+Synovec = Nephew
+Neter = Niece
+Svokor = Father-in-law
+Svokra = Mother-in-law
+Švagor = Brother-in-law
+Švagriná = Sister-in-law
+Príbuzný = Relative
+                </div>
+
+                <h3>8.2 — Friends</h3>
+                <div class="mono">
+Pani = Miss
+Chlapec = Boy
+Dievča = Girl
+Dieťa = Baby
+Žena = Woman
+Muž = Man
+Kamarát = Friend (male)
+Kamarátka = Friend (female)
+Priateľ = Boyfriend
+Priateľka = Girlfriend
+Pán = Gentleman
+Dáma = Lady
+Sused = Neighbor (male)
+Suseda = Neighbor (female)
+                </div>
+            </section>
+
+            <section id="l9">
+                <h2>Lesson 9 — Numbers (11–30)</h2>
+                <div class="mono">
+jedenásť = 11
+dvanásť = 12
+trinásť = 13
+štrnásť = 14
+pätnásť = 15
+šestnásť = 16
+sedemnásť = 17
+osemnásť = 18
+devätnásť = 19
+dvadsať = 20
+dvadsaťjeden = 21
+dvadsaťdva = 22
+dvadsaťtri = 23
+dvadsaťštyri = 24
+dvadsaťpäť = 25
+dvadsaťšesť = 26
+dvadsaťsedem = 27
+dvadsaťosem = 28
+dvadsaťdeväť = 29
+tridsať = 30
+                </div>
+            </section>
+
+            <section id="l10">
+                <h2>Lesson 10 — Prepositions and Useful words</h2>
+                <h3>10.1 — Prepositions</h3>
+                <div class="mono">
+Pre = For
+Z = From
+V = In
+Vnútri = Inside
+Do = Into
+Najbližšie = Near
+Z = Of
+Von = Out
+Vonku = Outside
+Na = To
+Pod = Under
+S = With
+Bez = Without
+Vyššie = Above
+Naprieč = Across
+Po = After
+Proti = Against
+Pozdĺž = Along
+Okolo = Around
+V/Na = At
+Za = Behind
+Nižšie = Below
+Vedľa = Beside
+Medzi = Between
+Podľa = By
+Počas = During
+Okrem = Except
+A = And
+Pretože = Because
+Ale = But
+Alebo = Or
+Všade = Everywhere
+Všetci = Everyone
+Všetko = Everything
+Málo = Few
+Niektorí = Some
+Veľa = Many
+                </div>
+
+                <h3>10.2 — Useful Words</h3>
+                <div class="mono">
+Otázka = Question
+Odpoveď = Answer
+Pravda = Truth
+Lož = Lie
+Nič = Nothing
+Niečo = Something
+Rovnaký = Same
+Odlišný = Different
+Ťahať = Pull
+Tlačiť = Push
+Dlhý = Long
+Krátky = Short
+Studený = Cold
+Horúci = Hot
+Svetlý = Light
+Tmavý = Dark
+Mokrý = Wet
+Suchý = Dry
+Prázdny = Empty
+Plný = Full
+Ako? = How?
+Čo? = What?
+Kedy? = When?
+Kde? = Where?
+Ktorý? = Which?
+Kto? = Who?
+Prečo? = Why?
+Ako dlho? = How long?
+Koľko? = How much?
+                </div>
+            </section>
+
+            <section id="l11">
+                <h2>Lesson 11 — Drinks and Meals</h2>
+                <h3>11.1 — Drinks</h3>
+                <div class="mono">
+Káva = Coffee
+Čaj = Tea
+Nealkoholický nápoj = Soft drink
+Voda = Water
+Limonáda = Lemonade
+Džús = Juice
+Pomarančový džús = Orange juice
+Poprosím o pohár vody = I would like a glass of water please
+S ľadom = With ice
+                </div>
+
+                <h3>11.2 — Dairy Products</h3>
+                <div class="mono">
+Mlieko = Milk
+Zmrzlina = Ice cream
+Maslo = Butter
+Syr = Cheese
+Tvaroh = Cottage cheese
+Šľahačka = Cream
+Kyslá smotana = Sour cream
+Jogurt = Yogurt
+Vajcia = Eggs
+Šľahačka = Whipping cream
+Pekáreň = Bakery
+Bageta = Baguette
+Šiška = Doughnut
+Koláčik = Cookie
+Rožok = Roll
+Dezert = Dessert
+Koláč = Cake
+Chlieb = Bread
+Koláč = Pie
+                </div>
+
+                <h3>11.3 — Meats</h3>
+                <div class="mono">
+Hovädzie = Beef
+Teľacie = Veal
+Šunka = Ham
+Kuracie = Chicken
+Morčacie = Turkey
+Kačica = Duck
+Slanina = Bacon
+Bravčové = Pork
+Filet mignon = Filet mignon
+Klobása = Sausage
+Jahňacia kotleta = Lamb chop
+Bravčová kotleta = Pork chop
+Mäso = Meat
+                </div>
+
+                <h3>11.4 — Seafoods</h3>
+                <div class="mono">
+Ryba = Fish
+Mušle = Shellfish
+Morský ostriež = Bass
+Losos = Salmon
+Homár = Lobster
+Krab = Crab
+Slávka jedlá = Mussel
+Ustrica = Oyster
+Treska = Cod
+Mušle = Clam
+Krevety = Shrimp
+Tuniak = Tuna
+Pstruh = Trout
+Morský jazyk = Sole
+Žralok = Shark
+Kapor = Carp
+Tilapia = Tilapia
+Úhor = Eel
+Sumec = Catfish
+Mečúň = Swordfish
+                </div>
+
+                <h3>11.5 — Herbs and Spices</h3>
+                <div class="mono">
+Soľ = Salt
+Čierne korenie = Pepper
+Rasca = Caraway
+Cesnak = Garlic
+Bazalka = Basil
+Koriander = Coriander
+Fenikel = Fennel
+Majoránka = Marjoram
+Oregano = Oregano
+Petržlen = Parsley
+Rozmarín = Rosemary
+Šalvia = Sage
+Tymián = Thyme
+Muškátový oriešok = Nutmeg
+Paprika = Paprika
+Kajenské korenie = Cayenne
+Zázvor = Ginger
+                </div>
+
+                <h3>11.6 — Vegetables</h3>
+                <div class="mono">
+Zeler = Celery
+Baklažán = Eggplant
+Cuketa = Zucchini
+Cibuľa = Onion
+Špenát = Spinach
+Šalát = Salad
+Zelená fazuľka = Green beans
+Uhorka = Cucumber
+Reďkovka = Radish
+Kapusta = Cabbage
+Huby = Mushrooms
+Šalát = Lettuce
+Kukurica = Corn
+Zemiaky = Potatoes
+Paradajka = Tomato
+Mrkva = Carrot
+Banán = Plantain
+Fazuľa = Beans
+Pór = Leek
+Lotosový koreň = Lotus root
+Bambusové výhonky = Bamboo shoot
+Artičok = Artichoke
+Špargľa = Asparagus
+Ružičkový kel = Brussels sprouts
+Brokolica = Broccoli
+Hrach = Peas
+Karfiol = Cauliflower
+Čili paprička = Chili pepper
+                </div>
+
+                <h3>11.7 — Fruits</h3>
+                <div class="mono">
+Čerešne = Cherries
+Maliny = Raspberries
+Čučoriedky = Blueberries
+Jahody = Strawberries
+Citrón = Lemon
+Limetka = Lime
+Jablko = Apple
+Pomaranč = Orange
+Hruška = Pear
+Banán = Banana
+Hrozno = Grapes
+Grapefruit = Grapefruit
+Vodný melón = Watermelon
+Ananás = Pineapple
+Slivka = Plum
+Broskyňa = Peach
+Mango = Mango
+Marhuľa = Apricot
+Granátové jablko = Pomegranate
+Tomel = Persimmon
+Kiwi = Kiwi
+Liči = Litchi
+Longan = Longan
+Balzamová hruška = Balsam pear
+Mučenky = Passion fruit
+Avokádo = Avocado
+Kokos = Coconut
+                </div>
+            </section>
+
+            <section id="l12">
+                <h2>Lesson 12 — Irregular Verbs</h2>
+                <div class="mono">
+byť = to be
+mať = to have
+ísť = to go
+prísť = to come
+vidieť = to see
+dať = to give
+jesť = to eat
+piť = to drink
+vedieť = to know
+môcť = can
+chcieť = to want
+zostať = to stay
+nájsť = to find
+bežať = to run
+sedieť = to sit
+ležať = to lie
+stáť = to stand
+rozumieť = to understand
+povedať = to say
+nosiť = to carry
+zobrať = to take
+čítať = to read
+písať = to write
+hrať = to play
+kúpiť = to buy
+stratiť = to lose
+žiť = to live
+vrátiť = to return
+poznať = to know
+umrieť = to die
+dostať = to get
+vstať = to get up
+pozerať = to watch
+myslieť = to think
+chytiť = to catch
+objednať = to order
+stráviť = to spend (time)
+dokončiť = to finish
+rozbiť = to break
+vysvetliť = to explain
+preložiť = to translate
+zavolať = to call
+platiť = to pay
+počúvať = to listen
+baviť = to entertain
+zabudnúť = to forget
+otvoriť = to open
+zatvoriť = to close
+snívať = to dream
+                </div>
+            </section>
+
+            <section id="l13">
+                <h2>Lesson 13 — Present Simple</h2>
+                <p class="note">Example for byť = to be, mať = to have, ísť = to go</p>
+                <div class="mono">
+ja som - ja mám - ja idem
+ty si - ty máš - ty ideš
+on/ona/ono je - on/ona/ono má - on/ona/ono ide
+my sme - my máme - my ideme
+vy ste - vy máte - vy idete
+oni/ony sú - oni/ony majú - oni/ony idú
+                </div>
+            </section>
+
+            <section id="l14">
+                <h2>Lesson 14 — Numbers (31–50)</h2>
+                <div class="mono">
+tridsaťjeden = 31
+tridsaťdva = 32
+tridsaťtri = 33
+tridsaťštyri = 34
+tridsaťpäť = 35
+tridsaťšesť = 36
+tridsaťsedem = 37
+tridsaťosem = 38
+tridsaťdeväť = 39
+štyridsať = 40
+štyridsaťjeden = 41
+štyridsaťdva = 42
+štyridsaťtri = 43
+štyridsaťštyri = 44
+štyridsaťpäť = 45
+štyridsaťšesť = 46
+štyridsaťsedem = 47
+štyridsaťosem = 48
+štyridsaťdeväť = 49
+päťdesiat = 50
+                </div>
+            </section>
+
+            <section id="l15">
+                <h2>Lesson 15 — Physical Appearance</h2>
+                <div class="mono">
+vysoký = Tall
+nízky = Short (height)
+štíhly = Slim
+tučný = Fat
+svalnatý = Muscular
+blond = Blonde (hair)
+hnedovlasý = Brown-haired
+čiernovlasý = Black-haired
+kučeravé vlasy = Curly Hair
+rovné vlasy = Straight Hair
+modré oči = Blue Eyes
+hnedé oči = Brown Eyes
+zelené oči = Green Eyes
+krásny = Beautiful
+pekný = Handsome
+škaredý = Ugly
+mladý = Young
+starý = Old
+brada = Beard
+svetlá pokožka = Light-skinned
+tmavá pokožka = Dark-skinned
+pehy = Freckles
+vrásky = Wrinkles
+plešatý = Bald
+chlpatý = Hairy (body)
+rovný nos = Straight Nose
+veľký nos = Big Nose
+malý nos = Small Nose
+tenké pery = Thin Lips
+plné pery = Full Lips
+široké plecia = Broad Shoulders
+úzke plecia = Narrow Shoulders
+opálená pokožka = Tanned Skin
+bledá pokožka = Pale Skin
+vlnité vlasy = Wavy Hair
+konský chvost = Ponytail
+vrkoče = Braids
+brada a fúzy = Beard and Mustache
+                </div>
+            </section>
+
+            <section id="l16">
+                <h2>Lesson 16 — Occupations</h2>
+                <div class="mono">
+lekár = Doctor
+učiteľ = Teacher
+inžinier = Engineer
+právnik = Lawyer
+predavač = Salesperson
+policajt = Police Officer
+hasič = Firefighter
+programátor = Programmer
+kuchár = Cook/Chef
+novinár = Journalist
+zdravotná sestra = Nurse
+architekt = Architect
+účtovník = Accountant
+lekárnik = Pharmacist
+vodič = Driver
+mechanik = Mechanic
+vedec = Scientist
+zubár = Dentist
+hudobník = Musician
+herec = Actor
+umelec = Artist
+pilot = Pilot
+farmár = Farmer
+fotograf = Photographer
+čašník/čašníčka = Waiter/Waitress
+                </div>
+            </section>
+
+            <section id="l17">
+                <h2>Lesson 17 — Sports</h2>
+                <div class="mono">
+futbal = Football / Soccer
+basketbal = Basketball
+volejbal = Volleyball
+tenis = Tennis
+plávanie = Swimming
+beh / atletika = Running / Athletics
+hokej = Ice Hockey
+lyžovanie = Skiing
+cyklistika = Cycling
+box = Boxing
+bojové umenia = Martial Arts
+golf = Golf
+stolný tenis = Table Tennis
+zápasenie = Wrestling
+hádzaná = Handball
+baseball = Baseball
+surfovanie = Surfing
+korčuľovanie = Skating
+jazdectvo = Horse Riding
+potápanie = Diving
+kriket = Cricket
+ragby = Rugby
+balet = Ballet
+bowling = Bowling
+vzpieranie = Weightlifting
+windsurfing = Windsurfing
+korčuľovanie = Ice Skating
+veslovanie = Rowing
+lukostreľba = Archery
+lezenie = Climbing
+                </div>
+            </section>
+
+            <section id="l18">
+                <h2>Lesson 18 — Numbers (51–75)</h2>
+                <div class="mono">
+päťdesiatjeden = 51
+päťdesiatdva = 52
+päťdesiattri = 53
+päťdesiatštyri = 54
+päťdesiatpäť = 55
+päťdesiatšesť = 56
+päťdesiatsedem = 57
+päťdesiatosem = 58
+päťdesiatdeväť = 59
+šesťdesiat = 60
+šesťdesiatjeden = 61
+šesťdesiatdva = 62
+šesťdesiattri = 63
+šesťdesiatštyri = 64
+šesťdesiatpäť = 65
+šesťdesiatšesť = 66
+šesťdesiatsedem = 67
+šesťdesiatosem = 68
+šesťdesiatdeväť = 69
+sedemdesiat = 70
+sedemdesiatjeden = 71
+sedemdesiatdva = 72
+sedemdesiattri = 73
+sedemdesiatštyri = 74
+sedemdesiatpäť = 75
+                </div>
+            </section>
+
+            <section id="l19">
+                <h2>Lesson 19 — Clothing</h2>
+                <div class="mono">
+košeľa = Shirt
+tričko = T-shirt
+blúzka = Blouse
+sveter = Sweater / Jumper
+bunda = Jacket
+kabát = Coat
+šaty = Dress
+sukňa = Skirt
+nohavice = Pants / Trousers
+krátke nohavice = Shorts
+topánky = Shoes
+čižmy = Boots
+tenisky = Sneakers
+sandále = Sandals
+čiapka = Hat / Cap
+šál = Scarf
+rukavice = Gloves
+opasok = Belt
+ponožky = Socks
+zimný kabát = Winter Coat
+vlnená čiapka = Wool Hat
+snehule = Snow Boots
+plavky = Swimsuit
+slnečné okuliare = Sunglasses
+žabky = Flip-flops
+tielko = Tank Top
+oblek = Suit
+kravata = Tie
+sako = Blazer
+topánky na podpätku = High Heels
+večerné šaty = Evening Dress
+čierny = Black
+biely = White
+červený = Red
+modrý = Blue
+zelený = Green
+bavlna = Cotton
+vlna = Wool
+koža = Leather
+hodváb = Silk
+ľan = Linen
+                </div>
+            </section>
+
+            <section id="l20">
+                <h2>Lesson 20 — Adverbs</h2>
+                <div class="mono">
+rýchlo = quickly
+pomaly = slowly
+vždy = always
+nikdy = never
+často = often
+niekedy = sometimes
+zriedka = rarely
+už = already
+stále = still
+ešte = yet
+čoskoro = soon
+teraz = now
+neskôr = later
+dnes = today
+zajtra = tomorrow
+včera = yesterday
+jasne = clearly
+spolu = together
+oddelené = apart
+navždy = forever
+                </div>
+            </section>
+
+            <section id="l21">
+                <h2>Lesson 21 — Animals</h2>
+                <div class="mono">
+pes = dog
+mačka = cat
+kôň = horse
+krava = cow
+ovca = sheep
+prasa = pig
+koza = goat
+kura = chicken
+kačica = duck
+vták = bird
+králik = rabbit
+myš = mouse
+lev = lion
+tiger = tiger
+medveď = bear
+slon = elephant
+opica = monkey
+líška = fox
+vlk = wolf
+jeleň = deer
+                </div>
+            </section>
+
+            <section id="l22">
+                <h2>Lesson 22 — Numbers (76–110)</h2>
+                <div class="mono">
+sedemdesiatšesť = 76
+sedemdesiatsedem = 77
+sedemdesiatosem = 78
+sedemdesiatdeväť = 79
+osemdesiat = 80
+osemdesiatjeden = 81
+osemdesiatdva = 82
+osemdesiattri = 83
+osemdesiatštyri = 84
+osemdesiatpäť = 85
+osemdesiatšesť = 86
+osemdesiatsedem = 87
+osemdesiatosem = 88
+osemdesiatdeväť = 89
+deväťdesiat = 90
+deväťdesiatjeden = 91
+deväťdesiatdva = 92
+deväťdesiattri = 93
+deväťdesiatštyri = 94
+deväťdesiatpäť = 95
+deväťdesiatšesť = 96
+deväťdesiatsedem = 97
+deväťdesiatosem = 98
+deväťdesiatdeväť = 99
+sto = 100
+stojeden = 101
+stodva = 102
+stotri = 103
+stoštyri = 104
+stopäť = 105
+stošesť = 106
+stosedem = 107
+stoosem = 108
+stodeväť = 109
+stodesať = 110
+                </div>
+            </section>
+
+            <section id="l23">
+                <h2>Lesson 23 — Places in Town</h2>
+                <div class="mono">
+škola = school
+nemocnica = hospital
+banka = bank
+reštaurácia = restaurant
+knižnica = library
+supermarket = supermarket
+kino = cinema
+pošta = post office
+policajná stanica = police station
+park = park
+múzeum = museum
+divadlo = theatre
+hotel = hotel
+štadión = stadium
+kostol = church
+lekáreň = pharmacy
+pekáreň = bakery
+mäsiarstvo = butcher
+trh = market
+kaderníctvo = hairdresser
+                </div>
+            </section>
+
+            <section id="l24">
+                <h2>Lesson 24 — School Supplies</h2>
+                <div class="mono">
+kniha = book
+pero = pen
+ceruzka = pencil
+guma = eraser
+zošit = notebook
+pravítko = ruler
+nožnice = scissors
+batoh = backpack
+zložka = folder
+kalkulačka = calculator
+fixka = marker
+krieda = chalk
+mapa = map
+zvýrazňovač = highlighter
+projektor = projector
+notebook = laptop
+tlačiareň = printer
+USB kľúč = USB stick
+školská taška = schoolbag
+strúhadlo = sharpener
+                </div>
+            </section>
+
+            <section id="l25">
+                <h2>Lesson 25 — Transportation</h2>
+                <div class="mono">
+auto = car
+autobus = bus
+vlak = train
+bicykel = bicycle
+motorka = motorcycle
+lietadlo = airplane
+loď = boat
+električka = tram
+taxík = taxi
+metro = subway
+trajekt = ferry
+jachta = yacht
+teplovzdušný balón = hot air balloon
+kozmická loď = spaceship
+rikša = rickshaw
+gondola = gondola
+zeppelin = zeppelin
+kolieskové korčule = rollerblades
+kanoe = canoe
+ponorka = submarine
+                </div>
+            </section>
+
+            <section id="l26">
+                <h2>Lesson 26 — Numbers (111–150)</h2>
+                <div class="mono">
+stojedenásť = 111
+stodvanásť = 112
+stotrinásť = 113
+stoštrnásť = 114
+stopätnásť = 115
+stošestnásť = 116
+stosedemnásť = 117
+stoosemnásť = 118
+stodevätnásť = 119
+stodvadsať = 120
+stodvadsaťjeden = 121
+stodvadsaťdva = 122
+stodvadsaťtri = 123
+stodvadsaťštyri = 124
+stodvadsaťpäť = 125
+stodvadsaťšesť = 126
+stodvadsaťsedem = 127
+stodvadsaťosem = 128
+stodvadsaťdeväť = 129
+stotridsať = 130
+stotridsaťjeden = 131
+stotridsaťdva = 132
+stotridsaťtri = 133
+stotridsaťštyri = 134
+stotridsaťpäť = 135
+stotridsaťšesť = 136
+stotridsaťsedem = 137
+stotridsaťosem = 138
+stotridsaťdeväť = 139
+stoštyridsať = 140
+stoštyridsaťjeden = 141
+stoštyridsaťdva = 142
+stoštyridsaťtri = 143
+stoštyridsaťštyri = 144
+stoštyridsaťpäť = 145
+stoštyridsaťšesť = 146
+stoštyridsaťsedem = 147
+stoštyridsaťosem = 148
+stoštyridsaťdeväť = 149
+stopäťdesiat = 150
+                </div>
+            </section>
+
+            <div class="practice-note">
+                <h3>Practice Your Slovak!</h3>
+                <p class="note">To practice what you've learned, create interactive exercises or use flashcards with the vocabulary above. Consider building a separate practice page with quizzes and interactive elements.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <a href="SlovakTest.html">
+                <button>To practice Slovak click the button</button>
+        <p>Slovak Lessons - Complete Beginner's Guide</p>
+    </footer>
+</body>
+
+</html>

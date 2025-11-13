@@ -1,0 +1,1430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Polish Lessons — HTML Version</title>
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111218;
+      --muted: #b8c1ec;
+      --text: #e6e6e6;
+      --accent: #8aa9ff;
+      --accent-2:#ffc857;
+      --accent-3:#ff6b6b;
+      --ok:#2ec4b6;
+      --warn:#ff9f1c;
+      --red:#ff4d4d;
+      --chip:#1b1d29;
+      --border:#232535;
+      --code:#0f1115;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#fbfbfe;
+        --panel:#ffffff;
+        --muted:#3a3b59;
+        --text:#0f172a;
+        --accent:#365cf5;
+        --accent-2:#b45309;
+        --accent-3:#b91c1c;
+        --ok:#059669;
+        --warn:#b45309;
+        --red:#dc2626;
+        --chip:#f3f4f6;
+        --border:#e5e7eb;
+        --code:#0f172a0a;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg), #0b0c1000 60%), radial-gradient(1200px 600px at 100% -10%, #365cf511, transparent 60%) , var(--bg);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background:color-mix(in srgb, var(--panel) 86%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:14px 18px;}
+    h1{
+      margin:.2rem 0 .8rem;
+      letter-spacing:.2px;
+      font-size: clamp(1.3rem, 2.2vw + 1rem, 2rem);
+    }
+    .sub{
+      color:var(--muted);
+      margin-top:-.4rem;
+      font-size:.95rem;
+    }
+    .controls{
+      display:grid; gap:10px; grid-template-columns: 1fr auto auto;
+      padding:.6rem 0 .2rem;
+      align-items:center;
+    }
+    input[type="search"]{
+      width:100%; padding:.7rem .9rem; border-radius:12px; border:1px solid var(--border);
+      background:var(--panel); color:var(--text); outline:none;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:var(--chip); color:var(--text);
+      padding:.6rem .9rem; border-radius:12px; cursor:pointer;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .grid{
+      max-width:1100px; margin:16px auto; padding: 0 18px; display:grid; gap:16px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 768px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    details.card{
+      background:linear-gradient(180deg, color-mix(in srgb, var(--panel) 92%, transparent), var(--panel));
+      border: 1px solid var(--border);
+      border-radius:16px; padding: 0 0 8px;
+      box-shadow: 0 10px 30px #00000020;
+    }
+    details.card > summary{
+      list-style:none; cursor:pointer; padding:16px 16px;
+      display:flex; gap:10px; align-items:center; font-weight:600;
+      border-bottom:1px solid transparent;
+    }
+    details.card[open] > summary{ border-bottom-color:var(--border) }
+    summary .tag{ font-size:.75rem; color:var(--muted); background:var(--chip); padding:.2rem .55rem; border-radius:999px; border:1px solid var(--border)}
+    .pill{ color:#111; background:var(--accent-2); padding:.15rem .5rem; border-radius:999px; font-weight:700; }
+    .tag.red{ background: color-mix(in srgb, var(--red) 14%, var(--chip)); color: var(--text); border-color: color-mix(in srgb, var(--red) 40%, var(--border));}
+    .tag.blue{ background: color-mix(in srgb, var(--accent) 14%, var(--chip)); border-color: color-mix(in srgb, var(--accent) 40%, var(--border));}
+    .tag.green{ background: color-mix(in srgb, var(--ok) 14%, var(--chip)); border-color: color-mix(in srgb, var(--ok) 40%, var(--border));}
+    .content{ padding:12px 16px 6px; }
+    .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 720px){ .two-col{ grid-template-columns: 1fr; } }
+    table{ width:100%; border-collapse: collapse; margin:6px 0 10px; }
+    th, td{ border-bottom:1px dashed var(--border); padding:6px 8px; vertical-align:top; }
+    th{ text-align:left; color:var(--muted); font-weight:600; }
+    .list{ columns: 2; gap: 18px; }
+    @media (max-width: 820px){ .list{ columns:1 } }
+    li{ break-inside: avoid; margin-bottom:.25rem }
+    .muted{ color:var(--muted) }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:var(--code); padding:.12rem .35rem; border-radius:6px; border:1px solid var(--border) }
+    .hide{ display:none !important }
+    .nav{ display:flex; gap:8px; overflow:auto; padding:6px 0 }
+    .nav a{ white-space:nowrap; text-decoration:none; border:1px solid var(--border); background:var(--chip); color:var(--text); padding:.4rem .6rem; border-radius:10px }
+    .nav a:hover{ filter:brightness(1.05) }
+    mark{ background: color-mix(in srgb, var(--accent) 20%, transparent); padding:0 .2rem; border-radius:4px }
+
+    /* Modern Footer Styles */
+    .main-footer{
+      background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--panel) 60%, transparent)), var(--panel);
+      border-top:1px solid var(--border);
+      margin-top:60px;
+      padding:40px 20px;
+    }
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:30px;
+      align-items:center;
+    }
+    @media (max-width: 768px){
+      .footer-content{ grid-template-columns: 1fr; text-align:center; }
+    }
+    .footer-info h3{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:1.2rem;
+    }
+    .footer-info p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .practice-btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#fff;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:600;
+      font-size:1rem;
+      box-shadow: 0 4px 15px rgba(138, 169, 255, 0.3);
+      transition: all 0.3s ease;
+      border:none;
+      cursor:pointer;
+    }
+    .practice-btn:hover{
+      transform:translateY(-2px);
+      box-shadow: 0 6px 20px rgba(138, 169, 255, 0.4);
+    }
+    .footer-meta{
+      text-align:center;
+      color:var(--muted);
+      padding:20px 0 10px;
+      font-size:.85rem;
+      border-top:1px solid var(--border);
+      max-width:1100px;
+      margin:20px auto 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Polish Lessons — HTML Version</h1>
+      <div class="sub">Compiled vocabulary lists, tables and exercises for Bora. Complete web-based interactive learning.</div>
+      <div class="controls">
+        <input id="q" type="search" placeholder="Search: word, translation or lesson title (e.g. &quot;dziękuję&quot; or &quot;Lesson 11&quot;)">
+        <button class="btn" id="expand">Expand All</button>
+        <button class="btn" id="collapse">Collapse All</button>
+      </div>
+      <nav class="nav" id="nav"></nav>
+    </div>
+  </header>
+
+  <main class="grid" id="cards">
+    
+    <!-- Lesson 1 - Numbers 1-10 -->
+    <details class="card" open id="lesson-1">
+      <summary><span class="pill">1</span> Lesson 1 — Numbers 1–10 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <thead><tr><th>Polish</th><th>English</th><th>Number</th></tr></thead>
+          <tbody>
+            <tr><td>jeden</td><td>one</td><td>1</td></tr>
+            <tr><td>dwa</td><td>two</td><td>2</td></tr>
+            <tr><td>trzy</td><td>three</td><td>3</td></tr>
+            <tr><td>cztery</td><td>four</td><td>4</td></tr>
+            <tr><td>pięć</td><td>five</td><td>5</td></tr>
+            <tr><td>sześć</td><td>six</td><td>6</td></tr>
+            <tr><td>siedem</td><td>seven</td><td>7</td></tr>
+            <tr><td>osiem</td><td>eight</td><td>8</td></tr>
+            <tr><td>dziewięć</td><td>nine</td><td>9</td></tr>
+            <tr><td>dziesięć</td><td>ten</td><td>10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 2 - Greetings -->
+    <details class="card" id="lesson-2">
+      <summary><span class="pill">2</span> Lesson 2 — Greetings <span class="tag red">Phrases</span></summary>
+      <div class="content">
+        <ul class="list">
+          <li><b>Czesc</b> = Hello</li>
+          <li>Jak sie masz = How are you?</li>
+          <li>Milo cie poznac = Nice to meet you</li>
+          <li>Do zobaczenia jutro = See you tomorrow</li>
+          <li>Dzien dobry = Good morning</li>
+          <li>Dzien dobry = Good afternoon</li>
+          <li>Dobry wieczor = Good evening</li>
+          <li>Dobranoc = Good night</li>
+          <li>Kaj masz na imic? = What is your name?</li>
+          <li>Nazywam sie ____ = My name is ___</li>
+          <li>Gdzie mieszkasz? = Where do you live?</li>
+          <li>Skad pochodzisz? = Where are you from?</li>
+          <li>Milo cie widziec = Nice to see you</li>
+          <li>Milego dnia = Have a nice day</li>
+          <li>Do zobaczenia = See you later</li>
+          <li>Do widzenia = Goodbye</li>
+          <li>Prosze = Please</li>
+          <li>Dziekuje = Thank you</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Lesson 3 - Regular Verbs -->
+    <details class="card" id="lesson-3">
+      <summary><span class="pill">3</span> Lesson 3 — Regular Verbs <span class="tag green">Verbs</span></summary>
+      <div class="content">
+        <p class="muted">Regular verbs are divided into 5 categories</p>
+        
+        <h4>1. -AĆ Verbs</h4>
+        <div class="list">
+          <li>czytać = to read</li>
+          <li>kochać = to love</li>
+          <li>oglądać = to watch</li>
+          <li>grać = to play</li>
+          <li>tańczyć = to dance</li>
+          <li>mieszkać = to live</li>
+          <li>słuchać = to listen</li>
+          <li>płakać = to cry</li>
+          <li>czekać = to wait</li>
+          <li>pytać = to ask</li>
+          <li>jechać = to go/ride</li>
+          <li>pchać = to push</li>
+          <li>ciągać = to drag</li>
+          <li>łapać = to catch</li>
+          <li>dmuchać = to blow</li>
+        </div>
+
+        <h4>2. -YĆ SIĘ Verbs</h4>
+        <div class="list">
+          <li>uczyć się = to learn</li>
+          <li>cieszyć się = to be happy</li>
+          <li>martwić się = to worry</li>
+          <li>śmiać się = to laugh</li>
+          <li>nudzić się = to be bored</li>
+          <li>golić się = to shave</li>
+          <li>kąpać się = to bathe</li>
+          <li>czesać się = to comb</li>
+          <li>ubierać się = to dress</li>
+          <li>spieszyć się = to hurry</li>
+        </div>
+
+        <h4>3. -EĆ Verbs</h4>
+        <div class="list">
+          <li>myśleć = to think</li>
+          <li>liczyć = to count</li>
+          <li>siedzieć = to sit</li>
+          <li>widzieć = to see</li>
+          <li>sądzić = to judge</li>
+          <li>boleć = to hurt</li>
+          <li>zawodzić = to fail</li>
+          <li>krzyczeć = to shout</li>
+          <li>płowieć = to fade</li>
+          <li>drżeć = to tremble</li>
+        </div>
+
+        <h4>4. -IĆ Verbs</h4>
+        <div class="list">
+          <li>mówić = to speak</li>
+          <li>robić = to do</li>
+          <li>chodzić = to walk</li>
+          <li>nosić = to wear</li>
+          <li>kończyć = to finish</li>
+          <li>prosić = to request</li>
+          <li>karmić = to feed</li>
+          <li>obudzić = to wake up</li>
+          <li>wpuścić = to let in</li>
+          <li>głosić = to announce</li>
+        </div>
+
+        <h4>5. -OWAĆ Verbs</h4>
+        <div class="list">
+          <li>pracować = to work</li>
+          <li>gotować = to cook</li>
+          <li>telefonować = to phone</li>
+          <li>dziękować = to thank</li>
+          <li>studiować = to study</li>
+          <li>ratować = to rescue</li>
+          <li>malować = to paint</li>
+          <li>kupować = to buy</li>
+          <li>planować = to plan</li>
+          <li>organizować = to organize</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 3.1 - Present Tense -->
+    <details class="card" id="lesson-3-1">
+      <summary><span class="pill">3.1</span> Lesson 3.1 — Present Tense <span class="tag blue">Grammar</span></summary>
+      <div class="content">
+        <h4>Personal Pronouns</h4>
+        <table>
+          <tr><th>English</th><th>Polish</th></tr>
+          <tr><td>I</td><td>Ja</td></tr>
+          <tr><td>you</td><td>Pan</td></tr>
+          <tr><td>he/she</td><td>on/ona</td></tr>
+          <tr><td>we</td><td>my</td></tr>
+          <tr><td>you (pl)</td><td>wy</td></tr>
+          <tr><td>they</td><td>oni</td></tr>
+        </table>
+
+        <h4>Examples</h4>
+        <p><b>1. czytać (to read)</b></p>
+        <div class="list">
+          <li>Ja czytam</li>
+          <li>Pan czytasz</li>
+          <li>On/Ona czyta</li>
+          <li>My czytamy</li>
+          <li>Wy czytacie</li>
+          <li>Oni czytają</li>
+        </div>
+
+        <p><b>2. mówić (to speak)</b></p>
+        <div class="list">
+          <li>Ja mówię</li>
+          <li>Pan mówisz</li>
+          <li>On/ona mówi</li>
+          <li>My mówimy</li>
+          <li>Wy mówicie</li>
+          <li>Oni mówią</li>
+        </div>
+
+        <p><b>3. uczyć się (to learn)</b></p>
+        <div class="list">
+          <li>Ja uczę się</li>
+          <li>Pan uczysz się</li>
+          <li>On/ona uczy się</li>
+          <li>My uczymy się</li>
+          <li>Wy uczycie się</li>
+          <li>Oni uczą się</li>
+        </div>
+
+        <p><b>4. myśleć (to think)</b></p>
+        <div class="list">
+          <li>Ja myślę</li>
+          <li>Pan myślisz</li>
+          <li>On/ona myśli</li>
+          <li>My myślimy</li>
+          <li>Wy myślicie</li>
+          <li>Oni myślą</li>
+        </div>
+
+        <p><b>5. pracować (to work)</b></p>
+        <div class="list">
+          <li>Ja pracuję</li>
+          <li>Pan pracujesz</li>
+          <li>On/ona pracuje</li>
+          <li>My pracujemy</li>
+          <li>Wy pracujecie</li>
+          <li>Oni pracują</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 4 - Adjectives -->
+    <details class="card" id="lesson-4">
+      <summary><span class="pill">4</span> Lesson 4 — Adjectives <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Szczęśliwy = Happy</li>
+          <li>Smutny = Sad</li>
+          <li>Zły = Angry</li>
+          <li>Przestraszony = Afraid</li>
+          <li>Radość = Joy</li>
+          <li>Zaskoczony = Surprised</li>
+          <li>Spokojny = Calm</li>
+          <li>Znudzony = Bored</li>
+          <li>Łatwy = Easy</li>
+          <li>Trudny = Difficult</li>
+          <li>Zły = Bad</li>
+          <li>Dobry = Good</li>
+          <li>Hałaśliwy = Noisy</li>
+          <li>Cichy = Quiet</li>
+          <li>Silny = Strong</li>
+          <li>Słaby = Weak</li>
+          <li>Twardy = Hard</li>
+          <li>Miękki = Soft</li>
+          <li>Więcej = More</li>
+          <li>Mniej = Less</li>
+          <li>Czysty = Clean</li>
+          <li>Brudny = Dirty</li>
+          <li>Stary = Old</li>
+          <li>Nowy = New</li>
+          <li>Duży = Big</li>
+          <li>Mały = Small</li>
+          <li>Młody = Young</li>
+          <li>Chudy = Skinny</li>
+          <li>Gruby = Fat</li>
+          <li>Ładny = Pretty</li>
+          <li>Brzydki = Ugly</li>
+          <li>Gruby = Thick</li>
+          <li>Cienki = Thin</li>
+          <li>Szorstki = Rough</li>
+          <li>Gładki = Smooth</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 5 - Days & Months -->
+    <details class="card" id="lesson-5">
+      <summary><span class="pill">5</span> Lesson 5 — Days &amp; Months <span class="tag green">Calendar</span></summary>
+      <div class="content">
+        <h4>5.1 — Days of the week</h4>
+        <div class="list">
+          <li>Dni tygodnia = The days of the week</li>
+          <li>Dzień = Day</li>
+          <li>Tydzień = Week</li>
+          <li>Poniedziałek = Monday</li>
+          <li>Wtorek = Tuesday</li>
+          <li>Środa = Wednesday</li>
+          <li>Czwartek = Thursday</li>
+          <li>Piątek = Friday</li>
+          <li>Sobota = Saturday</li>
+          <li>Niedziela = Sunday</li>
+          <li>Weekend = Weekend</li>
+        </div>
+        
+        <h4>5.2 — Months of the year</h4>
+        <div class="list">
+          <li>Miesiące w roku = The months of the year</li>
+          <li>Miesiąc = Month</li>
+          <li>Rok = Year</li>
+          <li>Styczeń = January</li>
+          <li>Luty = February</li>
+          <li>Marzec = March</li>
+          <li>Kwiecień = April</li>
+          <li>Maj = May</li>
+          <li>Czerwiec = June</li>
+          <li>Lipiec = July</li>
+          <li>Sierpień = August</li>
+          <li>Wrzesień = September</li>
+          <li>Październik = October</li>
+          <li>Listopad = November</li>
+          <li>Grudzień = December</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 6 - Seasons & Weather -->
+    <details class="card" id="lesson-6">
+      <summary><span class="pill">6</span> Lesson 6 — Seasons &amp; Weather <span class="tag blue">Nature</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Pory roku = Seasons</li>
+          <li>Zima = Winter</li>
+          <li>Lato = Summer</li>
+          <li>Wiosna = Spring</li>
+          <li>Jesień = Autumn</li>
+          <li>Niebo = Sky</li>
+          <li>Chmura = Cloud</li>
+          <li>Tęcza = Rainbow</li>
+          <li>Zimno = Cold (weather)</li>
+          <li>Gorąco = Hot (weather)</li>
+          <li>Jest gorąco = It is hot</li>
+          <li>Jest zimno = It is cold</li>
+          <li>Jest słonecznie = It is sunny</li>
+          <li>Jest pochmurnie = It is cloudy</li>
+          <li>Jest wilgotnie = It is humid</li>
+          <li>Pada deszcz = It is raining</li>
+          <li>Pada śnieg = It is snowing</li>
+          <li>Jest wietrznie = It is windy</li>
+          <li>Jaka jest pogoda? = How is the weather?</li>
+          <li>Dobra pogoda = Good weather</li>
+          <li>Zła pogoda = Bad weather</li>
+          <li>Jaka jest temperatura? = What is the temperature?</li>
+          <li>Mamy 24 stopnie = It is 24 degrees</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 7 - Colors -->
+    <details class="card" id="lesson-7">
+      <summary><span class="pill">7</span> Lesson 7 — Colors <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Czarny = Black</li>
+          <li>Niebieski = Blue</li>
+          <li>Brązowy = Brown</li>
+          <li>Zielony = Green</li>
+          <li>Pomarańczowy = Orange</li>
+          <li>Fioletowy = Purple</li>
+          <li>Czerwony = Red</li>
+          <li>Biały = White</li>
+          <li>Żółty = Yellow</li>
+          <li>Szary = Gray</li>
+          <li>Złoty = Gold</li>
+          <li>Srebrny = Silver</li>
+          <li>Jaki to kolor = What color is it?</li>
+          <li>Ten kolor to ___ = The color is ___</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 8 - Family & Friends -->
+    <details class="card" id="lesson-8">
+      <summary><span class="pill">8</span> Lesson 8 — Family &amp; Friends <span class="tag green">People</span></summary>
+      <div class="content">
+        <h4>8.1 — Family members</h4>
+        <div class="list">
+          <li>Matka = Mother</li>
+          <li>Ojciec = Father</li>
+          <li>Brat = Brother</li>
+          <li>Siostra = Sister</li>
+          <li>Syn = Son</li>
+          <li>Córka = Daughter</li>
+          <li>Rodzice = Parents</li>
+          <li>Dzieci = Children</li>
+          <li>Dziecko = Child</li>
+          <li>Macocha = Stepmother</li>
+          <li>Ojczym = Stepfather</li>
+          <li>Siostra przyrodnia = Stepsister</li>
+          <li>Brat przyrodni = Stepbrother</li>
+          <li>Zięć = Son-in-law</li>
+          <li>Synowa = Daughter-in-law</li>
+          <li>Żona = Wife</li>
+          <li>Mąż = Husband</li>
+          <li>Dziadkowie = Grandparents</li>
+          <li>Dziadek = Grandfather</li>
+          <li>Babcia = Grandmother</li>
+          <li>Wnuczek = Grandson</li>
+          <li>Wnuczka = Granddaughter</li>
+          <li>Wnuki = Grandchildren</li>
+          <li>Wnuk = Grandchild</li>
+          <li>Ciotka = Aunt</li>
+          <li>Wujek = Uncle</li>
+          <li>Kuzynka = Cousin (female)</li>
+          <li>Kuzyn = Cousin (male)</li>
+          <li>Siostrzeniec = Nephew</li>
+          <li>Siostrzenica = Niece</li>
+          <li>Teść = Father-in-law</li>
+          <li>Teściowa = Mother-in-law</li>
+          <li>Szwagier = Brother-in-law</li>
+          <li>Szwagierka = Sister-in-law</li>
+          <li>Krewny = Relative</li>
+        </div>
+
+        <h4>8.2 — Friends</h4>
+        <div class="list">
+          <li>Pan = Mr</li>
+          <li>Pani = Mrs</li>
+          <li>Panna = Miss</li>
+          <li>Chłopak = Boy</li>
+          <li>Dziewczyna = Girl</li>
+          <li>Niemowlę = Baby</li>
+          <li>Kobieta = Woman</li>
+          <li>Mężczyzna = Man</li>
+          <li>Przyjaciel = Friend (male)</li>
+          <li>Przyjaciółka = Friend (female)</li>
+          <li>Chłopak = Boyfriend</li>
+          <li>Dziewczyna = Girlfriend</li>
+          <li>Dżentelmen = Gentleman</li>
+          <li>Dama = Lady</li>
+          <li>Sąsiad = Neighbor (male)</li>
+          <li>Sąsiadka = Neighbor (female)</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 9 - Numbers 11-30 -->
+    <details class="card" id="lesson-9">
+      <summary><span class="pill">9</span> Lesson 9 — Numbers 11–30 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>Jedenaście</td><td>11</td></tr>
+            <tr><td>Dwanaście</td><td>12</td></tr>
+            <tr><td>Trzynaście</td><td>13</td></tr>
+            <tr><td>Czternaście</td><td>14</td></tr>
+            <tr><td>Piętnaście</td><td>15</td></tr>
+            <tr><td>Szesnaście</td><td>16</td></tr>
+            <tr><td>Siedemnaście</td><td>17</td></tr>
+            <tr><td>Osiemnaście</td><td>18</td></tr>
+            <tr><td>Dziewiętnaście</td><td>19</td></tr>
+            <tr><td>Dwadzieścia</td><td>20</td></tr>
+            <tr><td>Dwadzieścia jeden</td><td>21</td></tr>
+            <tr><td>Dwadzieścia dwa</td><td>22</td></tr>
+            <tr><td>Dwadzieścia trzy</td><td>23</td></tr>
+            <tr><td>Dwadzieścia cztery</td><td>24</td></tr>
+            <tr><td>Dwadzieścia pięć</td><td>25</td></tr>
+            <tr><td>Dwadzieścia sześć</td><td>26</td></tr>
+            <tr><td>Dwadzieścia siedem</td><td>27</td></tr>
+            <tr><td>Dwadzieścia osiem</td><td>28</td></tr>
+            <tr><td>Dwadzieścia dziewięć</td><td>29</td></tr>
+            <tr><td>Trzydzieści</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 10 - Prepositions & Useful Words -->
+    <details class="card" id="lesson-10">
+      <summary><span class="pill">10</span> Lesson 10 — Prepositions &amp; Useful Words <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <h4>10.1 — Prepositions</h4>
+        <div class="list">
+          <li>Dla = For</li>
+          <li>Od = From</li>
+          <li>W = In</li>
+          <li>Wewnątrz = Inside</li>
+          <li>W = Into</li>
+          <li>Blisko = Near</li>
+          <li>Z = Of</li>
+          <li>Z = Out</li>
+          <li>Na zewnątrz = Outside</li>
+          <li>Do = To</li>
+          <li>Pod = Under</li>
+          <li>Z = With</li>
+          <li>Bez = Without</li>
+          <li>Nad = Above</li>
+          <li>Po drugiej stronie = Across</li>
+          <li>Po = After</li>
+          <li>Pod = Against</li>
+          <li>Wzdłuż = Along</li>
+          <li>Wokół = Around</li>
+          <li>W = At</li>
+          <li>Za = Behind</li>
+          <li>Pod = Below</li>
+          <li>Obok = Beside</li>
+          <li>Między = Between</li>
+          <li>Przy = By</li>
+          <li>Podczas = During</li>
+          <li>Oprócz = Except</li>
+          <li>I = And</li>
+          <li>Ponieważ = Because</li>
+          <li>Ale = But</li>
+          <li>Lub = Or</li>
+          <li>Wszędzie = Everywhere</li>
+          <li>Wszyscy = Everyone</li>
+          <li>Wszystko = Everything</li>
+          <li>Mało = Few</li>
+          <li>Niektóre = Some</li>
+          <li>Wiele = Many</li>
+        </div>
+
+        <h4>10.2 — Useful Words</h4>
+        <div class="list">
+          <li>Pytanie = Question</li>
+          <li>Odpowiedź = Answer</li>
+          <li>Prawda = Truth</li>
+          <li>Kłamstwo = Lie</li>
+          <li>Nic = Nothing</li>
+          <li>Coś = Something</li>
+          <li>Tak samo = Same</li>
+          <li>Inny = Different</li>
+          <li>Ciągnąć = Pull</li>
+          <li>Pchać = Push</li>
+          <li>Długi = Long</li>
+          <li>Krótki = Short</li>
+          <li>Zimno = Cold</li>
+          <li>Gorąco = Hot</li>
+          <li>Jasny = Light</li>
+          <li>Ciemny = Dark</li>
+          <li>Mokro = Wet</li>
+          <li>Sucho = Dry</li>
+          <li>Pusty = Empty</li>
+          <li>Pełny = Full</li>
+          <li>Jak? = How?</li>
+          <li>Co? = What?</li>
+          <li>Kiedy? = When?</li>
+          <li>Gdzie? = Where?</li>
+          <li>Która? = Which?</li>
+          <li>Kto? = Who?</li>
+          <li>Dlaczego? = Why?</li>
+          <li>Jak długo? = How long?</li>
+          <li>Ile? = How much?</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 11 - Drinks & Meals -->
+    <details class="card" id="lesson-11">
+      <summary><span class="pill">11</span> Lesson 11 — Drinks &amp; Meals <span class="tag green">Food</span></summary>
+      <div class="content">
+        <h4>11.1 — Drinks</h4>
+        <div class="list">
+          <li>Kawa = Coffee</li>
+          <li>Herbata = Tea</li>
+          <li>Napój gazowany = Soft drink</li>
+          <li>Woda = Water</li>
+          <li>Lemoniada = Lemonade</li>
+          <li>Sok = Juice</li>
+          <li>Sok pomarańczowy = Orange juice</li>
+          <li>Poproszę o szklankę wody = I would like a glass of water please</li>
+          <li>Z lodem = With ice</li>
+        </div>
+
+        <h4>11.2 — Dairy Products &amp; Bakery</h4>
+        <div class="list">
+          <li>Mleko = Milk</li>
+          <li>Lody = Ice cream</li>
+          <li>Masło = Butter</li>
+          <li>Ser = Cheese</li>
+          <li>Twarożek = Cottage cheese</li>
+          <li>Śmietana = Cream</li>
+          <li>Kwaśna śmietana = Sour cream</li>
+          <li>Jogurt = Yogurt</li>
+          <li>Jajka = Eggs</li>
+          <li>Bita śmietana = Whipping cream</li>
+          <li>Piekarnia = Bakery</li>
+          <li>Bagietka = Baguette</li>
+          <li>Pączek = Doughnut</li>
+          <li>Ciastko = Cookie</li>
+          <li>Bułka = Roll</li>
+          <li>Deser = Dessert</li>
+          <li>Ciasto = Cake</li>
+          <li>Chleb = Bread</li>
+          <li>Placek = Pie</li>
+        </div>
+
+        <h4>11.3 — Meats</h4>
+        <div class="list">
+          <li>Wołowina = Beef</li>
+          <li>Cielęcina = Veal</li>
+          <li>Szynka = Ham</li>
+          <li>Kurczak = Chicken</li>
+          <li>Indyk = Turkey</li>
+          <li>Kaczka = Duck</li>
+          <li>Boczek = Bacon</li>
+          <li>Wieprzowina = Pork</li>
+          <li>Filet z polędwicy = Filet mignon</li>
+          <li>Kiełbasa = Sausage</li>
+          <li>Kotlet z jagnięciny = Lamb chop</li>
+          <li>Kotlet schabowy = Pork chop</li>
+          <li>Mięso = Meat</li>
+        </div>
+
+        <h4>11.4 — Seafoods</h4>
+        <div class="list">
+          <li>Ryba = Fish</li>
+          <li>Skorupiak = Shellfish</li>
+          <li>Okoń = Bass</li>
+          <li>Łosoś = Salmon</li>
+          <li>Homar = Lobster</li>
+          <li>Krab = Crab</li>
+          <li>Małże = Mussel</li>
+          <li>Ostryga = Oyster</li>
+          <li>Dorsz = Cod</li>
+          <li>Małż = Clam</li>
+          <li>Krewetka = Shrimp</li>
+          <li>Tuńczyk = Tuna</li>
+          <li>Pstrąg = Trout</li>
+          <li>Sola = Sole</li>
+          <li>Rekin = Shark</li>
+          <li>Karp = Carp</li>
+          <li>Tilapia = Tilapia</li>
+          <li>Węgorz = Eel</li>
+          <li>Sum = Catfish</li>
+          <li>Miecznik = Swordfish</li>
+        </div>
+
+        <h4>11.5 — Herbs &amp; Spices</h4>
+        <div class="list">
+          <li>Sól = Salt</li>
+          <li>Pieprz = Pepper</li>
+          <li>Kminek = Caraway</li>
+          <li>Czosnek = Garlic</li>
+          <li>Bazylia = Basil</li>
+          <li>Kolendra = Coriander</li>
+          <li>Fenkuł = Fennel</li>
+          <li>Majeranek = Marjoram</li>
+          <li>Oregano = Oregano</li>
+          <li>Pietruszka = Parsley</li>
+          <li>Rozmaryn = Rosemary</li>
+          <li>Szałwia = Sage</li>
+          <li>Tymianek = Thyme</li>
+          <li>Gałka muszkatołowa = Nutmeg</li>
+          <li>Papryka = Paprika</li>
+          <li>Pieprz cayenne = Cayenne</li>
+          <li>Imbir = Ginger</li>
+        </div>
+
+        <h4>11.6 — Vegetables</h4>
+        <div class="list">
+          <li>Seler = Celery</li>
+          <li>Bakłażan = Eggplant</li>
+          <li>Cukinia = Zucchini</li>
+          <li>Cebula = Onion</li>
+          <li>Szpinak = Spinach</li>
+          <li>Sałatka = Salad</li>
+          <li>Zielona fasola = Green beans</li>
+          <li>Ogórek = Cucumber</li>
+          <li>Rzodkiewka = Radish</li>
+          <li>Kapusta = Cabbage</li>
+          <li>Grzyby = Mushrooms</li>
+          <li>Sałata = Lettuce</li>
+          <li>Kukurydza = Corn</li>
+          <li>Ziemniaki = Potatoes</li>
+          <li>Pomidor = Tomato</li>
+          <li>Marchew = Carrot</li>
+          <li>Banan = Plantain</li>
+          <li>Fasola = Beans</li>
+          <li>Por = Leek</li>
+          <li>Korzeń lotosu = Lotus root</li>
+          <li>Pędy bambusa = Bamboo shoot</li>
+          <li>Karczoch = Artichoke</li>
+          <li>Szparag = Asparagus</li>
+          <li>Brukselka = Brussels sprouts</li>
+          <li>Brokuły = Broccoli</li>
+          <li>Groszek = Peas</li>
+          <li>Kalafior = Cauliflower</li>
+          <li>Papryka chili = Chili pepper</li>
+        </div>
+
+        <h4>11.7 — Fruits</h4>
+        <div class="list">
+          <li>Wiśnie = Cherries</li>
+          <li>Maliny = Raspberries</li>
+          <li>Jagody = Blueberries</li>
+          <li>Truskawki = Strawberries</li>
+          <li>Cytryna = Lemon</li>
+          <li>Limonka = Lime</li>
+          <li>Jabłko = Apple</li>
+          <li>Pomarańcza = Orange</li>
+          <li>Gruszka = Pear</li>
+          <li>Banan = Banana</li>
+          <li>Winogrona = Grapes</li>
+          <li>Grejpfrut = Grapefruit</li>
+          <li>Arbuz = Watermelon</li>
+          <li>Ananas = Pineapple</li>
+          <li>Śliwka = Plum</li>
+          <li>Brzoskwinia = Peach</li>
+          <li>Mango = Mango</li>
+          <li>Morela = Apricot</li>
+          <li>Granat = Pomegranate</li>
+          <li>Persymona = Persimmon</li>
+          <li>Kiwi = Kiwi</li>
+          <li>Liczi = Litchi</li>
+          <li>Longan = Longan</li>
+          <li>Przepękla ogórkowata = Balsam pear</li>
+          <li>Marakuja = Passion fruit</li>
+          <li>Awokado = Avocado</li>
+          <li>Orzech kokosowy = Coconut</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 12 - Irregular Verbs -->
+    <details class="card" id="lesson-12">
+      <summary><span class="pill">12</span> Lesson 12 — Irregular Verbs <span class="tag blue">Verbs</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>być = to be</li>
+          <li>mieć = to have</li>
+          <li>iść = to go</li>
+          <li>przyjść = to come</li>
+          <li>widzieć = to see</li>
+          <li>dać = to give</li>
+          <li>jeść = to eat</li>
+          <li>pić = to drink</li>
+          <li>wiedzieć = to know (fact)</li>
+          <li>chcieć = to want</li>
+          <li>znaleźć = to find</li>
+          <li>biec = to run</li>
+          <li>siedzieć = to sit</li>
+          <li>leżeć = to lie down</li>
+          <li>stać = to stand</li>
+          <li>rozumieć = to understand</li>
+          <li>powiedzieć = to say</li>
+          <li>wziąć = to take</li>
+          <li>pisać = to write</li>
+          <li>upaść = to fall</li>
+          <li>zacząć = to begin</li>
+          <li>złamać = to break</li>
+          <li>zbudować = to build</li>
+          <li>wybrać = to choose</li>
+          <li>robić = to do/make</li>
+          <li>prowadzić = to drive</li>
+          <li>zapomnieć = to forget</li>
+          <li>dostać = to get</li>
+          <li>słyszeć = to hear</li>
+          <li>trzymać = to hold</li>
+          <li>opuścić = to leave</li>
+          <li>spotkać = to meet</li>
+          <li>płacić = to pay</li>
+          <li>położyć = to put</li>
+          <li>czytać = to read</li>
+          <li>wysłać = to send</li>
+          <li>spać = to sleep</li>
+          <li>mówić = to speak</li>
+          <li>spędzać = to spend (time)</li>
+          <li>pływać = to swim</li>
+          <li>uczyć = to teach</li>
+          <li>opowiedzieć = to tell</li>
+          <li>myśleć = to think</li>
+          <li>rzucić = to throw</li>
+          <li>wygrać = to win</li>
+          <li>przynieść = to bring</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 13 - Present Simple -->
+    <details class="card" id="lesson-13">
+      <summary><span class="pill">13</span> Lesson 13 — Present Simple <span class="tag red">Grammar</span></summary>
+      <div class="content">
+        <p><b>Examples for być (to be), jeść (to eat), iść (to go)</b></p>
+        <div class="list">
+          <li>ja jestem — ja jem — ja idę</li>
+          <li>ty jesteś — ty jesz — ty idziesz</li>
+          <li>on/ona/ono jest — on/ona je — on/ona/ono idzie</li>
+          <li>my jesteśmy — my jemy — my idziemy</li>
+          <li>wy jesteście — wy jecie — wy idziecie</li>
+          <li>oni/one są — oni/one jedzą — oni/one idą</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 14 - Numbers 31-50 -->
+    <details class="card" id="lesson-14">
+      <summary><span class="pill">14</span> Lesson 14 — Numbers 31–50 <span class="tag green">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>trzydzieści jeden</td><td>31</td></tr>
+            <tr><td>trzydzieści dwa</td><td>32</td></tr>
+            <tr><td>trzydzieści trzy</td><td>33</td></tr>
+            <tr><td>trzydzieści cztery</td><td>34</td></tr>
+            <tr><td>trzydzieści pięć</td><td>35</td></tr>
+            <tr><td>trzydzieści sześć</td><td>36</td></tr>
+            <tr><td>trzydzieści siedem</td><td>37</td></tr>
+            <tr><td>trzydzieści osiem</td><td>38</td></tr>
+            <tr><td>trzydzieści dziewięć</td><td>39</td></tr>
+            <tr><td>czterdzieści</td><td>40</td></tr>
+            <tr><td>czterdzieści jeden</td><td>41</td></tr>
+            <tr><td>czterdzieści dwa</td><td>42</td></tr>
+            <tr><td>czterdzieści trzy</td><td>43</td></tr>
+            <tr><td>czterdzieści cztery</td><td>44</td></tr>
+            <tr><td>czterdzieści pięć</td><td>45</td></tr>
+            <tr><td>czterdzieści sześć</td><td>46</td></tr>
+            <tr><td>czterdzieści siedem</td><td>47</td></tr>
+            <tr><td>czterdzieści osiem</td><td>48</td></tr>
+            <tr><td>czterdzieści dziewięć</td><td>49</td></tr>
+            <tr><td>pięćdziesiąt</td><td>50</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 15 - Physical Appearance -->
+    <details class="card" id="lesson-15">
+      <summary><span class="pill">15</span> Lesson 15 — Physical Appearance <span class="tag blue">People</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>wysoki = Tall</li>
+          <li>niski = Short (height)</li>
+          <li>szczupły = Slim</li>
+          <li>gruby = Fat</li>
+          <li>umięśniony = Muscular</li>
+          <li>blond = Blonde (hair)</li>
+          <li>brązowe włosy = Brown-haired</li>
+          <li>czarne włosy = Black-haired</li>
+          <li>kręcone włosy = Curly Hair</li>
+          <li>proste włosy = Straight Hair</li>
+          <li>niebieskie oczy = Blue Eyes</li>
+          <li>brązowe oczy = Brown Eyes</li>
+          <li>zielone oczy = Green Eyes</li>
+          <li>piękny = Beautiful</li>
+          <li>przystojny = Handsome</li>
+          <li>brzydki = Ugly</li>
+          <li>młody = Young</li>
+          <li>stary = Old</li>
+          <li>broda = Beard</li>
+          <li>jasna skóra = Light-skinned</li>
+          <li>ciemna skóra = Dark-skinned</li>
+          <li>piegi = Freckles</li>
+          <li>zmarszczki = Wrinkles</li>
+          <li>łysy = Bald</li>
+          <li>owłosiony = Hairy (body)</li>
+          <li>prosty nos = Straight Nose</li>
+          <li>duży nos = Big Nose</li>
+          <li>mały nos = Small Nose</li>
+          <li>cienkie usta = Thin Lips</li>
+          <li>pełne usta = Full Lips</li>
+          <li>szerokie ramiona = Broad Shoulders</li>
+          <li>wąskie ramiona = Narrow Shoulders</li>
+          <li>opalona skóra = Tanned Skin</li>
+          <li>blada skóra = Pale Skin</li>
+          <li>falowane włosy = Wavy Hair</li>
+          <li>koński ogon = Ponytail</li>
+          <li>warkocze = Braids</li>
+          <li>broda i wąsy = Beard and Mustache</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 16 - Occupations -->
+    <details class="card" id="lesson-16">
+      <summary><span class="pill">16</span> Lesson 16 — Occupations <span class="tag red">People</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>lekarz = Doctor</li>
+          <li>nauczyciel = Teacher</li>
+          <li>inżynier = Engineer</li>
+          <li>prawnik = Lawyer</li>
+          <li>sprzedawca = Salesperson</li>
+          <li>policjant = Police Officer</li>
+          <li>strażak = Firefighter</li>
+          <li>programista = Programmer</li>
+          <li>kucharz = Cook/Chef</li>
+          <li>dziennikarz = Journalist</li>
+          <li>pielęgniarka = Nurse</li>
+          <li>architekt = Architect</li>
+          <li>księgowy = Accountant</li>
+          <li>farmaceuta = Pharmacist</li>
+          <li>kierowca = Driver</li>
+          <li>mechanik = Mechanic</li>
+          <li>naukowiec = Scientist</li>
+          <li>dentysta = Dentist</li>
+          <li>muzyk = Musician</li>
+          <li>aktor = Actor</li>
+          <li>artysta = Artist</li>
+          <li>pilot = Pilot</li>
+          <li>rolnik = Farmer</li>
+          <li>fotograf = Photographer</li>
+          <li>kelner/kelnerka = Waiter/Waitress</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 17 - Sports -->
+    <details class="card" id="lesson-17">
+      <summary><span class="pill">17</span> Lesson 17 — Sports <span class="tag green">Hobbies</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>piłka nożna = Football / Soccer</li>
+          <li>koszykówka = Basketball</li>
+          <li>siatkówka = Volleyball</li>
+          <li>tenis = Tennis</li>
+          <li>pływanie = Swimming</li>
+          <li>bieganie / lekkoatletyka = Running / Athletics</li>
+          <li>hokej = Ice Hockey</li>
+          <li>narciarstwo = Skiing</li>
+          <li>kolarstwo = Cycling</li>
+          <li>boks = Boxing</li>
+          <li>sztuki walki = Martial Arts</li>
+          <li>golf = Golf</li>
+          <li>tenis stołowy = Table Tennis</li>
+          <li>zapasy = Wrestling</li>
+          <li>piłka ręczna = Handball</li>
+          <li>baseball = Baseball</li>
+          <li>surfowanie = Surfing</li>
+          <li>jazda na łyżwach = Skating</li>
+          <li>jazda konna = Horse Riding</li>
+          <li>nurkowanie = Diving</li>
+          <li>krykiet = Cricket</li>
+          <li>rugby = Rugby</li>
+          <li>balet = Ballet</li>
+          <li>kręgle = Bowling</li>
+          <li>podnoszenie ciężarów = Weightlifting</li>
+          <li>windsurfing = Windsurfing</li>
+          <li>jazda na łyżwach = Ice Skating</li>
+          <li>wioślarstwo = Rowing</li>
+          <li>łucznictwo = Archery</li>
+          <li>wspinaczka = Climbing</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 18 - Numbers 51-75 -->
+    <details class="card" id="lesson-18">
+      <summary><span class="pill">18</span> Lesson 18 — Numbers 51–75 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>pięćdziesiąt jeden</td><td>51</td></tr>
+            <tr><td>pięćdziesiąt dwa</td><td>52</td></tr>
+            <tr><td>pięćdziesiąt trzy</td><td>53</td></tr>
+            <tr><td>pięćdziesiąt cztery</td><td>54</td></tr>
+            <tr><td>pięćdziesiąt pięć</td><td>55</td></tr>
+            <tr><td>pięćdziesiąt sześć</td><td>56</td></tr>
+            <tr><td>pięćdziesiąt siedem</td><td>57</td></tr>
+            <tr><td>pięćdziesiąt osiem</td><td>58</td></tr>
+            <tr><td>pięćdziesiąt dziewięć</td><td>59</td></tr>
+            <tr><td>sześćdziesiąt</td><td>60</td></tr>
+            <tr><td>sześćdziesiąt jeden</td><td>61</td></tr>
+            <tr><td>sześćdziesiąt dwa</td><td>62</td></tr>
+            <tr><td>sześćdziesiąt trzy</td><td>63</td></tr>
+            <tr><td>sześćdziesiąt cztery</td><td>64</td></tr>
+            <tr><td>sześćdziesiąt pięć</td><td>65</td></tr>
+            <tr><td>sześćdziesiąt sześć</td><td>66</td></tr>
+            <tr><td>sześćdziesiąt siedem</td><td>67</td></tr>
+            <tr><td>sześćdziesiąt osiem</td><td>68</td></tr>
+            <tr><td>sześćdziesiąt dziewięć</td><td>69</td></tr>
+            <tr><td>siedemdziesiąt</td><td>70</td></tr>
+            <tr><td>siedemdziesiąt jeden</td><td>71</td></tr>
+            <tr><td>siedemdziesiąt dwa</td><td>72</td></tr>
+            <tr><td>siedemdziesiąt trzy</td><td>73</td></tr>
+            <tr><td>siedemdziesiąt cztery</td><td>74</td></tr>
+            <tr><td>siedemdziesiąt pięć</td><td>75</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 19 - Clothing -->
+    <details class="card" id="lesson-19">
+      <summary><span class="pill">19</span> Lesson 19 — Clothing <span class="tag red">Fashion</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>koszula = Shirt</li>
+          <li>koszulka = T-shirt</li>
+          <li>bluzka = Blouse</li>
+          <li>sweter = Sweater / Jumper</li>
+          <li>kurtka = Jacket</li>
+          <li>płaszcz = Coat</li>
+          <li>sukienka = Dress</li>
+          <li>spódnica = Skirt</li>
+          <li>spodnie = Pants / Trousers</li>
+          <li>krótkie spodenki = Shorts</li>
+          <li>buty = Shoes</li>
+          <li>kozaki = Boots</li>
+          <li>trampki = Sneakers</li>
+          <li>sandały = Sandals</li>
+          <li>czapka = Hat / Cap</li>
+          <li>szalik = Scarf</li>
+          <li>rękawiczki = Gloves</li>
+          <li>pasek = Belt</li>
+          <li>skarpetki = Socks</li>
+          <li>zimowy płaszcz = Winter Coat</li>
+          <li>wełniana czapka = Wool Hat</li>
+          <li>buty śniegowe = Snow Boots</li>
+          <li>kostium kąpielowy = Swimsuit</li>
+          <li>okulary przeciwsłoneczne = Sunglasses</li>
+          <li>klapki = Flip-flops</li>
+          <li>top = Tank Top</li>
+          <li>garnitur = Suit</li>
+          <li>krawat = Tie</li>
+          <li>marynarka = Blazer</li>
+          <li>buty na obcasie = High Heels</li>
+          <li>suknia wieczorowa = Evening Dress</li>
+          <li>czarny = Black</li>
+          <li>biały = White</li>
+          <li>czerwony = Red</li>
+          <li>niebieski = Blue</li>
+          <li>zielony = Green</li>
+          <li>bawełna = Cotton</li>
+          <li>wełna = Wool</li>
+          <li>skóra = Leather</li>
+          <li>jedwab = Silk</li>
+          <li>len = Linen</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 20 - Adverbs -->
+    <details class="card" id="lesson-20">
+      <summary><span class="pill">20</span> Lesson 20 — Adverbs <span class="tag green">Grammar</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>szybko = quickly</li>
+          <li>powoli = slowly</li>
+          <li>zawsze = always</li>
+          <li>nigdy = never</li>
+          <li>często = often</li>
+          <li>czasami = sometimes</li>
+          <li>rzadko = rarely</li>
+          <li>już = already</li>
+          <li>nadal = still</li>
+          <li>jeszcze = yet</li>
+          <li>wkrótce = soon</li>
+          <li>teraz = now</li>
+          <li>później = later</li>
+          <li>dzisiaj = today</li>
+          <li>jutro = tomorrow</li>
+          <li>wczoraj = yesterday</li>
+          <li>wyraźnie = clearly</li>
+          <li>razem = together</li>
+          <li>osobno = apart</li>
+          <li>na zawsze = forever</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 21 - Animals -->
+    <details class="card" id="lesson-21">
+      <summary><span class="pill">21</span> Lesson 21 — Animals <span class="tag blue">Nature</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>pies = dog</li>
+          <li>kot = cat</li>
+          <li>koń = horse</li>
+          <li>krowa = cow</li>
+          <li>owca = sheep</li>
+          <li>świnia = pig</li>
+          <li>koza = goat</li>
+          <li>kurczak = chicken</li>
+          <li>kaczka = duck</li>
+          <li>ptak = bird</li>
+          <li>królik = rabbit</li>
+          <li>mysz = mouse</li>
+          <li>lew = lion</li>
+          <li>tygrys = tiger</li>
+          <li>niedźwiedź = bear</li>
+          <li>słoń = elephant</li>
+          <li>małpa = monkey</li>
+          <li>lis = fox</li>
+          <li>wilk = wolf</li>
+          <li>jeleń = deer</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 22 - Numbers 76-110 -->
+    <details class="card" id="lesson-22">
+      <summary><span class="pill">22</span> Lesson 22 — Numbers 76–110 <span class="tag red">Numbers</span></summary>
+      <div class="content">
+        <p class="muted">Content for this section has not been added yet.</p>
+      </div>
+    </details>
+
+    <!-- Lesson 23 - Places in Town -->
+    <details class="card" id="lesson-23">
+      <summary><span class="pill">23</span> Lesson 23 — Places in Town <span class="tag green">City</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>szkoła = school</li>
+          <li>szpital = hospital</li>
+          <li>bank = bank</li>
+          <li>restauracja = restaurant</li>
+          <li>biblioteka = library</li>
+          <li>supermarket = supermarket</li>
+          <li>kino = cinema</li>
+          <li>poczta = post office</li>
+          <li>posterunek policji = police station</li>
+          <li>park = park</li>
+          <li>muzeum = museum</li>
+          <li>teatr = theatre</li>
+          <li>hotel = hotel</li>
+          <li>stadion = stadium</li>
+          <li>kościół = church</li>
+          <li>apteka = pharmacy</li>
+          <li>piekarnia = bakery</li>
+          <li>rzeźnik = butcher</li>
+          <li>targ = market</li>
+          <li>fryzjer = hairdresser</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 24 - School Supplies -->
+    <details class="card" id="lesson-24">
+      <summary><span class="pill">24</span> Lesson 24 — School Supplies <span class="tag blue">School</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>tablica = whiteboard</li>
+          <li>cyrkiel = compass</li>
+          <li>kątomierz = protractor</li>
+          <li>segregator = binder</li>
+          <li>przybornik = pen holder</li>
+          <li>karteczki samoprzylepne = sticky notes</li>
+          <li>rzutnik = projector</li>
+          <li>tablica kredowa = chalkboard</li>
+          <li>torba szkolna = schoolbag</li>
+          <li>podkładka = clipboard</li>
+          <li>dziurkacz = hole punch</li>
+          <li>taśma = tape</li>
+          <li>zszywacz = stapler</li>
+          <li>laptop = laptop</li>
+          <li>drukarka = printer</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 25 - Transportation -->
+    <details class="card" id="lesson-25">
+      <summary><span class="pill">25</span> Lesson 25 — Transportation <span class="tag red">Travel</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>samochód = car</li>
+          <li>autobus = bus</li>
+          <li>pociąg = train</li>
+          <li>rower = bicycle</li>
+          <li>motocykl = motorcycle</li>
+          <li>samolot = airplane</li>
+          <li>łódź = boat</li>
+          <li>tramwaj = tram</li>
+          <li>taksówka = taxi</li>
+          <li>metro = subway</li>
+          <li>prom = ferry</li>
+          <li>jacht = yacht</li>
+          <li>balon = hot air balloon</li>
+          <li>statek kosmiczny = spaceship</li>
+          <li>riksza = rickshaw</li>
+          <li>gondola = gondola</li>
+          <li>sterowiec = zeppelin</li>
+          <li>rolki = rollerblades</li>
+          <li>kajak = canoe</li>
+          <li>łódź podwodna = submarine</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lessons 26-36 (Placeholder) -->
+    <details class="card" id="lesson-26">
+      <summary><span class="pill">26</span> Lesson 26 — Numbers 111–150 <span class="tag green">Numbers</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-27">
+      <summary><span class="pill">27</span> Lesson 27 — Past Simple <span class="tag blue">Grammar</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-28">
+      <summary><span class="pill">28</span> Lesson 28 — Personality Traits <span class="tag red">People</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-29">
+      <summary><span class="pill">29</span> Lesson 29 — Present Perfect <span class="tag green">Grammar</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-30">
+      <summary><span class="pill">30</span> Lesson 30 — Numbers 151–190 <span class="tag blue">Numbers</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-31">
+      <summary><span class="pill">31</span> Lesson 31 — Countries <span class="tag red">Geography</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-32">
+      <summary><span class="pill">32</span> Lesson 32 — Ordering <span class="tag green">Dialogue</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-33">
+      <summary><span class="pill">33</span> Lesson 33 — Shops in Town <span class="tag blue">City</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-34">
+      <summary><span class="pill">34</span> Lesson 34 — Numbers 191–230 <span class="tag red">Numbers</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-35">
+      <summary><span class="pill">35</span> Lesson 35 — Things in the Street <span class="tag green">City</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <details class="card" id="lesson-36">
+      <summary><span class="pill">36</span> Lesson 36 — Instruments <span class="tag blue">Music</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>🇵🇱 Ready to Learn Polish?</h3>
+        <p>Start your Polish journey with 36 lessons, 1000+ words and interactive exercises!</p>
+      </div>
+      <a href="PolishTest.html" class="practice-btn">
+        🎯 Start Practice Test
+      </a>
+    </div>
+    <div class="footer-meta">
+      Prepared with <span class="mono">UTF-8</span> encoding • Polish special characters (ą, ć, ę, ł, ń, ó, ś, ź, ż) are supported
+    </div>
+  </footer>
+
+  <script>
+    // Quick nav builder
+    const nav = document.getElementById('nav');
+    const cards = [...document.querySelectorAll('details.card')];
+    nav.innerHTML = cards.map(c => {
+      const id = c.id; const title = c.querySelector('summary').textContent.trim();
+      return `<a href="#${id}">${title}</a>`;
+    }).join('');
+
+    // Search/filter
+    const q = document.getElementById('q');
+    q.addEventListener('input', () => {
+      const term = q.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.classList.toggle('hide', term && !text.includes(term));
+        if(term && text.includes(term)) card.setAttribute('open','');
+      });
+    });
+
+    // Expand/collapse
+    document.getElementById('expand').onclick = () => cards.forEach(c => c.setAttribute('open',''));
+    document.getElementById('collapse').onclick = () => cards.forEach(c => c.removeAttribute('open'));
+  </script>
+</body>
+</html>

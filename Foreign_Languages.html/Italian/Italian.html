@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Italian Lessons (HTML Version)</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #121933;
+            --text: #f0f3ff;
+            --muted: #aab3d6;
+            --accent: #7aa2f7;
+            --section: #99f6e4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, #0b1020, #0e1530 50%, #0b1020 100%);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 16, 32, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(122, 162, 247, 0.2);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            margin: .3rem 0;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: .95rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 64px;
+            align-self: start;
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: .75rem;
+            max-height: calc(100vh - 96px);
+            overflow: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        nav h3 {
+            margin: .3rem 0 .6rem;
+            color: var(--section);
+            font-size: 1rem;
+        }
+
+        nav a {
+            display: block;
+            padding: .35rem .5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: .95rem;
+        }
+
+        nav a:hover {
+            background: rgba(122, 162, 247, .15);
+        }
+
+        main {
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        section {
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px dashed rgba(122, 162, 247, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--section);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-bottom: .2rem;
+        }
+
+        ul {
+            margin: .2rem 0 .6rem 1.1rem;
+        }
+
+        li {
+            margin: .15rem 0;
+        }
+
+        .mono {
+            white-space: pre-wrap;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+            line-height: 1.4;
+        }
+
+        footer {
+            color: var(--muted);
+            font-size: .85rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .practice-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent), var(--section));
+            color: #0b1020;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(122, 162, 247, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+
+        .practice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 162, 247, 0.4);
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>🇮🇹 Italian Lessons</h1>
+            <p class="subtitle">Complete beginner's guide to learning Italian</p>
+        </div>
+    </header>
+
+    <div class="container grid">
+        <nav>
+            <h3>Contents</h3>
+            <a href="#l1">Lesson 1 — Numbers (1–10)</a>
+            <a href="#l2">Lesson 2 — Greetings</a>
+            <a href="#l3">Lesson 3 — Regular Verbs</a>
+            <a href="#l31">Lesson 3.1 — Present Tense</a>
+            <a href="#l4">Lesson 4 — Adjectives</a>
+            <a href="#l5">Lesson 5 — Days & Months</a>
+            <a href="#l6">Lesson 6 — Seasons & Weather</a>
+            <a href="#l7">Lesson 7 — Colors</a>
+            <a href="#l8">Lesson 8 — Family & Friends</a>
+            <a href="#l9">Lesson 9 — Numbers (11–30)</a>
+            <a href="#l10">Lesson 10 — Prepositions & Useful Words</a>
+            <a href="#l11">Lesson 11 — Drinks & Meals</a>
+            <a href="#l12">Lesson 12 — Numbers (31–50)</a>
+            <a href="#l13">Lesson 13 — Irregular Verbs</a>
+            <a href="#l14">Lesson 14 — Present Simple</a>
+            <a href="#l15">Lesson 15 — Physical Appearance</a>
+            <a href="#l16">Lesson 16 — Occupations</a>
+            <a href="#l17">Lesson 17 — Sports</a>
+            <a href="#l18">Lesson 18 — Numbers (51–75)</a>
+            <a href="#l19">Lesson 19 — Clothing</a>
+            <a href="#l20">Lesson 20 — Adverbs</a>
+            <a href="#l21">Lesson 21 — Animals</a>
+            <a href="#l22">Lesson 22 — Numbers (76–110)</a>
+            <a href="#l23">Lesson 23 — Places in Town</a>
+            <a href="#l24">Lesson 24 — School Supplies</a>
+            <a href="#l25">Lesson 25 — Transportation</a>
+        </nav>
+
+        <main>
+            <section id="l1">
+                <h2>Lesson 1 — Numbers (1–10)</h2>
+                <div class="mono">
+Numbers from 1 to 10
+uno = 1, due = 2, tre = 3, quattro = 4, cinque = 5, sei = 6, sette = 7, otto = 8, nove = 9, dieci = 10
+                </div>
+            </section>
+
+            <section id="l2">
+                <h2>Lesson 2 — Greetings</h2>
+                <ul>
+                    <li><b>Ciao</b> = Hello</li>
+                    <li>Come stai = How are you?</li>
+                    <li>Felice di vederti = Nice to see you</li>
+                    <li>Piacere di conoscerti = Nice to meet you</li>
+                    <li>A domani = See you tomorrow</li>
+                    <li>Buon giorno = Good morning</li>
+                    <li>Buon pomeriggio = Good afternoon</li>
+                    <li>Buona sera = Good evening</li>
+                    <li>Buona notte = Good night</li>
+                    <li>Come ti chiami? = What is your name?</li>
+                    <li>Mi chiamo ____ = My name is ___</li>
+                    <li>Dove vivi? = Where do you live?</li>
+                    <li>Di dove sei? = Where are you from?</li>
+                    <li>Buona giornata = Have a nice day</li>
+                    <li>A dopo = See you later</li>
+                    <li>Arrivederci = Goodbye</li>
+                    <li>Per favore = Please</li>
+                    <li>Grazie = Thank you</li>
+                </ul>
+            </section>
+
+            <section id="l3">
+                <h2>Lesson 3 — Regular Verbs</h2>
+                <p>Regular verbs are divided into 3 categories</p>
+
+                <h3>1. -ARE Verbs</h3>
+                <div class="mono">
+abitare = to live, inhabit
+aiutare = to help
+amare = to love
+arrivare = to arrive
+ascoltare = to listen to
+aspettare = to wait for
+baciare = to kiss
+conservare = to conserve, keep
+considerare = to consider
+consigliare = to advise
+costare = to cost
+causare = to cause
+cenare = to have dinner
+chiamare = to call
+cominciare = to begin, start
+comprare = to buy
+insegnare = to teach
+lamentare = to complain
+lasciare = to leave
+lavare = to wash
+lavorare = to work
+mangiare = to eat
+nuotare = to swim
+cucinare = to cook
+curare = to take care of, treat
+disegnare = to draw
+incontrare = to meet, encounter
+indossare = to wear, put on
+diventare = to become
+dubitare = to doubt
+entrare = to enter
+evitare = to avoid
+fumare = to smoke
+guardare = to watch, look
+guidare = to drive
+imparare = to learn
+bastare = to suffice, be enough
+camminare = to walk
+cantare = to sing
+ordinare = to organize, sort, put in order
+parlare = to speak
+passare = to pass, go by; to drop in; to spend time
+pensare = to think
+portare = to take, bring
+pranzare = to have lunch
+prenotare = to book, reserve
+provare = to try
+restare = to stay, remain
+ricordare = to remember
+salutare = to greet, say hello
+salvare = to save
+sbagliare = to make a mistake, be wrong
+sperare = to hope
+studiare = to study
+tagliare = to cut
+tornare = to return, go back
+trovare = to find
+viaggiare = to travel
+visitare = to visit
+                </div>
+
+                <h3>2. -ERE Verbs</h3>
+                <div class="mono">
+accedere = to access
+accendere = to turn on
+apprendere = to learn
+assumere = to assume; to hire, employ
+attendere = to wait for
+battere = to beat
+chiedere = to ask
+chiudere = to close
+comprendere = to understand, to include
+conoscere = to know
+correre = to run, hurry
+credere = to believe
+decedere = to die
+decidere = to decide
+descrivere = to describe
+dibattere = to debate
+discutere = to discuss
+mettere = to put
+perdere = to lose
+precedere = to precede
+premere = to press
+prendere = to take
+pretendere = to claim
+promettere = to promise
+rendere = to give back, return
+ricevere = to receive
+ridere = to laugh
+ripetere = to repeat
+rispondere = to answer
+rompere = to break
+scendere = to descend, go down
+scrivere = to write
+sorridere = to smile
+spendere = to spend
+temere = to fear
+tessere = to weave
+vedere = to see
+vendere = to sell
+vivere = to live
+                </div>
+
+                <h3>3. -IRE Verbs</h3>
+                <div class="mono">
+aborrire = to abhor
+acconsentire = to agree, consent
+applaudire = to applaud, clap
+aprire = to open
+assentire = to assent
+assorbire = to absorb
+avvertire = to warn
+bollire = to boil
+compartire = to share, to divide
+convertire = to convert
+coprire = to cover
+cucire = to sew
+divertire = to enjoy, amuse
+dormire = to sleep
+fuggire = to escape, flee
+inghiottire = to swallow
+mentire = to lie
+nutrire = to feed
+offrire = to offer
+partire = to leave, to start
+riaprire = to reopen
+riempire = to fill
+scoprire = to discover, to uncover
+seguire = to follow
+sentire = to feel, hear, smell, taste, sense
+servire = to serve
+soffrire = to suffer
+tossire = to cough
+vestire = to dress, to wear
+                </div>
+            </section>
+
+            <section id="l31">
+                <h2>Lesson 3.1 — Present Tense</h2>
+                <div class="mono">
+I = io
+you = tu
+he/she/it = lui/lei
+we = noi
+you (pl) = voi
+they = loro
+
+Example for parlare = to speak, credere = to believe and dormire = to sleep
+
+io parlo - io credo - io dormo
+tu parli - tu credi - tu dormi
+lui/lei parla - lui/lei crede - lui/lei dorme
+noi parliamo - noi crediamo - noi dormiamo
+voi parlate - voi credete - voi dormite
+loro parlano - loro credono - loro dormono
+                </div>
+            </section>
+
+            <section id="l4">
+                <h2>Lesson 4 — Adjectives</h2>
+                <div class="mono">
+Felice = Happy
+Triste = Sad
+Arrabbiato = Angry
+Spaventato = Afraid
+Gioia = Joy
+Sorpreso = Surprised
+Calmo = Calm
+Annoiato = Bored
+Facile = Easy
+Difficile = Difficult
+Cattivo = Bad
+Buono = Good
+Rumoroso = Noisy
+Silenzioso = Quiet
+Forte = Strong
+Debole = Weak
+Duro = Hard
+Morbido = Soft
+Più = More
+Meno = Less
+Pulito = Clean
+Sporco = Dirty
+Vecchio = Old
+Nuovo = New
+Grande = Big
+Piccolo = Small
+Giovane = Young
+Magro = Skinny
+Grasso = Fat
+Bello = Pretty
+Brutto = Ugly
+Spesso = Thick
+Sottile = Thin
+Ruvido = Rough
+Liscio = Smooth
+                </div>
+            </section>
+
+            <section id="l5">
+                <h2>Lesson 5 — Days and Months</h2>
+                <h3>5.1 — Days of the week</h3>
+                <div class="mono">
+I giorni della settimana = The days of the week
+Giorno = Day
+Settimana = Week
+Lunedì = Monday
+Martedì = Tuesday
+Mercoledì = Wednesday
+Giovedì = Thursday
+Venerdì = Friday
+Sabato = Saturday
+Domenica = Sunday
+Fine settimana = Weekend
+                </div>
+
+                <h3>5.2 — Months of the year</h3>
+                <div class="mono">
+I mesi dell'anno = The months of the year
+Mese = Month
+Anno = Year
+Gennaio = January
+Febbraio = February
+Marzo = March
+Aprile = April
+Maggio = May
+Giugno = June
+Luglio = July
+Agosto = August
+Settembre = September
+Ottobre = October
+Novembre = November
+Dicembre = December
+                </div>
+            </section>
+
+            <section id="l6">
+                <h2>Lesson 6 — Seasons and Weather</h2>
+                <div class="mono">
+Stagioni = Seasons
+Inverno = Winter
+Estate = Summer
+Primavera = Spring
+Autunno = Autumn
+Cielo = Sky
+Nuvola = Cloud
+Arcobaleno = Rainbow
+Freddo = Cold (weather)
+Caldo = Hot (weather)
+Fa caldo = It is hot
+Fa freddo = It is cold
+C'è il sole = It is sunny
+È nuvoloso = It is cloudy
+È umido = It is humid
+Piove = It is raining
+Nevica = It is snowing
+C'è vento = It is windy
+Com'è il tempo? = How is the weather?
+Bel tempo = Good weather
+Maltempo = Bad weather
+Che temperatura c'è? = What is the temperature?
+Ci sono ventiquattro gradi = It is 24 degrees
+                </div>
+            </section>
+
+            <section id="l7">
+                <h2>Lesson 7 — Colors</h2>
+                <div class="mono">
+Nero = Black
+Blu = Blue
+Marrone = Brown
+Verde = Green
+Arancione = Orange
+Viola = Purple
+Rosso = Red
+Bianco = White
+Giallo = Yellow
+Grigio = Gray
+Oro = Gold
+Argento = Silver
+Che colore è? = What color is it?
+Il colore è ____ = The color is ___
+                </div>
+            </section>
+
+            <section id="l8">
+                <h2>Lesson 8 — Family and Friends</h2>
+                <h3>8.1 — Family members</h3>
+                <div class="mono">
+Madre = Mother
+Padre = Father
+Fratello = Brother
+Sorella = Sister
+Figlio = Son
+Figlia = Daughter
+Genitori = Parents
+Bambini = Children
+Bambino = Child
+Madre acquisita = Stepmother
+Padre acquisito = Stepfather
+Sorella acquisita = Stepsister
+Fratello acquisito = Stepbrother
+Genero = Son-in-law
+Nuora = Daughter-in-law
+Moglie = Wife
+Marito = Husband
+Nonni = Grandparents
+Nonno = Grandfather
+Nonna = Grandmother
+Nipotino = Grandson
+Nipotina = Granddaughter
+Nipotini = Grandchildren
+Nipotino = Grandchild
+Zia = Aunt
+Zio = Uncle
+Cugina = Cousin (female)
+Cugino = Cousin (male)
+Nipote = Nephew
+Nipote = Niece
+Suocero = Father-in-law
+Suocera = Mother-in-law
+Cognato = Brother-in-law
+Cognata = Sister-in-law
+Parente = Relative
+                </div>
+
+                <h3>8.2 — Friends</h3>
+                <div class="mono">
+Signorina = Miss
+Ragazzo = Boy
+Ragazza = Girl
+Bebè = Baby
+Donna = Woman
+Uomo = Man
+Amico = Friend (male)
+Amica = Friend (female)
+Fidanzato = Boyfriend
+Fidanzata = Girlfriend
+Signore = Gentleman
+Signora = Lady
+Vicino = Neighbor (male)
+Vicina di casa = Neighbor (female)
+                </div>
+            </section>
+
+            <section id="l9">
+                <h2>Lesson 9 — Numbers (11–30)</h2>
+                <div class="mono">
+Undici = 11
+Dodici = 12
+Tredici = 13
+Quattordici = 14
+Quindici = 15
+Sedici = 16
+Diciassette = 17
+Diciotto = 18
+Diciannove = 19
+Venti = 20
+Ventuno = 21
+Ventidue = 22
+Ventitrè = 23
+Ventiquattro = 24
+Venticinque = 25
+Ventisei = 26
+Ventisette = 27
+Ventotto = 28
+Ventinove = 29
+Trenta = 30
+                </div>
+            </section>
+
+            <section id="l10">
+                <h2>Lesson 10 — Prepositions and Useful words</h2>
+                <h3>10.1 — Prepositions</h3>
+                <div class="mono">
+Per = For
+Da = From
+In = In
+Dentro = Inside
+In = Into
+Vicino = Near
+Di = Of
+Fuori = Out
+Fuori = Outside
+A = To
+Sotto = Under
+Con = With
+Senza = Without
+Sopra = Above
+Attraverso = Across
+Dopo = After
+Contro = Against
+Lungo = Along
+Intorno = Around
+A = At
+Dietro = Behind
+In basso = Below
+Accanto a = Beside
+Fra = Between
+Da = By
+Durante = During
+Tranne = Except
+E = And
+Perché = Because
+Ma = But
+O = Or
+Dappertutto = Everywhere
+Tutti = Everyone
+Tutto = Everything
+Pochi = Few
+Alcuni = Some
+Molti = Many
+                </div>
+
+                <h3>10.2 — Useful Words</h3>
+                <div class="mono">
+Domanda = Question
+Risposta = Answer
+Verità = Truth
+Bugia = Lie
+Niente = Nothing
+Qualcosa = Something
+Identico = Same
+Diverso = Different
+Tirare = Pull
+Spingere = Push
+Lungo = Long
+Corto = Short
+Freddo = Cold
+Caldo = Hot
+Chiaro = Light
+Scuro = Dark
+Bagnato = Wet
+Asciutto = Dry
+Vuoto = Empty
+Pieno = Full
+Come? = How?
+Cosa? = What?
+Quando? = When?
+Dove? = Where?
+Quale? = Which?
+Chi? = Who?
+Perché? = Why?
+Quanto tempo? = How long?
+Quanto? = How much?
+                </div>
+            </section>
+
+            <section id="l11">
+                <h2>Lesson 11 — Drinks and Meals</h2>
+                <h3>11.1 — Drinks</h3>
+                <div class="mono">
+Caffè = Coffee
+Tè = Tea
+Bibita = Soft drink
+Acqua = Water
+Limonata = Lemonade
+Succo di frutta = Juice
+Aranciata = Orange juice
+Un bicchiere d'acqua, per favore = I would like a glass of water please
+Con ghiaccio = With ice
+                </div>
+
+                <h3>11.2 — Dairy Products & Bakery</h3>
+                <div class="mono">
+Latte = Milk
+Gelato = Ice cream
+Burro = Butter
+Formaggio = Cheese
+Fiocchi di latte = Cottage cheese
+Panna = Cream
+Panna acida = Sour cream
+Yogurt = Yogurt
+Uova = Eggs
+Panna da montare = Whipping cream
+Panificio = Bakery
+Filoncino = Baguette
+Ciambella = Doughnut
+Biscotto = Cookie
+Rosetta di pane = Roll
+Dolci = Dessert
+Torta = Cake
+Pane = Bread
+Crostata = Pie
+                </div>
+
+                <h3>11.3 — Meats</h3>
+                <div class="mono">
+Manzo = Beef
+Vitello = Veal
+Prosciutto = Ham
+Pollo = Chicken
+Tacchino = Turkey
+Anatra = Duck
+Pancetta = Bacon
+Maiale = Pork
+Filetto = Filet mignon
+Salsiccia = Sausage
+Braciola di agnello = Lamb chop
+Braciola di maiale = Pork chop
+Carne = Meat
+                </div>
+
+                <h3>11.4 — Seafoods</h3>
+                <div class="mono">
+Pesce = Fish
+Crostacei = Shellfish
+Branzino = Bass
+Salmone = Salmon
+Aragosta = Lobster
+Granchio = Crab
+Cozza = Mussel
+Ostrica = Oyster
+Merluzzo = Cod
+Vongola = Clam
+Gambero = Shrimp
+Tonno = Tuna
+Trota = Trout
+Sogliola = Sole
+Squalo = Shark
+Carpa = Carp
+Tilapia = Tilapia
+Anguilla = Eel
+Pesce gatto = Catfish
+Pesce spada = Swordfish
+                </div>
+
+                <h3>11.5 — Herbs and Spices</h3>
+                <div class="mono">
+Sale = Salt
+Pepe = Pepper
+Cumino = Caraway
+Aglio = Garlic
+Basilico = Basil
+Coriandolo = Coriander
+Finocchio = Fennel
+Maggiorana = Marjoram
+Origano = Oregano
+Prezzemolo = Parsley
+Rosmarino = Rosemary
+Salvia = Sage
+Timo = Thyme
+Noce moscata = Nutmeg
+Paprika = Paprika
+Pepe di Caienna = Cayenne
+Zenzero = Ginger
+                </div>
+
+                <h3>11.6 — Vegetables</h3>
+                <div class="mono">
+Sedano = Celery
+Melanzana = Eggplant
+Zucchine = Zucchini
+Cipolla = Onion
+Spinaci = Spinach
+Insalata = Salad
+Fagiolini = Green beans
+Cetriolo = Cucumber
+Ravanello = Radish
+Cavolo = Cabbage
+Funghi = Mushrooms
+Lattuga = Lettuce
+Mais = Corn
+Patate = Potatoes
+Pomodoro = Tomato
+Carota = Carrot
+Banana platano = Plantain
+Fagioli = Beans
+Porro = Leek
+Radice di loto = Lotus root
+Germoglio di bambù = Bamboo shoot
+Carciofo = Artichoke
+Asparagi = Asparagus
+Cavolini di Bruxelles = Brussels sprouts
+Broccoli = Broccoli
+Piselli = Peas
+Cavolfiore = Cauliflower
+Peperoncino = Chili pepper
+                </div>
+
+                <h3>11.7 — Fruits</h3>
+                <div class="mono">
+Ciliegie = Cherries
+Lamponi = Raspberries
+Mirtilli = Blueberries
+Fragole = Strawberries
+Limone = Lemon
+Lime = Lime
+Mela = Apple
+Arancia = Orange
+Pera = Pear
+Banana = Banana
+Uva = Grapes
+Pompelmo = Grapefruit
+Anguria = Watermelon
+Ananas = Pineapple
+Prugna = Plum
+Pesca = Peach
+Mango = Mango
+Albicocca = Apricot
+Melograno = Pomegranate
+Caco = Persimmon
+Kiwi = Kiwi
+Litchi = Litchi
+Longan = Longan
+Zucca amara = Balsam pear
+Frutto della passione = Passion fruit
+Avocado = Avocado
+Cocco = Coconut
+                </div>
+            </section>
+
+            <section id="l12">
+                <h2>Lesson 12 — Numbers (31–50)</h2>
+                <div class="mono">
+trentuno = 31
+trentadue = 32
+trentatré = 33
+trentaquattro = 34
+trentacinque = 35
+trentasei = 36
+trentasette = 37
+trentotto = 38
+trentanove = 39
+quaranta = 40
+quarantuno = 41
+quarantadue = 42
+quarantatré = 43
+quarantaquattro = 44
+quarantacinque = 45
+quarantasei = 46
+quarantasette = 47
+quarantotto = 48
+quarantanove = 49
+cinquanta = 50
+                </div>
+            </section>
+
+            <section id="l13">
+                <h2>Lesson 13 — Irregular Verbs</h2>
+                <h3>13.1 — -ARE Verbs</h3>
+                <div class="mono">
+andare = to go
+dare = to give
+trovare = to find
+stare = to stand
+cominciare = to begin
+fare = to do/make
+guidare = to drive
+dimenticare = to forget
+incontrare = to meet
+pagare = to pay
+parlare = to speak
+passare = to spend (time)
+nuotare = to swim
+insegnare = to teach
+raccontare = to tell
+pensare = to think
+lanciare = to throw
+portare = to bring
+inviare = to send
+                </div>
+
+                <h3>13.2 — -ERE Verbs</h3>
+                <div class="mono">
+essere = to be
+avere = to have
+vedere = to see
+bere = to drink
+sapere = to know (fact)
+volere = to want
+correre = to run
+sedere = to sit
+giacere = to lie down
+prendere = to take
+scrivere = to write
+cadere = to fall
+rompere = to break
+mettere = to put
+leggere = to read
+ottenere = to get
+tenere = to hold
+vincere = to win
+scegliere = to choose
+                </div>
+
+                <h3>13.3 — -IRE Verbs</h3>
+                <div class="mono">
+venire = to come
+mangiare = to eat
+capire = to understand
+dire = to say
+dormire = to sleep
+costruire = to build
+sentire = to hear
+partire = to leave
+                </div>
+            </section>
+
+            <section id="l14">
+                <h2>Lesson 14 — Present Simple</h2>
+                <div class="mono">
+Example for essere = to be, mangiare = to eat and andare = to go
+
+io sono - io mangio - io vado
+tu sei - tu mangi - tu vai
+lui/lei è - lui/lei mangia - lui/lei va
+noi siamo - noi mangiamo - noi andiamo
+voi siete - voi mangiate - voi andate
+loro sono - loro mangiano - loro vanno
+                </div>
+            </section>
+
+            <section id="l15">
+                <h2>Lesson 15 — Physical Appearance</h2>
+                <div class="mono">
+alto = Tall
+basso = Short (height)
+snello = Slim
+grasso = Fat
+muscoloso = Muscular
+biondo = Blonde (hair)
+castano = Brown-haired
+moro = Black-haired
+ricci = Curly Hair
+lisci = Straight Hair
+occhi azzurri = Blue Eyes
+occhi castani = Brown Eyes
+occhi verdi = Green Eyes
+bello / bella = Beautiful
+bello = Handsome
+brutto = Ugly
+giovane = Young
+vecchio = Old
+barba = Beard
+pelle chiara = Light-skinned
+pelle scura = Dark-skinned
+lentiggini = Freckles
+rughe = Wrinkles
+calvo = Bald
+peloso = Hairy (body)
+naso dritto = Straight Nose
+naso grande = Big Nose
+naso piccolo = Small Nose
+labbra sottili = Thin Lips
+labbra carnose = Full Lips
+spalle larghe = Broad Shoulders
+spalle strette = Narrow Shoulders
+pelle abbronzata = Tanned Skin
+pelle pallida = Pale Skin
+capelli mossi = Wavy Hair
+coda di cavallo = Ponytail
+trecce = Braids
+barba e baffi = Beard and Mustache
+                </div>
+            </section>
+
+            <section id="l16">
+                <h2>Lesson 16 — Occupations</h2>
+                <div class="mono">
+dottore / medico = Doctor
+insegnante = Teacher
+ingegnere = Engineer
+avvocato = Lawyer
+commesso = Salesperson
+poliziotto = Police Officer
+pompiere = Firefighter
+programmatore = Programmer
+cuoco = Cook/Chef
+giornalista = Journalist
+infermiere/infermiera = Nurse
+architetto = Architect
+contabile = Accountant
+farmacista = Pharmacist
+autista = Driver
+meccanico = Mechanic
+scienziato = Scientist
+dentista = Dentist
+musicista = Musician
+attore/attrice = Actor
+artista = Artist
+pilota = Pilot
+contadino = Farmer
+fotografo = Photographer
+cameriere/cameriera = Waiter/Waitress
+                </div>
+            </section>
+
+            <section id="l17">
+                <h2>Lesson 17 — Sports</h2>
+                <div class="mono">
+calcio = Football / Soccer
+pallacanestro = Basketball
+pallavolo = Volleyball
+tennis = Tennis
+nuoto = Swimming
+corsa / atletica = Running / Athletics
+hockey su ghiaccio = Ice Hockey
+sci = Skiing
+ciclismo = Cycling
+pugilato / boxe = Boxing
+arti marziali = Martial Arts
+golf = Golf
+tennis da tavolo = Table Tennis
+lotta = Wrestling
+pallamano = Handball
+baseball = Baseball
+surf = Surfing
+pattinaggio = Skating
+equitazione = Horse Riding
+immersione = Diving
+cricket = Cricket
+rugby = Rugby
+balletto = Ballet
+bowling = Bowling
+sollevamento pesi = Weightlifting
+windsurf = Windsurfing
+pattinaggio su ghiaccio = Ice Skating
+canottaggio = Rowing
+tiro con l'arco = Archery
+arrampicata = Climbing
+                </div>
+            </section>
+
+            <section id="l18">
+                <h2>Lesson 18 — Numbers (51–75)</h2>
+                <div class="mono">
+cinquantuno = 51
+cinquantadue = 52
+cinquantatré = 53
+cinquantaquattro = 54
+cinquantacinque = 55
+cinquantasei = 56
+cinquantasette = 57
+cinquantotto = 58
+cinquantanove = 59
+sessanta = 60
+sessantuno = 61
+sessantadue = 62
+sessantatré = 63
+sessantaquattro = 64
+sessantacinque = 65
+sessantasei = 66
+sessantasette = 67
+sessantotto = 68
+sessantanove = 69
+settanta = 70
+settantuno = 71
+settantadue = 72
+settantatré = 73
+settantaquattro = 74
+settantacinque = 75
+                </div>
+            </section>
+
+            <section id="l19">
+                <h2>Lesson 19 — Clothing</h2>
+                <div class="mono">
+la camicia = Shirt
+la maglietta = T-shirt
+la blusa = Blouse
+il maglione = Sweater / Jumper
+la giacca = Jacket
+il cappotto = Coat
+il vestito = Dress
+la gonna = Skirt
+i pantaloni = Pants / Trousers
+i pantaloncini = Shorts
+le scarpe = Shoes
+gli stivali = Boots
+le scarpe da ginnastica = Sneakers
+i sandali = Sandals
+il cappello = Hat / Cap
+la sciarpa = Scarf
+i guanti = Gloves
+la cintura = Belt
+le calze = Socks
+cappotto invernale = Winter Coat
+berretto di lana = Wool Hat
+doposci = Snow Boots
+costume da bagno = Swimsuit
+occhiali da sole = Sunglasses
+infradito = Flip-flops
+canottiera = Tank Top
+abito = Suit
+cravatta = Tie
+blazer = Blazer
+tacchi alti = High Heels
+abito da sera = Evening Dress
+nero = Black
+bianco = White
+rosso = Red
+blu = Blue
+verde = Green
+cotone = Cotton
+lana = Wool
+pelle = Leather
+seta = Silk
+lino = Linen
+                </div>
+            </section>
+
+            <section id="l20">
+                <h2>Lesson 20 — Adverbs</h2>
+                <div class="mono">
+velocemente = quickly
+lentamente = slowly
+sempre = always
+mai = never
+spesso = often
+qualche volta = sometimes
+raramente = rarely
+già = already
+ancora = still
+ancora = yet
+presto = soon
+ora = now
+più tardi = later
+oggi = today
+domani = tomorrow
+ieri = yesterday
+chiaramente = clearly
+insieme = together
+separatamente = apart
+per sempre = forever
+                </div>
+            </section>
+
+            <section id="l21">
+                <h2>Lesson 21 — Animals</h2>
+                <div class="mono">
+cane = dog
+gatto = cat
+cavallo = horse
+mucca = cow
+pecora = sheep
+maiale = pig
+capra = goat
+pollo = chicken
+anatra = duck
+uccello = bird
+coniglio = rabbit
+topo = mouse
+leone = lion
+tigre = tiger
+orso = bear
+elefante = elephant
+scimmia = monkey
+volpe = fox
+lupo = wolf
+cervo = deer
+                </div>
+            </section>
+
+            <section id="l22">
+                <h2>Lesson 22 — Numbers (76–110)</h2>
+                <p class="subtitle">Content to be added</p>
+            </section>
+
+            <section id="l23">
+                <h2>Lesson 23 — Places in Town</h2>
+                <div class="mono">
+scuola = school
+ospedale = hospital
+banca = bank
+ristorante = restaurant
+biblioteca = library
+supermercato = supermarket
+cinema = cinema
+posta = post office
+stazione di polizia = police station
+parco = park
+museo = museum
+teatro = theatre
+hotel = hotel
+stadio = stadium
+chiesa = church
+farmacia = pharmacy
+panetteria = bakery
+macelleria = butcher
+mercato = market
+parrucchiere = hairdresser
+                </div>
+            </section>
+
+            <section id="l24">
+                <h2>Lesson 24 — School Supplies</h2>
+                <div class="mono">
+libro = book
+penna = pen
+matita = pencil
+gomma = eraser
+quaderno = notebook
+righello = ruler
+forbici = scissors
+zaino = backpack
+cartella = folder
+calcolatrice = calculator
+pennarello = marker
+gesso = chalk
+mappa = map
+evidenziatore = highlighter
+proiettore = projector
+portatile = laptop
+stampante = printer
+chiavetta USB = USB stick
+cartella = schoolbag
+temperino = sharpener
+                </div>
+            </section>
+
+            <section id="l25">
+                <h2>Lesson 25 — Transportation</h2>
+                <div class="mono">
+macchina = car
+autobus = bus
+treno = train
+bicicletta = bicycle
+moto = motorcycle
+aereo = airplane
+barca = boat
+tram = tram
+taxi = taxi
+metropolitana = subway
+traghetto = ferry
+yacht = yacht
+mongolfiera = hot air balloon
+astronave = spaceship
+risciò = rickshaw
+gondola = gondola
+dirigibile = zeppelin
+pattini in linea = rollerblades
+canoa = canoe
+sottomarino = submarine
+                </div>
+            </section>
+
+            <a href="ItalianTest.html" class="practice-btn">
+                🎯 Start Practice Test
+            </a>
+        </main>
+    </div>
+
+    <footer>
+        <p>🇮🇹 Italian Lessons — Complete Beginner's Guide</p>
+        <p>Prepared with UTF-8 encoding • Italian special characters supported</p>
+    </footer>
+</body>
+
+</html>

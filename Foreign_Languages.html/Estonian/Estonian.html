@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estonian Lessons — HTML Version</title>
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111218;
+      --muted: #b8c1ec;
+      --text: #e6e6e6;
+      --accent: #8aa9ff;
+      --accent-2:#ffc857;
+      --accent-3:#ff6b6b;
+      --ok:#2ec4b6;
+      --warn:#ff9f1c;
+      --red:#ff4d4d;
+      --chip:#1b1d29;
+      --border:#232535;
+      --code:#0f1115;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#fbfbfe;
+        --panel:#ffffff;
+        --muted:#3a3b59;
+        --text:#0f172a;
+        --accent:#365cf5;
+        --accent-2:#b45309;
+        --accent-3:#b91c1c;
+        --ok:#059669;
+        --warn:#b45309;
+        --red:#dc2626;
+        --chip:#f3f4f6;
+        --border:#e5e7eb;
+        --code:#0f172a0a;
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(180deg,var(--bg), #0b0c1000 60%), radial-gradient(1200px 600px at 100% -10%, #365cf511, transparent 60%) , var(--bg);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background:color-mix(in srgb, var(--panel) 86%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:14px 18px;}
+    h1{
+      margin:.2rem 0 .8rem;
+      letter-spacing:.2px;
+      font-size: clamp(1.3rem, 2.2vw + 1rem, 2rem);
+    }
+    .sub{
+      color:var(--muted);
+      margin-top:-.4rem;
+      font-size:.95rem;
+    }
+    .controls{
+      display:grid; gap:10px; grid-template-columns: 1fr auto auto;
+      padding:.6rem 0 .2rem;
+      align-items:center;
+    }
+    input[type="search"]{
+      width:100%; padding:.7rem .9rem; border-radius:12px; border:1px solid var(--border);
+      background:var(--panel); color:var(--text); outline:none;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:var(--chip); color:var(--text);
+      padding:.6rem .9rem; border-radius:12px; cursor:pointer;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .grid{
+      max-width:1100px; margin:16px auto; padding: 0 18px; display:grid; gap:16px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 768px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    details.card{
+      background:linear-gradient(180deg, color-mix(in srgb, var(--panel) 92%, transparent), var(--panel));
+      border: 1px solid var(--border);
+      border-radius:16px; padding: 0 0 8px;
+      box-shadow: 0 10px 30px #00000020;
+    }
+    details.card > summary{
+      list-style:none; cursor:pointer; padding:16px 16px;
+      display:flex; gap:10px; align-items:center; font-weight:600;
+      border-bottom:1px solid transparent;
+    }
+    details.card[open] > summary{ border-bottom-color:var(--border) }
+    summary .tag{ font-size:.75rem; color:var(--muted); background:var(--chip); padding:.2rem .55rem; border-radius:999px; border:1px solid var(--border)}
+    .pill{ color:#111; background:var(--accent-2); padding:.15rem .5rem; border-radius:999px; font-weight:700; }
+    .tag.red{ background: color-mix(in srgb, var(--red) 14%, var(--chip)); color: var(--text); border-color: color-mix(in srgb, var(--red) 40%, var(--border));}
+    .tag.blue{ background: color-mix(in srgb, var(--accent) 14%, var(--chip)); border-color: color-mix(in srgb, var(--accent) 40%, var(--border));}
+    .tag.green{ background: color-mix(in srgb, var(--ok) 14%, var(--chip)); border-color: color-mix(in srgb, var(--ok) 40%, var(--border));}
+    .content{ padding:12px 16px 6px; }
+    .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    @media (max-width: 720px){ .two-col{ grid-template-columns: 1fr; } }
+    table{ width:100%; border-collapse: collapse; margin:6px 0 10px; }
+    th, td{ border-bottom:1px dashed var(--border); padding:6px 8px; vertical-align:top; }
+    th{ text-align:left; color:var(--muted); font-weight:600; }
+    .list{ columns: 2; gap: 18px; }
+    @media (max-width: 820px){ .list{ columns:1 } }
+    li{ break-inside: avoid; margin-bottom:.25rem }
+    .muted{ color:var(--muted) }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:var(--code); padding:.12rem .35rem; border-radius:6px; border:1px solid var(--border) }
+    .hide{ display:none !important }
+    .nav{ display:flex; gap:8px; overflow:auto; padding:6px 0 }
+    .nav a{ white-space:nowrap; text-decoration:none; border:1px solid var(--border); background:var(--chip); color:var(--text); padding:.4rem .6rem; border-radius:10px }
+    .nav a:hover{ filter:brightness(1.05) }
+    mark{ background: color-mix(in srgb, var(--accent) 20%, transparent); padding:0 .2rem; border-radius:4px }
+
+    /* Modern Footer Styles */
+    .main-footer{
+      background:linear-gradient(180deg, transparent, color-mix(in srgb, var(--panel) 60%, transparent)), var(--panel);
+      border-top:1px solid var(--border);
+      margin-top:60px;
+      padding:40px 20px;
+    }
+    .footer-content{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:30px;
+      align-items:center;
+    }
+    @media (max-width: 768px){
+      .footer-content{ grid-template-columns: 1fr; text-align:center; }
+    }
+    .footer-info h3{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:1.2rem;
+    }
+    .footer-info p{
+      margin:0;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .practice-btn{
+      display:inline-block;
+      padding:14px 32px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#fff;
+      text-decoration:none;
+      border-radius:12px;
+      font-weight:600;
+      font-size:1rem;
+      box-shadow: 0 4px 15px rgba(138, 169, 255, 0.3);
+      transition: all 0.3s ease;
+      border:none;
+      cursor:pointer;
+    }
+    .practice-btn:hover{
+      transform:translateY(-2px);
+      box-shadow: 0 6px 20px rgba(138, 169, 255, 0.4);
+    }
+    .footer-meta{
+      text-align:center;
+      color:var(--muted);
+      padding:20px 0 10px;
+      font-size:.85rem;
+      border-top:1px solid var(--border);
+      max-width:1100px;
+      margin:20px auto 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Estonian Lessons — HTML Version</h1>
+      <div class="sub">Compiled vocabulary lists, tables and exercises for Bora. Uses full web interaction instead of keyboard waits.</div>
+      <div class="controls">
+        <input id="q" type="search" placeholder="Search: word, translation or lesson title (e.g. &quot;värv&quot; or &quot;Lesson 11&quot;)">
+        <button class="btn" id="expand">Expand All</button>
+        <button class="btn" id="collapse">Collapse All</button>
+      </div>
+      <nav class="nav" id="nav"></nav>
+    </div>
+  </header>
+
+  <main class="grid" id="cards">
+    
+    <!-- Lesson 1 - Numbers 1-10 -->
+    <details class="card" open id="lesson-1">
+      <summary><span class="pill">1</span> Lesson 1 — 1–10 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <p class="muted">The foundation of Estonian numbers. Below you'll see the matches for 1-10.</p>
+        <table>
+          <thead><tr><th>Estonian</th><th>English</th><th>Number</th></tr></thead>
+          <tbody>
+            <tr><td>üks</td><td>one</td><td>1</td></tr>
+            <tr><td>kaks</td><td>two</td><td>2</td></tr>
+            <tr><td>kolm</td><td>three</td><td>3</td></tr>
+            <tr><td>neli</td><td>four</td><td>4</td></tr>
+            <tr><td>viis</td><td>five</td><td>5</td></tr>
+            <tr><td>kuus</td><td>six</td><td>6</td></tr>
+            <tr><td>seitse</td><td>seven</td><td>7</td></tr>
+            <tr><td>kaheksa</td><td>eight</td><td>8</td></tr>
+            <tr><td>üheksa</td><td>nine</td><td>9</td></tr>
+            <tr><td>kümme</td><td>ten</td><td>10</td></tr>
+          </tbody>
+        </table>
+        <details>
+          <summary class="muted">Mini Exercise (test yourself)</summary>
+          <div class="content">
+            <p>See the Estonian word and write the corresponding <strong>number</strong>. Accuracy is checked instantly.</p>
+            <div class="two-col">
+              <div>
+                <label>üks → </label><input class="quiz" data-answer="1" size="3" />
+              </div>
+              <div>
+                <label>kaks → </label><input class="quiz" data-answer="2" size="3" />
+              </div>
+              <div>
+                <label>kolm → </label><input class="quiz" data-answer="3" size="3" />
+              </div>
+              <div>
+                <label>neli → </label><input class="quiz" data-answer="4" size="3" />
+              </div>
+              <div>
+                <label>viis → </label><input class="quiz" data-answer="5" size="3" />
+              </div>
+              <div>
+                <label>kuus → </label><input class="quiz" data-answer="6" size="3" />
+              </div>
+              <div>
+                <label>seitse → </label><input class="quiz" data-answer="7" size="3" />
+              </div>
+              <div>
+                <label>kaheksa → </label><input class="quiz" data-answer="8" size="3" />
+              </div>
+              <div>
+                <label>üheksa → </label><input class="quiz" data-answer="9" size="3" />
+              </div>
+              <div>
+                <label>kümme → </label><input class="quiz" data-answer="10" size="3" />
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </details>
+
+    <!-- Lesson 2 - Greetings -->
+    <details class="card" id="lesson-2">
+      <summary><span class="pill">2</span> Lesson 2 — Greetings <span class="tag red">Phrases</span></summary>
+      <div class="content">
+        <ul class="list">
+          <li><b>Tere</b> = Hello</li>
+          <li>Kuidas sul läheb = How are you?</li>
+          <li>Tore sind näha = Nice to see you</li>
+          <li>Meeldiv tutvuda = Nice to meet you</li>
+          <li>Näeme homme = See you tomorrow</li>
+          <li>Tere hommikust = Good morning</li>
+          <li>Tere päevast = Good afternoon</li>
+          <li>Tere õhtust = Good evening</li>
+          <li>Head ööd = Good night</li>
+          <li>Mis su nimi on? = What is your name?</li>
+          <li>Minu nimi on ____ = My name is ___</li>
+          <li>Kus sa elad? = Where do you live?</li>
+          <li>Kust sa pärit oled? = Where are you from?</li>
+          <li>Kena päeva = Have a nice day</li>
+          <li>Näeme hiljem = See you later</li>
+          <li>Head aega = Goodbye</li>
+          <li>Palun = Please</li>
+          <li>Aitäh = Thank you</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Lesson 3 - Regular Verbs -->
+    <details class="card" id="lesson-3">
+      <summary><span class="pill">3</span> Lesson 3 — Regular Verbs <span class="tag green">Verbs</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>tõmbuma = to withdraw / shrink</li>
+          <li>ütlema = to say / tell</li>
+          <li>tegema = to do / make</li>
+          <li>mõtlema = to think</li>
+          <li>esitlema = to present</li>
+          <li>helistama = to call (on phone)</li>
+          <li>küsima = to ask</li>
+          <li>tunduma = to seem</li>
+          <li>jätma = to leave (behind)</li>
+          <li>alustama = to begin / start</li>
+          <li>viirastuma = to hallucinate (become a mirage)</li>
+          <li>aitama = to help</li>
+          <li>mängitama = to let play / cause to play</li>
+          <li>jooksma = to run</li>
+          <li>kolima = to move (house)</li>
+          <li>uskuma = to believe</li>
+          <li>kirjutama = to write</li>
+          <li>poseerima = to pose</li>
+          <li>põrama = to rumble / thunder</li>
+          <li>jätkuma = to continue</li>
+          <li>seadma = to set / place</li>
+          <li>õppima = to study / learn</li>
+          <li>vahetama = to exchange / change</li>
+          <li>talutama = to tolerate / endure</li>
+          <li>jälgima = to observe / monitor</li>
+          <li>seisatama = to stand (cause to stand)</li>
+          <li>rääkima = to speak / talk</li>
+          <li>veetma = to spend (time)</li>
+          <li>õpetama = to teach</li>
+          <li>kaalutlema = to weigh / consider</li>
+          <li>ilmuma = to appear / be published</li>
+          <li>ostma = to buy</li>
+          <li>servima = to serve</li>
+          <li>läkitama = to send (official)</li>
+          <li>ehitama = to build</li>
+          <li>pusima = to fumble / tinker (colloquial)</li>
+          <li>lõikama = to cut</li>
+          <li>müüma = to sell</li>
+          <li>tagastama = to return (give back)</li>
+          <li>seletama = to explain</li>
+          <li>arenema = to develop</li>
+          <li>hoidma = to keep / hold</li>
+          <li>tootma = to produce / manufacture</li>
+          <li>tarvitama = to use / consume</li>
+          <li>kaanetama = to bind / cover (books)</li>
+        </div>
+
+        <h4>Personal Pronouns</h4>
+        <table>
+          <tr><th>English</th><th>Estonian</th></tr>
+          <tr><td>I</td><td>ma</td></tr>
+          <tr><td>you (sg.)</td><td>sa</td></tr>
+          <tr><td>he/she/it</td><td>ta</td></tr>
+          <tr><td>we</td><td>me</td></tr>
+          <tr><td>you (pl.)</td><td>te</td></tr>
+          <tr><td>they</td><td>nad</td></tr>
+        </table>
+
+        <h4>Example (rääkima = to speak)</h4>
+        <div class="list">
+          <li>ma räägin</li>
+          <li>sa räägid</li>
+          <li>ta räägib</li>
+          <li>me räägime</li>
+          <li>te räägite</li>
+          <li>nad räägivad</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 4 - Adjectives -->
+    <details class="card" id="lesson-4">
+      <summary><span class="pill">4</span> Lesson 4 — Adjectives <span class="tag blue">Vocab</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Õnnelik = Happy</li>
+          <li>Kurb = Sad</li>
+          <li>Vihane = Angry</li>
+          <li>Kartlik = Afraid</li>
+          <li>Rõõmus = Joy</li>
+          <li>Üllatunud = Surprised</li>
+          <li>Rahulik = Calm</li>
+          <li>Igav = Bored</li>
+          <li>Lihtne = Easy</li>
+          <li>Raske = Difficult</li>
+          <li>Halb = Bad</li>
+          <li>Hea = Good</li>
+          <li>Lärmakas = Noisy</li>
+          <li>Vaikne = Quiet</li>
+          <li>Tugev = Strong</li>
+          <li>Nõrk = Weak</li>
+          <li>Kõva = Hard</li>
+          <li>Pehme = Soft</li>
+          <li>Rohkem = More</li>
+          <li>Vähem = Less</li>
+          <li>Puhas = Clean</li>
+          <li>Must = Dirty</li>
+          <li>Vana = Old</li>
+          <li>Uus = New</li>
+          <li>Suur = Big</li>
+          <li>Väike = Small</li>
+          <li>Noor = Young</li>
+          <li>Kõhn = Skinny</li>
+          <li>Paks = Fat</li>
+          <li>Ilus = Pretty</li>
+          <li>Inetu = Ugly</li>
+          <li>Paks = Thick</li>
+          <li>Õhuke = Thin</li>
+          <li>Kare = Rough</li>
+          <li>Sile = Smooth</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 5 - Days & Months -->
+    <details class="card" id="lesson-5">
+      <summary><span class="pill">5</span> Lesson 5 — Days &amp; Months <span class="tag red">Calendar</span></summary>
+      <div class="content">
+        <h4>5.1 — Days of the week</h4>
+        <div class="list">
+          <li>Nädalapäevad = The days of the week</li>
+          <li>Päev = Day</li>
+          <li>Nädal = Week</li>
+          <li>Esmaspäev = Monday</li>
+          <li>Teisipäev = Tuesday</li>
+          <li>Kolmapäev = Wednesday</li>
+          <li>Neljapäev = Thursday</li>
+          <li>Reede = Friday</li>
+          <li>Laupäev = Saturday</li>
+          <li>Pühapäev = Sunday</li>
+          <li>Nädalavahetus = Weekend</li>
+        </div>
+        <h4>5.2 — Months of the year</h4>
+        <div class="list">
+          <li>Kalendrikuud = The months of the year</li>
+          <li>Kuu = Month</li>
+          <li>Aasta = Year</li>
+          <li>Jaanuar = January</li>
+          <li>Veebruar = February</li>
+          <li>Märts = March</li>
+          <li>Aprill = April</li>
+          <li>Mai = May</li>
+          <li>Juuni = June</li>
+          <li>Juuli = July</li>
+          <li>August = August</li>
+          <li>September = September</li>
+          <li>Oktoober = October</li>
+          <li>November = November</li>
+          <li>Detsember = December</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 6 - Seasons & Weather -->
+    <details class="card" id="lesson-6">
+      <summary><span class="pill">6</span> Lesson 6 — Seasons &amp; Weather <span class="tag blue">Nature</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Aastaajad = Seasons</li>
+          <li>Talv = Winter</li>
+          <li>Suvi = Summer</li>
+          <li>Kevad = Spring</li>
+          <li>Sügis = Autumn</li>
+          <li>Taevas = Sky</li>
+          <li>Pilv = Cloud</li>
+          <li>Vikerkaar = Rainbow</li>
+          <li>Külm = Cold (weather)</li>
+          <li>Palav = Hot (weather)</li>
+          <li>On palav = It is hot</li>
+          <li>On külm = It is cold</li>
+          <li>On päikesepaisteline = It is sunny</li>
+          <li>On pilvine = It is cloudy</li>
+          <li>On niiske = It is humid</li>
+          <li>Vihma sajab = It is raining</li>
+          <li>Lund sajab = It is snowing</li>
+          <li>On tuuline = It is windy</li>
+          <li>Mis ilm on? = How is the weather?</li>
+          <li>Hea ilm = Good weather</li>
+          <li>Halb ilm = Bad weather</li>
+          <li>Milline temperatuur väljas on? = What is the temperature?</li>
+          <li>On 24 kraadi = It is 24 degrees</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 7 - Colors -->
+    <details class="card" id="lesson-7">
+      <summary><span class="pill">7</span> Lesson 7 — Colors <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>Must = Black</li>
+          <li>Sinine = Blue</li>
+          <li>Pruun = Brown</li>
+          <li>Roheline = Green</li>
+          <li>Oranž = Orange</li>
+          <li>Lilla = Purple</li>
+          <li>Punane = Red</li>
+          <li>Valge = White</li>
+          <li>Kollane = Yellow</li>
+          <li>Hall = Gray</li>
+          <li>Kuldne = Gold</li>
+          <li>Hõbedane = Silver</li>
+          <li>Mis värvi see on? = What color is it?</li>
+          <li>Värv on ___ = The color is ___</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 8 - Family & Friends -->
+    <details class="card" id="lesson-8">
+      <summary><span class="pill">8</span> Lesson 8 — Family &amp; Friends <span class="tag green">People</span></summary>
+      <div class="content">
+        <h4>8.1 — Family</h4>
+        <div class="list">
+          <li>Ema = Mother</li>
+          <li>Isa = Father</li>
+          <li>Vend = Brother</li>
+          <li>Õde = Sister</li>
+          <li>Poeg = Son</li>
+          <li>Tütar = Daughter</li>
+          <li>Vanemad = Parents</li>
+          <li>Lapsed = Children</li>
+          <li>Laps = Child</li>
+          <li>Kasuema = Stepmother</li>
+          <li>Kasuisa = Stepfather</li>
+          <li>Poolõde = Stepsister</li>
+          <li>Poolvend = Stepbrother</li>
+          <li>Väimees = Son-in-law</li>
+          <li>Minia = Daughter-in-law</li>
+          <li>Naine = Wife</li>
+          <li>Mees = Husband</li>
+          <li>Vanavanemad = Grandparents</li>
+          <li>Vanaisa = Grandfather</li>
+          <li>Vanaema = Grandmother</li>
+          <li>Lapselaps = Grandson / Granddaughter / Grandchild</li>
+          <li>Tädi = Aunt</li>
+          <li>Onu = Uncle</li>
+          <li>Onutütar, täditütar = Cousin (female)</li>
+          <li>Onupoeg, tädipoeg = Cousin (male)</li>
+          <li>Vennapoeg = Nephew</li>
+          <li>Vennatütar = Niece</li>
+          <li>Äi = Father-in-law</li>
+          <li>Ämm = Mother-in-law</li>
+          <li>Mehevend, naisevend = Brother-in-law</li>
+          <li>Meheõde, naiseõde = Sister-in-law</li>
+          <li>Sugulane = Relative</li>
+        </div>
+
+        <h4>8.2 — Friends</h4>
+        <div class="list">
+          <li>Prl = Miss</li>
+          <li>Poiss = Boy</li>
+          <li>Tüdruk = Girl</li>
+          <li>Beebi = Baby</li>
+          <li>Naine = Woman</li>
+          <li>Mees = Man</li>
+          <li>Sõber = Friend (male)</li>
+          <li>Sõbranna = Friend (female)</li>
+          <li>Poiss-sõber = Boyfriend</li>
+          <li>Tüdruksõber = Girlfriend</li>
+          <li>Härrasmees = Gentleman</li>
+          <li>Daam = Lady</li>
+          <li>Naaber = Neighbor (male/female)</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 9 - Numbers 11-30 -->
+    <details class="card" id="lesson-9">
+      <summary><span class="pill">9</span> Lesson 9 — 11–30 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>üksteist</td><td>11</td></tr>
+            <tr><td>kaksteist</td><td>12</td></tr>
+            <tr><td>kolmteist</td><td>13</td></tr>
+            <tr><td>neliteist</td><td>14</td></tr>
+            <tr><td>viisteist</td><td>15</td></tr>
+            <tr><td>kuusteist</td><td>16</td></tr>
+            <tr><td>seitseteist</td><td>17</td></tr>
+            <tr><td>kaheksateist</td><td>18</td></tr>
+            <tr><td>üheksateist</td><td>19</td></tr>
+            <tr><td>kakskümmend</td><td>20</td></tr>
+            <tr><td>kakskümmend üks</td><td>21</td></tr>
+            <tr><td>kakskümmend kaks</td><td>22</td></tr>
+            <tr><td>kakskümmend kolm</td><td>23</td></tr>
+            <tr><td>kakskümmend neli</td><td>24</td></tr>
+            <tr><td>kakskümmend viis</td><td>25</td></tr>
+            <tr><td>kakskümmend kuus</td><td>26</td></tr>
+            <tr><td>kakskümmend seitse</td><td>27</td></tr>
+            <tr><td>kakskümmend kaheksa</td><td>28</td></tr>
+            <tr><td>kakskümmend üheksa</td><td>29</td></tr>
+            <tr><td>kolmkümmend</td><td>30</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 10 - Prepositions & Useful Words -->
+    <details class="card" id="lesson-10">
+      <summary><span class="pill">10</span> Lesson 10 — Prepositions &amp; Useful Words <span class="tag red">Vocab</span></summary>
+      <div class="content">
+        <h4>10.1 — Prepositions</h4>
+        <div class="list">
+          <li>Jaoks = For</li><li>Alates = From</li><li>Sisse, sees = In</li><li>Sees = Inside</li><li>Sisse = Into</li>
+          <li>Lähedal = Near</li><li>Millest = Of</li><li>Välja = Out</li><li>Väljas = Outside</li><li>All = Under</li>
+          <li>Koos = With</li><li>Ilma = Without</li><li>Ülalpool = Above</li><li>Üle = Across</li><li>Pärast = After</li>
+          <li>Vastu = Against</li><li>Mööda = Along</li><li>Ümber = Around</li><li>Juures = At</li><li>Taga = Behind</li>
+          <li>Allpool = Below</li><li>Kõrval = Beside / By</li><li>Vahel = Between</li><li>Ajal = During</li><li>Välja arvatud = Except</li>
+          <li>Ja = And</li><li>Sest = Because</li><li>Aga = But</li><li>Või = Or</li><li>Igal pool = Everywhere</li>
+          <li>Igaüks = Everyone</li><li>Kõik = Everything</li><li>Vähe = Few</li><li>Mõni = Some</li><li>Palju = Many</li>
+        </div>
+        <h4>10.2 — Useful Words</h4>
+        <div class="list">
+          <li>Küsimus = Question</li><li>Vastus = Answer</li><li>Tõde = Truth</li><li>Vale = Lie</li><li>Mitte midagi = Nothing</li>
+          <li>Midagi = Something</li><li>Sama = Same</li><li>Erinev = Different</li><li>Tõmba = Pull</li><li>Lükka = Push</li>
+          <li>Pikk = Long</li><li>Lühike = Short</li><li>Külm = Cold</li><li>Kuum = Hot</li><li>Hele = Light</li>
+          <li>Tume = Dark</li><li>Märg = Wet</li><li>Kuiv = Dry</li><li>Tühi = Empty</li><li>Täis = Full</li>
+          <li>Kuidas? = How?</li><li>Mida? = What?</li><li>Millal? = When?</li><li>Kuhu? = Where?</li><li>Milline? = Which?</li>
+          <li>Kes? = Who?</li><li>Miks? = Why?</li><li>Kui kaua? = How long?</li><li>Kui palju? = How much?</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 11 - Food & Drink -->
+    <details class="card" id="lesson-11">
+      <summary><span class="pill">11</span> Lesson 11 — Drinks &amp; Meals <span class="tag green">Food</span></summary>
+      <div class="content">
+        <h4>11.1 — Drinks</h4>
+        <div class="list">
+          <li>Kohv = Coffee</li><li>Tee = Tea</li><li>Karastusjook = Soft drink</li><li>Vesi = Water</li><li>Limonaad = Lemonade</li>
+          <li>Mahl = Juice</li><li>Apelsinimahl = Orange juice</li><li>Palun mulle klaas vett = I would like a glass of water please</li><li>Jääga = With ice</li>
+        </div>
+        <h4>11.2 — Dairy Products &amp; Bakery</h4>
+        <div class="list">
+          <li>Piim = Milk</li><li>Jäätis = Ice cream</li><li>Või = Butter</li><li>Juust = Cheese</li><li>Kodujuust = Cottage cheese</li>
+          <li>Koor = Cream</li><li>Hapukoor = Sour cream</li><li>Jogurt = Yogurt</li><li>Munad = Eggs</li><li>Vahukoor = Whipping cream</li>
+          <li>Pagaritooted = Bakery</li><li>Pikk sai = Baguette</li><li>Sõõrik = Doughnut</li><li>Küpsis = Cookie</li><li>Kukkel = Roll</li>
+          <li>Magustoit = Dessert</li><li>Kook = Cake</li><li>Leib = Bread</li><li>Pirukas = Pie</li>
+        </div>
+        <h4>11.3 — Meats</h4>
+        <div class="list">
+          <li>Veiseliha = Beef</li><li>Vasikaliha = Veal</li><li>Sink = Ham</li><li>Kanaliha = Chicken</li><li>Kalkun = Turkey</li>
+          <li>Part = Duck</li><li>Peekon = Bacon</li><li>Sealiha = Pork</li><li>Sisefilee = Filet mignon</li><li>Vorst = Sausage</li>
+          <li>Tallekarree = Lamb chop</li><li>Seakarbonaad = Pork chop</li><li>Liha = Meat</li>
+        </div>
+        <h4>11.4 — Seafoods</h4>
+        <div class="list">
+          <li>Kala = Fish</li><li>Koorikloomad = Shellfish</li><li>Ahven = Bass</li><li>Lõhe = Salmon</li><li>Vähk = Lobster</li>
+          <li>Krabi = Crab</li><li>Rannakarp = Mussel</li><li>Auster = Oyster</li><li>Tursk = Cod</li><li>Merikarp = Clam</li>
+          <li>Krevett = Shrimp</li><li>Tuun = Tuna</li><li>Forell = Trout</li><li>Lest = Sole</li><li>Hai = Shark</li>
+          <li>Karpkala = Carp</li><li>Tilapia = Tilapia</li><li>Angerjas = Eel</li><li>Säga = Catfish</li><li>Mõõkkala = Swordfish</li>
+        </div>
+        <h4>11.5 — Herbs &amp; Spices</h4>
+        <div class="list">
+          <li>Sool = Salt</li><li>Pipar = Pepper</li><li>Köömen = Caraway</li><li>Küüslauk = Garlic</li><li>Basiilik = Basil</li>
+          <li>Koriander = Coriander</li><li>Apteegitill = Fennel</li><li>Majoraan = Marjoram</li><li>Oregano = Oregano</li><li>Petersell = Parsley</li>
+          <li>Rosmariin = Rosemary</li><li>Salvei = Sage</li><li>Tüümian = Thyme</li><li>Muskaatpähkel = Nutmeg</li><li>Paprika = Paprika</li>
+          <li>Cayenne = Cayenne</li><li>Ingver = Ginger</li>
+        </div>
+        <h4>11.6 — Vegetables</h4>
+        <div class="list">
+          <li>Seller = Celery</li><li>Baklažaan = Eggplant</li><li>Suvikõrvits = Zucchini</li><li>Sibul = Onion</li><li>Spinat = Spinach</li>
+          <li>Salat = Salad</li><li>Rohelised oad = Green beans</li><li>Kurk = Cucumber</li><li>Redis = Radish</li><li>Kapsas = Cabbage</li>
+          <li>Seened = Mushrooms</li><li>Lehtsalat = Lettuce</li><li>Mais = Corn</li><li>Kartul = Potatoes</li><li>Tomat = Tomato</li>
+          <li>Porgand = Carrot</li><li>Jahubanaanid = Plantain</li><li>Oad = Beans</li><li>Porrulauk = Leek</li><li>Lootosejuur = Lotus root</li>
+          <li>Bambusevõrsed = Bamboo shoot</li><li>Artišokk = Artichoke</li><li>Spargel = Asparagus</li><li>Rooskapsas = Brussels sprouts</li><li>Brokkoli = Broccoli</li>
+          <li>Herned = Peas</li><li>Lillkapsas = Cauliflower</li><li>Tšillipipar = Chili pepper</li>
+        </div>
+        <h4>11.7 — Fruits</h4>
+        <div class="list">
+          <li>Kirsid = Cherries</li><li>Vaarikad = Raspberries</li><li>Mustikad = Blueberries</li><li>Maasikad = Strawberries</li><li>Sidrun = Lemon</li>
+          <li>Laim = Lime</li><li>Õun = Apple</li><li>Apelsin = Orange</li><li>Pirn = Pear</li><li>Banaan = Banana</li>
+          <li>Viinamarjad = Grapes</li><li>Greip = Grapefruit</li><li>Arbuus = Watermelon</li><li>Ananass = Pineapple</li><li>Ploom = Plum</li>
+          <li>Virsik = Peach</li><li>Mango = Mango</li><li>Aprikoos = Apricot</li><li>Granaatõun = Pomegranate</li><li>Hurmaa = Persimmon</li>
+          <li>Kiivi = Kiwi</li><li>Litši = Litchi</li><li>Longan = Longan</li><li>Karella-kibekurk = Balsam pear</li><li>Granadill = Passion fruit</li>
+          <li>Avokaado = Avocado</li><li>Kookospähkel = Coconut</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 12 - Irregular Verbs -->
+    <details class="card" id="lesson-12">
+      <summary><span class="pill">12</span> Lesson 12 — Irregular &amp; Common Verbs <span class="tag blue">Verbs</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>olema = to be</li><li>omama = to have</li><li>minema = to go</li><li>tulema = to come</li><li>tegema = to do/make</li>
+          <li>panema = to put</li><li>võtma = to take</li><li>sõitma = to drive</li><li>jääma = to stay</li><li>nägema = to see</li>
+          <li>sööma = to eat</li><li>jooma = to drink</li><li>ütlema = to say</li><li>andma = to give</li><li>saama = to get/become</li>
+          <li>tooma = to bring</li><li>viima = to carry</li><li>leidma = to find</li><li>pesema = to wash</li><li>lugema = to read</li>
+          <li>magama = to sleep</li><li>sulgema = to close</li><li>kandma = to wear/carry</li><li>seisma = to stand</li><li>istuma = to sit</li>
+          <li>jooksma = to run</li><li>surema = to die</li><li>ärkama = to wake up</li><li>õppima = to learn</li><li>elama = to live</li>
+          <li>armastama = to love</li><li>uskuma = to believe</li><li>kuulma = to hear</li><li>tundma = to feel/know</li><li>sulatama = to melt</li>
+          <li>tõusma = to rise</li><li>kaotama = to lose</li><li>võitlema = to fight</li><li>otsima = to search</li><li>alustama = to start</li>
+          <li>katma = to cover</li><li>laulma = to sing</li><li>unustama = to forget</li><li>andeks andma = to forgive</li><li>looma = to create</li>
+          <li>võima = can/may</li><li>põgenema = to escape</li><li>saatma = to send</li><li>langema = to fall</li><li>otsustama = to decide</li>
+          <li>avama = to open</li><li>mängima = to play</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 13 - Present Simple -->
+    <details class="card" id="lesson-13">
+      <summary><span class="pill">13</span> Lesson 13 — Present Simple <span class="tag green">Grammar</span></summary>
+      <div class="content">
+        <p>Conjugations for <b>olema</b> (to be), <b>omama</b> (to have), <b>minema</b> (to go):</p>
+        <div class="list">
+          <li>mina olen — minul on — mina lähen</li>
+          <li>sina oled — sinul on — sina lähed</li>
+          <li>tema on — temal on — tema läheb</li>
+          <li>meie oleme — meil on — meie läheme</li>
+          <li>teie olete — teil on — teie lähete</li>
+          <li>nemad on — nendel on — nemad lähevad</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 14 - Numbers 31-50 -->
+    <details class="card" id="lesson-14">
+      <summary><span class="pill">14</span> Lesson 14 — 31–50 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>kolmkümmend üks</td><td>31</td></tr>
+            <tr><td>kolmkümmend kaks</td><td>32</td></tr>
+            <tr><td>kolmkümmend kolm</td><td>33</td></tr>
+            <tr><td>kolmkümmend neli</td><td>34</td></tr>
+            <tr><td>kolmkümmend viis</td><td>35</td></tr>
+            <tr><td>kolmkümmend kuus</td><td>36</td></tr>
+            <tr><td>kolmkümmend seitse</td><td>37</td></tr>
+            <tr><td>kolmkümmend kaheksa</td><td>38</td></tr>
+            <tr><td>kolmkümmend üheksa</td><td>39</td></tr>
+            <tr><td>nelikümmend</td><td>40</td></tr>
+            <tr><td>nelikümmend üks</td><td>41</td></tr>
+            <tr><td>nelikümmend kaks</td><td>42</td></tr>
+            <tr><td>nelikümmend kolm</td><td>43</td></tr>
+            <tr><td>nelikümmend neli</td><td>44</td></tr>
+            <tr><td>nelikümmend viis</td><td>45</td></tr>
+            <tr><td>nelikümmend kuus</td><td>46</td></tr>
+            <tr><td>nelikümmend seitse</td><td>47</td></tr>
+            <tr><td>nelikümmend kaheksa</td><td>48</td></tr>
+            <tr><td>nelikümmend üheksa</td><td>49</td></tr>
+            <tr><td>viiskümmend</td><td>50</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 15 - Physical Appearance -->
+    <details class="card" id="lesson-15">
+      <summary><span class="pill">15</span> Lesson 15 — Physical Appearance <span class="tag red">People</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>pikk = Tall</li><li>lühike = Short (height)</li><li>sale = Slim</li><li>paks = Fat</li><li>lihaseline = Muscular</li>
+          <li>blond = Blonde (hair)</li><li>pruunide juustega = Brown-haired</li><li>mustade juustega = Black-haired</li><li>lokkis juuksed = Curly Hair</li><li>sirged juuksed = Straight Hair</li>
+          <li>sinised silmad = Blue Eyes</li><li>pruunid silmad = Brown Eyes</li><li>rohelised silmad = Green Eyes</li><li>ilus = Beautiful</li><li>nägus = Handsome</li>
+          <li>kole = Ugly</li><li>noor = Young</li><li>vana = Old</li><li>habe = Beard</li><li>hele nahk = Light-skinned</li>
+          <li>tume nahk = Dark-skinned</li><li>tedretähnid = Freckles</li><li>kortsud = Wrinkles</li><li>kiilakas = Bald</li><li>karvane = Hairy (body)</li>
+          <li>sirge nina = Straight Nose</li><li>suur nina = Big Nose</li><li>väike nina = Small Nose</li><li>õhukesed huuled = Thin Lips</li><li>täidlased huuled = Full Lips</li>
+          <li>laiad õlad = Broad Shoulders</li><li>kitsad õlad = Narrow Shoulders</li><li>päevitunud nahk = Tanned Skin</li><li>kahvatu nahk = Pale Skin</li><li>lainelised juuksed = Wavy Hair</li>
+          <li>hobusesaba = Ponytail</li><li>patsid = Braids</li><li>habe ja vuntsid = Beard and Mustache</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 16 - Occupations -->
+    <details class="card" id="lesson-16">
+      <summary><span class="pill">16</span> Lesson 16 — Occupations <span class="tag blue">People</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>arst = Doctor</li><li>õpetaja = Teacher</li><li>insener = Engineer</li><li>jurist = Lawyer</li><li>müüja = Salesperson</li>
+          <li>politseinik = Police Officer</li><li>tuletõrjuja = Firefighter</li><li>programmeerija = Programmer</li><li>kokk = Cook/Chef</li><li>ajakirjanik = Journalist</li>
+          <li>õde = Nurse</li><li>arhitekt = Architect</li><li>raamatupidaja = Accountant</li><li>apteeker = Pharmacist</li><li>autojuht = Driver</li>
+          <li>mehaanik = Mechanic</li><li>teadlane = Scientist</li><li>hambaarst = Dentist</li><li>muusik = Musician</li><li>näitleja = Actor</li>
+          <li>kunstnik = Artist</li><li>piloot = Pilot</li><li>talunik = Farmer</li><li>fotograaf = Photographer</li><li>ettekandja = Waiter/Waitress</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 17 - Sports -->
+    <details class="card" id="lesson-17">
+      <summary><span class="pill">17</span> Lesson 17 — Sports <span class="tag green">Hobbies</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>jalgpall = Football / Soccer</li><li>korvpall = Basketball</li><li>võrkpall = Volleyball</li><li>tennis = Tennis</li><li>ujumine = Swimming</li>
+          <li>jooksmine / kergejõustik = Running / Athletics</li><li>jäähoki = Ice Hockey</li><li>suusatamine = Skiing</li><li>jalgrattasõit = Cycling</li><li>poks = Boxing</li>
+          <li>võitluskunst = Martial Arts</li><li>golf = Golf</li><li>lauatennis = Table Tennis</li><li>maadlus = Wrestling</li><li>käsipall = Handball</li>
+          <li>pesapall = Baseball</li><li>lainelauasõit = Surfing</li><li>uisutamine = Skating</li><li>ratsutamine = Horse Riding</li><li>sukeldumine = Diving</li>
+          <li>kriket = Cricket</li><li>ragbi = Rugby</li><li>ballett = Ballet</li><li>keegel = Bowling</li><li>tõstmine = Weightlifting</li>
+          <li>purjelauasõit = Windsurfing</li><li>uisutamine = Ice Skating</li><li>sõudmine = Rowing</li><li>vibulaskmine = Archery</li><li>ronimine = Climbing</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 18 - Numbers 51-75 -->
+    <details class="card" id="lesson-18">
+      <summary><span class="pill">18</span> Lesson 18 — 51–75 <span class="tag blue">Numbers</span></summary>
+      <div class="content">
+        <table>
+          <tbody>
+            <tr><td>viiskümmend üks</td><td>51</td></tr>
+            <tr><td>viiskümmend kaks</td><td>52</td></tr>
+            <tr><td>viiskümmend kolm</td><td>53</td></tr>
+            <tr><td>viiskümmend neli</td><td>54</td></tr>
+            <tr><td>viiskümmend viis</td><td>55</td></tr>
+            <tr><td>viiskümmend kuus</td><td>56</td></tr>
+            <tr><td>viiskümmend seitse</td><td>57</td></tr>
+            <tr><td>viiskümmend kaheksa</td><td>58</td></tr>
+            <tr><td>viiskümmend üheksa</td><td>59</td></tr>
+            <tr><td>kuuskümmend</td><td>60</td></tr>
+            <tr><td>kuuskümmend üks</td><td>61</td></tr>
+            <tr><td>kuuskümmend kaks</td><td>62</td></tr>
+            <tr><td>kuuskümmend kolm</td><td>63</td></tr>
+            <tr><td>kuuskümmend neli</td><td>64</td></tr>
+            <tr><td>kuuskümmend viis</td><td>65</td></tr>
+            <tr><td>kuuskümmend kuus</td><td>66</td></tr>
+            <tr><td>kuuskümmend seitse</td><td>67</td></tr>
+            <tr><td>kuuskümmend kaheksa</td><td>68</td></tr>
+            <tr><td>kuuskümmend üheksa</td><td>69</td></tr>
+            <tr><td>seitsekümmend</td><td>70</td></tr>
+            <tr><td>seitsekümmend üks</td><td>71</td></tr>
+            <tr><td>seitsekümmend kaks</td><td>72</td></tr>
+            <tr><td>seitsekümmend kolm</td><td>73</td></tr>
+            <tr><td>seitsekümmend neli</td><td>74</td></tr>
+            <tr><td>seitsekümmend viis</td><td>75</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+
+    <!-- Lesson 19 - Clothing -->
+    <details class="card" id="lesson-19">
+      <summary><span class="pill">19</span> Lesson 19 — Clothing <span class="tag red">Fashion</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>särk = Shirt</li><li>T-särk = T-shirt</li><li>pluus = Blouse</li><li>kampsun = Sweater / Jumper</li><li>jakk = Jacket</li>
+          <li>mantel = Coat</li><li>kleit = Dress</li><li>seelik = Skirt</li><li>püksid = Pants / Trousers</li><li>lühikesed püksid = Shorts</li>
+          <li>kingad = Shoes</li><li>saapad = Boots</li><li>tossud = Sneakers</li><li>sandaalid = Sandals</li><li>müts = Hat / Cap</li>
+          <li>sall = Scarf</li><li>kindad = Gloves</li><li>vöö = Belt</li><li>sokid = Socks</li><li>talvemantel = Winter Coat</li>
+          <li>villane müts = Wool Hat</li><li>lumesaapad = Snow Boots</li><li>ujumisriided = Swimsuit</li><li>päikeseprillid = Sunglasses</li><li>plätud = Flip-flops</li>
+          <li>top = Tank Top</li><li>ülikond = Suit</li><li>lips = Tie</li><li>bleiser = Blazer</li><li>kontsaga kingad = High Heels</li>
+          <li>õhtukleit = Evening Dress</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 20 - Adverbs -->
+    <details class="card" id="lesson-20">
+      <summary><span class="pill">20</span> Lesson 20 — Adverbs <span class="tag green">Grammar</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>kiiresti = quickly</li><li>aeglaselt = slowly</li><li>alati = always</li><li>mitte kunagi = never</li><li>sageli = often</li>
+          <li>mõnikord = sometimes</li><li>harva = rarely</li><li>juba = already</li><li>ikka = still</li><li>veel = yet</li>
+          <li>varsti = soon</li><li>nüüd = now</li><li>hiljem = later</li><li>täna = today</li><li>homme = tomorrow</li>
+          <li>eile = yesterday</li><li>selgelt = clearly</li><li>koos = together</li><li>lahku = apart</li><li>igavesti = forever</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 21 - Animals -->
+    <details class="card" id="lesson-21">
+      <summary><span class="pill">21</span> Lesson 21 — Animals <span class="tag blue">Nature</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>koer = dog</li><li>kass = cat</li><li>hobune = horse</li><li>lehm = cow</li><li>lammas = sheep</li>
+          <li>siga = pig</li><li>kits = goat</li><li>kana = chicken</li><li>part = duck</li><li>lind = bird</li>
+          <li>jänes = rabbit</li><li>hiir = mouse</li><li>lõvi = lion</li><li>tiiger = tiger</li><li>karu = bear</li>
+          <li>elevant = elephant</li><li>ahv = monkey</li><li>rebane = fox</li><li>hunt = wolf</li><li>hirv = deer</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 22 - Numbers 76-110 -->
+    <details class="card" id="lesson-22">
+      <summary><span class="pill">22</span> Lesson 22 — 76–110 <span class="tag red">Numbers</span></summary>
+      <div class="content">
+        <p class="muted">Content for this section has not been added yet. If you have a ready list, send it and I'll fill it in.</p>
+      </div>
+    </details>
+
+    <!-- Lesson 23 - Places in Town -->
+    <details class="card" id="lesson-23">
+      <summary><span class="pill">23</span> Lesson 23 — Places in Town <span class="tag green">City</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>kool = school</li><li>haigla = hospital</li><li>pank = bank</li><li>restoran = restaurant</li><li>raamatukogu = library</li>
+          <li>supermarket = supermarket</li><li>kino = cinema</li><li>postkontor = post office</li><li>politseijaoskond = police station</li><li>park = park</li>
+          <li>muuseum = museum</li><li>teater = theatre</li><li>hotell = hotel</li><li>staadion = stadium</li><li>kirik = church</li>
+          <li>apteek = pharmacy</li><li>pagariäri = bakery</li><li>lihunik = butcher</li><li>turg = market</li><li>juuksur = hairdresser</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 24 - School Supplies -->
+    <details class="card" id="lesson-24">
+      <summary><span class="pill">24</span> Lesson 24 — School Supplies <span class="tag blue">School</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>raamat = book</li><li>pliiats = pen</li><li>harilik pliiats = pencil</li><li>kustutuskumm = eraser</li><li>märkmik = notebook</li>
+          <li>joonlaud = ruler</li><li>käärid = scissors</li><li>seljakott = backpack</li><li>kaust = folder</li><li>kalkulaator = calculator</li>
+          <li>marker = marker</li><li>kriit = chalk</li><li>kaart = map</li><li>marker = highlighter</li><li>projektor = projector</li>
+          <li>sülearvuti = laptop</li><li>printer = printer</li><li>USB-mälupulk = USB stick</li><li>koolikott = schoolbag</li><li>teritaja = sharpener</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 25 - Transportation -->
+    <details class="card" id="lesson-25">
+      <summary><span class="pill">25</span> Lesson 25 — Transportation <span class="tag red">Travel</span></summary>
+      <div class="content">
+        <div class="list">
+          <li>auto = car</li><li>buss = bus</li><li>rong = train</li><li>jalgratas = bicycle</li><li>mootorratas = motorcycle</li>
+          <li>lennuk = airplane</li><li>paat = boat</li><li>tramm = tram</li><li>takso = taxi</li><li>metroo = subway</li>
+          <li>parvlaev = ferry</li><li>jaht = yacht</li><li>kuumaõhupall = hot air balloon</li><li>kosmoselaev = spaceship</li><li>rikša = rickshaw</li>
+          <li>gondel = gondola</li><li>tsepeliin = zeppelin</li><li>rulluisud = rollerblades</li><li>kanuu = canoe</li><li>allveelaev = submarine</li>
+        </div>
+      </div>
+    </details>
+
+    <!-- Lesson 26 - Numbers 111-150 -->
+    <details class="card" id="lesson-26">
+      <summary><span class="pill">26</span> Lesson 26 — 111–150 <span class="tag green">Numbers</span></summary>
+      <div class="content">
+        <p class="muted">Content for this section has not been added yet.</p>
+      </div>
+    </details>
+
+    <!-- Lesson 27 - Past Simple -->
+    <details class="card" id="lesson-27">
+      <summary><span class="pill">27</span> Lesson 27 — Past Simple <span class="tag blue">Grammar</span></summary>
+      <div class="content"><p class="muted">Content to be added.</p></div>
+    </details>
+
+    <!-- Lesson 28 - Personality Traits -->
+    <details class="card" id="lesson-28">
+      <summary><span class="pill">28</span> Lesson 28 — Personality Traits <span class="tag red">People</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 29 - Present Perfect -->
+    <details class="card" id="lesson-29">
+      <summary><span class="pill">29</span> Lesson 29 — Present Perfect <span class="tag green">Grammar</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 30 - Numbers 151-190 -->
+    <details class="card" id="lesson-30">
+      <summary><span class="pill">30</span> Lesson 30 — 151–190 <span class="tag blue">Numbers</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 31 - Countries -->
+    <details class="card" id="lesson-31">
+      <summary><span class="pill">31</span> Lesson 31 — Countries <span class="tag red">Geography</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 32 - Ordering -->
+    <details class="card" id="lesson-32">
+      <summary><span class="pill">32</span> Lesson 32 — Ordering <span class="tag green">Dialogue</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 33 - Shops in Town -->
+    <details class="card" id="lesson-33">
+      <summary><span class="pill">33</span> Lesson 33 — Shops in Town <span class="tag blue">City</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 34 - Numbers 191-230 -->
+    <details class="card" id="lesson-34">
+      <summary><span class="pill">34</span> Lesson 34 — 191–230 <span class="tag red">Numbers</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 35 - Things in the Street -->
+    <details class="card" id="lesson-35">
+      <summary><span class="pill">35</span> Lesson 35 — Things in the Street <span class="tag green">City</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+    <!-- Lesson 36 - Instruments -->
+    <details class="card" id="lesson-36">
+      <summary><span class="pill">36</span> Lesson 36 — Instruments <span class="tag blue">Music</span></summary>
+      <div class="content"><p class="muted">İçerik eklenecek.</p></div>
+    </details>
+
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>🇪🇪 Ready to Learn Estonian?</h3>
+        <p>Start your Estonian journey with 36 lessons, 1000+ words and interactive exercises!</p>
+      </div>
+      <a href="EstonianTest.html" class="practice-btn">
+        🎯 Start Practice Test
+      </a>
+    </div>
+    <div class="footer-meta">
+      Prepared with <span class="mono">UTF-8</span> encoding • Estonian special characters (õ, ü, ä, ö) are supported
+    </div>
+  </footer>
+
+  <script>
+    // Quick nav builder
+    const nav = document.getElementById('nav');
+    const cards = [...document.querySelectorAll('details.card')];
+    nav.innerHTML = cards.map(c => {
+      const id = c.id; const title = c.querySelector('summary').textContent.trim();
+      return `<a href="#${id}">${title}</a>`;
+    }).join('');
+
+    // Search/filter
+    const q = document.getElementById('q');
+    q.addEventListener('input', () => {
+      const term = q.value.toLowerCase().trim();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.classList.toggle('hide', term && !text.includes(term));
+        if(term && text.includes(term)) card.setAttribute('open','');
+      });
+    });
+
+    // Expand/collapse
+    document.getElementById('expand').onclick = () => cards.forEach(c => c.setAttribute('open',''));
+    document.getElementById('collapse').onclick = () => cards.forEach(c => c.removeAttribute('open'));
+
+    // Quiz validation
+    document.querySelectorAll('.quiz').forEach(inp => {
+      const ans = inp.dataset.answer;
+      const ok = () => { inp.style.borderColor = 'var(--ok)'; inp.style.background = 'color-mix(in srgb, var(--ok) 18%, transparent)'; };
+      const bad = () => { inp.style.borderColor = 'var(--red)'; inp.style.background = 'color-mix(in srgb, var(--red) 12%, transparent)'; };
+      inp.addEventListener('input', () => (inp.value.trim() === ans ? ok() : bad()));
+    });
+  </script>
+</body>
+</html>

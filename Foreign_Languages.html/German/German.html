@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>German Lessons (HTML Version)</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #121933;
+            --text: #f0f3ff;
+            --muted: #aab3d6;
+            --accent: #7aa2f7;
+            --section: #99f6e4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, #0b1020, #0e1530 50%, #0b1020 100%);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(11, 16, 32, 0.85);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(122, 162, 247, 0.2);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+
+        h1 {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+            margin: .3rem 0;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: .95rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 64px;
+            align-self: start;
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: .75rem;
+            max-height: calc(100vh - 96px);
+            overflow: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        nav h3 {
+            margin: .3rem 0 .6rem;
+            color: var(--section);
+            font-size: 1rem;
+        }
+
+        nav a {
+            display: block;
+            padding: .35rem .5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: .95rem;
+        }
+
+        nav a:hover {
+            background: rgba(122, 162, 247, .15);
+        }
+
+        main {
+            background: var(--card);
+            border: 1px solid rgba(122, 162, 247, 0.18);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        section {
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px dashed rgba(122, 162, 247, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--section);
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-bottom: .2rem;
+        }
+
+        ul {
+            margin: .2rem 0 .6rem 1.1rem;
+        }
+
+        li {
+            margin: .15rem 0;
+        }
+
+        .mono {
+            white-space: pre-wrap;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+            line-height: 1.4;
+        }
+
+        footer {
+            color: var(--muted);
+            font-size: .85rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .practice-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent), var(--section));
+            color: #0b1020;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(122, 162, 247, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+
+        .practice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(122, 162, 247, 0.4);
+        }
+
+        @media (max-width: 860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>🇩🇪 German Lessons</h1>
+            <p class="subtitle">Complete beginner's guide to learning German</p>
+        </div>
+    </header>
+
+    <div class="container grid">
+        <nav>
+            <h3>Contents</h3>
+            <a href="#l1">Lesson 1 — Numbers (1–10)</a>
+            <a href="#l2">Lesson 2 — Greetings</a>
+            <a href="#l3">Lesson 3 — Regular Verbs</a>
+            <a href="#l31">Lesson 3.1 — Present Tense</a>
+            <a href="#l4">Lesson 4 — Adjectives</a>
+            <a href="#l5">Lesson 5 — Days & Months</a>
+            <a href="#l6">Lesson 6 — Seasons & Weather</a>
+            <a href="#l7">Lesson 7 — Colors</a>
+            <a href="#l8">Lesson 8 — Family & Friends</a>
+            <a href="#l9">Lesson 9 — Numbers (11–30)</a>
+            <a href="#l10">Lesson 10 — Prepositions & Useful Words</a>
+            <a href="#l11">Lesson 11 — Drinks & Meals</a>
+            <a href="#l12">Lesson 12 — Numbers (31–50)</a>
+            <a href="#l13">Lesson 13 — Irregular Verbs</a>
+            <a href="#l14">Lesson 14 — Present Simple</a>
+            <a href="#l15">Lesson 15 — Physical Appearance</a>
+            <a href="#l16">Lesson 16 — Occupations</a>
+            <a href="#l17">Lesson 17 — Sports</a>
+            <a href="#l18">Lesson 18 — Numbers (51–75)</a>
+            <a href="#l19">Lesson 19 — Clothing</a>
+            <a href="#l20">Lesson 20 — Adverbs</a>
+            <a href="#l21">Lesson 21 — Animals</a>
+            <a href="#l22">Lesson 22 — Places in Town</a>
+            <a href="#l23">Lesson 23 — School Supplies</a>
+            <a href="#l24">Lesson 24 — Transportation</a>
+            <a href="#l25">Lesson 25 — Numbers (76–110)</a>
+        </nav>
+
+        <main>
+            <section id="l1">
+                <h2>Lesson 1 — Numbers (1–10)</h2>
+                <div class="mono">
+Numbers from 1 to 10
+eins = 1, zwei = 2, drei = 3, vier = 4, fünf = 5, sechs = 6, sieben = 7, acht = 8, neun = 9, zehn = 10
+                </div>
+            </section>
+
+            <section id="l2">
+                <h2>Lesson 2 — Greetings</h2>
+                <ul>
+                    <li><b>Hallo</b> = Hello</li>
+                    <li>Wie geht es Ihnen = How are you?</li>
+                    <li>Freut mich, Sie kennen zu lernen = Nice to meet you</li>
+                    <li>Bis morgen = See you tomorrow</li>
+                    <li>Guten Morgen = Good morning</li>
+                    <li>Guten Nachmittag = Good afternoon</li>
+                    <li>Guten Abend = Good Evening</li>
+                    <li>Gute Nacht = Good night</li>
+                    <li>Wie heissen sie? = What is your name?</li>
+                    <li>Mein name ist ____ = My name is ___</li>
+                    <li>Wo wohnst du? = Where do you live?</li>
+                    <li>Woher kommen Sie? = Where are you from?</li>
+                    <li>Freut mich, Sie zu sehen = Nice to see you</li>
+                    <li>Ich wünsche Ihnen einen schönen Tag = Have a nice day</li>
+                    <li>Bis später = See you later</li>
+                    <li>Auf Wiedersehen = Goodbye</li>
+                    <li>Bitte = Please</li>
+                    <li>Danke = Thank you</li>
+                </ul>
+            </section>
+
+            <section id="l3">
+                <h2>Lesson 3 — Regular Verbs</h2>
+                <div class="mono">
+arbeiten = to work
+lernen = to learn
+leben = to live
+spielen = to play
+fragen = to ask
+machen = to do / make
+sagen = to say
+kaufen = to buy
+hören = to hear / listen
+wohnen = to live (reside)
+lieben = to love
+reden = to talk
+öffnen = to open
+warten = to wait
+zeigen = to show
+brauchen = to need
+tanzen = to dance
+glauben = to believe
+reisen = to travel
+                </div>
+            </section>
+
+            <section id="l31">
+                <h2>Lesson 3.1 — Present Tense</h2>
+                <div class="mono">
+I = ich
+you = du
+he/she/it = er/sie/es
+we = wir
+you (pl) = ihr
+they = Sie
+
+Example for lernen = to learn
+
+ich lerne
+du lernst
+er/sie/es lernt
+wir lernen
+ihr lernt
+Sie lernen
+                </div>
+            </section>
+
+            <section id="l4">
+                <h2>Lesson 4 — Adjectives</h2>
+                <div class="mono">
+Glücklich = Happy
+Traurig = Sad
+Wütend = Angry
+Angst = Afraid
+Freude = Joy
+Überrascht = Surprised
+Ruhig = Calm
+Gelangweilt = Bored
+Leicht = Easy
+Schwer = Difficult
+Schlecht = Bad
+Gut = Good
+Laut = Noisy
+Leise = Quiet
+Stark = Strong
+Schwach = Weak
+Hart = Hard
+Weich = Soft
+Mehr = More
+Weniger = Less
+Sauber = Clean
+Schmutzig = Dirty
+Alt = Old
+Neu = New
+Groß = Big
+Klein = Small
+Jung = Young
+Dünn = Skinny
+Dick = Fat
+Hübsch = Pretty
+Hässlich = Ugly
+Dick = Thick
+Dünn = Thin
+Rau = Rough
+Glatt = Smooth
+                </div>
+            </section>
+
+            <section id="l5">
+                <h2>Lesson 5 — Days and Months</h2>
+                <h3>5.1 — Days of the week</h3>
+                <div class="mono">
+Die Wochentage = The days of the week
+(der) Tag = Day
+(die) Woche = Week
+Montag = Monday
+Dienstag = Tuesday
+Mittwoch = Wednesday
+Donnerstag = Thursday
+Freitag = Friday
+Samstag = Saturday
+Sonntag = Sunday
+(das) Wochenende = Weekend
+                </div>
+
+                <h3>5.2 — Months of the year</h3>
+                <div class="mono">
+Die Monate des Jahres = The months of the year
+(der) Monat = Month
+(das) Jahr = Year
+Januar = January
+Februar = February
+März = March
+April = April
+Mai = May
+Juni = June
+Juli = July
+August = August
+September = September
+Oktober = October
+November = November
+Dezember = December
+                </div>
+            </section>
+
+            <section id="l6">
+                <h2>Lesson 6 — Seasons and Weather</h2>
+                <div class="mono">
+Jahreszeiten = Seasons
+(der) Winter = Winter
+(der) Sommer = Summer
+(der) Frühling = Spring
+(der) Herbst = Autumn
+(der) Himmel = Sky
+(die) Wolke = Cloud
+(der) Regenbogen = Rainbow
+Kalt = Cold (weather)
+Heiß = Hot (weather)
+Es ist heiß = It is hot
+Es ist kalt = It is cold
+Es ist sonnig = It is sunny
+Es ist bewölkt = It is cloudy
+Es ist schwül = It is humid
+Es regnet = It is raining
+Es schneit = It is snowing
+Es ist windig = It is windy
+Wie ist das Wetter? = How is the weather?
+Gutes Wetter = Good weather
+Schlechtes Wetter = Bad weather
+Wie viel Grad ist es? = What is the temperature?
+Es ist vierundzwanzig Grad = It is 24 degrees
+                </div>
+            </section>
+
+            <section id="l7">
+                <h2>Lesson 7 — Colors</h2>
+                <div class="mono">
+Schwarz = Black
+Blau = Blue
+Braun = Brown
+Grün = Green
+Orange = Orange
+Lila = Purple
+Rot = Red
+Weiß = White
+Gelb = Yellow
+Grau = Gray
+Gold = Gold
+Silber = Silver
+Welche Farbe ist das? = What color is it?
+Das ist ___ = The color is ___
+                </div>
+            </section>
+
+            <section id="l8">
+                <h2>Lesson 8 — Family and Friends</h2>
+                <h3>8.1 — Family members</h3>
+                <div class="mono">
+(die) Mutter = Mother
+(der) Vater = Father
+(der) Bruder = Brother
+(die) Schwester = Sister
+(der) Sohn = Son
+(die) Tochter = Daughter
+(die) Eltern = Parents
+(die) Kinder = Children
+(das) Kind = Child
+(die) Stiefmutter = Stepmother
+(der) Stiefvater = Stepfather
+(die) Stiefschwester = Stepsister
+(der) Stiefbruder = Stepbrother
+(der) Schwiegersohn = Son-in-law
+(die) Schwiegertochter = Daughter-in-law
+(die) Ehefrau = Wife
+(der) Ehemann = Husband
+(die) Großeltern = Grandparents
+(der) Opa = Grandfather
+(die) Oma = Grandmother
+(der) Enkel = Grandson
+(die) Enkelin = Granddaughter
+(die) Enkelkinder = Grandchildren
+(das) Enkelkind = Grandchild
+(die) Tante = Aunt
+(der) Onkel = Uncle
+(die) Cousine = Cousin (female)
+(der) Cousin = Cousin (male)
+(der) Neffe = Nephew
+(die) Nichte = Niece
+(der) Schwiegervater = Father-in-law
+(die) Schwiegermutter = Mother-in-law
+(der) Schwager = Brother-in-law
+(die) Schwägerin = Sister-in-law
+(der) Verwandter = Relative
+                </div>
+
+                <h3>8.2 — Friends</h3>
+                <div class="mono">
+Fräulein = Miss
+(der) Junge = Boy
+(das) Mädchen = Girl
+(das) Baby = Baby
+(die) Frau = Woman
+(der) Mann = Man
+(der) Freund = Friend (male)
+(die) Freundin = Friend (female)
+(der) Freund = Boyfriend
+(die) Freundin = Girlfriend
+(der) Gentleman = Gentleman
+(die) Dame = Lady
+(der) Nachbar = Neighbor (male)
+(die) Nachbarin = Neighbor (female)
+                </div>
+            </section>
+
+            <section id="l9">
+                <h2>Lesson 9 — Numbers (11–30)</h2>
+                <div class="mono">
+Elf = 11
+Zwölf = 12
+Dreizehn = 13
+Vierzehn = 14
+Fünfzehn = 15
+Sechzehn = 16
+Siebzehn = 17
+Achtzehn = 18
+Neunzehn = 19
+Zwanzig = 20
+Einundzwanzig = 21
+Zweiundzwanzig = 22
+Dreiundzwanzig = 23
+Vierundzwanzig = 24
+Fünfundzwanzig = 25
+Sechsundzwanzig = 26
+Siebenundzwanzig = 27
+Achtundzwanzig = 28
+Neunundzwanzig = 29
+Dreißig = 30
+                </div>
+            </section>
+
+            <section id="l10">
+                <h2>Lesson 10 — Prepositions and Useful words</h2>
+                <h3>10.1 — Prepositions</h3>
+                <div class="mono">
+Für = For
+Von = From
+In = In
+Drinnen = Inside
+In = Into
+Nah = Near
+Von = Of
+Aus = Out
+Draußen = Outside
+Zu = To
+Unter = Under
+Mit = With
+Ohne = Without
+Über = Above
+Über = Across
+Nach = After
+Gegen = Against
+Entlang = Along
+Um = Around
+Am = At
+Hinter = Behind
+Unten = Below
+Neben = Beside
+Zwischen = Between
+An = By
+Während = During
+Außer = Except
+Und = And
+Weil = Because
+Aber = But
+Oder = Or
+Überall = Everywhere
+Jeder = Everyone
+Alles = Everything
+Wenige = Few
+Einige = Some
+Viele = Many
+                </div>
+
+                <h3>10.2 — Useful Words</h3>
+                <div class="mono">
+(die) Frage = Question
+(die) Antwort = Answer
+(die) Wahrheit = Truth
+(die) Lüge = Lie
+Nichts = Nothing
+Etwas = Something
+Gleich = Same
+Unterschiedlich = Different
+Ziehen = Pull
+Drücken = Push
+Lang = Long
+Kurz = Short
+Kalt = Cold
+Heiß = Hot
+Hell = Light
+Dunkel = Dark
+Nass = Wet
+Trocken = Dry
+Leer = Empty
+Voll = Full
+Wie? = How?
+Was? = What?
+Wann? = When?
+Wo? = Where?
+Welche? = Which?
+Wer? = Who?
+Warum? = Why?
+Wie lange? = How long?
+Wie viel? = How much?
+                </div>
+            </section>
+
+            <section id="l11">
+                <h2>Lesson 11 — Drinks and Meals</h2>
+                <h3>11.1 — Drinks</h3>
+                <div class="mono">
+(der) Kaffee = Coffee
+(der) Tee = Tea
+(das) Erfrischungsgetränk = Soft drink
+(das) Wasser = Water
+(die) Zitronenlimonade = Lemonade
+(der) Saft = Juice
+(der) Orangensaft = Orange juice
+Ich hätte gerne ein Glas Wasser, bitte = I would like a glass of water please
+Mit Eis = With ice
+                </div>
+
+                <h3>11.2 — Dairy Products & Bakery</h3>
+                <div class="mono">
+(die) Milch = Milk
+(das) Eis = Ice cream
+(die) Butter = Butter
+(der) Käse = Cheese
+(der) Hüttenkäse = Cottage cheese
+(die) Sahne = Cream
+(die) Saure Sahne = Sour cream
+(der) Joghurt = Yogurt
+(die) Eier = Eggs
+(die) Schlagsahne = Whipping cream
+(die) Bäckerei = Bakery
+(das) Baguette = Baguette
+(der) Krapfen = Doughnut
+(das) Plätzchen = Cookie
+(das) Brötchen = Roll
+(der) Nachtisch = Dessert
+(der) Kuchen = Cake
+(das) Brot = Bread
+(die) Torte = Pie
+                </div>
+
+                <h3>11.3 — Meats</h3>
+                <div class="mono">
+(das) Rindfleisch = Beef
+(das) Kalbfleisch = Veal
+(der) Schinken = Ham
+(das) Huhn = Chicken
+(die) Pute = Turkey
+(die) Ente = Duck
+(der) Speck = Bacon
+(das) Schweinefleisch = Pork
+(das) Filet Mignon = Filet mignon
+(die) Wurst = Sausage
+(das) Lammkotelett = Lamb chop
+(das) Schweinekotelett = Pork chop
+(das) Fleisch = Meat
+                </div>
+
+                <h3>11.4 — Seafoods</h3>
+                <div class="mono">
+(der) Fisch = Fish
+(die) Schalentier = Shellfish
+(der) Barsch = Bass
+(der) Lachs = Salmon
+(der) Hummer = Lobster
+(die) Krabbe = Crab
+(die) Muscheln = Mussel
+(die) Austern = Oyster
+(der) Kabeljau = Cod
+(die) Venusmuscheln = Clam
+(die) Garnelen = Shrimp
+(der) Thunfisch = Tuna
+(die) Forelle = Trout
+(die) Seezunge = Sole
+(der) Hai = Shark
+(der) Karpfen = Carp
+(der) Tilapia = Tilapia
+(der) Aal = Eel
+(der) Wels = Catfish
+(der) Schwertfisch = Swordfish
+                </div>
+
+                <h3>11.5 — Herbs and Spices</h3>
+                <div class="mono">
+(das) Salz = Salt
+(der) Pfeffer = Pepper
+(der) Kümmel = Caraway
+(der) Knoblauch = Garlic
+(das) Basilikum = Basil
+(der) Koriander = Coriander
+(der) Fenchel = Fennel
+(der) Majoran = Marjoram
+(der) Oregano = Oregano
+(die) Petersilie = Parsley
+(der) Rosmarin = Rosemary
+(der) Salbei = Sage
+(der) Thymian = Thyme
+(die) Muskatnuss = Nutmeg
+(der) Paprika = Paprika
+(der) Cayenne-Pfeffer = Cayenne
+(der) Ingwer = Ginger
+                </div>
+
+                <h3>11.6 — Vegetables</h3>
+                <div class="mono">
+(der) Sellerie = Celery
+(die) Aubergine = Eggplant
+(die) Zucchini = Zucchini
+(die) Zwiebel = Onion
+(der) Spinat = Spinach
+(der) Salat = Salad
+(die) Grüne Bohnen = Green beans
+(die) Gurke = Cucumber
+(das) Radieschen = Radish
+(der) Kohl = Cabbage
+(die) Pilze = Mushrooms
+(der) Salat = Lettuce
+(der) Mais = Corn
+(die) Kartoffeln = Potatoes
+(die) Tomate = Tomato
+(die) Möhre = Carrot
+(die) Kochbanane = Plantain
+(die) Bohnen = Beans
+(der) Lauch = Leek
+(die) Lotuswurzel = Lotus root
+(die) Bambussprosse = Bamboo shoot
+(die) Artischocke = Artichoke
+(der) Spargel = Asparagus
+(der) Rosenkohl = Brussels sprouts
+(der) Brokkoli = Broccoli
+(die) Erbsen = Peas
+(der) Blumenkohl = Cauliflower
+(der) Chili-Pfeffer = Chili pepper
+                </div>
+
+                <h3>11.7 — Fruits</h3>
+                <div class="mono">
+(die) Kirschen = Cherries
+(die) Himbeeren = Raspberries
+(die) Heidelbeeren = Blueberries
+(die) Erdbeeren = Strawberries
+(die) Zitrone = Lemon
+(die) Limette = Lime
+(der) Apfel = Apple
+(die) Orange = Orange
+(die) Birne = Pear
+(die) Banane = Banana
+(die) Trauben = Grapes
+(die) Grapefruit = Grapefruit
+(die) Wassermelone = Watermelon
+(die) Ananas = Pineapple
+(die) Pflaume = Plum
+(der) Pfirsich = Peach
+(die) Mango = Mango
+(die) Aprikose = Apricot
+(der) Granatapfel = Pomegranate
+(die) Kaki = Persimmon
+(die) Kiwi-Frucht = Kiwi
+(die) Litschi = Litchi
+(die) Longan-Frucht = Longan
+(die) Balsam-Birne = Balsam pear
+(die) Passionsfrucht = Passion fruit
+(die) Avocado = Avocado
+(die) Kokosnuss = Coconut
+                </div>
+            </section>
+
+            <section id="l12">
+                <h2>Lesson 12 — Numbers (31–50)</h2>
+                <div class="mono">
+einunddreißig = 31
+zweiunddreißig = 32
+dreiunddreißig = 33
+vierunddreißig = 34
+fünfunddreißig = 35
+sechsunddreißig = 36
+siebenunddreißig = 37
+achtunddreißig = 38
+neununddreißig = 39
+vierzig = 40
+einundvierzig = 41
+zweiundvierzig = 42
+dreiundvierzig = 43
+vierundvierzig = 44
+fünfundvierzig = 45
+sechsundvierzig = 46
+siebenundvierzig = 47
+achtundvierzig = 48
+neunundvierzig = 49
+fünfzig = 50
+                </div>
+            </section>
+
+            <section id="l13">
+                <h2>Lesson 13 — Irregular Verbs</h2>
+                <div class="mono">
+sein = to be
+haben = to have
+gehen = to go
+kommen = to come
+sehen = to see
+geben = to give
+essen = to eat
+trinken = to drink
+wissen = to know (fact)
+wollen = to want
+finden = to find
+laufen = to run
+sitzen = to sit
+liegen = to lie down
+stehen = to stand
+verstehen = to understand
+sagen = to say
+nehmen = to take
+schreiben = to write
+fallen = to fall
+beginnen = to begin
+brechen = to break
+bauen = to build
+wählen = to choose
+machen = to do/make
+fahren = to drive
+vergessen = to forget
+bekommen = to get
+hören = to hear
+halten = to hold
+verlassen = to leave
+treffen = to meet
+bezahlen = to pay
+legen/stellen = to put
+lesen = to read
+senden = to send
+schlafen = to sleep
+sprechen = to speak
+verbringen = to spend (time)
+schwimmen = to swim
+lehren = to teach
+erzählen = to tell
+denken = to think
+werfen = to throw
+gewinnen = to win
+bringen = to bring
+                </div>
+            </section>
+
+            <section id="l14">
+                <h2>Lesson 14 — Present Simple</h2>
+                <div class="mono">
+Example for sein = to be, essen = to eat, gehen = to go
+
+ich bin - ich esse - ich gehe
+du bist - du isst - du gehst
+er/sie/es ist - er/sie/es isst - er/sie/es geht
+wir sind - wir essen - wir gehen
+ihr seid - ihr esst - ihr geht
+sie sind - sie essen - sie gehen
+                </div>
+            </section>
+
+            <section id="l15">
+                <h2>Lesson 15 — Physical Appearance</h2>
+                <div class="mono">
+groß = Tall
+klein = Short (height)
+schlank = Slim
+dick = Fat
+muskulös = Muscular
+blond = Blonde (hair)
+braunhaarig = Brown-haired
+schwarzhaarig = Black-haired
+lockiges Haar = Curly Hair
+glattes Haar = Straight Hair
+blaue Augen = Blue Eyes
+braune Augen = Brown Eyes
+grüne Augen = Green Eyes
+schön = Beautiful
+gutaussehend = Handsome
+hässlich = Ugly
+jung = Young
+alt = Old
+Bart = Beard
+helle Haut = Light-skinned
+dunkle Haut = Dark-skinned
+Sommersprossen = Freckles
+Falten = Wrinkles
+kahl = Bald
+behaart = Hairy (body)
+gerade Nase = Straight Nose
+große Nase = Big Nose
+kleine Nase = Small Nose
+schmale Lippen = Thin Lips
+volle Lippen = Full Lips
+breite Schultern = Broad Shoulders
+schmale Schultern = Narrow Shoulders
+gebräunte Haut = Tanned Skin
+blasse Haut = Pale Skin
+welliges Haar = Wavy Hair
+Pferdeschwanz = Ponytail
+Zöpfe = Braids
+Bart und Schnurrbart = Beard and Mustache
+                </div>
+            </section>
+
+            <section id="l16">
+                <h2>Lesson 16 — Occupations</h2>
+                <div class="mono">
+Arzt / Ärztin = Doctor
+Lehrer / Lehrerin = Teacher
+Ingenieur / Ingenieurin = Engineer
+Anwalt / Anwältin = Lawyer
+Verkäufer / Verkäuferin = Salesperson
+Polizist / Polizistin = Police Officer
+Feuerwehrmann / Feuerwehrfrau = Firefighter
+Programmierer / Programmiererin = Programmer
+Koch / Köchin = Cook/Chef
+Journalist / Journalistin = Journalist
+Krankenpfleger / Krankenschwester = Nurse
+Architekt / Architektin = Architect
+Buchhalter / Buchhalterin = Accountant
+Apotheker / Apothekerin = Pharmacist
+Fahrer / Fahrerin = Driver
+Mechaniker / Mechanikerin = Mechanic
+Wissenschaftler / Wissenschaftlerin = Scientist
+Zahnarzt / Zahnärztin = Dentist
+Musiker / Musikerin = Musician
+Schauspieler / Schauspielerin = Actor
+Künstler / Künstlerin = Artist
+Pilot / Pilotin = Pilot
+Landwirt / Landwirtin = Farmer
+Fotograf / Fotografin = Photographer
+Kellner / Kellnerin = Waiter/Waitress
+                </div>
+            </section>
+
+            <section id="l17">
+                <h2>Lesson 17 — Sports</h2>
+                <div class="mono">
+Fußball = Football / Soccer
+Basketball = Basketball
+Volleyball = Volleyball
+Tennis = Tennis
+Schwimmen = Swimming
+Laufen / Leichtathletik = Running / Athletics
+Eishockey = Ice Hockey
+Skifahren = Skiing
+Radfahren = Cycling
+Boxen = Boxing
+Kampfsport = Martial Arts
+Golf = Golf
+Tischtennis = Table Tennis
+Ringen = Wrestling
+Handball = Handball
+Baseball = Baseball
+Surfen = Surfing
+Eislaufen = Skating
+Reiten = Horse Riding
+Tauchen = Diving
+Kricket = Cricket
+Rugby = Rugby
+Ballett = Ballet
+Bowling = Bowling
+Gewichtheben = Weightlifting
+Windsurfen = Windsurfing
+Eislaufen = Ice Skating
+Rudern = Rowing
+Bogenschießen = Archery
+Klettern = Climbing
+                </div>
+            </section>
+
+            <section id="l18">
+                <h2>Lesson 18 — Numbers (51–75)</h2>
+                <div class="mono">
+einundfünfzig = 51
+zweiundfünfzig = 52
+dreiundfünfzig = 53
+vierundfünfzig = 54
+fünfundfünfzig = 55
+sechsundfünfzig = 56
+siebenundfünfzig = 57
+achtundfünfzig = 58
+neunundfünfzig = 59
+sechzig = 60
+einundsechzig = 61
+zweiundsechzig = 62
+dreiundsechzig = 63
+vierundsechzig = 64
+fünfundsechzig = 65
+sechsundsechzig = 66
+siebenundsechzig = 67
+achtundsechzig = 68
+neunundsechzig = 69
+siebzig = 70
+einundsiebzig = 71
+zweiundsiebzig = 72
+dreiundsiebzig = 73
+vierundsiebzig = 74
+fünfundsiebzig = 75
+                </div>
+            </section>
+
+            <section id="l19">
+                <h2>Lesson 19 — Clothing</h2>
+                <div class="mono">
+das Hemd = Shirt
+das T-Shirt = T-shirt
+die Bluse = Blouse
+der Pullover = Sweater / Jumper
+die Jacke = Jacket
+der Mantel = Coat
+das Kleid = Dress
+der Rock = Skirt
+die Hose = Pants / Trousers
+die Shorts = Shorts
+die Schuhe = Shoes
+die Stiefel = Boots
+die Turnschuhe = Sneakers
+die Sandalen = Sandals
+die Mütze / der Hut = Hat / Cap
+der Schal = Scarf
+die Handschuhe = Gloves
+der Gürtel = Belt
+die Socken = Socks
+Wintermantel = Winter Coat
+Wollmütze = Wool Hat
+Schneestiefel = Snow Boots
+Badeanzug = Swimsuit
+Sonnenbrille = Sunglasses
+Flip-Flops = Flip-flops
+Top = Tank Top
+Anzug = Suit
+Krawatte = Tie
+Blazer = Blazer
+High Heels = High Heels
+Abendkleid = Evening Dress
+schwarz = Black
+weiß = White
+rot = Red
+blau = Blue
+grün = Green
+Baumwolle = Cotton
+Wolle = Wool
+Leder = Leather
+Seide = Silk
+Leinen = Linen
+                </div>
+            </section>
+
+            <section id="l20">
+                <h2>Lesson 20 — Adverbs</h2>
+                <div class="mono">
+schnell = quickly
+langsam = slowly
+immer = always
+nie = never
+oft = often
+manchmal = sometimes
+selten = rarely
+schon = already
+noch = still
+noch = yet
+bald = soon
+jetzt = now
+später = later
+heute = today
+morgen = tomorrow
+gestern = yesterday
+klar = clearly
+zusammen = together
+getrennt = apart
+für immer = forever
+                </div>
+            </section>
+
+            <section id="l21">
+                <h2>Lesson 21 — Animals</h2>
+                <div class="mono">
+Hund = dog
+Katze = cat
+Pferd = horse
+Kuh = cow
+Schaf = sheep
+Schwein = pig
+Ziege = goat
+Huhn = chicken
+Ente = duck
+Vogel = bird
+Kaninchen = rabbit
+Maus = mouse
+Löwe = lion
+Tiger = tiger
+Bär = bear
+Elefant = elephant
+Affe = monkey
+Fuchs = fox
+Wolf = wolf
+Reh = deer
+                </div>
+            </section>
+
+            <section id="l22">
+                <h2>Lesson 22 — Places in Town</h2>
+                <div class="mono">
+Schule = school
+Krankenhaus = hospital
+Bank = bank
+Restaurant = restaurant
+Bibliothek = library
+Supermarkt = supermarket
+Kino = cinema
+Post = post office
+Polizeistation = police station
+Park = park
+Museum = museum
+Theater = theatre
+Hotel = hotel
+Stadion = stadium
+Kirche = church
+Apotheke = pharmacy
+Bäckerei = bakery
+Metzgerei = butcher
+Markt = market
+Friseur = hairdresser
+                </div>
+            </section>
+
+            <section id="l23">
+                <h2>Lesson 23 — School Supplies</h2>
+                <div class="mono">
+Buch = book
+Stift = pen
+Bleistift = pencil
+Radiergummi = eraser
+Heft = notebook
+Lineal = ruler
+Schere = scissors
+Rucksack = backpack
+Ordner = folder
+Taschenrechner = calculator
+Marker = marker
+Kreide = chalk
+Karte = map
+Textmarker = highlighter
+Projektor = projector
+Laptop = laptop
+Drucker = printer
+USB-Stick = USB stick
+Schultasche = schoolbag
+Spitzer = sharpener
+                </div>
+            </section>
+
+            <section id="l24">
+                <h2>Lesson 24 — Transportation</h2>
+                <div class="mono">
+Auto = car
+Bus = bus
+Zug = train
+Fahrrad = bicycle
+Motorrad = motorcycle
+Flugzeug = airplane
+Boot = boat
+Straßenbahn = tram
+Taxi = taxi
+U-Bahn = subway
+Fähre = ferry
+Yacht = yacht
+Heißluftballon = hot air balloon
+Raumschiff = spaceship
+Rikscha = rickshaw
+Gondel = gondola
+Zeppelin = zeppelin
+Inlineskates = rollerblades
+Kanu = canoe
+U-Boot = submarine
+                </div>
+            </section>
+
+            <section id="l25">
+                <h2>Lesson 25 — Numbers (76–110)</h2>
+                <p class="subtitle">Content to be added</p>
+            </section>
+
+            <a href="GermanTest.html" class="practice-btn">
+                🎯 Start Practice Test
+            </a>
+        </main>
+    </div>
+
+    <footer>
+        <p>🇩🇪 German Lessons — Complete Beginner's Guide</p>
+        <p>Prepared with UTF-8 encoding • German special characters (ä, ö, ü, ß) supported</p>
+    </footer>
+</body>
+
+</html>
