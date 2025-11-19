@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcelona Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap');
+
+        body {
+            background: #1a1a2e;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(45deg, #c1121f 0%, #780000 50%, #ffc300 100%);
+            padding: 3px;
+            border-radius: 25px;
+            margin-bottom: 50px;
+        }
+
+        .hero-content {
+            background: #1a1a2e;
+            padding: 70px 40px;
+            border-radius: 23px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            top: -30px;
+            left: -20px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-content::after {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            bottom: -30px;
+            right: -20px;
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffc300;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #c1121f 0%, #780000 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 3px solid #ffc300;
+            box-shadow: 0 0 30px rgba(255, 195, 0, 0.3);
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #ffc300;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: center;
+            color: #fff;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-weight: 900;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transform: skew(-5deg);
+        }
+
+        .section-title span {
+            display: inline-block;
+            transform: skew(5deg);
+        }
+
+        .places-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .place-box {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 8px solid #ffc300;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .place-box:nth-child(even) {
+            border-left: none;
+            border-right: 8px solid #c1121f;
+            margin-left: 40px;
+        }
+
+        .place-box:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        .place-box:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(193, 18, 31, 0.4);
+            border-color: #c1121f;
+        }
+
+        .place-box:nth-child(even):hover {
+            border-color: #ffc300;
+        }
+
+        .place-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: linear-gradient(135deg, #c1121f, #ffc300);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            box-shadow: 0 5px 20px rgba(255, 195, 0, 0.5);
+        }
+
+        .place-box:nth-child(even) .place-number {
+            left: auto;
+            right: 30px;
+        }
+
+        .place-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #ffc300;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-card {
+            background: #16213e;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .museum-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .museum-card:hover::before {
+            opacity: 1;
+        }
+
+        .museum-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 195, 0, 0.3);
+        }
+
+        .museum-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #ffc300;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-desc {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-pill {
+            background: linear-gradient(135deg, #c1121f, #780000);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid #ffc300;
+            color: #ffc300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-link:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 15px 50px rgba(193, 18, 31, 0.6);
+            color: #1a1a2e;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .place-box:nth-child(even),
+            .place-box:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+                border-right: none;
+                border-left: 8px solid #ffc300;
+            }
+
+            .place-number {
+                left: 20px !important;
+                right: auto !important;
+            }
+
+            .museums-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1 class="hero-title">✨ BARCELONA ✨</h1>
+                <p class="hero-subtitle">🇪🇸 Gaudí's Masterpiece City 🇪🇸</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-box">
+            <h2 class="intro-title">Welcome to Barcelona</h2>
+            <p class="intro-text">Barcelona is the cosmopolitan capital of Catalonia, famous for its art, architecture, and vibrant culture. Home to Antoni Gaudí's whimsical modernist landmarks including the iconic Sagrada Familia, the city combines Gothic Quarter charm with Mediterranean beaches. Barcelona's unique Catalan identity, world-class museums, lively Las Ramblas, and innovative cuisine make it one of Europe's most captivating destinations.</p>
+        </div>
+
+        <!-- Places Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>📍 Places to Visit</span></h2>
+        </div>
+
+        <div class="places-container">
+            <div class="place-box">
+                <div class="place-number">1</div>
+                <h3 class="place-name">Sagrada Familia Basilica</h3>
+                <p class="place-text">Antoni Gaudí's unfinished masterpiece is Barcelona's most iconic symbol. Construction began in 1882 and continues today, with completion expected around 2026. This UNESCO World Heritage Site features breathtaking facades, towering spires reaching 172 meters, and an interior forest of columns bathed in kaleidoscopic light from stained glass windows. Gaudí's unique vision blends Gothic and Art Nouveau forms into an unprecedented architectural wonder.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">2</div>
+                <h3 class="place-name">Park Güell</h3>
+                <p class="place-text">This whimsical park designed by Gaudí between 1900-1914 showcases his distinctive colorful mosaic work and organic architectural style. Originally conceived as a housing development, the park features the famous serpentine bench covered in trencadís mosaics, the iconic mosaic salamander fountain, and the Hypostyle Room with its forest of columns. The elevated terraces offer panoramic views over Barcelona and the Mediterranean.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">3</div>
+                <h3 class="place-name">La Rambla Street</h3>
+                <p class="place-text">Barcelona's most famous boulevard stretches 1.2 kilometers from Plaça de Catalunya to the Christopher Columbus Monument at Port Vell. This tree-lined pedestrian street pulses with street performers, flower stalls, news kiosks, and outdoor cafes. La Rambla connects to the historic Boqueria Market and serves as the city's vibrant social spine, though visitors should be mindful of pickpockets in crowded areas.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">4</div>
+                <h3 class="place-name">Barcelona Cathedral</h3>
+                <p class="place-text">The Cathedral of the Holy Cross and Saint Eulalia, Barcelona's Gothic cathedral, was built between the 13th and 15th centuries. Its elaborate Gothic facade, completed in the 19th century, features intricate carvings and gargoyles. The cathedral houses the crypt of Saint Eulalia, Barcelona's patron saint, and its peaceful cloister contains thirteen white geese representing the age at which the saint was martyred. The rooftop offers stunning city views.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">5</div>
+                <h3 class="place-name">Parc de la Ciutadella</h3>
+                <p class="place-text">Barcelona's largest central park covers 70 acres and was created on the site of a former military citadel for the 1888 Universal Exposition. The park features the monumental Cascada fountain (designed partly by a young Gaudí), a boating lake, the Arc de Triomf entrance, and houses the Catalan Parliament, the city zoo, and several museums. It's a beloved green space perfect for picnics and relaxation.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">6</div>
+                <h3 class="place-name">Plaça de Catalunya</h3>
+                <p class="place-text">This large central square marks the border between the old Gothic Quarter and the modern Eixample district. Covering 50,000 square meters, it's Barcelona's transportation hub and a popular meeting point. The plaza features fountains, statues, and is surrounded by shopping centers and department stores. It serves as the starting point for both La Rambla and Passeig de Gràcia, making it central to Barcelona's layout.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">7</div>
+                <h3 class="place-name">Montjuïc</h3>
+                <p class="place-text">This broad hill overlooking the harbor hosts numerous attractions including Montjuïc Castle, the Magic Fountain with its evening light and music shows, the Olympic Stadium from the 1992 Games, and several major museums. The mountain offers spectacular views over Barcelona and the Mediterranean. Cable cars and funiculars provide access to various points, while gardens and paths make it perfect for exploring Barcelona's cultural and natural heritage.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">8</div>
+                <h3 class="place-name">Santa Maria del Mar Basilica</h3>
+                <p class="place-text">This stunning example of Catalan Gothic architecture was built between 1329-1383 by the merchants and shipbuilders of the Ribera district. Unlike the ornate Barcelona Cathedral, Santa Maria del Mar features pure, harmonious Gothic lines with soaring columns creating an impression of light and space. The church's austere beauty and perfect proportions make it one of Barcelona's most beautiful religious buildings, beloved by locals.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">9</div>
+                <h3 class="place-name">La Barceloneta</h3>
+                <p class="place-text">Barcelona's famous beach neighborhood was originally built in the 18th century to house displaced fishermen. Today, Barceloneta combines traditional seafood restaurants and narrow streets with modern beachfront development. The sandy beach stretches along the Mediterranean, lined with bars and restaurants serving fresh paella. It's the perfect place to experience Barcelona's beach culture and enjoy sunset views over the sea.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">10</div>
+                <h3 class="place-name">Plaça d'Espanya</h3>
+                <p class="place-text">This major square at the foot of Montjuïc was built for the 1929 International Exhibition. The plaza features the prominent Venetian-style towers marking the entrance to the exhibition grounds, a large fountain inspired by Rome's Piazza Navona, and serves as a major traffic roundabout. The square connects to the Magic Fountain and National Museum of Catalonia, making it a gateway to Montjuïc's attractions.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">11</div>
+                <h3 class="place-name">Tibidabo</h3>
+                <p class="place-text">Barcelona's highest peak at 512 meters offers spectacular panoramic views over the city and Mediterranean. The summit features the Temple of the Sacred Heart church with its distinctive statue of Christ, and the historic Tibidabo Amusement Park, one of the world's oldest, operating since 1899. The vintage funicular railway and blue tram add to the nostalgic charm. On clear days, views extend to Montserrat and beyond.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">12</div>
+                <h3 class="place-name">Parc del Laberint d'Horta</h3>
+                <p class="place-text">Barcelona's oldest garden, created in 1791, features a magnificent neoclassical hedge maze at its heart. This peaceful park in the Horta district combines 18th-century neoclassical gardens with 19th-century Romantic garden design. The cypress hedge labyrinth, waterfalls, pavilions, and sculptures create a romantic atmosphere far from the city center bustle. It's a hidden gem perfect for tranquil walks and discovery.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">13</div>
+                <h3 class="place-name">Plaça del Rei</h3>
+                <p class="place-text">This medieval square in the Gothic Quarter is surrounded by historic buildings including the 14th-century Royal Palace. Legend says Columbus was received here by Ferdinand and Isabella after his first voyage to the Americas. The plaza features the Mirador del Rei Martí watchtower, offering views over the Gothic Quarter. Underground, the Barcelona City History Museum reveals Roman ruins beneath the square. The enclosed plaza creates an atmospheric medieval setting.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">14</div>
+                <h3 class="place-name">Passeig de Gràcia</h3>
+                <p class="place-text">Barcelona's most prestigious boulevard showcases Modernist architecture at its finest, including Gaudí's Casa Batlló and La Pedrera, and Domènech i Montaner's Casa Lleó Morera. This elegant avenue connects Plaça de Catalunya to the Gràcia district and is lined with designer boutiques, restaurants, and remarkable buildings. The distinctive hexagonal pavement tiles designed by Gaudí add to the street's unique character.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">15</div>
+                <h3 class="place-name">Plaça Reial</h3>
+                <p class="place-text">This elegant 19th-century square just off La Rambla features arcaded buildings, palm trees, and a central fountain. The lampposts were designed by a young Gaudí in 1879. The square's cafes and restaurants buzz with activity day and night. The porticoed neoclassical buildings create a harmonious enclosed space that hosts weekend flea markets. It's a popular spot for both tourists and locals to enjoy Barcelona's vibrant atmosphere.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">16</div>
+                <h3 class="place-name">Santa Maria del Pi Basilica</h3>
+                <p class="place-text">This 14th-century Gothic church in the heart of the Gothic Quarter features an impressive octagonal bell tower and a massive rose window, one of the world's largest. The austere interior with single nave exemplifies Catalan Gothic architecture. The surrounding plaças - Plaça del Pi and Plaça de Sant Josep Oriol - host weekend artisan markets and outdoor cafes, creating a charming neighborhood atmosphere around this beautiful church.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">17</div>
+                <h3 class="place-name">Avinguda Diagonal</h3>
+                <p class="place-text">This major avenue cuts diagonally across Barcelona's grid pattern, running from the waterfront to the western hills. At 11 kilometers, it's one of the city's longest and most important thoroughfares. The avenue features modern skyscrapers, shopping centers, and modernist buildings. It represents Barcelona's modern development while connecting major neighborhoods and business districts. The contrast between historic and contemporary architecture makes it fascinating to explore.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">18</div>
+                <h3 class="place-name">Monestir de Pedralbes</h3>
+                <p class="place-text">This Gothic monastery founded in 1327 by Queen Elisenda de Montcada houses one of Barcelona's best-preserved medieval cloisters. The three-story cloister with its elegant columns and gardens creates a peaceful atmosphere. The monastery museum displays medieval art, furniture, and the queen's tomb. Located in the upscale Pedralbes neighborhood, it offers a serene escape and insight into Barcelona's medieval monastic life.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">19</div>
+                <h3 class="place-name">Carrer de Blai</h3>
+                <p class="place-text">This pedestrian street in the Poble Sec neighborhood is Barcelona's tapas paradise. The narrow street is lined with bars offering pintxos (Basque-style tapas) at affordable prices. During evenings, locals and visitors hop from bar to bar sampling different specialties. The casual, authentic atmosphere makes it perfect for experiencing Barcelona's food culture away from tourist traps. It's especially lively on weekends and represents genuine neighborhood dining.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">20</div>
+                <h3 class="place-name">Plaça de la Virreina</h3>
+                <p class="place-text">This charming square in the Gràcia neighborhood exemplifies the area's village-like character. The plaza features the 17th-century Church of Sant Joan and is surrounded by cafes with outdoor seating. Popular with locals, especially families with children who play in the square, it offers an authentic Barcelona neighborhood experience. The lively atmosphere, especially during the annual Gràcia Festival, showcases local community life and Catalan culture.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">21</div>
+                <h3 class="place-name">Plaça de Sant Felip Neri</h3>
+                <p class="place-text">This small, hidden square in the Gothic Quarter is one of Barcelona's most atmospheric spots. The baroque church of Sant Felip Neri features a pockmarked facade - damage from Spanish Civil War bombing that killed 42 people, mostly children, in 1938. The enclosed square with its fountain creates an almost secret garden feeling. Despite its tragic history, it's now a peaceful place that many visitors never discover.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">22</div>
+                <h3 class="place-name">La Creueta del Coll Park</h3>
+                <p class="place-text">This hillside park built on a former quarry features a stunning artificial lake with a massive concrete sculpture by Eduardo Chillida suspended above the water. The park offers swimming in summer, children's playgrounds, and grassy areas for picnics. The elevated location provides excellent views over Barcelona. Less touristy than other parks, it's a favorite local spot for families and offers a glimpse of everyday Barcelona life in a unique setting.</p>
+            </div>
+        </div>
+
+        <!-- Museums Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>🏛️ Museums & Palaces</span></h2>
+        </div>
+
+        <div class="museums-grid">
+            <div class="museum-card">
+                <h4 class="museum-name">Nou Camp Stadium</h4>
+                <p class="museum-desc">FC Barcelona's legendary home with 99,000 capacity, tours and museum</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ Tours vary</span>
+                    <span class="info-pill">💶 €26</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palau Güell</h4>
+                <p class="museum-desc">Early Gaudí masterpiece mansion with rooftop chimneys, UNESCO site</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 5:30 PM</span>
+                    <span class="info-pill">💶 €12</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Egyptian Museum of Barcelona</h4>
+                <p class="museum-desc">Private collection of Egyptian antiquities spanning 3,000 years</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 €12</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">National Museum of Catalonia</h4>
+                <p class="museum-desc">Catalan art from Romanesque to mid-20th century in stunning palace</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-pill">💶 €12</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Barcelona Erotic Museum</h4>
+                <p class="museum-desc">History of eroticism through art and cultural artifacts</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 12:00 AM</span>
+                    <span class="info-pill">💶 €9</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Barcelona History Museum</h4>
+                <p class="museum-desc">Roman ruins and 2,000 years of Barcelona history underground</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 7:00 PM</span>
+                    <span class="info-pill">💶 €7</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Catalunya en Miniatura</h4>
+                <p class="museum-desc">Outdoor park with miniature models of Catalan monuments</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-pill">💶 €15</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-link">← Back to Travel Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

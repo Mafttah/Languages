@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granada Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap');
+
+        body {
+            background: #1a1a2e;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(45deg, #c1121f 0%, #780000 50%, #ffc300 100%);
+            padding: 3px;
+            border-radius: 25px;
+            margin-bottom: 50px;
+        }
+
+        .hero-content {
+            background: #1a1a2e;
+            padding: 70px 40px;
+            border-radius: 23px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            top: -30px;
+            left: -20px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-content::after {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            bottom: -30px;
+            right: -20px;
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffc300;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #c1121f 0%, #780000 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 3px solid #ffc300;
+            box-shadow: 0 0 30px rgba(255, 195, 0, 0.3);
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #ffc300;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: center;
+            color: #fff;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-weight: 900;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transform: skew(-5deg);
+        }
+
+        .section-title span {
+            display: inline-block;
+            transform: skew(5deg);
+        }
+
+        .places-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .place-box {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 8px solid #ffc300;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .place-box:nth-child(even) {
+            border-left: none;
+            border-right: 8px solid #c1121f;
+            margin-left: 40px;
+        }
+
+        .place-box:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        .place-box:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(193, 18, 31, 0.4);
+            border-color: #c1121f;
+        }
+
+        .place-box:nth-child(even):hover {
+            border-color: #ffc300;
+        }
+
+        .place-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: linear-gradient(135deg, #c1121f, #ffc300);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            box-shadow: 0 5px 20px rgba(255, 195, 0, 0.5);
+        }
+
+        .place-box:nth-child(even) .place-number {
+            left: auto;
+            right: 30px;
+        }
+
+        .place-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #ffc300;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-card {
+            background: #16213e;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .museum-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .museum-card:hover::before {
+            opacity: 1;
+        }
+
+        .museum-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 195, 0, 0.3);
+        }
+
+        .museum-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #ffc300;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-desc {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-pill {
+            background: linear-gradient(135deg, #c1121f, #780000);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid #ffc300;
+            color: #ffc300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-link:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 15px 50px rgba(193, 18, 31, 0.6);
+            color: #1a1a2e;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .place-box:nth-child(even),
+            .place-box:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+                border-right: none;
+                border-left: 8px solid #ffc300;
+            }
+
+            .place-number {
+                left: 20px !important;
+                right: auto !important;
+            }
+
+            .museums-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1 class="hero-title">✨ GRANADA ✨</h1>
+                <p class="hero-subtitle">🇪🇸 Alhambra's Moorish Magic 🇪🇸</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-box">
+            <h2 class="intro-title">Welcome to Granada</h2>
+            <p class="intro-text">Granada is a city of legends at the foot of the Sierra Nevada mountains, home to the magnificent Alhambra palace. The last Moorish stronghold in Spain until 1492, Granada preserves its Islamic heritage in the whitewashed streets of the Albaicín, Arabic teahouses, and stunning Nasrid architecture. This enchanting city blends cultures, offering free tapas with every drink, flamenco in Sacromonte caves, and breathtaking mountain views behind medieval monuments.</p>
+        </div>
+
+        <!-- Places Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>📍 Places to Visit</span></h2>
+        </div>
+
+        <div class="places-container">
+            <div class="place-box">
+                <div class="place-number">1</div>
+                <h3 class="place-name">Granada Cathedral</h3>
+                <p class="place-text">Built on the site of Granada's main mosque after the Christian Reconquest, this Renaissance cathedral was constructed between 1523-1704. The cathedral features a massive facade, soaring columns, and an exceptionally bright interior due to its white stone and abundant windows. The adjacent Royal Chapel houses the tombs of Catholic Monarchs Ferdinand and Isabella who conquered Granada. The cathedral represents the triumphant Christian architecture that replaced Islamic Granada.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">2</div>
+                <h3 class="place-name">Albaicín</h3>
+                <p class="place-text">Granada's ancient Moorish quarter is a UNESCO World Heritage Site featuring a maze of narrow cobbled streets, whitewashed houses, and hidden gardens called cármenes. This hillside neighborhood offers the best views of the Alhambra, especially from Mirador de San Nicolás at sunset. The Albaicín preserves Islamic urban layout with its winding alleys, Arabic baths, and tea shops. Getting lost in these atmospheric streets reveals Granada's Moorish soul.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">3</div>
+                <h3 class="place-name">Plaza Nueva</h3>
+                <p class="place-text">Granada's oldest and most important square sits at the base of the Albaicín and serves as the gateway to the Alhambra. This lively plaza features the Royal Chancellery building with its Renaissance facade, numerous tapas bars, and the starting point for buses to the Alhambra. The square buzzes with tourists and locals, street performers, and serves as a natural meeting point. The Darro River flows nearby, adding to the square's appeal.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">4</div>
+                <h3 class="place-name">Monasterio de San Jerónimo</h3>
+                <p class="place-text">This Renaissance monastery, founded by the Catholic Monarchs in 1504, showcases spectacular interior decoration with elaborate frescoes and gilded altarpieces. The monastery church features an ornate facade and a stunning two-story cloister with orange trees. Less visited than other monuments, it offers a peaceful atmosphere to appreciate Renaissance art and architecture. The monastery represents Granada's transformation after the Reconquest while displaying exceptional artistic quality.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">5</div>
+                <h3 class="place-name">Plaza de Bib-Rambla</h3>
+                <p class="place-text">This central square near the cathedral has been Granada's commercial heart for centuries. Originally the site of bullfights and festivals, today it's a pedestrian plaza filled with flower stalls, cafes, and restaurants. The square connects major shopping streets and serves as a popular meeting point. The fountain at its center and surrounding historic buildings create a pleasant urban space perfect for people-watching while enjoying Granada's famous free tapas tradition.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">6</div>
+                <h3 class="place-name">Mirador de San Miguel Alto</h3>
+                <p class="place-text">This viewpoint in the upper Albaicín offers the most spectacular panoramic views of the Alhambra with the Sierra Nevada mountains as backdrop. Less crowded than San Nicolás viewpoint, it provides a more peaceful setting to appreciate Granada's landscape. The climb through narrow streets rewards visitors with unforgettable vistas, especially at sunset when the Alhambra glows golden. The surrounding neighborhood retains authentic character with local residents and traditional houses.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">7</div>
+                <h3 class="place-name">Abadía del Sacromonte</h3>
+                <p class="place-text">This 17th-century abbey on Valparaíso hill houses holy caves believed to contain relics of Christian martyrs. The abbey museum displays religious art, ancient manuscripts, and offers stunning views over Granada and the Alhambra. The surrounding Sacromonte neighborhood is famous for its cave houses and flamenco tradition. The abbey represents Granada's Christian heritage while the caves below showcase the city's unique cave-dwelling culture and gypsy community.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">8</div>
+                <h3 class="place-name">Calle Navas</h3>
+                <p class="place-text">This street near Plaza del Carmen is Granada's tapas heaven, lined with traditional bars offering free tapas with every drink order. The narrow pedestrian street buzzes with locals and visitors enjoying Granada's unique tapas culture where elaborate dishes come complimentary with your beer or wine. The atmosphere is lively and authentic, with crowds spilling onto the street. It's the perfect place to experience Granada's generous hospitality and socializing traditions.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">9</div>
+                <h3 class="place-name">Paseo de los Tristes</h3>
+                <p class="place-text">This picturesque promenade along the Darro River at the foot of the Alhambra features terrace restaurants and cafes with magical views. Originally called Paseo del Padre Manjón, it earned its melancholic nickname from funeral processions that once passed through. Today it's one of Granada's most romantic spots, especially illuminated at night. The combination of river sounds, Alhambra views, and historic bridges creates an enchanting atmosphere perfect for evening strolls.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">10</div>
+                <h3 class="place-name">Calle Elvira</h3>
+                <p class="place-text">This historic street connects Plaza Nueva with the Albaicín and is lined with Moroccan tea shops, kebab restaurants, and shops selling North African goods. The street preserves Granada's multicultural character with Arabic influences evident in its businesses and atmosphere. The mix of traditional tapas bars with Middle Eastern establishments creates a unique cultural blend. It's especially atmospheric in the evening when locals and students fill the street and its many bars.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">11</div>
+                <h3 class="place-name">Plaza de la Trinidad</h3>
+                <p class="place-text">This square in the university district pulses with student life, surrounded by affordable bars, restaurants, and the modern Granada University library. The tree-lined plaza with its fountain serves as a gathering spot for students and young people. The casual atmosphere, reasonable prices, and lively nightlife make it popular with Granada's student population. The square represents modern, youthful Granada contrasting with the historic city center while maintaining authentic local character.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">12</div>
+                <h3 class="place-name">Carrera del Darro</h3>
+                <p class="place-text">This romantic street following the Darro River is considered one of Spain's most beautiful. The narrow road runs between the Albaicín hillside and the river, passing historic bridges, Arabic baths, and Renaissance mansions. The cobbled street offers constantly changing views of the Alhambra above. Walking this route, especially at dusk, provides one of Granada's most magical experiences with the sound of flowing water and glimpses of the illuminated palace through trees.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">13</div>
+                <h3 class="place-name">Plaza Larga</h3>
+                <p class="place-text">This lively square in the heart of the Albaicín hosts a daily morning market and serves as the neighborhood's social center. Surrounded by tapas bars and traditional shops, the elongated plaza preserves authentic local life away from tourist crowds. Saturday mornings are especially vibrant when the market fills the square. The plaza accessed through the Puerta Nueva gate represents the Albaicín's community spirit and traditional Granadan daily life unchanged by tourism.</p>
+            </div>
+        </div>
+
+        <!-- Museums Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>🏛️ Museums & Palaces</span></h2>
+        </div>
+
+        <div class="museums-grid">
+            <div class="museum-card">
+                <h4 class="museum-name">Alhambra</h4>
+                <p class="museum-desc">UNESCO World Heritage palace and fortress complex, masterpiece of Islamic architecture</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 8:30 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 €14</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palacios Nazaríes</h4>
+                <p class="museum-desc">Stunning Nasrid palaces within Alhambra with intricate Islamic decoration</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ Timed entry</span>
+                    <span class="info-pill">💶 Included in Alhambra</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palacio de Carlos V</h4>
+                <p class="museum-desc">Renaissance palace within Alhambra housing Fine Arts and Alhambra museums</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 8:30 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 €7</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Generalife</h4>
+                <p class="museum-desc">Alhambra's summer palace with beautiful gardens, fountains, and courtyards</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 8:30 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 Included in Alhambra</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Alcazaba</h4>
+                <p class="museum-desc">Alhambra's military fortress with towers offering panoramic city views</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 8:30 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 Included in Alhambra</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-link">← Back to Travel Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

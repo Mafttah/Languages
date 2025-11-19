@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0055a4 0%, #ffffff 50%, #ef4135 100%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 85, 164, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: '🗼';
+            position: absolute;
+            font-size: 200px;
+            right: -50px;
+            bottom: -50px;
+            opacity: 0.1;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            border-left: 6px solid #ef4135;
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #0055a4;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 70px 0 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #0055a4;
+            display: inline-block;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #ef4135;
+            font-weight: 700;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid #0055a4;
+            position: relative;
+        }
+
+        .place-card::before {
+            content: '⚜️';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.15;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(239, 65, 53, 0.2);
+            border-top-color: #ef4135;
+        }
+
+        .place-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #0055a4;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .place-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .museums-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-box {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid #ef4135;
+            transition: all 0.3s ease;
+        }
+
+        .museum-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 85, 164, 0.15);
+            border-left-color: #0055a4;
+        }
+
+        .museum-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: #0055a4;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-time,
+        .badge-price {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .badge-time {
+            background: #e3f2fd;
+            color: #0055a4;
+        }
+
+        .badge-price {
+            background: #ffebee;
+            color: #ef4135;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 50px auto;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 85, 164, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ef4135, #c62828);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239, 65, 53, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .places-grid,
+            .museums-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-banner text-center">
+                <h1 class="hero-title">PARIS</h1>
+                <p class="hero-subtitle">🇫🇷 City of Light & Romance 🇫🇷</p>
+            </div>
+
+            <!-- Introduction -->
+            <div class="intro-section">
+                <h2 class="intro-title">Welcome to Paris</h2>
+                <p class="intro-text">Paris is the capital of France and one of the world's most iconic cities, renowned for art, fashion, gastronomy, and culture. The City of Light enchants with the Eiffel Tower, Notre-Dame Cathedral, Louvre Museum, and charming boulevards lined with cafes. From Montmartre's artistic heritage to the Champs-Élysées' elegance, Paris embodies romance, sophistication, and timeless beauty. The Seine River, historic architecture, world-class museums, and culinary excellence make Paris an unforgettable destination.</p>
+            </div>
+
+            <!-- Places Section -->
+            <div class="section-header">
+                <h2 class="section-title">Places to Visit</h2>
+            </div>
+
+            <div class="places-grid">
+                <div class="place-card">
+                    <h3 class="place-title">Notre-Dame Cathedral</h3>
+                    <p class="place-description">This Gothic masterpiece on Île de la Cité, built between 1163-1345, is one of France's most iconic monuments. Despite the 2019 fire, the cathedral's facade, towers, and rose windows remain breathtaking. The gargoyles, flying buttresses, and twin towers showcase medieval Gothic architecture at its finest. Once complete restoration finishes, visitors can again climb the towers for spectacular city views.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Montmartre Hill</h3>
+                    <p class="place-description">This historic hilltop neighborhood offers Paris's highest natural point with stunning panoramic views. Once home to Picasso, Van Gogh, and Toulouse-Lautrec, Montmartre preserves its bohemian artistic spirit. Narrow cobblestone streets, the charming Place du Tertre with portrait artists, historic cabarets like the Moulin Rouge, and quaint cafes create an enchanting village atmosphere within Paris.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Sacré-Cœur Basilica</h3>
+                    <p class="place-description">This white Romano-Byzantine basilica crowns Montmartre's summit, its distinctive domes visible across Paris. Completed in 1914, Sacré-Cœur's pristine travertine stone never dulls. The interior features stunning mosaics including one of Christ's largest depictions. Climb the dome for the best panoramic views over Paris. The surrounding gardens and steps are perfect for watching sunset over the City of Light.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Champs-Élysées</h3>
+                    <p class="place-description">The world's most famous avenue stretches 1.9 kilometers from Place de la Concorde to the Arc de Triomphe. Lined with luxury shops, flagship stores, cafes, and cinemas, the Champs-Élysées represents Parisian elegance. The tree-lined boulevard hosts major events including the Bastille Day military parade and Tour de France finish. Evening strolls reveal the avenue's magical illumination and vibrant atmosphere.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Arc de Triomphe</h3>
+                    <p class="place-description">Napoleon commissioned this triumphal arch in 1806 to honor his Grande Armée. Standing 50 meters tall at Place Charles de Gaulle, the Arc dominates the western end of the Champs-Élysées. The monument features intricate sculptures including the famous La Marseillaise relief. Climb to the terrace for spectacular views down twelve radiating avenues. The Tomb of the Unknown Soldier beneath honors WWI dead.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Sainte-Chapelle</h3>
+                    <p class="place-description">This Gothic chapel on Île de la Cité is a jewel of medieval architecture, built by Louis IX in 1248 to house Christ's Crown of Thorns. The upper chapel features 15 spectacular 13th-century stained glass windows reaching 15 meters high, depicting 1,113 biblical scenes. When sunlight streams through, the chapel becomes a kaleidoscope of color creating an ethereal atmosphere unmatched anywhere in Paris.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Tuileries Gardens</h3>
+                    <p class="place-description">These formal French gardens between the Louvre and Place de la Concorde were created by Catherine de Medici in 1564. The UNESCO-listed park features geometric lawns, fountains, sculptures by Maillol and Rodin, and tree-lined promenades. Parisians and visitors relax in iconic green chairs, children sail toy boats in ponds, and cafes offer refreshment. The gardens provide perfect respite from museum visits.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Panthéon</h3>
+                    <p class="place-description">This neoclassical monument in the Latin Quarter houses the remains of France's greatest citizens including Voltaire, Rousseau, Hugo, and Marie Curie. Originally built as a church in 1790, the Panthéon's imposing dome dominates the Left Bank skyline. The interior features Foucault's Pendulum and magnificent frescoes. The crypt contains tombs of luminaries who shaped French history and culture.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Église Saint-Sulpice</h3>
+                    <p class="place-description">This grand church in Saint-Germain-des-Prés features impressive Baroque architecture and Paris's largest organ. The church gained fame from The Da Vinci Code but merits visit for Delacroix murals in the Chapel of the Holy Angels, the gnomon meridian line, and massive towers. The harmonious facade and spacious interior showcase 17th-century religious architecture. The square's fountain adds to the picturesque setting.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place de la Concorde</h3>
+                    <p class="place-description">Paris's largest square witnessed both glory and tragedy - created in 1755, it became the execution site during the French Revolution where Louis XVI and Marie Antoinette were guillotined. The 3,300-year-old Egyptian obelisk from Luxor centers the octagonal plaza. Magnificent fountains, statues representing French cities, and views toward the Champs-Élysées and Tuileries make it spectacular.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Pont Alexandre III</h3>
+                    <p class="place-description">Paris's most ornate bridge, built for the 1900 Exposition Universelle, connects the Champs-Élysées quarter with Les Invalides. The single-span steel arch features elaborate Art Nouveau lamps, cherubs, nymphs, and golden winged horses at its four corners. The bridge symbolizes Franco-Russian friendship and represents the Belle Époque's artistic exuberance. Sunset views with the Eiffel Tower backdrop are unforgettable.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Parc des Buttes-Chaumont</h3>
+                    <p class="place-description">This dramatic public park in the 19th arrondissement features a craggy cliff, suspended bridge, temple folly, and artificial grotto with waterfall. Created in 1867 from former quarries and gallows, the romantic landscape design offers surprising topography unlike Paris's formal gardens. The Temple de la Sibylle atop the cliff provides panoramic views. Popular with locals, it remains less touristy than other parks.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place des Vosges</h3>
+                    <p class="place-description">Paris's oldest planned square (1612) in the Marais features perfect symmetry with 36 pavilions of red brick and stone arcades surrounding a central garden. Victor Hugo lived at No. 6, now a museum. The arcaded walkways house art galleries, antique shops, and cafes. The square's elegant harmony and central location make it beloved for picnics, strolls, and absorbing Marais atmosphere.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Champ de Mars</h3>
+                    <p class="place-description">This vast public greenspace stretches from the Eiffel Tower to the École Militaire. Originally a military training ground, the park hosts celebrations, demonstrations, and the annual Bastille Day fireworks. The expansive lawns offer the best free views of the Eiffel Tower, perfect for picnics while watching the tower's hourly sparkle. Street vendors, children playing, and romantic couples create quintessential Parisian scenes.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Pont Neuf</h3>
+                    <p class="place-description">Despite its name meaning "New Bridge," Pont Neuf is Paris's oldest standing bridge, completed in 1607. The stone bridge crosses the Seine via Île de la Cité with distinctive semicircular platforms. Unlike medieval bridges, it was built without houses, offering clear river views. The bridge's 12 arches and 381 stone masks decorating the cornices make it an architectural landmark and romantic Seine crossing point.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Conciergerie</h3>
+                    <p class="place-description">This medieval royal palace turned revolutionary prison on Île de la Cité held Marie Antoinette before her execution. The Gothic halls including the stunning vaulted Salle des Gens d'Armes showcase medieval architecture. The Revolutionary cells, Marie Antoinette's chapel, and historical exhibits chronicle the Terror period. The Conciergerie represents darker French history while displaying magnificent medieval architecture beside the Seine.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Vendôme</h3>
+                    <p class="place-description">This octagonal square epitomizes Parisian luxury with prestigious jewelry houses including Cartier, Chaumet, and Van Cleef & Arpels. The central column topped by Napoleon statue commemorates the Battle of Austerlitz. The harmonious classical facades house the Ritz Hotel and luxury boutiques. The square's elegant proportions and exclusive atmosphere represent Paris's haute joaillerie tradition and refined taste.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Les Invalides & Musée de l'Armée</h3>
+                    <p class="place-description">Louis XIV built this complex in 1670 as a hospital and residence for war veterans. The golden-domed church contains Napoleon's tomb in a red quartzite sarcophagus. The Army Museum displays military artifacts from medieval times to WWII. The vast courtyard, classical architecture, and military collections make Les Invalides essential for history enthusiasts and those interested in Napoleon's legacy.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Pont des Arts</h3>
+                    <p class="place-description">This pedestrian bridge connecting the Institut de France with the Louvre offers romantic Seine views. Though love locks were removed in 2015 to prevent structural damage, the bridge remains a beloved spot for artists sketching, musicians performing, and couples enjoying sunset. The nine-arch metal footbridge provides perfect views toward Île de la Cité and embodies Parisian romantic atmosphere.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place du Trocadéro</h3>
+                    <p class="place-description">This expansive terrace across the Seine from the Eiffel Tower provides the most spectacular views of the monument. The semicircular plaza flanked by Palais de Chaillot wings features fountains descending toward the river. Street performers entertain crowds while photographers capture iconic Eiffel Tower shots. Sunrise and evening illumination create magical atmospheres. The esplanade remains Paris's most popular photo spot.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue Montorgueil</h3>
+                    <p class="place-description">This cobblestoned pedestrian street in the 2nd arrondissement buzzes with authentic Parisian life. Historic cafes, cheese shops, bakeries, fishmongers, and restaurants line the street which has been a market since 1137. The area maintains village atmosphere with locals shopping for fresh produce. Outdoor cafes, the passage between Montorgueil and Petits Carreaux, create perfect settings for experiencing everyday Parisian culture.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue de l'Université</h3>
+                    <p class="place-description">This elegant street in the 7th arrondissement runs parallel to the Seine through one of Paris's most prestigious neighborhoods. The street features beautiful Haussmann buildings, art galleries, antique shops, and the American University of Paris. The refined atmosphere, proximity to the Musée d'Orsay and Eiffel Tower, and charming architecture make it ideal for experiencing Left Bank sophistication and Parisian residential elegance.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue de Rivoli</h3>
+                    <p class="place-description">This major east-west thoroughfare runs alongside the Tuileries Gardens and Louvre, connecting Place de la Concorde with Place de la Bastille. The arcaded section features uniform facades designed under Napoleon. The street houses international fashion brands, tourist shops, and the historic Angelina tearoom. The covered walkways provide shelter while shopping, and proximity to major attractions makes it a central artery.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place de la Bastille</h3>
+                    <p class="place-description">This historic square marks where the Bastille prison stood before revolutionaries stormed it on July 14, 1789, launching the French Revolution. The July Column topped with the Spirit of Liberty commemorates later uprisings. The modern Opéra Bastille and surrounding cafes create a lively atmosphere. The square symbolizes French revolutionary spirit and democratic values while connecting historic Marais with trendy eastern neighborhoods.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place du Châtelet</h3>
+                    <p class="place-description">This central square named after the former fortress features the Palmier Fountain and two facing theaters - Théâtre du Châtelet and Théâtre de la Ville. The square sits at the Right Bank end of Pont au Change connecting to Île de la Cité. Its location at the heart of Paris makes it a major transport hub and meeting point. The surrounding area offers excellent shopping and dining.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue Crémieux</h3>
+                    <p class="place-description">This Instagram-famous pedestrian street near Gare de Lyon features colorful pastel houses creating a charming village atmosphere. The cobblestoned mews with its rainbow facades offers a photogenic escape from Haussmann architecture. Though small, the street's picturesque character attracts visitors seeking quirky Paris. The residential street showcases how ordinary Parisian streets can possess extraordinary charm, though residents request respectful visits.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue Denoyez</h3>
+                    <p class="place-description">This vibrant alley in Belleville serves as Paris's legal street art gallery. Walls covered in constantly changing graffiti and murals showcase urban art culture. The alternative atmosphere, diverse bars, and multicultural neighborhood represent Paris's edgier, more artistic side. The street embodies Belleville's bohemian character and immigrant heritage, offering authentic glimpses into contemporary Parisian creativity beyond tourist zones.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Jardin du Luxembourg</h3>
+                    <p class="place-description">Marie de Medici created these Italian Renaissance-inspired gardens in 1612 around Luxembourg Palace. The 25-hectare park features formal terraces, chestnut groves, orchards, tennis courts, and the iconic octagonal pond where children sail toy boats. The gardens contain over 100 statues, the Medici Fountain, and green metal chairs for lounging. Parisians treasure this Left Bank oasis for reading, picnics, and relaxation.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Versailles Château</h3>
+                    <p class="place-description">Louis XIV transformed his father's hunting lodge into Europe's most magnificent palace, symbol of absolute monarchy. The opulent château features the Hall of Mirrors, royal apartments with elaborate decoration, and masterpiece paintings. The meticulously designed gardens with fountains, sculptures, and the Grand Canal showcase French formal garden art. Versailles represents the pinnacle of 17th-century European court life and architectural grandeur.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Église de la Madeleine</h3>
+                    <p class="place-description">This neoclassical church resembling a Roman temple dominates Place de la Madeleine. Napoleon originally intended it as a temple to his army's glory. The imposing Corinthian columns, grand steps, and pediment sculptures create a Greek temple appearance. Inside, the single nave and ornate decoration contrast with the austere exterior. The church hosts excellent organ concerts in a magnificent setting near luxury food shops.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Église Saint-Germain-des-Prés</h3>
+                    <p class="place-description">Paris's oldest church, founded in 558, features Romanesque architecture with distinctive bell tower. The church witnessed medieval history, Revolution damage, and restoration. Saint-Germain-des-Prés became the intellectual and artistic center in the 20th century with nearby cafes hosting Sartre, Beauvoir, and Camus. The church anchors the chic Left Bank neighborhood filled with galleries, boutiques, and literary cafes preserving bohemian atmosphere.</p>
+                </div>
+            </div>
+
+            <!-- Museums Section -->
+            <div class="section-header">
+                <h2 class="section-title">Museums & Palaces</h2>
+            </div>
+
+            <div class="museums-section">
+                <div class="museum-box">
+                    <h4 class="museum-title">Eiffel Tower</h4>
+                    <p class="museum-subtitle">Iconic 330m iron lattice tower, symbol of Paris and France</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 9:30 AM - 11:45 PM</span>
+                        <span class="badge-price">💶 €26.80</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Louvre Museum</h4>
+                    <p class="museum-subtitle">World's largest art museum with Mona Lisa and Venus de Milo</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 9:00 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €17</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée d'Orsay</h4>
+                    <p class="museum-subtitle">Impressionist masterpieces in converted railway station</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 9:30 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €16</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée Rodin</h4>
+                    <p class="museum-subtitle">Rodin sculptures including The Thinker in elegant mansion and gardens</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:30 PM</span>
+                        <span class="badge-price">💶 €13</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée Curie</h4>
+                    <p class="museum-subtitle">Marie Curie's laboratory and scientific legacy museum</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 1:00 PM - 5:00 PM</span>
+                        <span class="badge-price">💶 Free</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Palais de la Découverte</h4>
+                    <p class="museum-subtitle">Interactive science museum with planetarium</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 9:30 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €12</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Château de Versailles</h4>
+                    <p class="museum-subtitle">Louis XIV's opulent palace with Hall of Mirrors and gardens</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 9:00 AM - 6:30 PM</span>
+                        <span class="badge-price">💶 €20</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Palais du Luxembourg</h4>
+                    <p class="museum-subtitle">French Senate seat in stunning Renaissance palace</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ Limited access</span>
+                        <span class="badge-price">💶 Tours available</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Palais-Royal</h4>
+                    <p class="museum-subtitle">Historic palace with gardens and striped Buren columns</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ Gardens open daily</span>
+                        <span class="badge-price">💶 Free</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center">
+                <a href="../../my-website.html" class="back-button">← Back to Travel Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

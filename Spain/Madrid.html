@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madrid Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap');
+
+        body {
+            background: #1a1a2e;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(45deg, #c1121f 0%, #780000 50%, #ffc300 100%);
+            padding: 3px;
+            border-radius: 25px;
+            margin-bottom: 50px;
+        }
+
+        .hero-content {
+            background: #1a1a2e;
+            padding: 70px 40px;
+            border-radius: 23px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            top: -30px;
+            left: -20px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-content::after {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            bottom: -30px;
+            right: -20px;
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 195, 0, 0.5);
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffc300;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #c1121f 0%, #780000 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 3px solid #ffc300;
+            box-shadow: 0 0 30px rgba(255, 195, 0, 0.3);
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #ffc300;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: center;
+            color: #fff;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-weight: 900;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transform: skew(-5deg);
+        }
+
+        .section-title span {
+            display: inline-block;
+            transform: skew(5deg);
+        }
+
+        .places-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .place-box {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 8px solid #ffc300;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .place-box:nth-child(even) {
+            border-left: none;
+            border-right: 8px solid #c1121f;
+            margin-left: 40px;
+        }
+
+        .place-box:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        .place-box:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(193, 18, 31, 0.4);
+            border-color: #c1121f;
+        }
+
+        .place-box:nth-child(even):hover {
+            border-color: #ffc300;
+        }
+
+        .place-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: linear-gradient(135deg, #c1121f, #ffc300);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            box-shadow: 0 5px 20px rgba(255, 195, 0, 0.5);
+        }
+
+        .place-box:nth-child(even) .place-number {
+            left: auto;
+            right: 30px;
+        }
+
+        .place-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #ffc300;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-card {
+            background: #16213e;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .museum-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .museum-card:hover::before {
+            opacity: 1;
+        }
+
+        .museum-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 195, 0, 0.3);
+        }
+
+        .museum-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #ffc300;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-desc {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-pill {
+            background: linear-gradient(135deg, #c1121f, #780000);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid #ffc300;
+            color: #ffc300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-link:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 15px 50px rgba(193, 18, 31, 0.6);
+            color: #1a1a2e;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .place-box:nth-child(even),
+            .place-box:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+                border-right: none;
+                border-left: 8px solid #ffc300;
+            }
+
+            .place-number {
+                left: 20px !important;
+                right: auto !important;
+            }
+
+            .museums-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1 class="hero-title">✨ MADRID ✨</h1>
+                <p class="hero-subtitle">🇪🇸 Spain's Royal Capital 🇪🇸</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-box">
+            <h2 class="intro-title">Welcome to Madrid</h2>
+            <p class="intro-text">Madrid is Spain's capital and largest city, located in the heart of the Iberian Peninsula. This vibrant metropolis combines regal splendor with modern energy, featuring world-class art museums, magnificent palaces, grand boulevards, and lively plazas. Known for its late-night dining culture, passionate football fans, and beautiful parks, Madrid offers an authentic Spanish experience. The city's central location, rich Habsburg and Bourbon heritage, and contemporary dynamism make it one of Europe's most captivating capitals.</p>
+        </div>
+
+        <!-- Places Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>📍 Places to Visit</span></h2>
+        </div>
+
+        <div class="places-container">
+            <div class="place-box">
+                <div class="place-number">1</div>
+                <h3 class="place-name">Puerta del Sol</h3>
+                <p class="place-text">Madrid's most famous square and the symbolic center of Spain, marking Kilometer Zero from which all Spanish roads are measured. This bustling plaza features the iconic clock tower of the Casa de Correos, where Madrileños gather on New Year's Eve to eat twelve grapes at midnight. The square is home to the statue of the Bear and the Strawberry Tree, Madrid's official symbol.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">2</div>
+                <h3 class="place-name">Plaza Mayor</h3>
+                <p class="place-text">This magnificent rectangular square, completed in 1619 during the reign of Philip III, is surrounded by three-story residential buildings with 237 balconies overlooking the plaza. The square has hosted royal ceremonies, bullfights, markets, and even executions during the Spanish Inquisition. Today, its arcaded walkways house cafes, restaurants, and shops.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">3</div>
+                <h3 class="place-name">Parque de El Retiro</h3>
+                <p class="place-text">Madrid's most famous park covers 125 hectares and offers a green oasis in the city center. Originally a royal retreat for Philip IV in the 17th century, the park became public in 1868. El Retiro features the beautiful Palacio de Cristal, the Monument to Alfonso XII overlooking the Grand Pond where visitors can rent rowboats, and the Rosaleda rose garden with over 4,000 roses.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">4</div>
+                <h3 class="place-name">Gran Vía</h3>
+                <p class="place-text">Madrid's most famous street, often called the "Spanish Broadway," is a 1.3-kilometer boulevard showcasing early 20th-century architecture. Built between 1910-1929, Gran Vía features stunning Art Deco and Belle Époque buildings, including the iconic Telefónica Building and the Metropolis Building with its distinctive dome.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">5</div>
+                <h3 class="place-name">Plaza de Cibeles</h3>
+                <p class="place-text">One of Madrid's most iconic squares, dominated by the beautiful Cibeles Fountain featuring the Roman goddess Cybele on a chariot pulled by lions. The fountain has become a traditional gathering place for Real Madrid fans celebrating victories. The square is surrounded by magnificent buildings including the Cibeles Palace and the Bank of Spain.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">6</div>
+                <h3 class="place-name">Templo de Debod</h3>
+                <p class="place-text">This authentic ancient Egyptian temple, dating back to the 2nd century BCE, was gifted to Spain by Egypt in 1968 as thanks for helping save Abu Simbel temples from flooding. The temple was dismantled and rebuilt in Madrid's Parque del Oeste. The temple's location offers stunning sunset views over Madrid.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">7</div>
+                <h3 class="place-name">Catedral de la Almudena</h3>
+                <p class="place-text">Madrid's cathedral faces the Royal Palace and took over 100 years to complete, finally consecrated by Pope John Paul II in 1993. The cathedral combines neoclassical exterior with neo-Gothic interior and features modern religious art, colorful ceiling frescoes, and beautiful stained glass windows.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">8</div>
+                <h3 class="place-name">El Rastro</h3>
+                <p class="place-text">Madrid's most famous open-air flea market has operated every Sunday and public holiday morning since the 17th century. Stretching along Ribera de Curtidores and surrounding streets in the La Latina neighborhood, El Rastro offers everything from antiques and vintage clothing to books, records, and artwork.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">9</div>
+                <h3 class="place-name">Casa de Campo</h3>
+                <p class="place-text">This enormous park covering 1,722 hectares is five times larger than New York's Central Park and Madrid's largest green space. Originally a royal hunting estate, Casa de Campo became public in 1931. The park features the Madrid Zoo and Aquarium, an amusement park, and a lake for boating.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">10</div>
+                <h3 class="place-name">Plaza de Oriente</h3>
+                <p class="place-text">This elegant square between the Royal Palace and the Royal Theatre is one of Madrid's most refined spaces. Created in the early 19th century by Joseph Bonaparte, the plaza features formal gardens, the equestrian statue of Philip IV, and twenty statues of Spanish monarchs.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">11</div>
+                <h3 class="place-name">Plaza de España</h3>
+                <p class="place-text">This large square features the famous monument to Miguel de Cervantes with bronze sculptures of Don Quixote and Sancho Panza, Spain's most beloved literary characters. Recently renovated, the plaza offers green spaces, fountains, and pedestrian areas perfect for relaxation.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">12</div>
+                <h3 class="place-name">Plaza de Santa Ana</h3>
+                <p class="place-text">Located in the heart of the Barrio de las Letras (Literary Quarter), this lively square is surrounded by historic theaters, bars, and restaurants. The plaza features statues of Golden Age playwrights García Lorca and Calderón de la Barca. The square is famous for its nightlife.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">13</div>
+                <h3 class="place-name">Campo del Moro</h3>
+                <p class="place-text">These beautiful gardens extending from the Royal Palace down to the Manzanares River offer one of Madrid's most romantic settings. Named after the Muslim troops who camped here during the 12th-century siege, the gardens were redesigned in the 19th century in English landscape style.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">14</div>
+                <h3 class="place-name">Calle Preciados</h3>
+                <p class="place-text">This major pedestrian shopping street connects Puerta del Sol with Plaza de Callao and is one of Madrid's busiest commercial areas. Named after the Preciados family who owned properties here, the street is lined with international fashion brands and department stores.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">15</div>
+                <h3 class="place-name">Church of San Antonio de los Alemanes</h3>
+                <p class="place-text">This 17th-century Baroque church is one of Madrid's hidden gems, featuring an extraordinary interior completely covered in frescoes from floor to ceiling. Every surface is painted, creating an overwhelming visual experience that rivals the Sistine Chapel in its completeness.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">16</div>
+                <h3 class="place-name">Royal Basilica of St. Francis the Great</h3>
+                <p class="place-text">This impressive church features one of the largest domes in Christendom, with a diameter of 33 meters, surpassing even St. Paul's in London. Built in the neoclassical style in the late 18th century, the basilica is decorated with paintings by Spanish masters including Goya.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">17</div>
+                <h3 class="place-name">Plaza Dos de Mayo</h3>
+                <p class="place-text">This square in the trendy Malasaña neighborhood commemorates the May 2, 1808 uprising against French occupation. Today, Plaza Dos de Mayo is the heart of Malasaña's alternative scene, surrounded by vintage shops, bars, cafes, and restaurants.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">18</div>
+                <h3 class="place-name">Callao Square</h3>
+                <p class="place-text">This major square at the intersection of Gran Vía and Calle Preciados is one of Madrid's busiest hubs. Named after the Spanish victory at the Battle of Callao in Peru, the square is surrounded by iconic buildings with distinctive architecture, cinemas, and shops.</p>
+            </div>
+        </div>
+
+        <!-- Museums Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>🏛️ Museums & Palaces</span></h2>
+        </div>
+
+        <div class="museums-grid">
+            <div class="museum-card">
+                <h4 class="museum-name">Palacio Real</h4>
+                <p class="museum-desc">Europe's largest royal palace with 3,418 rooms, official residence of Spanish royalty</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 7:00 PM</span>
+                    <span class="info-pill">💶 €13</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Santiago Bernabéu Stadium</h4>
+                <p class="museum-desc">Real Madrid's legendary home stadium with museum and tours</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ Tours vary</span>
+                    <span class="info-pill">💶 €25</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palacio de Cristal</h4>
+                <p class="museum-desc">Stunning glass pavilion in Retiro Park hosting contemporary art exhibitions</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 7:00 PM</span>
+                    <span class="info-pill">💶 Free</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">National Archaeological Museum</h4>
+                <p class="museum-desc">Comprehensive collection from prehistoric times to 19th century Spain</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 9:30 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 €3</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Cybele Palace</h4>
+                <p class="museum-desc">Cultural center in historic post office building with observation deck</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 8:00 PM</span>
+                    <span class="info-pill">💶 €2-6</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Liria Palace</h4>
+                <p class="museum-desc">Private palace of the House of Alba with exceptional art collection</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-pill">💶 €14</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Museum of the Americas</h4>
+                <p class="museum-desc">Pre-Columbian and colonial art from Latin America</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 9:30 AM - 3:00 PM</span>
+                    <span class="info-pill">💶 €3</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Cerralbo Museum</h4>
+                <p class="museum-desc">19th-century aristocratic mansion with art and decorative arts collection</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 9:30 AM - 3:00 PM</span>
+                    <span class="info-pill">💶 €3</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Technology Museum Velázquez</h4>
+                <p class="museum-desc">Interactive science and technology museum for all ages</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ Check website</span>
+                    <span class="info-pill">💶 €5</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-link">← Back to Travel Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

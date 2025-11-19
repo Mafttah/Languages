@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marseille Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0055a4 0%, #ffffff 50%, #ef4135 100%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 85, 164, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            border-left: 6px solid #ef4135;
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #0055a4;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 70px 0 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #0055a4;
+            display: inline-block;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #ef4135;
+            font-weight: 700;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid #0055a4;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(239, 65, 53, 0.2);
+            border-top-color: #ef4135;
+        }
+
+        .place-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #0055a4;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .place-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .museums-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-box {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid #ef4135;
+            transition: all 0.3s ease;
+        }
+
+        .museum-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 85, 164, 0.15);
+            border-left-color: #0055a4;
+        }
+
+        .museum-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: #0055a4;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-time,
+        .badge-price {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .badge-time {
+            background: #e3f2fd;
+            color: #0055a4;
+        }
+
+        .badge-price {
+            background: #ffebee;
+            color: #ef4135;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 50px auto;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 85, 164, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ef4135, #c62828);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239, 65, 53, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .places-grid,
+            .museums-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="hero-banner text-center">
+                <h1 class="hero-title">MARSEILLE</h1>
+                <p class="hero-subtitle">🇫🇷 France's Oldest City & Port 🇫🇷</p>
+            </div>
+
+            <div class="intro-section">
+                <h2 class="intro-title">Welcome to Marseille</h2>
+                <p class="intro-text">Marseille is France's second-largest city and oldest, founded by Greek sailors around 600 BCE. This Mediterranean port combines ancient heritage with multicultural vibrancy, stunning calanques, and authentic Provençal character. The city features the iconic Notre-Dame de la Garde basilica, the historic Vieux-Port, bouillabaisse cuisine, and diverse neighborhoods reflecting centuries of immigration. Marseille's rough-edged charm, maritime traditions, and cultural richness create a unique atmosphere distinct from other French cities.</p>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Places to Visit</h2>
+            </div>
+
+            <div class="places-grid">
+                <div class="place-card">
+                    <h3 class="place-title">Notre-Dame de la Garde</h3>
+                    <p class="place-description">This Romano-Byzantine basilica crowns Marseille's highest point, its golden Madonna statue visible throughout the city. Built 1853-1864, the church features stunning mosaics and ex-votos from sailors. The terrace offers spectacular 360-degree views over the city, port, and Mediterranean. Known affectionately as "La Bonne Mère," the basilica represents Marseille's maritime soul and protective spiritual guardian overlooking the ancient port city.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Le Panier</h3>
+                    <p class="place-description">Marseille's oldest neighborhood features narrow streets, colorful buildings, artisan workshops, and bohemian atmosphere. This historic quarter escaped Haussmann renovation, preserving medieval layout and authentic character. Street art, galleries, boutiques, and cafes create vibrant atmosphere. Le Panier represents Marseille's multicultural heritage and artistic spirit, offering glimpses of the city's ancient Greek origins mixed with North African, Italian, and Provençal influences.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Cathédrale de la Major</h3>
+                    <p class="place-description">This massive Romano-Byzantine cathedral near the port features striped marble exterior and soaring domes. Completed in 1893, it represents Second Empire ambition with capacity for 3,000 worshippers. The ornate interior with marble decoration, mosaics, and impressive scale creates dramatic impression. The cathedral symbolizes Marseille's importance and religious heritage while its location marks the port entrance where arriving sailors first encountered the city.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">La Canebière</h3>
+                    <p class="place-description">Marseille's historic main street runs from the Vieux-Port inland, once the grand boulevard representing the city's prosperity. Though less glamorous today, La Canebière retains historic buildings, diverse shops, and authentic Marseille character. The street's name comes from cannabis hemp rope-making. Walking La Canebière reveals Marseille's evolution, working-class spirit, and multicultural neighborhoods that define the city's unique identity.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">La Corniche</h3>
+                    <p class="place-description">This scenic coastal road stretches from the Vieux-Port to the Prado beaches, offering stunning Mediterranean views. The 5-kilometer route passes seaside villas, rocky shores, and swimming spots popular with locals. The Corniche represents Marseille's intimate relationship with the sea and provides access to beaches, seafood restaurants, and the Vallon des Auffes fishing village. It's perfect for walks, sunset views, and experiencing Marseille's coastal beauty.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Abbaye Saint-Victor</h3>
+                    <p class="place-description">This fortified abbey from the 5th century is one of France's oldest Christian sites. The church features crypt with sarcophagi, catacombs, and relics. The fortress-like exterior protected against Saracen raids. The abbey represents Marseille's early Christian heritage and monastic tradition. Its Candlemas black Madonna festival continues ancient rituals. The stark medieval architecture and historical depth make it essential for understanding Marseille's spiritual foundations.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">La Vieille Charité</h3>
+                    <p class="place-description">This 17th-century hospice designed by Pierre Puget features stunning baroque architecture with arcaded galleries surrounding a central chapel. Originally a workhouse for the poor, it now houses museums of Mediterranean archaeology and African art. The harmonious proportions and peaceful courtyard create an architectural masterpiece. La Vieille Charité represents Marseille's baroque heritage and current commitment to culture within Le Panier district.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Cours Julien</h3>
+                    <p class="place-description">This trendy neighborhood features street art covering entire buildings, alternative boutiques, record shops, and diverse restaurants. The bohemian atmosphere attracts artists, students, and creative types. Cafes with outdoor seating create lively scenes. Cours Julien represents Marseille's contemporary artistic spirit and multicultural energy. The constantly evolving street art and independent character make it beloved by locals seeking authentic urban culture.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Parc Longchamp</h3>
+                    <p class="place-description">This 19th-century park features the monumental Longchamp Palace with its fountain and colonnade celebrating water arrival to Marseille. The park houses natural history and fine arts museums, botanical garden, and zoo. The formal French gardens, shaded paths, and architectural grandeur create elegant setting. Parc Longchamp represents 19th-century urban planning and Marseille's gratitude for the canal bringing water from the Durance River.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Jardin de la Magalone</h3>
+                    <p class="place-description">This hidden 18th-century garden features the Magalone Bastide mansion, formal terraces, and Mediterranean plants. The peaceful garden with its fountain, sculptures, and views represents traditional Provençal country estates. Less touristy than other parks, it offers tranquil escape and glimpse into bourgeois life when wealthy Marseillais built summer retreats. The garden exemplifies Provençal landscaping and architectural harmony with nature.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place de Lenche</h3>
+                    <p class="place-description">This small square in Le Panier marks the ancient Greek agora location where Marseille began 2,600 years ago. Archaeological excavations revealed Greek and Roman remains visible through viewing windows. The modest square belies its historical significance as the city's birthplace. Surrounding cafes and proximity to other Panier attractions make it perfect for contemplating Marseille's extraordinary longevity spanning millennia of Mediterranean history.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue de la République</h3>
+                    <p class="place-description">This wide Second Empire boulevard connects the Vieux-Port to the Joliette docks, featuring uniform Haussmann-style buildings with arcades. Built in the 1860s, it represented Marseille's modernization and imperial ambitions. Today the street combines shops, cafes, and apartments. The covered walkways provide shelter while shopping. Rue de la République exemplifies 19th-century urban renewal and remains Marseille's main north-south artery through the city center.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Museums & Palaces</h2>
+            </div>
+
+            <div class="museums-section">
+                <div class="museum-box">
+                    <h4 class="museum-title">Palais Longchamp</h4>
+                    <p class="museum-subtitle">19th-century palace with museums and monumental fountain</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €8</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Château d'If</h4>
+                    <p class="museum-subtitle">Island fortress prison made famous by The Count of Monte Cristo</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ Boat+tour vary</span>
+                        <span class="badge-price">💶 €15</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée d'Histoire de Marseille</h4>
+                    <p class="museum-subtitle">City history from Greek founding through modern era</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €8</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Fort Saint-Jean</h4>
+                    <p class="museum-subtitle">17th-century fort guarding harbor entrance, now part of MuCEM</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 7:00 PM</span>
+                        <span class="badge-price">💶 €11</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Palais du Pharo</h4>
+                    <p class="museum-subtitle">Napoleon III's palace with gardens overlooking Vieux-Port</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ Gardens open daily</span>
+                        <span class="badge-price">💶 Free</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="../../my-website.html" class="back-button">← Back to Travel Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

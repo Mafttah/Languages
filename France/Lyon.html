@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyon Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0055a4 0%, #ffffff 50%, #ef4135 100%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 85, 164, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            border-left: 6px solid #ef4135;
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #0055a4;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 70px 0 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #0055a4;
+            display: inline-block;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #ef4135;
+            font-weight: 700;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid #0055a4;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(239, 65, 53, 0.2);
+            border-top-color: #ef4135;
+        }
+
+        .place-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #0055a4;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .place-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .museums-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-box {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid #ef4135;
+            transition: all 0.3s ease;
+        }
+
+        .museum-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 85, 164, 0.15);
+            border-left-color: #0055a4;
+        }
+
+        .museum-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: #0055a4;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-time,
+        .badge-price {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .badge-time {
+            background: #e3f2fd;
+            color: #0055a4;
+        }
+
+        .badge-price {
+            background: #ffebee;
+            color: #ef4135;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 50px auto;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 85, 164, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ef4135, #c62828);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239, 65, 53, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .places-grid,
+            .museums-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="hero-banner text-center">
+                <h1 class="hero-title">LYON</h1>
+                <p class="hero-subtitle">🇫🇷 Gastronomic Capital of France 🇫🇷</p>
+            </div>
+
+            <div class="intro-section">
+                <h2 class="intro-title">Welcome to Lyon</h2>
+                <p class="intro-text">Lyon is France's third-largest city and gastronomic capital, renowned for exceptional cuisine, silk-weaving heritage, and 2,000 years of history. Situated at the confluence of the Rhône and Saône rivers, Lyon's UNESCO-listed old town features Renaissance buildings, traboules (secret passageways), and Roman theaters. The city invented cinema through the Lumière brothers, established bouchon dining traditions, and maintains vibrant cultural life. Lyon perfectly balances historic charm with contemporary dynamism and culinary excellence.</p>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Places to Visit</h2>
+            </div>
+
+            <div class="places-grid">
+                <div class="place-card">
+                    <h3 class="place-title">Notre-Dame de Fourvière Basilica</h3>
+                    <p class="place-description">This stunning white basilica crowns Fourvière hill, visible throughout Lyon. Built between 1872-1896, it combines Byzantine and medieval architecture with ornate mosaics, stained glass, and gilded decoration. The terrace offers spectacular panoramic views over Lyon, the rivers, and Alps beyond. The basilica represents Lyon's religious devotion and gratitude to the Virgin Mary for protecting the city during the 1870 war.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Parc de la Tête d'Or</h3>
+                    <p class="place-description">Lyon's largest urban park covers 117 hectares with botanical gardens, a lake for boating, zoo, rose garden, and extensive green spaces. Created in 1857, the park's name comes from a legend about hidden gold treasure. The African plain exhibits, tropical greenhouses, and wide lawns make it perfect for families, joggers, and relaxation. It's Lyon's green lung and beloved recreational space.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Bellecour</h3>
+                    <p class="place-description">One of Europe's largest open squares features an equestrian statue of Louis XIV. The vast pedestrian plaza connects the Presqu'île peninsula's shopping districts with the Saône riverside. The square hosts events, Christmas markets, and serves as Lyon's central meeting point. Surrounded by neoclassical facades and offering views toward Fourvière, Bellecour represents Lyon's grandeur and urban planning.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Cathédrale Saint-Jean-Baptiste</h3>
+                    <p class="place-description">Lyon's medieval cathedral in Vieux Lyon features Gothic and Romanesque architecture from the 12th-15th centuries. The astronomical clock from 1598 performs a mechanical show four times daily. Beautiful stained glass windows, excavated baptistery ruins, and treasury artworks make it remarkable. The cathedral's location in the heart of Renaissance old town makes it central to exploring traboules and historic neighborhoods.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Church of Saint Nizier</h3>
+                    <p class="place-description">This Gothic church features two mismatched towers and sits on ancient Christian burial grounds. Built between the 14th-16th centuries, Saint-Nizier showcases flamboyant Gothic style with elaborate rose window and choir. The church's central Presqu'île location near shopping streets makes it an architectural landmark. Its history spans Roman martyrs to medieval pilgrimage, representing Lyon's deep Christian roots.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place des Terreaux</h3>
+                    <p class="place-description">This historic square features Bartholdi's monumental fountain depicting France as a woman on a chariot pulled by horses. The square is flanked by the Hôtel de Ville (City Hall) and Museum of Fine Arts. The renovated plaza with 69 ground fountains creates a theatrical water display at night. Surrounded by cafes and restaurants, Terreaux represents Lyon's civic pride and Baroque grandeur.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Sathonay</h3>
+                    <p class="place-description">This charming tree-lined square in the Croix-Rousse district offers a peaceful neighborhood atmosphere. The plaza features a central fountain and is surrounded by typical Lyon buildings. Local markets animate the square, and nearby streets showcase authentic residential Lyon. The square provides insight into everyday life in the former silk-weaving district, away from major tourist areas.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Parc des Hauteurs</h3>
+                    <p class="place-description">This hillside park on Fourvière hill connects the basilica with Roman theaters through winding paths and gardens. The park offers multiple viewpoints over Lyon, peaceful walking trails, and access to ancient ruins. Rosier gardens and shaded paths create romantic settings. The elevated position provides escape from urban bustle while remaining central, showcasing Lyon's topographical variety and green spaces.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Mini World Lyon</h3>
+                    <p class="place-description">This impressive miniature world features animated scenes with 3,000 figurines, moving vehicles, and day-night cycles. The detailed models depict Lyon landmarks, countryside villages, and fantasy scenes. Interactive displays and attention to detail fascinate both children and adults. Located near the Confluence Museum, it offers unique entertainment showcasing miniature craftsmanship and storytelling through tiny animated worlds.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue de la République</h3>
+                    <p class="place-description">Lyon's main commercial street runs through the Presqu'île connecting Bellecour to Place de la Comédie. This wide 19th-century boulevard features elegant Haussmann-style buildings housing international brands, department stores, and restaurants. The pedestrian section creates pleasant shopping atmosphere. The street represents Second Empire urban planning and remains Lyon's primary retail destination, always bustling with shoppers and street performers.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Antonin Poncet</h3>
+                    <p class="place-description">This square next to Bellecour features the Bell Tower of La Charité, the last remnant of a former hospital. The modern circular design with central fountain creates a popular gathering spot. Surrounded by cafes and close to the Saône, the square offers relaxed atmosphere for enjoying Lyon life. The blend of historic bell tower with contemporary plaza design represents Lyon's ability to harmonize old and new.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Basilique Saint-Martin d'Ainay</h3>
+                    <p class="place-description">This Romanesque basilica from the 11th century is Lyon's oldest church and a masterpiece of regional Romanesque architecture. The sturdy stone construction, square bell tower, and ancient columns showcase medieval building techniques. Inside, the austere beauty and historical ambiance create contemplative atmosphere. The church represents Lyon's medieval religious heritage and architectural continuity from Roman foundations to present day.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Museums & Palaces</h2>
+            </div>
+
+            <div class="museums-section">
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée des Confluences</h4>
+                    <p class="museum-subtitle">Stunning modern science and anthropology museum at rivers' confluence</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:30 AM - 6:30 PM</span>
+                        <span class="badge-price">💶 €9</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée Miniature et Cinéma</h4>
+                    <p class="museum-subtitle">Miniature scenes and movie props in Renaissance building</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:30 PM</span>
+                        <span class="badge-price">💶 €9</span>
+                    </div>
+                </div>
+
+                <div class="museum-box">
+                    <h4 class="museum-title">Centre d'Histoire de la Résistance</h4>
+                    <p class="museum-subtitle">Museum documenting Lyon's role in French Resistance during WWII</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="../../my-website.html" class="back-button">← Back to Travel Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

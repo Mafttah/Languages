@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevilla Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@400;700&display=swap');
+
+        body {
+            background: #1a1a2e;
+            color: #fff;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .hero-wrapper {
+            background: linear-gradient(45deg, #c1121f 0%, #780000 50%, #ffc300 100%);
+            padding: 3px;
+            border-radius: 25px;
+            margin-bottom: 50px;
+        }
+
+        .hero-content {
+            background: #1a1a2e;
+            padding: 70px 40px;
+            border-radius: 23px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            top: -30px;
+            left: -20px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .hero-content::after {
+            content: '🌟';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.05;
+            bottom: -30px;
+            right: -20px;
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffc300;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #c1121f 0%, #780000 100%);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 3px solid #ffc300;
+            box-shadow: 0 0 30px rgba(255, 195, 0, 0.3);
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #ffc300;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            text-align: center;
+            color: #fff;
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-weight: 900;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transform: skew(-5deg);
+        }
+
+        .section-title span {
+            display: inline-block;
+            transform: skew(5deg);
+        }
+
+        .places-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .place-box {
+            background: linear-gradient(135deg, #16213e 0%, #0f3460 100%);
+            padding: 35px;
+            border-radius: 20px;
+            border-left: 8px solid #ffc300;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .place-box:nth-child(even) {
+            border-left: none;
+            border-right: 8px solid #c1121f;
+            margin-left: 40px;
+        }
+
+        .place-box:nth-child(odd) {
+            margin-right: 40px;
+        }
+
+        .place-box:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(193, 18, 31, 0.4);
+            border-color: #c1121f;
+        }
+
+        .place-box:nth-child(even):hover {
+            border-color: #ffc300;
+        }
+
+        .place-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: linear-gradient(135deg, #c1121f, #ffc300);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            color: #1a1a2e;
+            box-shadow: 0 5px 20px rgba(255, 195, 0, 0.5);
+        }
+
+        .place-box:nth-child(even) .place-number {
+            left: auto;
+            right: 30px;
+        }
+
+        .place-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #ffc300;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-card {
+            background: #16213e;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .museum-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, #ffc300, #c1121f, #ffc300);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .museum-card:hover::before {
+            opacity: 1;
+        }
+
+        .museum-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(255, 195, 0, 0.3);
+        }
+
+        .museum-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #ffc300;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-desc {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-pill {
+            background: linear-gradient(135deg, #c1121f, #780000);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 2px solid #ffc300;
+            color: #ffc300;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 40px auto;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ffc300 0%, #c1121f 100%);
+            color: #1a1a2e;
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(255, 195, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-link:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 15px 50px rgba(193, 18, 31, 0.6);
+            color: #1a1a2e;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .place-box:nth-child(even),
+            .place-box:nth-child(odd) {
+                margin-left: 0;
+                margin-right: 0;
+                border-right: none;
+                border-left: 8px solid #ffc300;
+            }
+
+            .place-number {
+                left: 20px !important;
+                right: auto !important;
+            }
+
+            .museums-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <!-- Hero Section -->
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <h1 class="hero-title">✨ SEVILLA ✨</h1>
+                <p class="hero-subtitle">🇪🇸 Flamenco & Moorish Splendor 🇪🇸</p>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-box">
+            <h2 class="intro-title">Welcome to Sevilla</h2>
+            <p class="intro-text">Sevilla is the passionate heart of Andalusia and the birthplace of flamenco. This enchanting city along the Guadalquivir River captivates with its stunning Moorish architecture, orange-scented streets, and vibrant cultural traditions. Home to the world's largest Gothic cathedral, the magnificent Alcázar palace, and the lively Triana neighborhood, Sevilla embodies the romantic essence of southern Spain with its tapas culture, bullfighting heritage, and unforgettable April Fair celebrations.</p>
+        </div>
+
+        <!-- Places Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>📍 Places to Visit</span></h2>
+        </div>
+
+        <div class="places-container">
+            <div class="place-box">
+                <div class="place-number">1</div>
+                <h3 class="place-name">Sevilla Cathedral</h3>
+                <p class="place-text">The world's largest Gothic cathedral, built on the site of a grand mosque between 1402-1528. This UNESCO World Heritage Site features Christopher Columbus's tomb, La Giralda bell tower (originally a minaret), and an interior so vast it can hold 10,000 people. The cathedral houses priceless artworks including paintings by Murillo and Zurbarán. Climbing La Giralda's 35 ramps offers spectacular views over Sevilla's rooftops and orange groves.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">2</div>
+                <h3 class="place-name">Plaza de España</h3>
+                <p class="place-text">This breathtaking semi-circular plaza, built for the 1929 Ibero-American Exposition, showcases Renaissance and Moorish revival architecture. The vast complex features a canal with colorful ceramic bridges, ornate balconies, and 48 tiled alcoves representing Spain's provinces. Visitors can rent rowboats to paddle along the canal. The plaza has appeared in numerous films including Star Wars and Lawrence of Arabia, testament to its stunning visual impact.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">3</div>
+                <h3 class="place-name">Torre del Oro</h3>
+                <p class="place-text">This iconic 13th-century Moorish watchtower stands on the banks of the Guadalquivir River. The golden tower (named for its original golden-tiled exterior) was part of the city's defensive walls and served to control river access. Today it houses the Maritime Museum, chronicling Sevilla's importance as a port during Spain's Golden Age when treasure fleets departed for the Americas. The tower offers excellent river views.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">4</div>
+                <h3 class="place-name">Parque de María Luisa</h3>
+                <p class="place-text">Sevilla's principal green space, donated to the city by Princess María Luisa in 1893 and redesigned for the 1929 exposition. The park features landscaped gardens, fountains, ponds, and tree-lined paths perfect for strolling. Within its grounds are Plaza de España, Plaza de América, and several museums. The shaded paths, tiled benches, and romantic atmosphere make it Sevilla's most beloved park, especially during hot summer afternoons.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">5</div>
+                <h3 class="place-name">Basílica de la Macarena</h3>
+                <p class="place-text">This modern basilica, built in 1949, houses the city's most beloved Virgin statue, La Macarena. The baroque revival church displays the Virgin's elaborate jeweled robes and the emotional statue that leads the most important procession during Holy Week. The adjacent museum showcases religious treasures and explains Sevilla's deep Holy Week traditions. The basilica represents Sevillian religious devotion and attracts pilgrims year-round.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">6</div>
+                <h3 class="place-name">Plaza Nueva</h3>
+                <p class="place-text">This elegant square at the heart of Sevilla serves as a major gathering point and transport hub. The plaza features the imposing City Hall building with its Plateresque facade, palm trees, and fountains. Underground archaeological remains from Roman and Moorish times have been discovered here. The square connects the commercial center with the historic old town and is surrounded by cafes and shops, making it central to daily Sevillian life.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">7</div>
+                <h3 class="place-name">Calle Sierpes</h3>
+                <p class="place-text">Sevilla's most famous shopping street runs through the heart of the old town. This narrow pedestrian street has been a commercial hub since medieval times and is lined with traditional shops, modern boutiques, cafes, and the historic Confitería La Campana. The street bustles with activity, especially during the evening paseo when Sevillians stroll, socialize, and window shop. It perfectly captures Sevilla's blend of tradition and contemporary urban life.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">8</div>
+                <h3 class="place-name">Alameda de Hércules</h3>
+                <p class="place-text">This historic public promenade, created in 1574, is one of Spain's oldest public gardens. The elongated square features columns with statues of Hercules and Julius Caesar at one end, and modern sculptures at the other. Once neglected, the Alameda has transformed into Sevilla's hippest neighborhood, filled with trendy bars, restaurants, and art galleries. It's especially lively at night, popular with young Sevillians and alternative culture enthusiasts.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">9</div>
+                <h3 class="place-name">Plaza de América</h3>
+                <p class="place-text">This beautiful plaza in María Luisa Park was designed for the 1929 Ibero-American Exposition. The square is framed by three elaborate pavilions in different regional Spanish styles: Neo-Gothic, Renaissance, and Mudéjar. The buildings now house the Archaeological Museum and Museum of Arts and Popular Customs. The plaza's elegant architecture, gardens, and peaceful atmosphere make it a cultural and architectural highlight within the park.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">10</div>
+                <h3 class="place-name">Iglesia Colegial del Divino Salvador</h3>
+                <p class="place-text">Sevilla's second-largest church stands on the site of the city's first mosque. Built in the 18th century baroque style, the church features lavish decoration, elaborate altarpieces, and important religious sculptures. The interior's ornate gilded decoration and artistic treasures rival the cathedral. The church is particularly significant during Holy Week when its brotherhood processes carry revered statues through the streets. A combined ticket with the Cathedral makes visiting affordable.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">11</div>
+                <h3 class="place-name">Puente de Triana</h3>
+                <p class="place-text">The iconic Isabel II Bridge, commonly called Triana Bridge, connects the city center with the Triana neighborhood across the Guadalquivir River. Built in 1852, it was Sevilla's first fixed bridge across the river. The iron structure offers perfect views of the Torre del Oro and the river, especially beautiful at sunset. The bridge leads to Triana, the traditional flamenco and pottery district, making it both a practical crossing and symbolic gateway.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">12</div>
+                <h3 class="place-name">Parque del Alamillo</h3>
+                <p class="place-text">This large metropolitan park on La Cartuja island offers natural landscapes along the Guadalquivir River. Created for Expo '92, the 120-hectare park features Mediterranean woodland, walking and cycling paths, and recreational facilities. Less manicured than María Luisa Park, it provides a wilder, more natural setting perfect for outdoor activities, picnics, and bird watching. The park represents modern Sevilla's commitment to green urban spaces and quality of life.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">13</div>
+                <h3 class="place-name">Plaça del Triomf</h3>
+                <p class="place-text">This plaza features a grand triumphal arch erected for the 1929 exposition, decorated with ceramic tiles and statues representing Spain's provinces and virtues. The arch marks the formal entrance to María Luisa Park and Plaza de España. The neoclassical design and ornate decoration make it a impressive gateway and popular photo spot. The plaza represents the ambition and artistry of Sevilla's 1929 international exposition.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">14</div>
+                <h3 class="place-name">San Jeronimo Park</h3>
+                <p class="place-text">A newer park in the Macarena neighborhood offering modern recreational facilities, playgrounds, and green spaces. The park provides local residents with quality outdoor space and includes sports facilities, walking paths, and shaded areas. While less historic than María Luisa Park, it represents contemporary urban planning priorities and serves as an important community gathering place for one of Sevilla's traditional neighborhoods.</p>
+            </div>
+
+            <div class="place-box">
+                <div class="place-number">15</div>
+                <h3 class="place-name">Plaza del Salvador</h3>
+                <p class="place-text">This lively square in front of the Salvador Church buzzes with outdoor cafes and bars, especially in the evenings. The plaza serves as a popular meeting point and aperitivo spot where locals gather for drinks and tapas before dinner. The combination of baroque architecture, vibrant social atmosphere, and central location makes it one of Sevilla's most authentic gathering places. It perfectly captures the Sevillian tradition of outdoor socializing.</p>
+            </div>
+        </div>
+
+        <!-- Museums Section -->
+        <div class="section-divider">
+            <h2 class="section-title"><span>🏛️ Museums & Palaces</span></h2>
+        </div>
+
+        <div class="museums-grid">
+            <div class="museum-card">
+                <h4 class="museum-name">Real Alcázar de Sevilla</h4>
+                <p class="museum-desc">Stunning Mudéjar palace with magnificent gardens, UNESCO site, oldest royal palace still in use</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 9:30 AM - 5:00 PM</span>
+                    <span class="info-pill">💶 €14.50</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Casa de Pilatos</h4>
+                <p class="museum-desc">16th-century aristocratic palace blending Italian Renaissance and Spanish Mudéjar styles</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 9:00 AM - 6:00 PM</span>
+                    <span class="info-pill">💶 €10</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palacio de las Dueñas</h4>
+                <p class="museum-desc">Historic palace of the House of Alba with art collection and beautiful gardens</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-pill">💶 €10</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palace of the Countess of Lebrija</h4>
+                <p class="museum-desc">Private palace with exceptional Roman mosaic collection and aristocratic interiors</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 2:00 PM</span>
+                    <span class="info-pill">💶 €8</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Military History Museum</h4>
+                <p class="museum-desc">Military artifacts and exhibits chronicling Spanish military history</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 2:00 PM</span>
+                    <span class="info-pill">💶 Free</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Castell de Sant Jordi</h4>
+                <p class="museum-desc">Historic Inquisition castle now museum of tolerance and coexistence</p>
+                <div class="museum-info">
+                    <span class="info-pill">⏰ 10:00 AM - 3:00 PM</span>
+                    <span class="info-pill">💶 Free</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-link">← Back to Travel Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

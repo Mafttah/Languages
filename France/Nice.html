@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0055a4 0%, #ffffff 50%, #ef4135 100%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 85, 164, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            border-left: 6px solid #ef4135;
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #0055a4;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 70px 0 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #0055a4;
+            display: inline-block;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #ef4135;
+            font-weight: 700;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid #0055a4;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(239, 65, 53, 0.2);
+            border-top-color: #ef4135;
+        }
+
+        .place-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #0055a4;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .place-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .museums-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-box {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid #ef4135;
+            transition: all 0.3s ease;
+        }
+
+        .museum-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 85, 164, 0.15);
+            border-left-color: #0055a4;
+        }
+
+        .museum-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: #0055a4;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-time,
+        .badge-price {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .badge-time {
+            background: #e3f2fd;
+            color: #0055a4;
+        }
+
+        .badge-price {
+            background: #ffebee;
+            color: #ef4135;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 50px auto;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 85, 164, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ef4135, #c62828);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239, 65, 53, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .places-grid,
+            .museums-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="hero-banner text-center">
+                <h1 class="hero-title">NICE</h1>
+                <p class="hero-subtitle">🇫🇷 Pearl of the French Riviera 🇫🇷</p>
+            </div>
+
+            <div class="intro-section">
+                <h2 class="intro-title">Welcome to Nice</h2>
+                <p class="intro-text">Nice is the jewel of the Côte d'Azur, France's fifth-largest city offering Mediterranean beaches, Belle Époque architecture, and year-round sunshine. The Promenade des Anglais, colorful Old Town, Russian influences, and vibrant markets create unique charm. Nice's position between mountains and sea, mild climate, and artistic heritage attracted aristocrats, artists, and visitors for centuries. The city perfectly balances sophisticated resort atmosphere with authentic Provençal culture and stunning natural beauty.</p>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Places to Visit</h2>
+            </div>
+
+            <div class="places-grid">
+                <div class="place-card">
+                    <h3 class="place-title">Monastère de Cimiez</h3>
+                    <p class="place-description">This Franciscan monastery in the Cimiez hillside neighborhood dates from the 16th century. The monastery features a small museum, church with altarpieces, and beautiful gardens overlooking Nice. The adjacent cemetery contains Matisse's grave. The peaceful setting, surrounded by olive groves and offering city views, provides spiritual retreat and connection to Nice's religious and artistic history in one of the city's most elegant districts.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Rossetti</h3>
+                    <p class="place-description">This charming square in Vieux Nice's heart features the cathedral and is surrounded by colorful buildings, gelato shops, and cafes. The fountain at the center and outdoor terraces create lively atmosphere especially in evenings. Children play while adults enjoy aperitifs. The square represents authentic Niçois life and serves as a perfect spot for people-watching while enjoying Nice's famous ice cream in a quintessentially Mediterranean setting.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Vieux Nice (Old Town)</h3>
+                    <p class="place-description">The Old Town features narrow lanes, colorful buildings with shuttered windows, and authentic atmosphere. Baroque churches, the Cours Saleya market, socca vendors, and hidden squares create a labyrinth perfect for wandering. The Italian influence from Nice's Savoyard past shows in architecture and cuisine. Vieux Nice preserves traditional character while offering countless restaurants, galleries, and shops in a uniquely Mediterranean urban setting.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Masséna</h3>
+                    <p class="place-description">Nice's main square features striking red ochre Italianate buildings with arcades and a black-and-white checkered pavement. Modern art installations including illuminated human statues atop poles create contemporary contrast. The square connects Old Town with modern shopping areas and Promenade du Paillon gardens. Fountains, wide spaces, and central location make it Nice's ceremonial heart and popular meeting point showcasing the city's architectural elegance.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Place Garibaldi</h3>
+                    <p class="place-description">This beautiful yellow-painted arcaded square honors Giuseppe Garibaldi, born in Nice. The baroque square features symmetrical architecture, cafes under the arcades, and a statue of Garibaldi at its center. The recently extended tramway passes through, connecting old and new Nice. The square marks the transition from Old Town to Port Lympia and represents Nice's Italian heritage and 18th-century urban planning elegance.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Cathédrale Sainte-Réparate</h3>
+                    <p class="place-description">Nice's baroque cathedral dedicated to the city's patron saint features an ornate facade, tiled dome, and richly decorated interior. Built in the 17th century, the cathedral showcases baroque artistry with elaborate stucco work, paintings, and marble. The location in Vieux Nice's heart makes it central to exploring the old quarter. The cathedral represents Nice's Catholic heritage and baroque architectural ambitions during the Savoyard period.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Parc du Château</h3>
+                    <p class="place-description">This hilltop park occupies the site of a destroyed medieval castle and offers Nice's best panoramic views. The elevated gardens feature waterfalls, shaded paths, playground, and remains of the old citadel. Free elevator access makes it easy to reach. The park provides spectacular vistas over the Bay of Angels, Old Town, and port. It's perfect for picnics, sunset watching, and escape from beach crowds with refreshing breezes.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Musée National Marc Chagall</h3>
+                    <p class="place-description">This museum houses the world's largest collection of Chagall's works, designed by the artist himself. The Biblical Message series paintings, stained glass windows, and mosaics create a contemplative space exploring religious themes. The intimate museum with its garden and reflecting pool offers a serene setting for appreciating Chagall's art. It represents Nice's role as an artistic haven that attracted major 20th-century artists.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Rue Jean Médecin</h3>
+                    <p class="place-description">Nice's main shopping street runs from Place Masséna to the train station, lined with department stores, international brands, and the modern Nice Etoile shopping center. The wide boulevard features the tramway and connects major districts. The street represents Nice's commercial vitality and modern development. Surrounded by cafes and restaurants, it's always bustling with locals and tourists enjoying retail therapy and urban energy.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Museums & Palaces</h2>
+            </div>
+
+            <div class="museums-section">
+                <div class="museum-box">
+                    <h4 class="museum-title">Musée du Palais Lascaris</h4>
+                    <p class="museum-subtitle">17th-century baroque palace with period furniture and musical instrument collection</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="../../my-website.html" class="back-button">← Back to Travel Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

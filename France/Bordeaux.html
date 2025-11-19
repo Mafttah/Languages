@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bordeaux Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;500;700&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #0055a4 0%, #ffffff 50%, #ef4135 100%);
+            background-attachment: fixed;
+            font-family: 'Montserrat', sans-serif;
+            color: #2c3e50;
+        }
+
+        .main-container {
+            background: rgba(255, 255, 255, 0.95);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 20px 60px rgba(0, 85, 164, 0.3);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .intro-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            border-left: 6px solid #ef4135;
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: #0055a4;
+            margin-bottom: 30px;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 70px 0 50px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: #0055a4;
+            display: inline-block;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #ef4135;
+            font-weight: 700;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 5px solid #0055a4;
+        }
+
+        .place-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 50px rgba(239, 65, 53, 0.2);
+            border-top-color: #ef4135;
+        }
+
+        .place-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #0055a4;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .place-description {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .museums-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .museum-box {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid #ef4135;
+            transition: all 0.3s ease;
+        }
+
+        .museum-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 85, 164, 0.15);
+            border-left-color: #0055a4;
+        }
+
+        .museum-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: #0055a4;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge-time,
+        .badge-price {
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .badge-time {
+            background: #e3f2fd;
+            color: #0055a4;
+        }
+
+        .badge-price {
+            background: #ffebee;
+            color: #ef4135;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 50px auto;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #0055a4, #002395);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 85, 164, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #ef4135, #c62828);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(239, 65, 53, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .places-grid,
+            .museums-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="hero-banner text-center">
+                <h1 class="hero-title">BORDEAUX</h1>
+                <p class="hero-subtitle">🇫🇷 World Capital of Wine 🇫🇷</p>
+            </div>
+
+            <div class="intro-section">
+                <h2 class="intro-title">Welcome to Bordeaux</h2>
+                <p class="intro-text">Bordeaux is the capital of Nouvelle-Aquitaine and world-renowned wine capital, surrounded by prestigious vineyards. This elegant port city along the Garonne River features stunning 18th-century architecture, the UNESCO-listed historic center, and innovative contemporary culture. From neoclassical Place de la Bourse with its reflecting pool to modern Cité du Vin museum, Bordeaux balances wine heritage with urban sophistication, gastronomy, and artistic vitality.</p>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Places to Visit</h2>
+            </div>
+
+            <div class="places-grid">
+                <div class="place-card">
+                    <h3 class="place-title">Place de la Bourse</h3>
+                    <p class="place-description">This magnificent 18th-century square represents Bordeaux's classical elegance with symmetrical buildings designed by royal architect Ange-Jacques Gabriel. The square overlooks the Garonne River and showcases neoclassical architecture at its finest. The harmonious proportions and riverside location make it Bordeaux's most photographed landmark. The square represents the city's 18th-century prosperity and maritime trading power when Bordeaux was France's premier port.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Miroir d'Eau</h3>
+                    <p class="place-description">This innovative reflecting pool opposite Place de la Bourse covers 3,450 square meters with 2cm of water creating mirror effects. The world's largest reflecting pool alternates between mirror and mist states, creating magical atmosphere especially at sunset. Children play while photographers capture reflections of classical architecture. Completed in 2006, the Miroir d'Eau represents Bordeaux's contemporary creativity and successful urban renewal blending heritage with modern design.</p>
+                </div>
+
+                <div class="place-card">
+                    <h3 class="place-title">Cathédrale Saint-André</h3>
+                    <p class="place-description">This Gothic cathedral dating from the 11th-16th centuries features separate bell tower (Pey-Berland) and hosted royal weddings including Eleanor of Aquitaine and Louis VII. The UNESCO-listed cathedral showcases Gothic architecture with elaborate sculptural portal and soaring interior. The location in the historic center makes it central to exploring Bordeaux's heritage. The cathedral represents Bordeaux's ecclesiastical importance and architectural splendor through medieval and Renaissance periods.</p>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title">Museums & Palaces</h2>
+            </div>
+
+            <div class="museums-section">
+                <div class="museum-box">
+                    <h4 class="museum-title">Tour Pey Berland</h4>
+                    <p class="museum-subtitle">15th-century Gothic bell tower with panoramic city views</p>
+                    <div class="museum-badges">
+                        <span class="badge-time">⏰ 10:00 AM - 6:00 PM</span>
+                        <span class="badge-price">💶 €7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="../../my-website.html" class="back-button">← Back to Travel Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
