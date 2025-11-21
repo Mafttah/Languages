@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florence Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+        body {
+            background: #f5f5f0;
+            font-family: 'Lora', serif;
+            color: #2d2d2d;
+        }
+
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .header-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #009246 0%, #ffffff 50%, #ce2b37 100%);
+            border-radius: 15px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .city-name {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            font-weight: 900;
+            color: #009246;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px rgba(206, 43, 55, 0.2);
+            letter-spacing: 8px;
+        }
+
+        .city-tagline {
+            font-size: 1.5rem;
+            color: #ce2b37;
+            font-weight: 600;
+            font-style: italic;
+            letter-spacing: 3px;
+        }
+
+        .intro-container {
+            background: white;
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 70px;
+            border-top: 8px solid #009246;
+            border-bottom: 8px solid #ce2b37;
+        }
+
+        .intro-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #009246;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .intro-paragraph {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: justify;
+            color: #4a4a4a;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 80px 0 60px;
+        }
+
+        .divider-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #ce2b37;
+            display: inline-block;
+            padding: 0 40px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .divider-title::before,
+        .divider-title::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #009246;
+            font-size: 2rem;
+        }
+
+        .divider-title::before {
+            left: 0;
+        }
+
+        .divider-title::after {
+            right: 0;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 70px;
+        }
+
+        .location-item {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 6px solid #009246;
+            border-right: 6px solid #ce2b37;
+        }
+
+        .location-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 146, 70, 0.15);
+        }
+
+        .location-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7rem;
+            color: #ce2b37;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .location-details {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .museums-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+
+        .museum-card {
+            background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #009246;
+            border-bottom: 4px solid #ce2b37;
+            transition: all 0.3s ease;
+        }
+
+        .museum-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 35px rgba(206, 43, 55, 0.2);
+        }
+
+        .museum-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #009246;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .museum-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            background: #009246;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .meta-tag.price {
+            background: #ce2b37;
+        }
+
+        .return-link {
+            display: inline-block;
+            margin: 60px auto;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #009246, #ce2b37);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(0, 146, 70, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .return-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(206, 43, 55, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .museums-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .city-name {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .museums-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="header-section">
+            <div class="header-content">
+                <h1 class="city-name">FLORENCE</h1>
+                <p class="city-tagline">🇮🇹 Cradle of the Renaissance 🇮🇹</p>
+            </div>
+        </div>
+
+        <div class="intro-container">
+            <h2 class="intro-heading">Welcome to Florence</h2>
+            <p class="intro-paragraph">Florence is the capital of Tuscany and birthplace of the Renaissance, where art, architecture, and culture reached unprecedented heights. This compact city produced Michelangelo, Leonardo da Vinci, Dante, and Machiavelli while the Medici family patronized artists creating masterpieces filling churches, museums, and palaces. From the magnificent Duomo to Uffizi Gallery treasures, Florence preserves humanity's greatest artistic achievements. The harmonious cityscape, exceptional cuisine, and Tuscan lifestyle make Florence eternally inspiring.</p>
+        </div>
+
+        <div class="divider">
+            <h2 class="divider-title">Places to Visit</h2>
+        </div>
+
+        <div class="locations-grid">
+            <div class="location-item">
+                <h3 class="location-name">Cathedral of Santa Maria del Fiore</h3>
+                <p class="location-details">Florence's Duomo features Brunelleschi's revolutionary dome dominating the skyline. Begun in 1296, the cathedral showcases Gothic architecture with its polychrome marble facade and massive scale. The dome's engineering brilliance inspired Renaissance architecture. Climb 463 steps for breathtaking city views. Giotto's Campanile and the Baptistery complete the cathedral complex. The Duomo represents Florentine ambition, architectural innovation, and civic pride in a magnificent ensemble.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Santa Maria Novella Basilica</h3>
+                <p class="location-details">This Dominican church features a stunning Renaissance marble facade by Alberti and contains Masaccio's Trinity fresco pioneering linear perspective. The Gothic interior houses works by Giotto, Brunelleschi's crucifix, and Spanish Chapel frescoes. The green and white marble facade represents Renaissance architectural theory applied to sacred buildings. The basilica showcases Florence's artistic evolution from Gothic to Renaissance while maintaining spiritual significance.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Basilica di San Lorenzo</h3>
+                <p class="location-details">The Medici family church features Brunelleschi's harmonious Renaissance interior and Michelangelo's Laurentian Library and New Sacristy with Medici tombs. The rough unfinished facade contrasts with the refined interior. The church represents Medici patronage and Renaissance architecture's mathematical proportions. Michelangelo's sculptures and architectural innovations make San Lorenzo essential for understanding Renaissance Florence and the Medici dynasty's artistic legacy.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Ponte Vecchio</h3>
+                <p class="location-details">Florence's oldest bridge spanning the Arno since 1345 features shops built along it, originally butchers, now goldsmiths and jewelers. The medieval bridge survived WWII when all other Florence bridges were destroyed. The Vasari Corridor runs above connecting Palazzo Vecchio to Pitti Palace. The bridge's unique appearance with overhanging shops and its survival through centuries make it Florence's most recognizable landmark and romantic symbol of the city.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza del Duomo</h3>
+                <p class="location-details">This pedestrian square surrounds the cathedral complex including the Duomo, Giotto's Campanile, and the Baptistery with Ghiberti's "Gates of Paradise." The vast space allows appreciation of the cathedral's scale and the buildings' artistic details. Street performers, tourists, and the architectural magnificence create constant animation. The piazza represents Florence's religious heart and showcases the Renaissance's greatest architectural achievements in one harmonious space.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza della Repubblica</h3>
+                <p class="location-details">This large square marks Florence's ancient Roman forum and medieval market location. The 19th-century triumphal arch, elegant arcaded buildings, and historic cafes including Caffè Gilli create sophisticated atmosphere. The carousel adds charm while surrounding shops make it a commercial hub. Though controversial for demolishing medieval buildings during its creation, the square now represents Belle Époque Florence and serves as a central gathering point.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza della Signoria</h3>
+                <p class="location-details">Florence's civic heart features Palazzo Vecchio, the Loggia dei Lanzi with Renaissance sculptures, and the Neptune Fountain. Michelangelo's David replica marks the original statue's location. Cellini's Perseus, Giambologna's Rape of the Sabines, and other masterpieces create an open-air sculpture gallery. The square witnessed political events, executions, and Savonarola's Bonfire of the Vanities. It represents Florentine republican government and Renaissance artistic achievement in public space.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza Santo Spirito</h3>
+                <p class="location-details">This authentic neighborhood square in the Oltrarno district hosts a daily morning market and evening social life. Brunelleschi's Santo Spirito church with its harmonious Renaissance interior anchors the square. The piazza buzzes with locals, students, and artisans enjoying aperitivo at outdoor cafes. The unpretentious atmosphere represents authentic Florentine life away from tourist crowds while maintaining artistic significance through Brunelleschi's architectural masterpiece.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Giardino Bardini</h3>
+                <p class="location-details">This hillside baroque garden offers spectacular panoramic views over Florence's terracotta rooftops and Duomo. The terraced gardens feature a baroque staircase, wisteria tunnel, and azaleas creating seasonal color. Less crowded than Boboli Gardens, Bardini provides peaceful atmosphere for contemplating Florence's beauty. The garden represents Renaissance villa culture while offering contemporary exhibitions in the villa museum. The views alone justify the visit to this hidden gem.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazzale Michelangelo</h3>
+                <p class="location-details">This elevated square offers Florence's most famous panoramic view encompassing the Duomo, Palazzo Vecchio, Santa Croce, and Ponte Vecchio against the Tuscan hills. The bronze David replica centers the terrace designed in 1869. Sunset attracts crowds for the golden light over Florence's skyline. Street vendors, gelato, and romantic atmosphere make it essential viewing point. The piazzale represents 19th-century urban planning creating public space for appreciating Florence's beauty.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza San Marco</h3>
+                <p class="location-details">This square near the Accademia Gallery features the San Marco Museum in a former Dominican convent housing Fra Angelico frescoes. The quieter neighborhood atmosphere contrasts with tourist-heavy areas. The university presence creates authentic Florentine character. The piazza provides access to important Renaissance art while representing Florence's intellectual and spiritual traditions through the monastery's preserved cells decorated by Fra Angelico.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Basilica di Santa Croce</h3>
+                <p class="location-details">This Franciscan church serves as Florence's pantheon with tombs of Michelangelo, Galileo, Machiavelli, and Rossini. The Gothic interior features Giotto frescoes and beautiful chapels. The leather school operates in the monastery. The piazza hosts events and the annual calcio storico matches. Santa Croce represents Florentine achievement and houses the city's greatest minds while showcasing Gothic architecture and artistic treasures in a magnificent sacred space.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">San Miniato al Monte</h3>
+                <p class="location-details">This Romanesque church crowning a hill above Piazzale Michelangelo offers even better views and exceptional marble facade. Built in the 11th century, it's Florence's oldest church and features geometric marble patterns, beautiful crypt, and peaceful cemetery. Benedictine monks maintain the church performing Gregorian chants daily. The church represents Florence's Romanesque heritage and provides spiritual retreat with unmatched vistas over the city creating a perfect blend of contemplation and panoramic beauty.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza di Santa Croce</h3>
+                <p class="location-details">This large square fronting Santa Croce Basilica hosts the traditional calcio storico matches, a violent historical football game dating to the 16th century. The piazza features Dante statue and surrounding Renaissance palaces. Modern life fills the square with restaurants, gelaterias, and evening socializing. The space represents Florentine traditions, from medieval games to contemporary gathering, while the basilica provides cultural and spiritual backdrop to daily neighborhood life.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Via de' Tornabuoni</h3>
+                <p class="location-details">Florence's most elegant street features luxury boutiques including Gucci, Ferragamo (whose museum is here), and Pucci in Renaissance palaces. The street connects Piazza Santa Trinita with Antinori Square and represents Florentine fashion heritage. Historic cafes, aristocratic palaces, and the sophisticated atmosphere make it perfect for window shopping and experiencing Florence's contemporary style rooted in centuries of artistic excellence and craftsmanship.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Via dei Calzaiuoli</h3>
+                <p class="location-details">This pedestrian street connecting Piazza del Duomo with Piazza della Signoria is Florence's busiest, lined with shops, cafes, and the Orsanmichele church with its niches containing Renaissance sculptures. The street name recalls medieval shoemakers' guilds. Always crowded with tourists and locals, it represents Florence's commercial vitality while passing architectural landmarks. The street exemplifies how Florence integrates Renaissance heritage with contemporary urban life and commerce.</p>
+            </div>
+        </div>
+
+        <div class="divider">
+            <h2 class="divider-title">Museums & Palaces</h2>
+        </div>
+
+        <div class="museums-container">
+            <div class="museum-card">
+                <h4 class="museum-name">Palazzo Pitti</h4>
+                <p class="museum-description">Massive Renaissance palace with Palatine Gallery and Boboli Gardens</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ 8:15 AM - 6:50 PM</span>
+                    <span class="meta-tag price">💶 €16</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palazzo Strozzi</h4>
+                <p class="museum-description">Renaissance palace hosting major contemporary art exhibitions</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ 10:00 AM - 8:00 PM</span>
+                    <span class="meta-tag price">💶 €15</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palazzo Vecchio</h4>
+                <p class="museum-description">Florence's town hall with Michelangelo and Vasari frescoes, tower views</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ 9:00 AM - 7:00 PM</span>
+                    <span class="meta-tag price">💶 €12.50</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="return-link">← Return to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

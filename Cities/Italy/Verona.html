@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verona Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+        body {
+            background: #f5f5f0;
+            font-family: 'Lora', serif;
+            color: #2d2d2d;
+        }
+
+        .page-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .header-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #009246 0%, #ffffff 50%, #ce2b37 100%);
+            border-radius: 15px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .city-name {
+            font-family: 'Cinzel', serif;
+            font-size: 6rem;
+            font-weight: 900;
+            color: #009246;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0px rgba(206, 43, 55, 0.2);
+            letter-spacing: 8px;
+        }
+
+        .city-tagline {
+            font-size: 1.5rem;
+            color: #ce2b37;
+            font-weight: 600;
+            font-style: italic;
+            letter-spacing: 3px;
+        }
+
+        .intro-container {
+            background: white;
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 70px;
+            border-top: 8px solid #009246;
+            border-bottom: 8px solid #ce2b37;
+        }
+
+        .intro-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #009246;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .intro-paragraph {
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: justify;
+            color: #4a4a4a;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 80px 0 60px;
+        }
+
+        .divider-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: #ce2b37;
+            display: inline-block;
+            padding: 0 40px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .divider-title::before,
+        .divider-title::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #009246;
+            font-size: 2rem;
+        }
+
+        .divider-title::before {
+            left: 0;
+        }
+
+        .divider-title::after {
+            right: 0;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 70px;
+        }
+
+        .location-item {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 6px solid #009246;
+            border-right: 6px solid #ce2b37;
+        }
+
+        .location-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 146, 70, 0.15);
+        }
+
+        .location-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.7rem;
+            color: #ce2b37;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .location-details {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .museums-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-bottom: 70px;
+        }
+
+        .museum-card {
+            background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #009246;
+            border-bottom: 4px solid #ce2b37;
+            transition: all 0.3s ease;
+        }
+
+        .museum-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 35px rgba(206, 43, 55, 0.2);
+        }
+
+        .museum-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: #009246;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .museum-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .museum-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag {
+            background: #009246;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .meta-tag.price {
+            background: #ce2b37;
+        }
+
+        .return-link {
+            display: inline-block;
+            margin: 60px auto;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #009246, #ce2b37);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(0, 146, 70, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .return-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(206, 43, 55, 0.4);
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .museums-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .city-name {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .museums-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="header-section">
+            <div class="header-content">
+                <h1 class="city-name">VERONA</h1>
+                <p class="city-tagline">🇮🇹 City of Romeo & Juliet 🇮🇹</p>
+            </div>
+        </div>
+
+        <div class="intro-container">
+            <h2 class="intro-heading">Welcome to Verona</h2>
+            <p class="intro-paragraph">Verona is a romantic city in Veneto region, immortalized by Shakespeare as Romeo and Juliet's setting. Beyond literary fame, Verona preserves one of Italy's best-preserved Roman amphitheaters, magnificent medieval and Renaissance architecture, and a beautifully intact historic center. The Adige River curves through the UNESCO-listed city revealing layers of Roman, medieval, and Renaissance heritage. Verona combines cultural depth, operatic traditions, and authentic Venetian atmosphere with fewer crowds than Venice itself.</p>
+        </div>
+
+        <div class="divider">
+            <h2 class="divider-title">Places to Visit</h2>
+        </div>
+
+        <div class="locations-grid">
+            <div class="location-item">
+                <h3 class="location-name">Piazza delle Erbe</h3>
+                <p class="location-details">Verona's liveliest square occupies the ancient Roman forum with a daily market selling produce, souvenirs, and food. The elongated piazza features medieval palaces, the Gardello Tower, Lamberti Tower, and the Madonna Verona fountain. Cafes line the square's edges creating vibrant atmosphere. The market tradition continues Roman practices while the architecture showcases Verona's medieval prosperity. It's the perfect starting point for exploring the historic center.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza Bra</h3>
+                <p class="location-details">Verona's largest square features the Arena amphitheater, elegant Palazzo della Gran Guardia, and wide pedestrian space perfect for evening strolls. The Liston promenade with its cafes creates Verona's social center. The square represents the city's layout evolution from Roman to modern times. The arena dominates while surrounding architecture from different eras creates harmonious ensemble showcasing Verona's historical layers in one magnificent space.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza Dante</h3>
+                <p class="location-details">This square features Dante's statue honoring the poet who found refuge in Verona during exile. The piazza connects to medieval city gates and the Scaliger castle. The monument represents Verona's importance in Dante's life and medieval politics. The square's location near major monuments makes it a natural junction while Dante's presence reminds visitors of Verona's role in Italian literary history and medieval Guelph-Ghibelline conflicts.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Basilica di San Zeno Maggiore</h3>
+                <p class="location-details">This Romanesque masterpiece from the 11th-12th centuries is northern Italy's finest Romanesque church. The striped marble and brick facade, bronze doors depicting biblical scenes, and rose window create stunning exterior. Inside, Mantegna's altarpiece and medieval frescoes showcase artistic wealth. San Zeno's crypt contains the saint's body. The church represents Verona's medieval religious architecture and artistic patronage in a harmonious Romanesque monument.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Duomo di Verona</h3>
+                <p class="location-details">Verona's cathedral combines Romanesque facade with Gothic and Renaissance elements. The elaborate main portal carved by Maestro Niccolò and Titian's Assumption painting highlight the artistic treasures. The cathedral complex includes baptistery and cloister. The building represents Verona's ecclesiastical importance and architectural evolution through centuries. The location near the river and artistic quality make it essential for understanding Verona's religious and artistic heritage beyond Shakespeare associations.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Basilica di Santa Anastasia</h3>
+                <p class="location-details">Verona's largest church showcases Gothic architecture with soaring interior, rose window, and the famous hunchback holy water stoups. Pisanello's fresco St. George and the Princess and terracotta decorations demonstrate artistic richness. The Dominican church represents Gothic architecture in Verona and contains exceptional artworks. The spacious interior and artistic treasures make it complement to Romanesque San Zeno, showing Verona's architectural variety and continuous artistic patronage.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Giardino Giusti</h3>
+                <p class="location-details">This Renaissance garden from 1580 features geometric parterre gardens, cypress alleys, grottos, and terraced hillside offering Verona views. The formal Italian garden design preserves original layout with statues, fountains, and the famous cypress tree. Mozart and Goethe visited these gardens. Giusti represents Renaissance garden art and aristocratic villa culture while providing peaceful retreat and romantic atmosphere in beautifully maintained historic setting.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Ponte Pietra</h3>
+                <p class="location-details">This Roman bridge rebuilt after WWII destruction maintains its ancient character with the original Roman arch. The stone bridge crosses the Adige offering classic Verona views with the hillside theater and churches. The bridge represents Verona's Roman heritage and resilient spirit rebuilding with original stones recovered from the river. Walking across connects the historic center with the quieter Veronetta district while appreciating the city's layered history.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Via Giuseppe Mazzini</h3>
+                <p class="location-details">Verona's elegant shopping street connects Piazza Bra with Piazza delle Erbe, lined with boutiques, international brands, and historic buildings under porticoes. The pedestrian street maintains refined character while offering diverse shopping. The street represents modern Verona's commercial vitality and serves as the main thoroughfare for both shopping and accessing major monuments, creating perfect blend of commerce and tourism in historic setting.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Chiesa di San Fermo Maggiore</h3>
+                <p class="location-details">This unique church features two levels: a Romanesque lower church and Gothic upper church creating architectural hybrid. The exterior combines Romanesque and Gothic elements while the interior showcases medieval frescoes and the ship's keel ceiling. The church represents Verona's architectural experimentation and Franciscan presence. The dual-level design and artistic treasures make it one of Verona's most interesting churches showing architectural evolution and religious adaptation.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Santuario Madonna di Lourdes</h3>
+                <p class="location-details">This modern sanctuary recreates the Lourdes grotto for local pilgrims. Though less historic than Verona's medieval churches, it represents continuing religious devotion and modern Catholic practice. The sanctuary serves neighborhood spiritual needs and showcases how Verona maintains religious traditions through contemporary architecture. The grotto and peaceful setting offer contemplative space distinct from the tourist-heavy historic churches while serving the local faithful.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Via Cappello</h3>
+                <p class="location-details">This narrow medieval street houses the famous Casa di Giulietta with its balcony where tourists pose as Juliet. Though the house's Shakespeare connection is romanticized rather than historical, the courtyard covered in love messages and the bronze Juliet statue create romantic atmosphere. The street represents Verona's successful leveraging of literary fame into tourist attraction while maintaining medieval character. The via embodies how Verona balances authentic heritage with Shakespeare mythology.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Ponte della Vittoria</h3>
+                <p class="location-details">This 1920s bridge commemorates WWI victory with distinctive architecture and sculptures. The bridge connects Verona's historic center with newer districts across the Adige. The monumental design reflects fascist-era civic architecture. The bridge represents early 20th-century Verona and Italian nationalism while providing important river crossing. The views from the bridge showcase Verona's riverside character and the Adige's dramatic curve through the city.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Ponte Castelvecchio</h3>
+                <p class="location-details">This fortified medieval bridge from the 14th century features distinctive crenellated towers and connects Castelvecchio castle with the opposite bank. The Scaliger bridge showcases military architecture with its defensive design. Destroyed in WWII and carefully rebuilt, it represents Verona's Scaliger dynasty power and medieval engineering. The brick construction and fortress-like appearance create dramatic silhouette while the bridge provides essential connection between city districts.</p>
+            </div>
+
+            <div class="location-item">
+                <h3 class="location-name">Piazza dei Signori</h3>
+                <p class="location-details">This elegant square adjacent to Piazza delle Erbe features Dante's statue and is surrounded by historic palaces including the Loggia del Consiglio and Palazzo del Governo. The square served as political center during Scaliger rule. The harmonious Renaissance architecture and Dante's presence create refined atmosphere. The square represents Verona's medieval governance and cultural sophistication while providing tranquil space contrasting with the market bustle next door.</p>
+            </div>
+        </div>
+
+        <div class="divider">
+            <h2 class="divider-title">Museums & Palaces</h2>
+        </div>
+
+        <div class="museums-container">
+            <div class="museum-card">
+                <h4 class="museum-name">Museo di Castelvecchio</h4>
+                <p class="museum-description">Medieval castle museum with Venetian paintings and sculptures</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ 8:30 AM - 7:30 PM</span>
+                    <span class="meta-tag price">💶 €6</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Castel San Pietro</h4>
+                <p class="museum-description">Hilltop fortress with best panoramic views over Verona</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ Always accessible</span>
+                    <span class="meta-tag price">💶 Free</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palazzo della Gran Guardia</h4>
+                <p class="museum-description">17th-century palace hosting exhibitions and events</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ Varies by event</span>
+                    <span class="meta-tag price">💶 €10</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Castelvecchio</h4>
+                <p class="museum-description">14th-century Scaliger fortress with museum and fortified bridge</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ 8:30 AM - 7:30 PM</span>
+                    <span class="meta-tag price">💶 €6</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palazzo Canossa</h4>
+                <p class="museum-description">Baroque aristocratic palace with art collection</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ Limited access</span>
+                    <span class="meta-tag price">💶 €8</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Palazzo Maffei</h4>
+                <p class="museum-description">Baroque palace with sculpture gallery on Piazza delle Erbe</p>
+                <div class="museum-meta">
+                    <span class="meta-tag">⏰ 10:00 AM - 7:00 PM</span>
+                    <span class="meta-tag price">💶 €12</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="return-link">← Return to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

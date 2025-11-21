@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wroclaw Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .hero-block {
+            background: #dc143c;
+            color: white;
+            padding: 100px 50px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .intro-block {
+            padding: 80px 100px;
+        }
+
+        .intro-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #dc143c;
+            margin-bottom: 40px;
+            font-weight: 700;
+            border-left: 8px solid #dc143c;
+            padding-left: 30px;
+        }
+
+        .intro-content {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .section-break {
+            background: #dc143c;
+            height: 6px;
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: #dc143c;
+            text-align: center;
+            margin: 80px 0 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .places-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .place-block {
+            padding: 40px;
+            background: #f8f8f8;
+            border-left: 10px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+
+        .place-block:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);
+            transform: translateX(10px);
+        }
+
+        .place-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-info {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        .museums-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .museum-block {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-top: 6px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .museum-block:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .museum-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-text {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .detail-badge {
+            padding: 10px 20px;
+            background: #dc143c;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            padding: 25px 60px;
+            background: #dc143c;
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #dc143c;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #dc143c;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            .intro-block, .places-flex, .museums-flex {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero-block text-center">
+            <h1 class="hero-title">WROCLAW</h1>
+            <p class="hero-desc">🇵🇱 City of Bridges & Dwarfs 🇵🇱</p>
+        </div>
+
+        <div class="intro-block">
+            <h2 class="intro-header">Welcome to Wroclaw</h2>
+            <p class="intro-content">Wroclaw is Lower Silesia's capital, a city of islands connected by over 100 bridges across the Oder River. The beautifully reconstructed Market Square, Gothic churches on Cathedral Island, and over 600 bronze dwarf statues scattered throughout create distinctive character. Once German Breslau, the city became Polish after WWII with new population. The university traditions, vibrant cultural life, and the charming hunt for dwarf figurines make Wroclaw one of Poland's most delightful cities with unique multicultural heritage.</p>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Places to Visit</div>
+
+        <div class="places-flex">
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Stare Miasto (Old Town)</h3>
+                    <p>Wroclaw's Old Town centers on the Market Square (Rynek) with colorful burgher houses and the Gothic Old Town Hall. The square's unique architectural ensemble combines Gothic, Renaissance, and baroque styles. Reconstructed after WWII destruction, it represents Wroclaw's resilience. The pedestrian streets radiating from the square, underground passages, and constant dwarf hunt create engaging urban experience mixing history, culture, and whimsy.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Most Tumski (Cathedral Bridge)</h3>
+                    <p>This pedestrian bridge connects the old town with Cathedral Island (Ostrów Tumski), covered with love locks. The bridge marks the transition from commercial center to religious quarter. Crossing offers views of the Oder and both districts. The bridge represents Wroclaw's connection between secular and sacred spaces while the locks add romantic element. Evening walks reveal gas-lit Cathedral Island creating atmospheric transition to the city's spiritual heart.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Elizabeth's Church</h3>
+                    <p>This Gothic church features a 91-meter tower offering panoramic Wroclaw views after climbing 300+ steps. The church's brick Gothic architecture and strategic location make it a landmark. The tower provides best perspective on the Market Square and city layout. St. Elizabeth represents Wroclaw's Gothic heritage and serves as excellent viewpoint. The climb rewards visitors with spectacular vistas understanding Wroclaw's island geography and architectural ensemble.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Plac Solny (Salt Square)</h3>
+                    <p>This charming square adjacent to the Market Square features the flower market operating daily year-round. The colorful stalls selling fresh flowers create vibrant atmosphere and photo opportunities. Historic buildings surround the square with cafes and restaurants. The Salt Square represents Wroclaw's market traditions and adds romantic charm. The contrast between permanent flower displays and seasonal variations makes it beloved by locals and visitors seeking authentic market culture.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Wroclaw Rynek</h3>
+                    <p>Wroclaw's Market Square (Rynek) is Poland's second-largest after Krakow with the impressive Old Town Hall, colorful townhouses, and outdoor dining. The square hosts events, street performers, and serves as social center. The architectural variety from Gothic to Art Nouveau creates visual richness. The Rynek represents Wroclaw's commercial heritage and civic pride while functioning as living plaza where residents and tourists mingle in vibrant urban theater.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Ulica Więzienna</h3>
+                    <p>This street near the Market Square features historic buildings, cafes, and shops representing old town character. The pedestrian-friendly environment and architectural details make it pleasant for exploration. The street connects major attractions while maintaining local character with businesses serving residents. Więzienna exemplifies how Wroclaw's old town streets function as both tourist destinations and authentic urban spaces where daily life continues in historic settings.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Museums & Palaces</div>
+
+        <div class="museums-flex">
+            <div class="museum-block">
+                <h4 class="museum-title">Ballestrem Palace</h4>
+                <p class="museum-text">Neo-Renaissance palace with park, now housing cultural institutions</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ Limited access</span>
+                    <span class="detail-badge">💶 Free</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">National Museum</h4>
+                <p class="museum-text">Silesian and Polish art collection in modernist building</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €6</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Copernicus Park</h4>
+                <p class="museum-text">Urban park with recreational facilities and green spaces</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ Always open</span>
+                    <span class="detail-badge">💶 Free</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-btn">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

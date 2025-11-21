@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riga Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
+
+        body {
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .header {
+            border-bottom: 8px solid #9d2235;
+            padding-bottom: 40px;
+            margin-bottom: 80px;
+        }
+
+        .city-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: #9d2235;
+            margin: 0;
+            line-height: 0.9;
+        }
+
+        .country-flag {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            letter-spacing: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-top: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .intro-section {
+            margin-bottom: 100px;
+            padding: 50px;
+            background: #f9f9f9;
+            border-left: 6px solid #9d2235;
+        }
+
+        .intro-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: #9d2235;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.9;
+        }
+
+        .category-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            color: #9d2235;
+            margin: 100px 0 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #9d2235;
+        }
+
+        .places-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .place-item {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            padding: 35px;
+            background: white;
+            border: 2px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .place-item:hover {
+            border-color: #9d2235;
+            box-shadow: 0 8px 30px rgba(157, 34, 53, 0.1);
+        }
+
+        .place-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            color: #9d2235;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .place-description {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .museum-card {
+            padding: 40px;
+            background: #f9f9f9;
+            border-top: 5px solid #9d2235;
+            transition: all 0.3s ease;
+        }
+
+        .museum-card:hover {
+            background: white;
+            box-shadow: 0 10px 35px rgba(157, 34, 53, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .museum-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.7rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .museum-desc {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .info-item {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid #9d2235;
+            color: #9d2235;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .return-button {
+            display: inline-block;
+            margin: 80px auto;
+            padding: 20px 50px;
+            background: #9d2235;
+            color: white;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            border: 3px solid #9d2235;
+        }
+
+        .return-button:hover {
+            background: white;
+            color: #9d2235;
+        }
+
+        @media (max-width: 992px) {
+            .city-title {
+                font-size: 5rem;
+            }
+
+            .place-item {
+                grid-template-columns: 1fr;
+            }
+
+            .museums-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            <h1 class="city-title">RIGA</h1>
+            <p class="country-flag">🇱🇻</p>
+            <p class="subtitle">Capital of Latvia & Art Nouveau Masterpiece</p>
+        </div>
+
+        <div class="intro-section">
+            <h2 class="intro-title">Welcome to Riga</h2>
+            <p class="intro-text">Riga is Latvia's capital and largest city, a UNESCO World Heritage Site famous for stunning Art Nouveau architecture. Founded in 1201, this Baltic port city combines medieval Old Town with over 800 Art Nouveau buildings creating Europe's finest collection. The Daugava River, Central Market in former Zeppelin hangars, and vibrant cultural scene define the city. Riga balances historic charm with contemporary energy, Soviet legacy with European integration, making it the Baltic's most dynamic capital.</p>
+        </div>
+
+        <div class="category-title">Places to Visit</div>
+
+        <div class="places-list">
+            <div class="place-item">
+                <div class="place-name">St. Peter's Church</div>
+                <div class="place-description">This Gothic church features a 123-meter spire offering panoramic Riga views from its observation deck. Originally built in the 13th century and repeatedly reconstructed after fires and wars, the church represents Riga's resilience. The red brick exterior and minimalist interior showcase Baltic Gothic architecture. The tower provides the best perspective on Old Riga's red rooftops and the city's layout, making it essential viewing point for understanding Riga's geography.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Riga Cathedral</div>
+                <div class="place-description">The largest medieval church in the Baltics features a mix of Romanesque, Gothic, and Baroque elements reflecting centuries of construction. The cathedral houses a massive 6,768-pipe organ used for concerts. The Dome Square surrounding it is the Old Town's heart. The cathedral represents Riga's ecclesiastical importance and architectural evolution. The combination of medieval architecture, musical tradition, and central location makes it Riga's spiritual and cultural anchor.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Alberta Iela (Albert Street)</div>
+                <div class="place-description">This street showcases Riga's extraordinary Art Nouveau architecture with buildings designed by Mikhail Eisenstein featuring elaborate facades, sculptures, and decorative elements. The concentration of Jugendstil masterpieces makes it essential for architecture enthusiasts. Alberta Street represents Riga's early 20th-century prosperity and architectural innovation. Walking this street reveals why Riga claims Europe's finest Art Nouveau collection with its theatrical facades and ornate details.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Vērmanes Garden</div>
+                <div class="place-description">Riga's oldest public park from 1814 features landscaped gardens, fountains, monuments, and an open-air stage for summer concerts. The park provides green oasis in the city center with shaded paths and flowerbeds. Vērmanes represents 19th-century park design and serves as popular gathering space. The central location and cultural events make it beloved by Rigans for relaxation, concerts, and enjoying nature within walking distance of major attractions.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Esplanade Park</div>
+                <div class="place-description">This elegant park created in the 19th century features formal gardens, fountains, the Freedom Monument, and the Latvian National Opera building. The park connects Old Riga with the Art Nouveau district and serves as ceremonial space. The canal, bridges, and seasonal flower displays create romantic atmosphere. Esplanade represents Riga's belle époque elegance and provides beautiful setting for walks while connecting major cultural landmarks.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Town Hall Square</div>
+                <div class="place-description">This reconstructed square features the rebuilt Town Hall and House of Blackheads, a stunning Gothic guild hall. The square was completely destroyed in WWII and painstakingly reconstructed in recent decades. The colorful facades and Roland statue create picturesque ensemble. The square represents Riga's medieval prosperity and modern commitment to heritage reconstruction. Despite its recent rebuilding, it successfully evokes medieval atmosphere as Old Riga's ceremonial center.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Jauniela Street</div>
+                <div class="place-description">This charming cobblestoned street features colorful Art Nouveau and medieval buildings, appearing in many films as a historic European street. The narrow lane connects major squares and preserves authentic Old Riga character. The architectural variety and photogenic qualities make it one of the most atmospheric streets. Jauniela represents Riga's ability to maintain historic character while the film-set quality demonstrates the old town's remarkably preserved beauty.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Dome Square</div>
+                <div class="place-description">This large square surrounding Riga Cathedral serves as the Old Town's central gathering space. Outdoor cafes, markets, and events animate the plaza. The square's open space allows appreciation of the cathedral's architecture and provides venue for concerts and celebrations. Dome Square represents the heart of medieval Riga and continues as the city's main public space where residents and tourists converge amidst historic architecture.</div>
+            </div>
+        </div>
+
+        <div class="category-title">Museums & Palaces</div>
+
+        <div class="museums-grid">
+            <div class="museum-card">
+                <h4 class="museum-name">Riga Castle</h4>
+                <p class="museum-desc">Presidential residence and museums in castle rebuilt multiple times since 1330</p>
+                <div class="museum-info">
+                    <span class="info-item">⏰ 10:00 AM - 5:00 PM</span>
+                    <span class="info-item">💶 €7</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Riga History Museum</h4>
+                <p class="museum-desc">City history from founding to present in former Dome Cathedral monastery</p>
+                <div class="museum-info">
+                    <span class="info-item">⏰ 10:00 AM - 5:00 PM</span>
+                    <span class="info-item">💶 €5</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="return-button">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

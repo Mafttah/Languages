@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warsaw Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        .hero-block {
+            background: #dc143c;
+            color: white;
+            padding: 100px 50px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .intro-block {
+            padding: 80px 100px;
+            background: white;
+        }
+
+        .intro-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #dc143c;
+            margin-bottom: 40px;
+            font-weight: 700;
+            border-left: 8px solid #dc143c;
+            padding-left: 30px;
+        }
+
+        .intro-content {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .section-break {
+            background: #dc143c;
+            height: 6px;
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: #dc143c;
+            text-align: center;
+            margin: 80px 0 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .places-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .place-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 40px;
+            background: #f8f8f8;
+            border-left: 10px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+
+        .place-block:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);
+            transform: translateX(10px);
+        }
+
+        .place-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-info {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+            flex: 1;
+        }
+
+        .museums-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .museum-block {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-top: 6px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .museum-block:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .museum-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-text {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .museum-details {
+            display: flex;
+            gap: 15px;
+        }
+
+        .detail-badge {
+            padding: 10px 20px;
+            background: #dc143c;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            padding: 25px 60px;
+            background: #dc143c;
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #dc143c;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #dc143c;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .intro-block,
+            .places-flex,
+            .museums-flex {
+                padding: 40px;
+            }
+
+            .place-block {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero-block text-center">
+            <h1 class="hero-title">WARSAW</h1>
+            <p class="hero-desc">🇵🇱 Phoenix City 🇵🇱</p>
+        </div>
+
+        <div class="intro-block">
+            <h2 class="intro-header">Welcome to Warsaw</h2>
+            <p class="intro-content">Warsaw is Poland's capital and largest city, a phoenix risen from complete WWII destruction to become a dynamic European metropolis. The meticulously reconstructed Old Town, a UNESCO World Heritage Site, stands as testament to Polish resilience. Modern skyscrapers contrast with baroque churches and communist-era architecture. Warsaw offers world-class museums, vibrant cultural life, Chopin's musical heritage, and parks along the Vistula River. The city embodies Polish history, from royal past through occupation to contemporary rebirth.</p>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Places to Visit</div>
+
+        <div class="places-flex">
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Stare Miasto (Old Town)</h3>
+                    <p>Warsaw's Old Town was completely destroyed in WWII and painstakingly rebuilt using historical records and paintings. The UNESCO-listed reconstruction showcases colorful merchants' houses surrounding the Market Square. Cafes, restaurants, and artisan shops fill the ground floors. The Old Town represents Polish determination to preserve national identity and cultural heritage. Despite being 20th-century reconstruction, it authentically recreates medieval atmosphere and serves as the city's historic heart.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Łazienki Park</h3>
+                    <p>This stunning 76-hectare royal park features the Palace on the Isle, Chopin monument, peacocks, and classical architecture. Created in the 17th century, the park combines formal gardens with English landscape design. Summer Chopin concerts beside the monument attract crowds. The Łazienki Palace, amphitheater, and orangery showcase neoclassical architecture. The park represents Polish cultural sophistication and provides Warsaw's most beautiful green space for relaxation and culture.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Bazylika Świętego Krzyża</h3>
+                    <p>This baroque church houses Chopin's heart in a pillar, returned to Poland after his death in Paris. The church features ornate baroque decoration and serves as an important religious and national shrine. The statues of suffering Christ and architectural details showcase baroque religious art. The church represents Polish Catholic traditions and connection to Chopin, making it a pilgrimage site for music lovers and a significant baroque monument.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. John's Cathedral</h3>
+                    <p>Warsaw's oldest church and burial site of Mazovian dukes was completely destroyed in the Warsaw Uprising and rebuilt in the 1950s. The Gothic-style cathedral features royal coronations site and crypts containing prominent Poles including Nobel laureates. The church represents Warsaw's medieval origins and national continuity despite destruction. The cathedral remains central to Polish Catholic life and state ceremonies, embodying spiritual and national identity.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Anne's Church</h3>
+                    <p>This neoclassical church features a distinctive facade and baroque-neoclassical interior. The church tower offers panoramic Old Town views accessible after climbing stairs. The harmonious proportions and central location make it an architectural landmark. St. Anne's represents Warsaw's architectural variety and reconstruction efforts while providing one of the best viewing points over the reconstructed Old Town, royal route, and Vistula River from its observation deck.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Krasiński Gardens</h3>
+                    <p>This baroque park adjacent to Krasiński Palace offers tranquil green space in the city center. The formal gardens feature fountains, sculptures, and tree-lined paths. The gardens provide peaceful retreat from urban bustle while maintaining proximity to Old Town. The park represents Warsaw's baroque heritage and commitment to accessible public green spaces. The well-maintained grounds and palace backdrop create elegant atmosphere for walks and relaxation.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Nowy Świat Street</h3>
+                    <p>This elegant street forms part of the Royal Route with neoclassical townhouses, cafes, restaurants, and boutiques. The pedestrianized section creates pleasant atmosphere for strolling, shopping, and dining. Historic cafes including Blikle serve traditional Polish pastries. Nowy Świat represents Warsaw's sophisticated character and serves as the city's social spine where locals and visitors experience contemporary Warsaw life in historic architectural setting combining elegance with accessibility.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Krakowskie Przedmieście Street</h3>
+                    <p>This prestigious street forms the main section of the Royal Route connecting the Royal Castle with Wilanów Palace. Presidential Palace, university buildings, churches, and monuments line this historic thoroughfare. The street witnessed royal processions, protests, and Pope John Paul II's visits. Krakowskie Przedmieście represents Polish history, culture, and political life while offering architectural beauty from baroque to neoclassical styles creating Warsaw's most significant ceremonial route.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Plac Zamkowy (Castle Square)</h3>
+                    <p>This square adjacent to the Royal Castle features Sigismund's Column, Warsaw's oldest monument from 1644. The square marks the entrance to the Old Town and served as political center for centuries. Completely destroyed in WWII and rebuilt, it represents Warsaw's reconstruction efforts. The Royal Castle, colorful buildings, and central column create picturesque ensemble. The square serves as gathering point for celebrations and ceremonies representing Polish national identity.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Alexander's Church</h3>
+                    <p>This neoclassical church with distinctive dome modeled after the Pantheon marks Three Crosses Square. Built in the 19th century, it features classical proportions and serves as an architectural landmark. The church represents Warsaw's neoclassical phase and stands as visual focal point on the Royal Route. The harmonious design and central location make it an important monument showcasing early 19th-century architectural ideals and continuing religious significance.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Saxon Garden</h3>
+                    <p>Warsaw's oldest public park dates from the 17th century with baroque layout, fountains, and the Tomb of the Unknown Soldier. The formal gardens feature symmetrical paths, monuments, and seasonal flower displays. The park represents Polish royal leisure while the soldier's tomb honors military sacrifice. The Saxon Garden provides green oasis in the city center and showcases baroque garden design while serving as important ceremonial space for national commemorations.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Warsaw New Town</h3>
+                    <p>The New Town adjacent to Old Town dates from the 15th century and features similar reconstructed architecture with charming market square, churches, and historic buildings. Less crowded than the Old Town, it offers more authentic atmosphere with local cafes and galleries. The New Town represents Warsaw's medieval expansion and provides quieter alternative for experiencing reconstructed historic architecture while maintaining connection to the Old Town's heritage and character.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Museums & Palaces</div>
+
+        <div class="museums-flex">
+            <div class="museum-block">
+                <h4 class="museum-title">Palace of Culture and Science</h4>
+                <p class="museum-text">Stalin's gift to Poland, controversial Soviet-era skyscraper with viewing terrace</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 8:00 PM</span>
+                    <span class="detail-badge">💶 €7</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Royal Castle</h4>
+                <p class="museum-text">Reconstructed royal residence with opulent interiors and art collection</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="detail-badge">💶 €12</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Wilanów Palace</h4>
+                <p class="museum-text">Baroque royal summer residence with gardens, the "Polish Versailles"</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 9:30 AM - 4:00 PM</span>
+                    <span class="detail-badge">💶 €10</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">National Museum</h4>
+                <p class="museum-text">Poland's largest museum with Polish and European art collections</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="detail-badge">💶 €8</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Łazienki Palace</h4>
+                <p class="museum-text">Palace on the Isle with neoclassical interiors in Łazienki Park</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 4:00 PM</span>
+                    <span class="detail-badge">💶 €9</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Krasiński Palace</h4>
+                <p class="museum-text">Baroque palace housing special collections library</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ Limited access</span>
+                    <span class="detail-badge">💶 Free</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">POLIN Museum</h4>
+                <p class="museum-text">Museum of the History of Polish Jews, award-winning modern architecture</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="detail-badge">💶 €12</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-btn">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

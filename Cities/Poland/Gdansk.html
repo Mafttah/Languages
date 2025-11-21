@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gdansk Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        .hero-block {
+            background: #dc143c;
+            color: white;
+            padding: 100px 50px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .intro-block {
+            padding: 80px 100px;
+            background: white;
+        }
+
+        .intro-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #dc143c;
+            margin-bottom: 40px;
+            font-weight: 700;
+            border-left: 8px solid #dc143c;
+            padding-left: 30px;
+        }
+
+        .intro-content {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .section-break {
+            background: #dc143c;
+            height: 6px;
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: #dc143c;
+            text-align: center;
+            margin: 80px 0 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .places-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .place-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 40px;
+            background: #f8f8f8;
+            border-left: 10px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+
+        .place-block:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);
+            transform: translateX(10px);
+        }
+
+        .place-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-info {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+            flex: 1;
+        }
+
+        .museums-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .museum-block {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-top: 6px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .museum-block:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .museum-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-text {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .museum-details {
+            display: flex;
+            gap: 15px;
+        }
+
+        .detail-badge {
+            padding: 10px 20px;
+            background: #dc143c;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            padding: 25px 60px;
+            background: #dc143c;
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #dc143c;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #dc143c;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .intro-block,
+            .places-flex,
+            .museums-flex {
+                padding: 40px;
+            }
+
+            .place-block {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero-block text-center">
+            <h1 class="hero-title">GDANSK</h1>
+            <p class="hero-desc">🇵🇱 Baltic Port & Solidarity Birthplace 🇵🇱</p>
+        </div>
+
+        <div class="intro-block">
+            <h2 class="intro-header">Welcome to Gdansk</h2>
+            <p class="intro-content">Gdansk is a historic port city on the Baltic coast where the Solidarity movement began, changing European history. This Hanseatic League member features stunning Gothic architecture, colorful merchant houses along the Motława River, and rich maritime heritage. Once known as Danzig under German rule, Gdansk preserves its multicultural past in architecture and traditions. The beautifully reconstructed Main Town, proximity to beaches, and the European Solidarity Centre make Gdansk a fascinating blend of history, culture, and seaside charm.</p>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Places to Visit</div>
+
+        <div class="places-flex">
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Długi Targ (Long Market)</h3>
+                    <p>This pedestrian street forms Gdansk's Main Town heart with colorful Hanseatic merchant houses, the Neptune Fountain, and Artus Court. The Golden House, Uphagen House, and other historic buildings showcase wealth from Baltic trade. The Long Market connects the Golden Gate with the Green Gate creating the Royal Way. The street represents Gdansk's Hanseatic prosperity and merchant culture in a beautifully reconstructed ensemble epitomizing the city's architectural glory.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Ulica Mariacka</h3>
+                    <p>This picturesque cobblestoned street features ornate terraced houses with elaborate stoops leading to amber shops and galleries. The street connects St. Mary's Church with the waterfront and represents Gdansk's most photogenic location. The gargoyles, wrought-iron details, and amber jewelry displayed create romantic medieval atmosphere. Mariacka showcases Gdansk's architectural details and traditional amber craft while maintaining authentic character as the city's most charming street.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Mary's Church</h3>
+                    <p>This massive brick Gothic church is one of the world's largest, holding 25,000 people. The interior features the famous astronomical clock, medieval artwork, and the 408-step tower climb offering Gdansk panoramas. Built over 150 years from 1343, the church represents Hanseatic architectural ambition and Gothic engineering. The vast brick structure dominates the skyline while the sparse decoration emphasizes Gothic verticality and spiritual aspiration.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Museums & Palaces</div>
+
+        <div class="museums-flex">
+            <div class="museum-block">
+                <h4 class="museum-title">Malbork Castle</h4>
+                <p class="museum-text">World's largest brick castle, former Teutonic Knights' headquarters, UNESCO site near Gdansk</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 9:00 AM - 7:00 PM</span>
+                    <span class="detail-badge">💶 €11</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">World War II Museum</h4>
+                <p class="museum-text">Comprehensive museum documenting WWII from Polish and international perspectives</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 7:00 PM</span>
+                    <span class="detail-badge">💶 €8</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Gdansk National Museum</h4>
+                <p class="museum-text">Art museum with Flemish and Polish paintings including Hans Memling's Last Judgment</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 9:00 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-btn">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

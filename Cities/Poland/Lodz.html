@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodz Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        .hero-block {
+            background: #dc143c;
+            color: white;
+            padding: 100px 50px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .intro-block {
+            padding: 80px 100px;
+            background: white;
+        }
+
+        .intro-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #dc143c;
+            margin-bottom: 40px;
+            font-weight: 700;
+            border-left: 8px solid #dc143c;
+            padding-left: 30px;
+        }
+
+        .intro-content {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .section-break {
+            background: #dc143c;
+            height: 6px;
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: #dc143c;
+            text-align: center;
+            margin: 80px 0 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .places-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .place-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 40px;
+            background: #f8f8f8;
+            border-left: 10px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+
+        .place-block:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);
+            transform: translateX(10px);
+        }
+
+        .place-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-info {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+            flex: 1;
+        }
+
+        .museums-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .museum-block {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-top: 6px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .museum-block:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .museum-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-text {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .museum-details {
+            display: flex;
+            gap: 15px;
+        }
+
+        .detail-badge {
+            padding: 10px 20px;
+            background: #dc143c;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            padding: 25px 60px;
+            background: #dc143c;
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #dc143c;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #dc143c;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .intro-block,
+            .places-flex,
+            .museums-flex {
+                padding: 40px;
+            }
+
+            .place-block {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero-block text-center">
+            <h1 class="hero-title">LODZ</h1>
+            <p class="hero-desc">🇵🇱 Poland's Film & Textile City 🇵🇱</p>
+        </div>
+
+        <div class="intro-block">
+            <h2 class="intro-header">Welcome to Lodz</h2>
+            <p class="intro-content">Lodz is Poland's third-largest city, transformed from 19th-century textile powerhouse to contemporary cultural center. The industrial heritage visible in converted factories, mansions of textile barons, and multicultural history create unique character. Famous for the National Film School that trained renowned directors including Polanski, Lodz combines industrial architecture with vibrant arts scene. The revitalized Piotrkowska Street, one of Europe's longest commercial streets, exemplifies the city's successful transformation.</p>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Places to Visit</div>
+
+        <div class="places-flex">
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Piotrkowska Street</h3>
+                    <p>Europe's one of the longest commercial streets stretches over 4 kilometers through Lodz's center. This pedestrian boulevard features eclectic architecture from Art Nouveau to modernist, reflecting the city's industrial boom. Converted factories, trendy restaurants, galleries, and street art create vibrant atmosphere. The street represents Lodz's transformation from textile to cultural capital while preserving 19th-century industrial heritage. The mix of old and new makes it Poland's most interesting high street.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Łagiewniki Park</h3>
+                    <p>This large forest park offers extensive green space with walking trails, ponds, and recreational facilities. The park provides escape from urban density with natural landscapes and fresh air. Popular with joggers, families, and nature lovers, it represents Lodz's commitment to accessible green spaces. The park's size and natural character offer genuine forest experience within city limits, making it essential for outdoor activities and relaxation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Museums & Palaces</div>
+
+        <div class="museums-flex">
+            <div class="museum-block">
+                <h4 class="museum-title">Poznański Palace</h4>
+                <p class="museum-text">Opulent textile baron's palace, now Museum of the City of Lodz with Art Nouveau interiors</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €6</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-btn">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

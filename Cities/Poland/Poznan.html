@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poznan Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .hero-block {
+            background: #dc143c;
+            color: white;
+            padding: 100px 50px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .intro-block {
+            padding: 80px 100px;
+        }
+
+        .intro-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #dc143c;
+            margin-bottom: 40px;
+            font-weight: 700;
+            border-left: 8px solid #dc143c;
+            padding-left: 30px;
+        }
+
+        .intro-content {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .section-break {
+            background: #dc143c;
+            height: 6px;
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: #dc143c;
+            text-align: center;
+            margin: 80px 0 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .places-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .place-block {
+            padding: 40px;
+            background: #f8f8f8;
+            border-left: 10px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+
+        .place-block:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);
+            transform: translateX(10px);
+        }
+
+        .place-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-info {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+        }
+
+        .museums-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .museum-block {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-top: 6px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .museum-block:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .museum-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-text {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .detail-badge {
+            padding: 10px 20px;
+            background: #dc143c;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            padding: 25px 60px;
+            background: #dc143c;
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #dc143c;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #dc143c;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            .intro-block, .places-flex, .museums-flex {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero-block text-center">
+            <h1 class="hero-title">POZNAN</h1>
+            <p class="hero-desc">🇵🇱 Birthplace of Poland 🇵🇱</p>
+        </div>
+
+        <div class="intro-block">
+            <h2 class="intro-header">Welcome to Poznan</h2>
+            <p class="intro-content">Poznan is one of Poland's oldest cities and the birthplace of the Polish state where the first Polish rulers were crowned. This dynamic city combines medieval Old Market Square with modern business centers, hosting major international trade fairs. The famous mechanical goats butting heads daily at noon in the Town Hall, Renaissance and baroque architecture, and vibrant student life create unique atmosphere. Poznan represents Polish history's beginnings while embracing contemporary development as an economic and cultural powerhouse.</p>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Places to Visit</div>
+
+        <div class="places-flex">
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Stary Rynek (Old Market Square)</h3>
+                    <p>Poznan's Renaissance Old Market Square features colorful merchants' houses and the magnificent Renaissance Town Hall. At noon daily, mechanical goats emerge from the clock tower and butt heads twelve times, a tradition dating to the 16th century. The square buzzes with cafes, restaurants, and the pillory where criminals were once punished. The harmonious architecture and lively atmosphere make it Poland's most beautiful market square after Krakow.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Fara Church (Parish Church)</h3>
+                    <p>This baroque Jesuit church is Poznan's largest and most ornate with elaborate decoration, frescoes, and gilded altars. The impressive facade and opulent interior represent Counter-Reformation baroque splendor. The church showcases Polish baroque architecture at its finest with dramatic decoration designed to inspire faith. The central location and artistic richness make it essential for understanding Poznan's religious and artistic heritage during the baroque period.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Ulica Wrocławska</h3>
+                    <p>This street in the old town features historic buildings, shops, and restaurants representing authentic Poznan character. The street connects major squares and showcases Renaissance and baroque architecture. The pedestrian-friendly environment makes it pleasant for exploring. Wrocławska represents typical old town street life where commerce and residence combine in historic buildings, offering glimpses of daily Poznan life in architectural setting spanning centuries.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Święty Marcin Street</h3>
+                    <p>Poznan's main commercial street features shops, cafes, and the modernist Okrąglak circular building. The street represents the city's commercial vitality and 20th-century development. The mix of historic and modern architecture creates interesting urban landscape. Święty Marcin serves as major thoroughfare connecting different districts while offering shopping and dining options showcasing contemporary Poznan's dynamism and economic success.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Francis Church</h3>
+                    <p>This Franciscan church features Gothic architecture with baroque additions and houses relics of St. Anthony. The church represents Poznan's medieval monastic traditions and religious continuity. The combination of Gothic structure with baroque decoration showcases architectural evolution. The church's spiritual significance and artistic treasures make it important religious monument while serving continuing religious community needs in historic setting.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Poznan Cathedral</h3>
+                    <p>This cathedral on Ostrów Tumski island is Poland's oldest cathedral where the first Polish rulers were baptized and buried. The Gothic building with multiple chapels contains royal tombs and represents Polish Christianity's beginnings. The cathedral witnessed over 1,000 years of Polish history. The Golden Chapel with its Byzantine-style mosaics houses the first Polish rulers' remains. The cathedral embodies Poland's origins and Christian heritage in Poznan's most sacred site.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Museums & Palaces</div>
+
+        <div class="museums-flex">
+            <div class="museum-block">
+                <h4 class="museum-title">Poznan Royal Castle</h4>
+                <p class="museum-text">Reconstructed castle of first Polish rulers with museum of applied arts</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 11:00 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €5</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Imperial Castle</h4>
+                <p class="museum-text">Prussian castle built for Kaiser Wilhelm II, now cultural center</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 9:00 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €6</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">National Museum</h4>
+                <p class="museum-text">Polish and European art with notable medieval and Renaissance collections</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="detail-badge">💶 €7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-btn">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

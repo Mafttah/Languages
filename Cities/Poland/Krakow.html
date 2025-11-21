@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krakow Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+
+        .container-fluid {
+            padding: 0;
+        }
+
+        .hero-block {
+            background: #dc143c;
+            color: white;
+            padding: 100px 50px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 7rem;
+            font-weight: 700;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+        }
+
+        .hero-desc {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .intro-block {
+            padding: 80px 100px;
+            background: white;
+        }
+
+        .intro-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            color: #dc143c;
+            margin-bottom: 40px;
+            font-weight: 700;
+            border-left: 8px solid #dc143c;
+            padding-left: 30px;
+        }
+
+        .intro-content {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .section-break {
+            background: #dc143c;
+            height: 6px;
+            margin: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            color: #dc143c;
+            text-align: center;
+            margin: 80px 0 60px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+        }
+
+        .places-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .place-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 40px;
+            background: #f8f8f8;
+            border-left: 10px solid #dc143c;
+            transition: all 0.3s ease;
+        }
+
+        .place-block:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.15);
+            transform: translateX(10px);
+        }
+
+        .place-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .place-info {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #666;
+            flex: 1;
+        }
+
+        .museums-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 0 80px;
+            margin-bottom: 100px;
+        }
+
+        .museum-block {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 40px;
+            border-top: 6px solid #dc143c;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .museum-block:hover {
+            box-shadow: 0 10px 40px rgba(220, 20, 60, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .museum-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .museum-text {
+            color: #777;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .museum-details {
+            display: flex;
+            gap: 15px;
+        }
+
+        .detail-badge {
+            padding: 10px 20px;
+            background: #dc143c;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            padding: 25px 60px;
+            background: #dc143c;
+            color: white;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #dc143c;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #dc143c;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+
+            .intro-block,
+            .places-flex,
+            .museums-flex {
+                padding: 40px;
+            }
+
+            .place-block {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="hero-block text-center">
+            <h1 class="hero-title">KRAKOW</h1>
+            <p class="hero-desc">🇵🇱 Poland's Cultural Capital 🇵🇱</p>
+        </div>
+
+        <div class="intro-block">
+            <h2 class="intro-header">Welcome to Krakow</h2>
+            <p class="intro-content">Krakow is Poland's former capital and cultural heart, miraculously spared from WWII destruction preserving its medieval and Renaissance architecture. The stunning Main Market Square, Wawel Royal Castle, and Jewish Kazimierz district create extraordinary historic ensemble. Once home to Polish kings and now a vibrant university city, Krakow offers Gothic churches, underground medieval market, proximity to Auschwitz, and the atmospheric salt mines. The city embodies Polish culture, history, and artistic traditions in remarkably intact medieval urban fabric.</p>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Places to Visit</div>
+
+        <div class="places-flex">
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Mary's Basilica</h3>
+                    <p>This Gothic church dominates the Main Market Square with asymmetrical towers. The famous wooden altarpiece by Veit Stoss is one of Europe's largest Gothic altars. Every hour, a trumpeter plays the Hejnał from the taller tower, stopping mid-melody commemorating a 13th-century Mongol attack. The interior features stunning vaulted ceiling and stained glass. The basilica represents Krakow's medieval wealth and continuing traditions through the hourly trumpet call.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Rynek Główny (Main Market Square)</h3>
+                    <p>Europe's largest medieval town square features the Cloth Hall, St. Mary's Basilica, and surrounding historic townhouses. The vast 200x200 meter space hosts markets, street performers, and horse-drawn carriages. Underground museum reveals medieval market remains. The square served as Krakow's commercial and social center for 800 years. Its scale, architectural harmony, and vibrant atmosphere make it Poland's finest public space and Krakow's beating heart.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Wawel Cathedral</h3>
+                    <p>This Gothic cathedral atop Wawel Hill served as Polish coronation and burial site for centuries. The cathedral features chapel additions from different eras including the Renaissance Sigismund Chapel. Royal tombs, the Sigismund Bell, and treasury hold national treasures. The cathedral represents Polish statehood, religious tradition, and architectural evolution. As the spiritual heart of Poland where kings were crowned and buried, it embodies national identity and continuity.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Planty Park</h3>
+                    <p>This green ring encircling the Old Town follows former medieval walls' path creating 4-kilometer tree-lined promenade. The park features monuments, fountains, gardens, and provides pleasant walking route around the historic center. Created in the 19th century after walls' demolition, Planty represents urban transformation while preserving defensive perimeter as green belt. The park connects major gates and offers peaceful escape while maintaining proximity to monuments.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Ulica Floriańska</h3>
+                    <p>This main street connects the Main Market Square with Floriańska Gate and features historic townhouses, galleries, cafes, and shops. The street represents the Royal Route's northern section where coronation processions passed. Jan Matejko's house museum and numerous art galleries showcase Krakow's artistic heritage. The pedestrian street maintains medieval layout while offering contemporary shopping and dining in historic architectural setting creating perfect Old Town experience.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Saints Peter and Paul Church</h3>
+                    <p>This baroque church features an impressive facade with apostle statues and represents Krakow's first baroque building. The elliptical interior showcases baroque decoration and acoustics. Modeled after Rome's Il Gesù, the church demonstrates Counter-Reformation architecture. The Jesuit church represents 17th-century religious architecture and Rome's influence on Polish baroque. The harmonious facade and strategic location near Wawel make it an architectural landmark along the Royal Route.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">St. Francis' Basilica</h3>
+                    <p>This Gothic-Franciscan church features stunning Art Nouveau stained glass by Wyspiański depicting God creating the world. The contrast between Gothic architecture and modernist glass creates unique artistic blend. The church represents Polish artistic innovation and religious tradition. Wyspiański's masterpiece transforms the interior with colorful light making it one of Krakow's most beautiful churches showcasing how modern art enhanced rather than replaced medieval architecture.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Dragon's Den</h3>
+                    <p>This cave beneath Wawel Hill features the legendary dragon's lair with a fire-breathing dragon statue at its entrance. According to legend, a dragon terrorized Krakow until defeated. The cave tour reveals natural formations and connects to legend. The dragon statue attracts children and tourists. The Den represents Krakow's mythological foundations and adds whimsical element to historic Wawel Hill while entertaining visitors with Polish folklore and natural wonder.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Plac Bohaterów Getta</h3>
+                    <p>This square in Podgórze marks the former Jewish ghetto created by Nazis. The monument of empty chairs represents deportation and loss. The square serves as starting point for understanding Krakow's Jewish tragedy. Schindler's Factory museum nearby provides context. The square represents Holocaust memory and the destruction of Krakow's Jewish community. The solemn atmosphere and symbolic chairs create powerful memorial to victims and destroyed culture.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Kopiec Kościuszki</h3>
+                    <p>This artificial mound honoring national hero Tadeusz Kościuszko offers panoramic views over Krakow and surrounding countryside. Built by volunteers in 1823, the 34-meter hill represents Polish patriotism and independence movements. Climbing to the top reveals 360-degree vistas. The mound with its fortress walls demonstrates Polish tradition of building memorial mounds for heroes. The monument embodies national memory and provides spectacular viewing point.</p>
+                </div>
+            </div>
+
+            <div class="place-block">
+                <div class="place-info">
+                    <h3 class="place-title">Ulica Kanonicza</h3>
+                    <p>This medieval street is Krakow's most beautiful with Renaissance and baroque townhouses where clergy once lived. Pope John Paul II resided at No. 19 as a young priest. The street's architectural harmony and historic character create atmospheric walk from Wawel to Main Square. The cobblestones, historic facades, and papal connection make it essential for experiencing Krakow's preserved medieval urban fabric and religious heritage.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-break"></div>
+
+        <div class="section-label">Museums & Palaces</div>
+
+        <div class="museums-flex">
+            <div class="museum-block">
+                <h4 class="museum-title">Wawel Castle</h4>
+                <p class="museum-text">Royal residence with Renaissance courtyard, state rooms, and Crown Treasury</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 9:30 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €12</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Stained Glass Museum</h4>
+                <p class="museum-text">Museum dedicated to stained glass art and restoration techniques</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 5:00 PM</span>
+                    <span class="detail-badge">💶 €5</span>
+                </div>
+            </div>
+
+            <div class="museum-block">
+                <h4 class="museum-title">Krakow History Museum</h4>
+                <p class="museum-text">City history across multiple historic buildings including Main Square underground</p>
+                <div class="museum-details">
+                    <span class="detail-badge">⏰ 10:00 AM - 8:00 PM</span>
+                    <span class="detail-badge">💶 €10</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="back-btn">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigulda Travel Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
+
+        body {
+            background: #ffffff;
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .header {
+            border-bottom: 8px solid #9d2235;
+            padding-bottom: 40px;
+            margin-bottom: 80px;
+        }
+
+        .city-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 8rem;
+            font-weight: 700;
+            color: #9d2235;
+            margin: 0;
+            line-height: 0.9;
+        }
+
+        .country-flag {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            letter-spacing: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-top: 15px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .intro-section {
+            margin-bottom: 100px;
+            padding: 50px;
+            background: #f9f9f9;
+            border-left: 6px solid #9d2235;
+        }
+
+        .intro-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            color: #9d2235;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: #444;
+            line-height: 1.9;
+        }
+
+        .category-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            color: #9d2235;
+            margin: 100px 0 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #9d2235;
+        }
+
+        .places-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .place-item {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 40px;
+            padding: 35px;
+            background: white;
+            border: 2px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .place-item:hover {
+            border-color: #9d2235;
+            box-shadow: 0 8px 30px rgba(157, 34, 53, 0.1);
+        }
+
+        .place-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            color: #9d2235;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .place-description {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .museums-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .museum-card {
+            padding: 40px;
+            background: #f9f9f9;
+            border-top: 5px solid #9d2235;
+            transition: all 0.3s ease;
+        }
+
+        .museum-card:hover {
+            background: white;
+            box-shadow: 0 10px 35px rgba(157, 34, 53, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .museum-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.7rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .museum-desc {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .museum-info {
+            display: flex;
+            gap: 20px;
+        }
+
+        .info-item {
+            padding: 10px 25px;
+            background: white;
+            border: 2px solid #9d2235;
+            color: #9d2235;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .return-button {
+            display: inline-block;
+            margin: 80px auto;
+            padding: 20px 50px;
+            background: #9d2235;
+            color: white;
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            border: 3px solid #9d2235;
+        }
+
+        .return-button:hover {
+            background: white;
+            color: #9d2235;
+        }
+
+        @media (max-width: 992px) {
+            .city-title {
+                font-size: 5rem;
+            }
+            .place-item {
+                grid-template-columns: 1fr;
+            }
+            .museums-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="header">
+            <h1 class="city-title">SIGULDA</h1>
+            <p class="country-flag">🇱🇻</p>
+            <p class="subtitle">Switzerland of Latvia</p>
+        </div>
+
+        <div class="intro-section">
+            <h2 class="intro-title">Welcome to Sigulda</h2>
+            <p class="intro-text">Sigulda is Latvia's adventure capital in Gauja National Park, known as the "Switzerland of Latvia" for its scenic hills, forests, and medieval castles. This small town offers bobsled track, cable car over the valley, and three castles within walking distance. The Gauja River valley creates dramatic landscapes perfect for hiking, cycling, and winter sports. Sigulda combines natural beauty with medieval heritage and outdoor activities making it Latvia's top nature and adventure destination.</p>
+        </div>
+
+        <div class="category-title">Places to Visit</div>
+
+        <div class="places-list">
+            <div class="place-item">
+                <div class="place-name">Turaida Church</div>
+                <div class="place-description">This wooden Lutheran church from 1750 serves the Turaida museum reserve. The simple red structure represents traditional Latvian church architecture. The church's location near Turaida Castle and association with the Rose of Turaida legend adds romantic element. The church exemplifies rural Latvian religious architecture while serving as part of the larger castle complex showcasing centuries of Latvian history and folk traditions.</div>
+            </div>
+
+            <div class="place-item">
+                <div class="place-name">Gauja National Park</div>
+                <div class="place-description">Latvia's largest national park surrounds Sigulda with pristine forests, sandstone cliffs, caves, and the Gauja River valley. The park offers hiking, canoeing, cycling, and winter sports. Medieval castles, archaeological sites, and diverse wildlife enhance the natural beauty. Gauja represents Latvia's commitment to nature preservation while providing outdoor recreation. The dramatic landscapes and ecological diversity make it the country's premier nature destination.</div>
+            </div>
+        </div>
+
+        <div class="category-title">Museums & Palaces</div>
+
+        <div class="museums-grid">
+            <div class="museum-card">
+                <h4 class="museum-name">Krimulda Castle</h4>
+                <p class="museum-desc">Medieval castle ruins with stunning valley views and legends</p>
+                <div class="museum-info">
+                    <span class="info-item">⏰ Always accessible</span>
+                    <span class="info-item">💶 Free</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Sigulda Castle</h4>
+                <p class="museum-desc">Livonian Order castle ruins and new palace with exhibitions</p>
+                <div class="museum-info">
+                    <span class="info-item">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-item">💶 €6</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Turaida Castle</h4>
+                <p class="museum-desc">Reconstructed medieval castle with museum and sculpture park</p>
+                <div class="museum-info">
+                    <span class="info-item">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-item">💶 €7</span>
+                </div>
+            </div>
+
+            <div class="museum-card">
+                <h4 class="museum-name">Turaida Museum Reserve</h4>
+                <p class="museum-desc">Archaeological and architectural complex with castle and folk traditions</p>
+                <div class="museum-info">
+                    <span class="info-item">⏰ 10:00 AM - 6:00 PM</span>
+                    <span class="info-item">💶 €7</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="../../my-website.html" class="return-button">← Back to Guide</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
