@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,10 +99,90 @@
             transform: scale(1.05);
         }
 
+        .info-btn {
+            padding: 0.5rem 1rem;
+            background-color: #334155;
+            border: 1px solid #475569;
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .info-btn:hover {
+            background-color: #475569;
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2.5rem 2rem;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #c084fc, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .info-section {
+            background: linear-gradient(135deg, rgba(109, 40, 217, 0.1), rgba(29, 78, 216, 0.1));
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: #a855f7;
+            transform: translateY(-2px);
+        }
+
+        .info-card h3 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #c084fc;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            line-height: 1.6;
         }
 
         .tracks-selector {
@@ -293,9 +374,17 @@
             font-weight: 500;
         }
 
-        .badge-learn { color: #4ade80; }
-        .badge-practice { color: #facc15; }
-        .badge-project { color: #c084fc; }
+        .badge-learn {
+            color: #4ade80;
+        }
+
+        .badge-practice {
+            color: #facc15;
+        }
+
+        .badge-project {
+            color: #c084fc;
+        }
 
         .lesson-details {
             margin-top: 1rem;
@@ -511,17 +600,91 @@
             background-color: #475569;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #ffffff;
+        }
+
+        .modal-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .modal-content h3 {
+            font-size: 1.125rem;
+            color: #c084fc;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-content p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 1024px) {
             .grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .tracks-selector {
                 grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -535,6 +698,7 @@
                 </nav>
             </div>
             <div class="header-actions">
+                <button class="info-btn" onclick="toggleModal()">ℹ️ Course Guide</button>
                 <div class="streak-badge">
                     <span>⚡</span>
                     <span id="streak">0 days</span>
@@ -544,22 +708,84 @@
         </div>
     </header>
 
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="toggleModal()">×</button>
+            <h2>📚 Career Path Guide</h2>
+            <p style="color: #94a3b8; margin-bottom: 2rem;">Choose the right learning path based on your career goals</p>
+
+            <h3>🌐 Web Development → HTML/CSS/JavaScript, React</h3>
+            <p>Web development involves building the structure (HTML), styling (CSS), and interactivity (JavaScript) of websites. React is a popular JavaScript library used to create fast, modern, and reusable user interfaces.</p>
+
+            <h3>📱 Mobile Apps → Swift (iOS), Java (Android)</h3>
+            <p>Mobile app development uses Swift for iPhone apps and Java for Android apps. These languages allow developers to access device features like the camera, GPS, and notifications to create powerful native applications.</p>
+
+            <h3>🎮 Games → C++, C# (Unity)</h3>
+            <p>In game development, C++ is used in major game engines because of its high performance. C# is the main language of the Unity engine, making it ideal for building both 2D and 3D games efficiently.</p>
+
+            <h3>⚙️ Backend/Servers → Node.js, Go, Java</h3>
+            <p>Backend development handles server-side logic, databases, and application infrastructure. Node.js is fast and flexible, Go is optimized for performance, and Java is widely used for reliable enterprise-level backend systems.</p>
+
+            <h3>🤖 Data Science/AI → Python</h3>
+            <p>Python is the most popular language for artificial intelligence, data science, and machine learning. Its simple syntax and powerful libraries make it ideal for data analysis, model building, and automation.</p>
+
+            <h3>🏢 Enterprise → Java, C#</h3>
+            <p>Java and C# are heavily used in enterprise software development. They are chosen for large-scale projects because they are stable, maintainable, and well-supported in industries like finance, healthcare, and government.</p>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="container">
         <!-- Track Selection View -->
         <div id="track-selection" style="display: block;">
+            <div class="hero-section">
+                <h1>Start Your Coding Journey</h1>
+                <p>Choose from 11 different programming paths and start learning today</p>
+            </div>
+
+            <div class="info-section">
+                <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; text-align: center;">🎯 Quick Guide</h2>
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 1.5rem;">Not sure where to start? Here are some popular paths:</p>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🌐 Web Development</h3>
+                        <p>Perfect for beginners. Build websites and web applications.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🐍 Python</h3>
+                        <p>Great for data science, AI, and automation.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎮 Game Dev</h3>
+                        <p>Create games with C++ or C# Unity.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📱 Mobile Apps</h3>
+                        <p>Build iOS apps with Swift or Android with Java.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>⚙️ Backend</h3>
+                        <p>Server development with Node.js, Go, or Java.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🗄️ Databases</h3>
+                        <p>Master SQL for data management.</p>
+                    </div>
+                </div>
+            </div>
+
             <h2 style="font-size: 2rem; margin-bottom: 1rem;">Choose Your Learning Path</h2>
             <p style="color: #94a3b8; margin-bottom: 2rem;">Select a programming language or technology to start learning</p>
-            
-            <div class="tracks-selector" id="tracks-container">
-                <!-- Tracks will be inserted here -->
-            </div>
+
+            <div class="tracks-selector" id="tracks-container"></div>
         </div>
 
         <!-- Course Content View -->
         <div id="course-content" style="display: none;">
             <button class="back-btn" onclick="backToTracks()">← Back to Courses</button>
-            
+
             <div class="grid">
                 <!-- Main Content Area -->
                 <div>
@@ -572,9 +798,10 @@
                             </div>
                             <div class="progress-circle">
                                 <svg width="80" height="80">
-                                    <circle cx="40" cy="40" r="36" stroke="#334155" stroke-width="6" fill="none"/>
-                                    <circle id="progress-circle" cx="40" cy="40" r="36" stroke="#8b5cf6" stroke-width="6" fill="none"
-                                        stroke-dasharray="226" stroke-dashoffset="226" stroke-linecap="round"/>
+                                    <circle cx="40" cy="40" r="36" stroke="#334155" stroke-width="6" fill="none" />
+                                    <circle id="progress-circle" cx="40" cy="40" r="36" stroke="#8b5cf6"
+                                        stroke-width="6" fill="none" stroke-dasharray="226" stroke-dashoffset="226"
+                                        stroke-linecap="round" />
                                 </svg>
                                 <span class="progress-text" id="progress-percent">0%</span>
                             </div>
@@ -584,15 +811,12 @@
                     <!-- Lessons -->
                     <div class="lessons-section">
                         <span class="section-label">LESSONS</span>
-                        <div class="lessons-list" id="lessons-list">
-                            <!-- Lessons will be inserted here -->
-                        </div>
+                        <div class="lessons-list" id="lessons-list"></div>
                     </div>
                 </div>
 
                 <!-- Sidebar -->
                 <div class="sidebar">
-                    <!-- Career Path Card -->
                     <span class="section-label">CAREER PATH</span>
                     <div class="career-card">
                         <h3 id="current-track-title">Full-Stack Developer</h3>
@@ -607,13 +831,9 @@
                         </div>
                     </div>
 
-                    <!-- Sections List -->
                     <span class="section-label">SECTIONS</span>
-                    <div class="sections-list" id="sections-list">
-                        <!-- Sections will be inserted here -->
-                    </div>
+                    <div class="sections-list" id="sections-list"></div>
 
-                    <!-- Stats Card -->
                     <div class="stats-card" style="margin-top: 1.5rem;">
                         <h4>
                             <span>⚡</span>
@@ -643,7 +863,6 @@
     </div>
 
     <script>
-        // All Tracks Data
         const allTracks = [
             {
                 id: 'web',
@@ -701,13 +920,6 @@
                             { id: 107, title: "Lists and Dictionaries", type: "LEARN", chapters: 2, description: "Work with Python data structures." },
                             { id: 108, title: "Calculator Project", type: "PROJECT", chapters: 1, description: "Build a functional calculator." }
                         ]
-                    },
-                    {
-                        id: 1,
-                        title: "Advanced Python",
-                        description: "Object-oriented programming and advanced concepts",
-                        total: 8,
-                        lessons: []
                     }
                 ]
             },
@@ -936,27 +1148,30 @@
             }
         ];
 
-        // State
         let selectedTrack = null;
         let selectedSection = 0;
         let completedLessons = new Set();
         let unlockedLessons = new Set();
         let expandedLesson = null;
 
-        // Initialize
         function init() {
             renderTracks();
+        }
+
+        function toggleModal() {
+            const modal = document.getElementById('info-modal');
+            modal.classList.toggle('active');
         }
 
         function renderTracks() {
             const container = document.getElementById('tracks-container');
             container.innerHTML = '';
-            
+
             allTracks.forEach(track => {
                 const card = document.createElement('div');
                 card.className = 'track-card';
                 card.onclick = () => selectTrack(track.id);
-                
+
                 card.innerHTML = `
                     <div class="track-icon">${track.icon}</div>
                     <h3>${track.name}</h3>
@@ -966,7 +1181,7 @@
                         <span>${track.sections.length} Sections</span>
                     </div>
                 `;
-                
+
                 container.appendChild(card);
             });
         }
@@ -975,17 +1190,15 @@
             selectedTrack = allTracks.find(t => t.id === trackId);
             selectedSection = 0;
             completedLessons = new Set();
-            
-            // Unlock first lesson
+
             if (selectedTrack.sections[0].lessons.length > 0) {
                 unlockedLessons = new Set([selectedTrack.sections[0].lessons[0].id]);
             }
-            
-            // Update UI
+
             document.getElementById('current-track-title').textContent = selectedTrack.name;
             document.getElementById('track-selection').style.display = 'none';
             document.getElementById('course-content').style.display = 'block';
-            
+
             updateUI();
         }
 
@@ -997,16 +1210,16 @@
 
         function renderSections() {
             if (!selectedTrack) return;
-            
+
             const container = document.getElementById('sections-list');
             container.innerHTML = '';
-            
+
             selectedTrack.sections.forEach((section, index) => {
                 const locked = index > 0 && completedLessons.size < 5;
                 const item = document.createElement('button');
                 item.className = `section-item ${selectedSection === index ? 'active' : ''} ${locked ? 'locked' : ''}`;
                 item.onclick = () => !locked && selectSection(index);
-                
+
                 item.innerHTML = `
                     <div class="section-item-content">
                         <div class="section-item-left">
@@ -1018,17 +1231,17 @@
                         </div>
                     </div>
                 `;
-                
+
                 container.appendChild(item);
             });
         }
 
         function renderLessons() {
             if (!selectedTrack) return;
-            
+
             const container = document.getElementById('lessons-list');
             const currentSection = selectedTrack.sections[selectedSection];
-            
+
             if (!currentSection.lessons || currentSection.lessons.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -1038,29 +1251,29 @@
                 `;
                 return;
             }
-            
+
             container.innerHTML = '';
-            
+
             currentSection.lessons.forEach((lesson, index) => {
                 const locked = !unlockedLessons.has(lesson.id);
                 const completed = completedLessons.has(lesson.id);
                 const expanded = expandedLesson === lesson.id;
-                
+
                 const card = document.createElement('div');
                 card.className = `lesson-card ${locked ? 'locked' : ''} ${completed ? 'completed' : ''} ${expanded ? 'expanded' : ''}`;
-                
+
                 const typeIcons = {
                     'LEARN': '📖',
                     'PRACTICE': '⚡',
                     'PROJECT': '💻'
                 };
-                
+
                 const typeColors = {
                     'LEARN': 'badge-learn',
                     'PRACTICE': 'badge-practice',
                     'PROJECT': 'badge-project'
                 };
-                
+
                 card.innerHTML = `
                     <div class="lesson-header">
                         <div class="lesson-left">
@@ -1091,11 +1304,11 @@
                         </div>
                     ` : ''}
                 `;
-                
+
                 if (!locked) {
                     card.onclick = () => toggleLesson(lesson.id);
                 }
-                
+
                 container.appendChild(card);
             });
         }
@@ -1113,54 +1326,48 @@
 
         function completeLesson(lessonId) {
             completedLessons.add(lessonId);
-            
-            // Find next lesson ID to unlock
+
             const currentSection = selectedTrack.sections[selectedSection];
             const currentIndex = currentSection.lessons.findIndex(l => l.id === lessonId);
             if (currentIndex !== -1 && currentIndex < currentSection.lessons.length - 1) {
                 const nextLessonId = currentSection.lessons[currentIndex + 1].id;
                 unlockedLessons.add(nextLessonId);
             }
-            
+
             expandedLesson = null;
             updateUI();
         }
 
         function updateUI() {
             if (!selectedTrack) return;
-            
+
             const currentSection = selectedTrack.sections[selectedSection];
-            
-            // Update section info
+
             document.getElementById('section-title').textContent = `${selectedSection + 1}. ${currentSection.title}`;
             document.getElementById('section-description').textContent = currentSection.description;
-            
-            // Update progress circle
+
             const progress = completedLessons.size;
             const percent = Math.round((progress / selectedTrack.totalLessons) * 100);
             document.getElementById('progress-percent').textContent = `${percent}%`;
-            
+
             const circle = document.getElementById('progress-circle');
             const offset = 226 - (226 * progress / selectedTrack.totalLessons);
             circle.setAttribute('stroke-dashoffset', offset);
-            
-            // Update career progress
+
             const careerPercent = Math.round((completedLessons.size / selectedTrack.totalLessons) * 100);
             document.getElementById('career-progress').style.width = `${careerPercent}%`;
             document.getElementById('career-percent').textContent = `${careerPercent}% Complete`;
             document.getElementById('career-count').textContent = `${completedLessons.size}/${selectedTrack.totalLessons} Lessons`;
-            
-            // Update stats
+
             document.getElementById('completed-count').textContent = completedLessons.size;
             document.getElementById('total-xp').textContent = completedLessons.size * 50;
-            
-            // Re-render
+
             renderSections();
             renderLessons();
         }
-
-        // Initialize app
+        
         init();
     </script>
 </body>
+
 </html>

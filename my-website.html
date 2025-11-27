@@ -8,19 +8,57 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
+        :root {
+            --primary-color: #0d6efd;
+            --danger-color: #dc3545;
+            --success-color: #198754;
+            --secondary-color: #6c757d;
+        }
+
         body {
             padding: 20px;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1400px;
+        }
+
+        .main-title {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+            font-size: 3rem;
         }
 
         .language-btn {
             margin: 5px;
             min-width: 200px;
+            transition: all 0.3s ease;
+            border-width: 2px;
+        }
+
+        .language-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .section-card {
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .city-list {
@@ -29,55 +67,176 @@
         }
 
         .city-list li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.2s ease;
+        }
+
+        .city-list li:hover {
+            background-color: #f8f9fa;
+            padding-left: 10px;
         }
 
         .city-list li:last-child {
             border-bottom: none;
         }
 
+        .city-list a {
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .city-list a:hover {
+            color: var(--primary-color);
+        }
+
         .country-section {
             margin-bottom: 30px;
             padding: 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .country-section:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
 
         .country-title {
-            color: #0d6efd;
+            color: var(--primary-color);
             margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #0d6efd;
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .list-group-item {
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            border-left-color: var(--primary-color);
+            background-color: #f8f9fa;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+        }
+
+        .btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            transform: scale(1.05);
+        }
+
+        .btn-success:hover {
+            background-color: #157347;
+            transform: scale(1.05);
+        }
+
+        .section-header {
+            padding: 20px 25px;
+            background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+            color: white;
+            margin: 0;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .section-header h2,
+        .section-header h3,
+        .section-header h4,
+        .section-header h5 {
+            margin: 0;
+            color: white;
+            font-weight: 600;
+        }
+
+        .resource-section h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .resource-section h5 {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .country-section {
+                padding: 15px;
+            }
+        }
+
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="text-danger mb-4">🌍 Travel Guide</h1>
+        <h1 class="main-title">🌍 Travel & Language Guide</h1>
 
         <!-- Introduction Section -->
         <div class="card section-card">
             <div class="card-body">
-                <h2 class="text-primary">1. Europe</h2>
-                <p>There are many countries and diverse cities to explore in Europe. For intercity travel, you can
-                    travel by train, bus, car, or, if necessary, by plane. Within the city, you can use trams, metro,
-                    and buses, or you can walk to your destination.</p>
+                <div class="section-header mb-4">
+                    <h2>✈️ Discover Europe</h2>
+                </div>
+                <p class="lead">Explore the diverse countries and vibrant cities across Europe. Travel between cities by
+                    train, bus, car, or plane. Within cities, enjoy convenient trams, metro systems, buses, or simply
+                    walk to immerse yourself in local culture.</p>
 
-                <h3 class="mt-4 mb-3">Websites for Intercity Travel:</h3>
+                <h4 class="mt-4 mb-3">🚆 Transportation Resources:</h4>
                 <div class="list-group mb-3">
                     <a href="https://www.thetrainline.com/en-us" class="list-group-item list-group-item-action"
                         target="_blank">
-                        <strong>Trainline</strong> - Train tickets across Europe
+                        <strong>🚄 Trainline</strong> - Book train tickets across Europe
                     </a>
                     <a href="https://www.flixbus.co.uk/" class="list-group-item list-group-item-action" target="_blank">
-                        <strong>Flixbus</strong> - Affordable bus travel
+                        <strong>🚌 Flixbus</strong> - Affordable and comfortable bus travel
                     </a>
                     <a href="https://www.skyscanner.net/" class="list-group-item list-group-item-action"
                         target="_blank">
-                        <strong>Skyscanner</strong> - Compare flights and prices
+                        <strong>✈️ Skyscanner</strong> - Compare flights and find best prices
                     </a>
                 </div>
             </div>
@@ -86,22 +245,28 @@
         <!-- Country Selection -->
         <div class="card section-card">
             <div class="card-body">
-                <h4>Featured European Countries</h4>
-                <p><strong>Countries:</strong> Spain, Estonia, Italy, France, Latvia, Slovakia, Poland, and Germany</p>
+                <h4>🗺️ Featured European Countries</h4>
+                <p><strong>Currently Featured:</strong> <span class="badge-info">Spain</span> <span
+                        class="badge-info">Estonia</span> <span class="badge-info">Italy</span> <span
+                        class="badge-info">France</span> <span class="badge-info">Latvia</span> <span
+                        class="badge-info">Slovakia</span> <span class="badge-info">Poland</span> <span
+                        class="badge-info">Germany</span></p>
 
-                <div class="mb-3">
-                    <label for="chosenCountry" class="form-label">Select Your Destination:</label>
-                    <input type="text" class="form-control" id="chosenCountry" placeholder="Enter country name">
+                <div class="mb-3 mt-4">
+                    <label for="chosenCountry" class="form-label fw-bold">Select Your Destination:</label>
+                    <input type="text" class="form-control" id="chosenCountry"
+                        placeholder="Enter country name (e.g., Germany, Spain)">
                 </div>
-                <p class="text-muted"><em>More countries will be added</em></p>
+                <p class="text-muted fst-italic">📌 More countries will be added soon</p>
             </div>
         </div>
 
         <!-- Cities to Visit Section -->
         <div class="card section-card">
             <div class="card-body">
-                <h2 class="mb-4">🏙️ Cities to Visit</h2>
-
+                <div class="section-header mb-4">
+                    <h2>🏙️ Cities to Visit</h2>
+                </div>
                 <div class="row">
                     <!-- Germany -->
                     <div class="col-md-6 col-lg-4 mb-4">
@@ -112,11 +277,15 @@
                                 <li><a href="Cities/Germany/Munich.html" class="text-decoration-none">Munich</a></li>
                                 <li><a href="Cities/Germany/Hamburg.html" class="text-decoration-none">Hamburg</a></li>
                                 <li><a href="Cities/Germany/Cologne.html" class="text-decoration-none">Cologne</a></li>
-                                <li><a href="Cities/Germany/Frankfurt.html" class="text-decoration-none">Frankfurt</a></li>
-                                <li><a href="Cities/Germany/Stuttgart.html" class="text-decoration-none">Stuttgart</a></li>
+                                <li><a href="Cities/Germany/Frankfurt.html" class="text-decoration-none">Frankfurt</a>
+                                </li>
+                                <li><a href="Cities/Germany/Stuttgart.html" class="text-decoration-none">Stuttgart</a>
+                                </li>
                                 <li><a href="Cities/Germany/Bremen.html" class="text-decoration-none">Bremen</a></li>
-                                <li><a href="Cities/Germany/Augsburg.html" class="text-decoration-none">Augsburg</a></li>
-                                <li><a href="Cities/Germany/Dortmund.html" class="text-decoration-none">Dortmund</a></li>
+                                <li><a href="Cities/Germany/Augsburg.html" class="text-decoration-none">Augsburg</a>
+                                </li>
+                                <li><a href="Cities/Germany/Dortmund.html" class="text-decoration-none">Dortmund</a>
+                                </li>
                                 <li><a href="Cities/Germany/Leipzig.html" class="text-decoration-none">Leipzig</a></li>
                             </ul>
                         </div>
@@ -128,14 +297,15 @@
                             <h3 class="country-title">🇪🇸 Spain</h3>
                             <ul class="city-list">
                                 <li><a href="Cities/Spain/Madrid.html" class="text-decoration-none">Madrid</a></li>
-                                <li><a href="Cities/Spain/Barcelona.html" class="text-decoration-none">Barcelona</a></li>
+                                <li><a href="Cities/Spain/Barcelona.html" class="text-decoration-none">Barcelona</a>
+                                </li>
                                 <li><a href="Cities/Spain/Sevilla.html" class="text-decoration-none">Sevilla</a></li>
                                 <li><a href="Cities/Spain/Granada.html" class="text-decoration-none">Granada</a></li>
-                                <li><a href="Cities/Spain/Bilboa.html" class="text-decoration-none">Bilboa</a></li>
+                                <li><a href="Cities/Spain/Bilboa.html" class="text-decoration-none">Bilbao</a></li>
                                 <li><a href="Cities/Spain/Zaragoza.html" class="text-decoration-none">Zaragoza</a></li>
-                                <li><a href="Cities/Spain/Malaga.html" class="text-decoration-none">Malaga</a></li>
-                                <!-- <li>Cartagena</li> -->
-                                <li><a href="Cities/Spain/San_Sebastian.html" class="text-decoration-none">San Sebastian</a></li>
+                                <li><a href="Cities/Spain/Malaga.html" class="text-decoration-none">Málaga</a></li>
+                                <li><a href="Cities/Spain/San_Sebastian.html" class="text-decoration-none">San
+                                        Sebastian</a></li>
                                 <li><a href="Cities/Spain/Valencia.html" class="text-decoration-none">Valencia</a></li>
                             </ul>
                         </div>
@@ -168,8 +338,10 @@
                                 <li><a href="Cities/France/Paris.html" class="text-decoration-none">Paris</a></li>
                                 <li><a href="Cities/France/Lyon.html" class="text-decoration-none">Lyon</a></li>
                                 <li><a href="Cities/France/Nice.html" class="text-decoration-none">Nice</a></li>
-                                <li><a href="Cities/France/Strasbourg.html" class="text-decoration-none">Strasbourg</a></li>
-                                <li><a href="Cities/France/Marseille.html" class="text-decoration-none">Marseille</a></li>
+                                <li><a href="Cities/France/Strasbourg.html" class="text-decoration-none">Strasbourg</a>
+                                </li>
+                                <li><a href="Cities/France/Marseille.html" class="text-decoration-none">Marseille</a>
+                                </li>
                                 <li><a href="Cities/France/Bordeaux.html" class="text-decoration-none">Bordeaux</a></li>
                                 <li><a href="Cities/France/Lille.html" class="text-decoration-none">Lille</a></li>
                             </ul>
@@ -182,12 +354,12 @@
                             <h3 class="country-title">🇵🇱 Poland</h3>
                             <ul class="city-list">
                                 <li><a href="Cities/Poland/Warsaw.html" class="text-decoration-none">Warsaw</a></li>
-                                <li><a href="Cities/Poland/Krakow.html" class="text-decoration-none">Krakow</a></li>
-                                <li><a href="Cities/Poland/Gdansk.html" class="text-decoration-none">Gdansk</a></li>
-                                <li><a href="Cities/Poland/Lodz.html" class="text-decoration-none">Lodz</a></li>
+                                <li><a href="Cities/Poland/Krakow.html" class="text-decoration-none">Kraków</a></li>
+                                <li><a href="Cities/Poland/Gdansk.html" class="text-decoration-none">Gdańsk</a></li>
+                                <li><a href="Cities/Poland/Lodz.html" class="text-decoration-none">Łódź</a></li>
                                 <li><a href="Cities/Poland/Szczecin.html" class="text-decoration-none">Szczecin</a></li>
-                                <li><a href="Cities/Poland/Poznan.html" class="text-decoration-none">Poznan</a></li>
-                                <li><a href="Cities/Poland/Wroclaw.html" class="text-decoration-none">Wroclav</a></li>
+                                <li><a href="Cities/Poland/Poznan.html" class="text-decoration-none">Poznań</a></li>
+                                <li><a href="Cities/Poland/Wroclaw.html" class="text-decoration-none">Wrocław</a></li>
                             </ul>
                         </div>
                     </div>
@@ -202,7 +374,8 @@
                                 <li><a href="Cities/Latvia/Kuldiga.html" class="text-decoration-none">Kuldīga</a></li>
                                 <li><a href="Cities/Latvia/Sigulda.html" class="text-decoration-none">Sigulda</a></li>
                                 <li><a href="Cities/Latvia/Cesis.html" class="text-decoration-none">Cēsis</a></li>
-                                <li><a href="Cities/Latvia/Daugavpils.html" class="text-decoration-none">Daugavpils</a></li>
+                                <li><a href="Cities/Latvia/Daugavpils.html" class="text-decoration-none">Daugavpils</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -212,13 +385,15 @@
                         <div class="country-section">
                             <h3 class="country-title">🇸🇰 Slovakia</h3>
                             <ul class="city-list">
-                                <li><a href="Cities/Slovakia/Bratislava.html" class="text-decoration-none">Bratislava</a></li>
+                                <li><a href="Cities/Slovakia/Bratislava.html"
+                                        class="text-decoration-none">Bratislava</a></li>
                                 <li><a href="Cities/Slovakia/Kosice.html" class="text-decoration-none">Košice</a></li>
                                 <li><a href="Cities/Slovakia/Zilina.html" class="text-decoration-none">Žilina</a></li>
                                 <li><a href="Cities/Slovakia/Presov.html" class="text-decoration-none">Prešov</a></li>
                                 <li><a href="Cities/Slovakia/Trencin.html" class="text-decoration-none">Trenčín</a></li>
                                 <li><a href="Cities/Slovakia/Nitra.html" class="text-decoration-none">Nitra</a></li>
-                                <li><a href="Cities/Slovakia/Banska Stiannica.html" class="text-decoration-none">Banská Štiavnica</a> </li>
+                                <li><a href="Cities/Slovakia/Banska Stiannica.html" class="text-decoration-none">Banská
+                                        Štiavnica</a></li>
                             </ul>
                         </div>
                     </div>
@@ -231,251 +406,12 @@
                                 <li><a href="Cities/Estonia/Tallinn.html" class="text-decoration-none">Tallinn</a></li>
                                 <li><a href="Cities/Estonia/Tartu.html" class="text-decoration-none">Tartu</a></li>
                                 <li><a href="Cities/Estonia/Parnu.html" class="text-decoration-none">Pärnu</a></li>
-                                <li><a href="Cities/Estonia/Haapsalu.html" class="text-decoration-none">Haapsalu</a></li>
+                                <li><a href="Cities/Estonia/Haapsalu.html" class="text-decoration-none">Haapsalu</a>
+                                </li>
                                 <li><a href="Cities/Estonia/Narva.html" class="text-decoration-none">Narva</a></li>
                             </ul>
                         </div>
                     </div>
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">LTH Lithuania</h3>                         
-                            <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Kaunas</a></li>
-                                <li><a href="" class="text-decoration-none">Vilnius</a></li>
-                                <li><a href="" class="text-decoration-none">Palanga</a></li>
-                                <li><a href="" class="text-decoration-none">Trakai</a></li>
-                                <li><a href="" class="text-decoration-none">Panevezys</a></li>
-                                <li><a href="" class="text-decoration-none">Klaipeda</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">PG Portuguese</h3>                         
-                            <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Lisboa</a></li>
-                                <li><a href="" class="text-decoration-none">Porto</a></li>
-                                <li><a href="" class="text-decoration-none">Coimbra</a></li>
-                                <li><a href="" class="text-decoration-none">Braga</a></li>
-                                <li><a href="" class="text-decoration-none">Sintra</a></li>
-                                <li><a href="" class="text-decoration-none">Evora</a></li>
-                            </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">Cz Czech</h3>                         
-                            <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Prague</a></li>
-                                <li><a href="" class="text-decoration-none">Český Krumlov</a></li>
-                                <li><a href="" class="text-decoration-none">Plzen</a></li>
-                                <li><a href="" class="text-decoration-none">Olomouc</a></li> -->
-                                <!-- <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">NW Norwey</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Tromso</a></li>
-                                <li><a href="" class="text-decoration-none">Oslo</a></li>
-                                <li><a href="" class="text-decoration-none">Bergen</a></li> -->
-                                <!-- <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>  -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">DN Denmark</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Aarhus</a></li>
-                                <li><a href="" class="text-decoration-none">Aalborg</a></li>
-                                <li><a href="" class="text-decoration-none">Copenhagen</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">FN Finland</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Turku</a></li>
-                                <li><a href="" class="text-decoration-none">Tampere</a></li>
-                                <li><a href="" class="text-decoration-none">Porvoo</a></li>
-                                <li><a href="" class="text-decoration-none">Helsinki</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">SW Sweden</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Gothenburg</a></li>
-                                <li><a href="" class="text-decoration-none">Malmo</a></li>
-                                <li><a href="" class="text-decoration-none">Halmstad</a></li>
-                                <li><a href="" class="text-decoration-none">Uppsala</a></li>
-                                <li><a href="" class="text-decoration-none">Kalmar</a></li>
-                                <li><a href="" class="text-decoration-none">Orebro</a></li>
-                                <li><a href="" class="text-decoration-none">Stockholm</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">AU Austria</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Salzburg</a></li>
-                                <li><a href="" class="text-decoration-none">Innsbruck</a></li>
-                                <li><a href="" class="text-decoration-none">Graz</a></li>
-                                <li><a href="" class="text-decoration-none">Linz</a></li>
-                                <li><a href="" class="text-decoration-none">Villach</a></li>
-                                <li><a href="" class="text-decoration-none"> Eisenstadt</a></li>
-                                <li><a href="" class="text-decoration-none">Steyr</a></li>
-                                <li><a href="" class="text-decoration-none">Wels</a></li>
-                                <li><a href="" class="text-decoration-none">Wolfsberg</a></li>
-                                <li><a href="" class="text-decoration-none">Kapfenberg</a></li>
-                                 -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">BLG Belgium</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Ghent</a></li>
-                                <li><a href="" class="text-decoration-none">Brussels</a></li>
-                                <li><a href="" class="text-decoration-none">Anvers (Antwerp)</a></li>
-                                <li><a href="" class="text-decoration-none">Bruges</a></li>
-                                <li><a href="" class="text-decoration-none">Liège</a></li>
-                                <li><a href="" class="text-decoration-none">Namur</a></li>
-                                <li><a href="" class="text-decoration-none">Kortrijk</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">ND Netherlands</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Lahey</a></li>
-                                <li><a href="" class="text-decoration-none">Amsterdam</a></li>
-                                <li><a href="" class="text-decoration-none">Groningen</a></li>
-                                <li><a href="" class="text-decoration-none">Arnhem</a></li>
-                                <li><a href="" class="text-decoration-none">Breda</a></li>
-                                <li><a href="" class="text-decoration-none">Nijmegen</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">Crt Croatia</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Dubrovnik</a></li>
-                                <li><a href="" class="text-decoration-none">Split</a></li>
-                                <li><a href="" class="text-decoration-none">Zagreb</a></li>
-                                <li><a href="" class="text-decoration-none">Zadar</a></li>
-                                <li><a href="" class="text-decoration-none">Pula</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">Srb Serbia</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Nis</a></li>
-                                <li><a href="" class="text-decoration-none">Belgrad</a></li>
-                                <li><a href="" class="text-decoration-none">Subotica</a></li>
-                                <li><a href="" class="text-decoration-none">Novi Sad</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">Hng Hungary</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Debrecen</a></li>
-                                <li><a href="" class="text-decoration-none">Pecs</a></li>
-                                <li><a href="" class="text-decoration-none">Szeged</a></li>
-                                <li><a href="" class="text-decoration-none">Esztergom</a></li>
-                                <li><a href="" class="text-decoration-none">Veszprém</a></li>
-                                <li><a href="" class="text-decoration-none">Budapeste</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">Grc Greece</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Rodos Island</a></li>
-                                <li><a href="" class="text-decoration-none">Corfu</a></li>
-                                <li><a href="" class="text-decoration-none">Nafplion</a></li>
-                                <li><a href="" class="text-decoration-none">Athena</a></li>
-                                <li><a href="" class="text-decoration-none">Thessaloniki</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title">Alb Albania</h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none">Durres</a></li>
-                                <li><a href="" class="text-decoration-none">Tirana</a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="country-section">
-                            <h3 class="country-title"></h3>                         <ul class="city-list">
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li>
-                                <li><a href="" class="text-decoration-none"></a></li> -->
-                            <!-- </ul>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -483,9 +419,11 @@
         <!-- Language Learning Resources -->
         <div class="card section-card">
             <div class="card-body">
-                <h3 class="text-success mb-3">📚 Language Learning Resources</h3>
-                <p class="text-muted">Access language learning resources for your destination country below. Prepare for
-                    your trip by learning the basics of the local language!</p>
+                <div class="section-header mb-4">
+                    <h3>📚 Language Learning Resources</h3>
+                </div>
+                <p class="lead mb-4">Prepare for your journey by learning the local language! Access comprehensive
+                    language courses for your destination.</p>
 
                 <div class="row mt-4">
                     <div class="col-md-6 col-lg-3 mb-3">
@@ -536,264 +474,297 @@
                             🇵🇱 Learn Polish
                         </a>
                     </div>
-                    <!-- <div class="col-md-6 col-lg-3 mb-3">
-                        <a href=""
-                            class="btn btn-outline-primary language-btn w-100">
-                            CL Learn Catalan
-                        </a>
-                    </div> -->
                 </div>
-                <p class="text-muted"><em>More lessons will be added</em></p>
+                <p class="text-muted fst-italic mt-3">📌 More language courses will be added regularly</p>
             </div>
         </div>
 
         <!-- Additional Learning Resources -->
         <div class="card section-card">
             <div class="card-body">
-                <h3 class="text-success mb-4">🎓 Additional Learning Resources</h3>
+                <div class="section-header mb-4">
+                    <h3>🎓 Additional Learning Platforms</h3>
+                </div>
+                <div class="resource-section">
+                    <!-- General Resources -->
+                    <div class="mb-5">
+                        <h4>🌐 General Language Learning Platforms</h4>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.duolingo.com" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Duolingo</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://app.memrise.com" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Memrise</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.busuu.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Busuu</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://app.mondly.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Mondly</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.50languages.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">50 Languages</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.loecsen.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Loecsen</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.lingohut.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">LingoHut</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.open.edu/openlearn/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Open Learn</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.udemy.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Udemy</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://alison.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Alison</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.mindluster.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Mindluster</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://lingua.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Lingua</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="https://www.santanderopenacademy.com/" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Santander Open Academy</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 mb-2">
+                                <a href="dil.html" target="_blank"
+                                    class="btn btn-sm btn-outline-secondary w-100">Alternative Learning Platform</a>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- General Resources -->
-                <div class="mb-4">
-                    <h4 class="text-primary mb-3">General Language Learning Platforms</h4>
+                    <!-- Specific Language Resources -->
+                    <div>
+                        <h4>🎯 Language-Specific Resources</h4>
+
+                        <div class="row">
+                            <!-- German -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇩🇪 German Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://deutsch.lingolia.com/" target="_blank">Lingolia German</a>
+                                    </li>
+                                    <li>• <a href="https://german.net/" target="_blank">German.net</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Spanish -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇪🇸 Spanish Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://studyspanish.com/" target="_blank">Study Spanish</a></li>
+                                    <li>• <a href="https://spanishboom.com/" target="_blank">Spanish Boom</a></li>
+                                    <li>• <a href="https://www.spanishboat.com/" target="_blank">Spanish Boat</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Italian -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇮🇹 Italian Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://www.theitalianexperiment.com/" target="_blank">Italian
+                                            Experiment</a></li>
+                                    <li>• <a href="https://onlineitalianclub.com/" target="_blank">Italian Club</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- French -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇫🇷 French Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://www.elearningfrench.com/" target="_blank">Learn French</a>
+                                    </li>
+                                    <li>• <a href="https://youfrench.com/" target="_blank">You French</a></li>
+                                    <li>• <a href="https://www.thefrenchexperiment.com/" target="_blank">The French
+                                            Experiment</a></li>
+                                    <li>• <a href="https://apprendre.tv5monde.com/en/collection-all" target="_blank">TV5
+                                            Monde</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Slovak -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇸🇰 Slovak Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://slovake.eu/" target="_blank">Slovake EU</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Polish -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇵🇱 Polish Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://www.learnpolishtoday.com/" target="_blank">Learn Polish
+                                            Today</a></li>
+                                    <li>• <a href="https://learnpolska.com/" target="_blank">Learn Polska</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Latvian -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇱🇻 Latvian Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://www.ilanguages.org/latvian.php"
+                                            target="_blank">iLanguages.org</a></li>
+                                    <li>• <a href="https://mylanguages.org/learn_latvian"
+                                            target="_blank">myLanguages.org</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Estonian -->
+                            <div class="col-md-6 mb-4">
+                                <h5>🇪🇪 Estonian Resources</h5>
+                                <ul class="list-unstyled">
+                                    <li>• <a href="https://estilang.com/" target="_blank">Estilang</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Resources -->
+            <div class="card section-card">
+                <div class="card-body">
+                    <h4 class="mb-4">💻 Other Learning Resources</h4>
                     <div class="row">
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.duolingo.com" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Duolingo</a>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">👨‍💻 Learn Programming</h5>
+                                    <p class="card-text">Master coding skills with our comprehensive programming guide.
+                                    </p>
+                                    <a href="kod.html" target="_blank" class="btn btn-outline-primary">Start Coding</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://app.memrise.com" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Memrise</a>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">📖 Read My Book</h5>
+                                    <p class="card-text">Explore an original creative work - an epic fantasy adventure.
+                                    </p>
+                                    <a href="Book/Book-1.html" target="_blank" class="btn btn-outline-primary">Start
+                                        Reading</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.busuu.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Busuu</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://app.mondly.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Mondly</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.50languages.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">50 Languages</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.loecsen.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Loecsen</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.lingohut.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">LingoHut</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.open.edu/openlearn/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Open Learn</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.udemy.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Udemy</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://alison.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Alison</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.mindluster.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Mindluster</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://lingua.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Lingua</a>
-                        </div>
-                        <div class="col-md-6 col-lg-4 mb-2">
-                            <a href="https://www.santanderopenacademy.com/" target="_blank"
-                                class="btn btn-sm btn-outline-secondary w-100">Santander Open Academy</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Forms -->
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card section-card h-100">
+                        <div class="card-body">
+                            <div class="section-header mb-3" style="margin: 0; border-radius: 8px;">
+                                <h5 class="mb-0">📧 Contact Us</h5>
+                            </div>
+                            <p class="card-text">Have questions or suggestions? We'd love to hear from you!</p>
+
+                            <form class="flex-grow-1 mt-3" onsubmit="handleContactSubmit(event)">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">First Name:</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">Last Name:</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email1" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email1" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message1" class="form-label">Your Message:</label>
+                                    <textarea class="form-control" id="message1" rows="3" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
                         </div>
                     </div>
                 </div>
 
-                <!-- Specific Language Resources -->
-                <div>
-                    <h4 class="text-primary mb-4">Specific Language Resources</h4>
+                <div class="col-md-6 mb-3">
+                    <div class="card section-card h-100">
+                        <div class="card-body">
+                            <div class="section-header mb-3" style="margin: 0; border-radius: 8px;">
+                                <h5 class="mb-0">💬 Language Request</h5>
+                            </div>
+                            <p class="card-text">Want to see a specific language or resource? Let us know!</p>
 
-                    <div class="row">
-                        <!-- German -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇩🇪 German Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://deutsch.lingolia.com/" target="_blank">Lingolia</a></li>
-                                <li><a href="https://german.net/" target="_blank">German.net</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Spanish -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇪🇸 Spanish Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://studyspanish.com/" target="_blank">Study Spanish</a></li>
-                                <li><a href="https://spanishboom.com/" target="_blank">Spanish Boom</a></li>
-                                <li><a href="https://www.spanishboat.com/" target="_blank">Spanish Boat</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Italian -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇮🇹 Italian Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://www.theitalianexperiment.com/" target="_blank">Italian
-                                        Experiment</a></li>
-                                <li><a href="https://onlineitalianclub.com/" target="_blank">Italian Club</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- French -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇫🇷 French Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://www.elearningfrench.com/" target="_blank">Learn French</a></li>
-                                <li><a href="https://youfrench.com/" target="_blank">You French</a></li>
-                                <li><a href="https://www.thefrenchexperiment.com/" target="_blank">The French
-                                        Experiment</a></li>
-                                <li><a href="https://apprendre.tv5monde.com/en/collection-all" target="_blank">TV5 Monde
-                                        Edu</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Slovak -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇸🇰 Slovak Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://slovake.eu/" target="_blank">Slovake EU</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Polish -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇵🇱 Polish Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://www.learnpolishtoday.com/" target="_blank">Learn Polish Today</a>
-                                </li>
-                                <li><a href="https://learnpolska.com/" target="_blank">Learn Polska</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Latvian -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇱🇻 Latvian Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://www.ilanguages.org/latvian.php" target="_blank">Ilanguages.org</a>
-                                </li>
-                                <li><a href="https://mylanguages.org/learn_latvian" target="_blank">myLanguages.org</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Estonian -->
-                        <div class="col-md-6 mb-4">
-                            <h5 class="text-secondary">🇪🇪 Estonian Resources</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="https://estilang.com/" target="_blank">Estilang</a></li>
-                            </ul>
+                            <form class="flex-grow-1 mt-3" onsubmit="handleLanguageRequest(event)">
+                                <div class="mb-3">
+                                    <label for="email2" class="form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email2" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message2" class="form-label">Your Request:</label>
+                                    <textarea class="form-control" id="message2" rows="3"
+                                        placeholder="Which language or resource would you like to see?"
+                                        required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success">Submit Request</button>
+                            </form>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-center mt-5 mb-3">
+                <p class="text-white">Made with ❤️ for travelers and language learners</p>
             </div>
         </div>
 
-        <!-- Contact Forms -->
-        <div class="row mt-4">
-            <div class="col-md-6 mb-3">
-                <div class="card section-card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">📧 Contact Form</h5>
-                        <p class="card-text">Fill out the form for your questions and inquiries</p>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
 
-                        <form class="flex-grow-1">
-                            <div class="mb-3">
-                                <label for="firstName" class="form-label">First Name:</label>
-                                <input type="text" class="form-control" id="firstName" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="lastName" class="form-label">Last Name:</label>
-                                <input type="text" class="form-control" id="lastName" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email1" class="form-label">Email:</label>
-                                <input type="email" class="form-control" id="email1" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message1" class="form-label">Your Message:</label>
-                                <textarea class="form-control" id="message1" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <script>
+            function handleContactSubmit(event) {
+                event.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                event.target.reset();
+            }
 
-            <div class="col-md-6 mb-3">
-                <div class="card section-card h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">💬 Language Request</h5>
-                        <p class="card-text">Request additional language options or resources here</p>
+            function handleLanguageRequest(event) {
+                event.preventDefault();
+                alert('Thank you for your request! We will consider adding this resource.');
+                event.target.reset();
+            }
 
-                        <form class="flex-grow-1">
-                            <div class="mb-3">
-                                <label for="email2" class="form-label">Email:</label>
-                                <input type="email" class="form-control" id="email2" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message2" class="form-label">Your Message:</label>
-                                <textarea class="form-control" id="message2" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <!-- Code injected by live-server -->
-    <script>
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function () {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                        }
-                        parent.appendChild(elem);
+            // Smooth scroll for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function (msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        }
-        else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-        // ]]>
-    </script>
+                });
+            });
+        </script>
 </body>
 
 </html>
